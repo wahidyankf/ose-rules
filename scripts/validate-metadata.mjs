@@ -62,6 +62,9 @@ const parseFrontmatter = (text) => {
 const CAPABILITIES = ["repository-read", "repository-write", "shell", "network", "subagent"];
 const TIERS = ["ultra", "plan", "execution", "fast"];
 const NAME = /^[a-z0-9]+(-[a-z0-9]+)*$/;
+// The keys whose value is a list. Everything else in the closed schema is a
+// scalar, so one list is enough to decide the shape of any declared key.
+const SEQUENCES = ["capabilities", "skills", "constraints"];
 
 const schemaFor = (rel) => {
   if (rel.startsWith("repo-governance/workflows/"))
@@ -103,31 +106,49 @@ for (const file of walk(ROOT).sort()) {
   if (fm.keys.join(",") !== expected.join(","))
     fail(rel, "key-order", `expected ${expected.join(", ")}; found ${fm.keys.join(", ")}`);
 
-  const d = (fm.values.description ?? "").trim();
-  const w = (fm.values.when_to_use ?? "").trim();
+  // A key written with nothing after it parses as an empty sequence, not as an
+  // empty string, so every value is shape-checked before it is measured. Without
+  // this a null field crashes the walk -- which fails the gate, but reports a
+  // stack trace carrying an absolute path instead of a finding naming the file.
+  for (const k of fm.keys) {
+    if (!allowed.includes(k)) continue;
+    const v = fm.values[k];
+    const wantsSequence = SEQUENCES.includes(k);
+    if (wantsSequence !== Array.isArray(v))
+      fail(rel, "value-shape", `\`${k}\` must be ${wantsSequence ? "a sequence" : "a scalar"}`);
+    else if (wantsSequence ? v.length === 0 : v.trim() === "") fail(rel, "value-empty", `\`${k}\` is null or empty`);
+  }
+
+  const scalar = (k) => (typeof fm.values[k] === "string" ? fm.values[k].trim() : "");
+  const d = scalar("description");
+  const w = scalar("when_to_use");
   if (d.length < 20 || d.length > 300) fail(rel, "description-length", `${d.length} characters; allowed 20-300`);
   if (w.length < 20 || w.length > 240) fail(rel, "when-to-use-length", `${w.length} characters; allowed 20-240`);
   if (d && d.toLowerCase() === w.toLowerCase())
     fail(rel, "description-repeats-trigger", "description and when_to_use normalize to the same text");
 
   if (schema.required.includes("name")) {
-    const n = fm.values.name ?? "";
+    const n = scalar("name");
     if (!NAME.test(n)) fail(rel, "name-form", `\`${n}\` is not lowercase hyphen-separated`);
     if (n !== identityFor(rel))
       fail(rel, "name-path-mismatch", `\`${n}\` does not match path identity \`${identityFor(rel)}\``);
   }
 
   if (schema.required.includes("tier")) {
-    if (!TIERS.includes(fm.values.tier))
-      fail(rel, "tier-value", `\`${fm.values.tier}\` is not one of ${TIERS.join(", ")}`);
-    const caps = fm.values.capabilities ?? [];
-    if (!Array.isArray(caps) || caps.length === 0)
-      fail(rel, "capabilities-empty", "capabilities must be a nonempty sequence");
-    for (const c of caps)
-      if (!CAPABILITIES.includes(c)) fail(rel, "capability-value", `\`${c}\` is outside the closed vocabulary`);
-    const canonical = CAPABILITIES.filter((c) => caps.includes(c));
-    if (caps.join(",") !== canonical.join(",")) fail(rel, "capability-order", `expected ${canonical.join(", ")}`);
-    if (new Set(caps).size !== caps.length) fail(rel, "capability-duplicate", "capabilities repeat");
+    const tier = scalar("tier");
+    if (!TIERS.includes(tier)) fail(rel, "tier-value", `\`${tier}\` is not one of ${TIERS.join(", ")}`);
+    // Only a sequence reaches the vocabulary rules. A scalar here is already
+    // reported by the shape check above, and running list rules over a string
+    // would iterate its characters and then throw on `join`.
+    const caps = Array.isArray(fm.values.capabilities) ? fm.values.capabilities : null;
+    if (caps === null || caps.length === 0) fail(rel, "capabilities-empty", "capabilities must be a nonempty sequence");
+    else {
+      for (const c of caps)
+        if (!CAPABILITIES.includes(c)) fail(rel, "capability-value", `\`${c}\` is outside the closed vocabulary`);
+      const canonical = CAPABILITIES.filter((c) => caps.includes(c));
+      if (caps.join(",") !== canonical.join(",")) fail(rel, "capability-order", `expected ${canonical.join(", ")}`);
+      if (new Set(caps).size !== caps.length) fail(rel, "capability-duplicate", "capabilities repeat");
+    }
   }
 }
 
