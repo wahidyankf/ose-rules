@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Thin dispatch. The surface is supplied, never inferred, and Git's own
+# argument is forwarded unchanged.
+set -uo pipefail
+
+OSE_GATE_SURFACE=commit-msg exec bash scripts/public-safety/check.sh "$@"

@@ -1,0 +1,42 @@
+// markdownlint-cli2 configuration
+//
+// Deliberately the same rule set the adopting repositories already run, so a
+// document authored here does not need reformatting to land in one of them.
+{
+  // Declared here, not only in the npm script, so that a bare `markdownlint-cli2`
+  // invocation lints the repository. Without it the tool matches zero files and
+  // reports a clean run, which would give the gate a false pass.
+  "globs": ["**/*.md"],
+  // `specs/fixtures/**` is deliberately excluded: the corpus encodes malformed plans on
+  // purpose, and its bytes are verified by digest in more than one repository.
+  "ignores": ["node_modules/**", "**/node_modules/**", "worktrees/**", "specs/fixtures/**"],
+
+  "config": {
+    // Structural
+    "MD022": true, // Headings surrounded by blank lines
+
+    // Formatting
+    "MD004": { "style": "dash" }, // Unordered list style: use -
+    "MD007": { "indent": 2 }, // List indentation: 2 spaces
+    "MD009": true, // No trailing spaces
+    "MD010": true, // No hard tabs
+    "MD012": true, // No multiple consecutive blank lines
+    "MD047": true, // Files end with single newline
+
+    // Links
+    "MD034": false, // Allow bare URLs
+    "MD042": true, // No empty links
+
+    // Code
+    "MD031": true, // Fenced code blocks surrounded by blank lines
+    "MD046": { "style": "fenced" }, // Prefer fenced blocks, including inside lists
+
+    // Disabled
+    "MD013": false, // Line length -- not enforced
+    "MD025": false, // Multiple H1s -- frontmatter title + body H1 is intentional
+    "MD033": false, // Inline HTML allowed
+    "MD041": false, // First line needn't be H1 (frontmatter files)
+    "MD024": false, // Duplicate headings allowed
+    "MD060": false, // Table column style -- allow flexible table formatting
+  },
+}

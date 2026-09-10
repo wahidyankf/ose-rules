@@ -1,0 +1,7 @@
+node_modules/
+
+# Task worktrees live inside the checkout and are never part of a commit.
+worktrees/
+
+# Local scratch for a task in flight; never committed, never published.
+local-tmp/

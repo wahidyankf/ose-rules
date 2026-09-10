@@ -1,0 +1,58 @@
+name: quality
+
+# Defence in depth, not the primary control. Every gate here also runs locally
+# before a commit and before a push; this run exists because a local hook can be
+# skipped and a hosted check cannot.
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: quality-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # The gate screens the tracked tree and the outbound ref, not the
+          # repository's history. A shallow checkout is what it needs.
+          fetch-depth: 1
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - run: npm ci
+
+      # First, and on its own step, so a finding is legible in the run summary
+      # rather than buried in a combined command's output.
+      - name: public-safety
+        env:
+          OSE_GATE_SURFACE: ci
+        run: bash scripts/public-safety/check.sh
+
+      - name: public-safety-tests
+        run: bash scripts/public-safety/tests/run.sh
+
+      - name: markdown-format
+        run: npx --no-install prettier --check .
+
+      - name: markdown-lint
+        run: npx --no-install markdownlint-cli2
+
+      - name: artifact-metadata
+        run: node scripts/validate-metadata.mjs .
+
+      - name: word-budget
+        run: bash scripts/check-word-budget.sh
+
+      - name: internal-links
+        run: node scripts/check-links.mjs

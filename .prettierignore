@@ -1,0 +1,6 @@
+node_modules/
+worktrees/
+
+# The shared plan-structure fixture corpus is byte-identical across implementations.
+# Formatting it would change bytes that other repositories verify by digest.
+specs/fixtures/
