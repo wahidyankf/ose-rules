@@ -30,11 +30,11 @@ author of its own rules.
 Roots are direct. An agent looking for a governed artifact opens one of three places and finds it, without a package
 boundary, a build step, or a generated intermediate in between.
 
-| Root               | Holds                                                                 |
-| ------------------ | --------------------------------------------------------------------- |
-| `repo-governance/` | vision, principles, conventions, development standards, and workflows |
-| `.agents/agents/`  | canonical agent definitions                                           |
-| `.agents/skills/`  | canonical skills, one directory per skill, each with a `SKILL.md`     |
+| Root                                            | Holds                                                                 |
+| ----------------------------------------------- | --------------------------------------------------------------------- |
+| [`repo-governance/`](repo-governance/README.md) | vision, principles, conventions, development standards, and workflows |
+| [`.agents/agents/`](.agents/agents/README.md)   | canonical agent definitions                                           |
+| [`.agents/skills/`](.agents/skills/README.md)   | canonical skills, one directory per skill, each with a `SKILL.md`     |
 
 Every file under those roots is authored and read directly. None of them is generated from another source, and none of
 them is nested inside a package, workspace, or app directory. A harness-specific adapter, where a harness needs one, is

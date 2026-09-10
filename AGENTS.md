@@ -30,12 +30,12 @@ that destroys the artifact's meaning, the artifact does not belong here. See
 
 ## Authoring Rules
 
-- Every governed document declares `description` and `when_to_use` in frontmatter; skills and agents declare more.
-  `npm run check:metadata` is the authority on the schema.
+- Every governed document declares `description` and `when_to_use` in frontmatter; skills and agents declare more. The
+  schema is in [artifact-metadata.md](repo-governance/conventions/structure/artifact-metadata.md).
 - `AGENTS.md`, `CLAUDE.md`, and every `repo-governance/**/*.md` stay at or below **750 words**. A convention that
   outgrows the budget splits into ordered companion modules in a sibling directory named after it.
-- Names are lowercase kebab-case. A document that outgrows its budget splits into an entrypoint plus a sibling directory
-  named exactly after it, with no suffix; its modules are prefixed `001-`, `002-`, … in reading order.
+- Names are lowercase kebab-case, and a document that outgrows its budget splits into an entrypoint plus a sibling
+  directory named exactly after it. See [file-naming.md](repo-governance/conventions/structure/file-naming.md).
 - Every directory holding governed documents carries a `README.md` index. An empty governed directory fails; a category
   exists because it holds something.
 - Internal links resolve to a document, never to a directory. Verify unstable technical claims from authoritative
@@ -49,10 +49,15 @@ that destroys the artifact's meaning, the artifact does not belong here. See
 | `repo-governance/` | vision, principles, conventions, development standards, workflows |
 | `.agents/agents/`  | canonical agent definitions                                       |
 | `.agents/skills/`  | canonical skills, one directory per skill, each with a `SKILL.md` |
+| `specs/`           | behaviour specifications and the shared plan-structure corpus     |
 | `scripts/`         | the repository's own gates                                        |
 
 Roots are direct: nothing under them is generated, and nothing is nested inside a package or app directory. A
 harness-specific adapter is generated _from_ these roots and never becomes the thing an editor edits.
+
+`specs/fixtures/` is byte-identical across implementations and verified by digest. It is excluded from formatting and
+linting on purpose: the corpus encodes malformed plans deliberately, and reformatting it would break the digest another
+repository checks.
 
 ## Gates
 
