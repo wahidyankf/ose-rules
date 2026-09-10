@@ -1,0 +1,83 @@
+# Repository configuration — ose/repo-config/v2
+#
+# What this repository is, and what must pass before a change lands. Nothing
+# else: a formatter's settings belong to the formatter, and a dependency list
+# belongs to the manifest that already holds one.
+#
+# `gates` is ordered, and the order is the contract. Gates run in declaration
+# order and stop at the first failure, which is why `public-safety` is first on
+# every surface it applies to: the cheapest moment to refuse to publish
+# something is before anything else has acted on it.
+
+schema: ose/repo-config/v2
+visibility: public
+
+gates:
+  - id: public-safety
+    kind: check
+    run:
+      - bash
+      - scripts/public-safety/check.sh
+    surfaces:
+      - commit-msg
+      - pre-commit
+      - pre-push
+      - ci
+
+  - id: public-safety-tests
+    kind: check
+    run:
+      - bash
+      - scripts/public-safety/tests/run.sh
+    surfaces:
+      - ci
+
+  - id: markdown-format
+    kind: check
+    run:
+      - npx
+      - --no-install
+      - prettier
+      - --check
+      - .
+    surfaces:
+      - pre-commit
+      - ci
+
+  - id: markdown-lint
+    kind: check
+    run:
+      - npx
+      - --no-install
+      - markdownlint-cli2
+    surfaces:
+      - pre-commit
+      - ci
+
+  - id: artifact-metadata
+    kind: check
+    run:
+      - node
+      - scripts/validate-metadata.mjs
+      - .
+    surfaces:
+      - pre-commit
+      - ci
+
+  - id: word-budget
+    kind: check
+    run:
+      - bash
+      - scripts/check-word-budget.sh
+    surfaces:
+      - pre-commit
+      - ci
+
+  - id: internal-links
+    kind: check
+    run:
+      - node
+      - scripts/check-links.mjs
+    surfaces:
+      - pre-commit
+      - ci

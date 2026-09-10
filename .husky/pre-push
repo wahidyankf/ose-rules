@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# The last local moment before anything reaches a remote. Git's ref-update
+# lines arrive on stdin and are forwarded unchanged.
+set -uo pipefail
+
+OSE_GATE_SURFACE=pre-push exec bash scripts/public-safety/check.sh "$@"
