@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # The last local moment before anything reaches a remote. Git's ref-update
-# lines arrive on stdin and are forwarded unchanged.
-set -uo pipefail
+# lines arrive on stdin and are forwarded unchanged, so a gate that screens the
+# outbound ref reads what Git is actually about to send.
+set -euo pipefail
 
-OSE_GATE_SURFACE=pre-push exec bash scripts/public-safety/check.sh "$@"
+exec ./rhino gate run --surface pre-push -- "$@"
