@@ -1,14 +1,7 @@
 #!/usr/bin/env bash
-# Ordered exactly as repo-config.yml declares for this surface, stopping at the
-# first failure. Public safety runs before any formatter or linter has a chance
-# to rewrite the file a finding is in.
-set -uo pipefail
+# The same ordered registry `repo-config.yml` declares, dispatched rather than
+# transcribed. A hook that restates the order is a second copy of it, and the
+# two drift the first time a gate is added to one and not the other.
+set -euo pipefail
 
-export OSE_GATE_SURFACE=pre-commit
-
-bash scripts/public-safety/check.sh || exit $?
-npx --no-install prettier --check . || exit $?
-npx --no-install markdownlint-cli2 || exit $?
-node scripts/validate-metadata.mjs . || exit $?
-bash scripts/check-word-budget.sh || exit $?
-node scripts/check-links.mjs || exit $?
+exec ./rhino gate run --surface pre-commit -- "$@"

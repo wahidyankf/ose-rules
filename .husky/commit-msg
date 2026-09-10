@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
-# Thin dispatch. The surface is supplied, never inferred, and Git's own
-# argument is forwarded unchanged.
-set -uo pipefail
+# One dispatch, one registry. The surface is supplied rather than inferred, and
+# Git's own argument is forwarded unchanged so a gate that reads the message
+# file gets the path Git actually handed the hook.
+#
+# `set -e` is not decoration: without it a failing gate prints its finding and
+# the last command's status becomes the hook's, so the operation completes
+# anyway. The pinned wrapper's exit code is this hook's exit code.
+set -euo pipefail
 
-OSE_GATE_SURFACE=commit-msg exec bash scripts/public-safety/check.sh "$@"
+exec ./rhino gate run --surface commit-msg -- "$@"

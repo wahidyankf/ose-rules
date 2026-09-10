@@ -1,0 +1,16 @@
+# The RHINO release this repository's gates run, pinned by identity and by the
+# digest of every archive the release publishes.
+#
+# Both halves matter. The digest proves the bytes are the ones that were
+# published; the commit proves those bytes were built from the source this pin
+# names, so a correctly checksummed archive from some other build still cannot
+# stand in. The bootstrap verifies both before it will execute anything.
+#
+# A correction ships as a new pin, never as an edit to what a published tag
+# resolved to.
+version=v0.3.0-rc.1
+commit=d3537522278806e5984c0197d3aecf0997039f46
+aarch64-apple-darwin=d0ed0ee5f4dd72cef576abc6592f7db3480541b41f10565f60d0bc658267799d
+aarch64-unknown-linux-gnu=5f5f4640875848a5e16a737f71b5bfeba3385653cb2364687c4faff2d309ef01
+x86_64-apple-darwin=77ba3d0daddf66612365e63c347171cfd308581299da03e9e84f1b89c173f865
+x86_64-unknown-linux-gnu=6e25f5405d9f9049660773e3f44017b715fb2b0d1abdc3e8bef3cf2bf56115fc

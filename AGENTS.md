@@ -64,12 +64,18 @@ repository checks.
 ```bash
 npm install          # once
 npm run check:complete
-npm run format       # rewrite what check:format would reject
+npm run format       # rewrite what the format gate would reject
 ```
 
-`repo-config.yml` is the authority on what runs and where. `check:complete` runs the same checks locally; the Git hooks
-run the subset that belongs to their surface, and the hosted workflow runs all of them again. Each gate decides for
-itself which files it inspects — a runner guessing on their behalf would be wrong differently for each one.
+`repo-config.yml` is the authority on what runs and where, and `./rhino gate run --surface <surface>` is the only thing
+that reads it. The hooks, the hosted workflow, and `check:complete` all dispatch that one registry rather than
+transcribing it, so a gate added to the config reaches every surface it declares without a second edit. Each gate
+decides for itself which files it inspects — a runner guessing on their behalf would be wrong differently for each one.
+
+`./rhino` is a wrapper, not the tool: it installs the release `rhino.lock` pins, verifies the published archive digest
+before extracting and the executable's own reported identity before running, and refuses rather than falling back to
+whatever `rhino` is on `PATH`. Exit `78` is the wrapper refusing; every other code is RHINO's. A correction to the pin
+ships as a new version, never as an edit to what a published tag resolved to.
 
 Delivery is worktree to pull request to merge, then cleanup. The hosted workflow runs on every push and every pull
 request; it is defence in depth rather than the primary control, because a local hook can be skipped and a hosted check
