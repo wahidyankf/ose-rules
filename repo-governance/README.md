@@ -15,16 +15,18 @@ where it happens to fit.
 
 | Level          | Holds                                                            |
 | -------------- | ---------------------------------------------------------------- |
+| `principles/`  | durable constraints that outlive any particular repository       |
 | `conventions/` | repository choices — the decisions a repository makes for itself |
 | `development/` | engineering standards and practices                              |
 | `workflows/`   | procedures: the ordered steps for doing a thing                  |
 
 ## Directory Map
 
+- [Principles](principles/README.md)
 - [Conventions](conventions/README.md)
 - [Development](development/README.md)
 - [Workflows](workflows/README.md)
 
-`vision/` and `principles/` are named in the ordering above and are not published here. A repository has no directory
-for a level it holds nothing at: an empty governed directory is a promise about future content, and a reader who opens
-one learns only that somebody intended to write something.
+`vision/` is named in the ordering above and is not published here. A repository has no directory for a level it holds
+nothing at: an empty governed directory is a promise about future content, and a reader who opens one learns only that
+somebody intended to write something.

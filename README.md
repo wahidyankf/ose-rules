@@ -32,7 +32,7 @@ boundary, a build step, or a generated intermediate in between.
 
 | Root                                            | Holds                                                             |
 | ----------------------------------------------- | ----------------------------------------------------------------- |
-| [`repo-governance/`](repo-governance/README.md) | conventions, development standards, and workflows                 |
+| [`repo-governance/`](repo-governance/README.md) | principles, conventions, development standards, and workflows     |
 | [`.agents/agents/`](.agents/agents/README.md)   | canonical agent definitions                                       |
 | [`.agents/skills/`](.agents/skills/README.md)   | canonical skills, one directory per skill, each with a `SKILL.md` |
 
