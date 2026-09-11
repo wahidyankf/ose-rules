@@ -31,4 +31,14 @@ internal-address	regex	(^|[^0-9.])100\.(6[4-9]|[7-9][0-9]|1[01][0-9]|12[0-7])\.[
 
 # Hostname suffixes that only resolve inside a network. A name ending in one of
 # these is a machine on someone's LAN, and publishing it publishes topology.
-internal-hostname	regex	[a-z0-9][a-z0-9-]+\.(local|internal|lan|intranet)([^A-Za-z0-9.-]|$)
+#
+# Both rows start at a token boundary, the same way every address shape above
+# does. Without it the first label may begin mid-token, so a dotted filename
+# such as `.env` plus a `.local` suffix is read as a host -- a file most
+# repositories have, blocking an ordinary sentence about configuration. Two
+# rows rather than one optional group because a middle label must not be
+# allowed to supply the boundary the first label is required to have: the
+# second row spells the extra labels out. The comments here name no host,
+# for the same reason the test cases assemble theirs at run time.
+internal-hostname	regex	(^|[^A-Za-z0-9_.-])[a-z0-9][a-z0-9-]+\.(local|internal|lan|intranet)([^A-Za-z0-9.-]|$)
+internal-hostname	regex	(^|[^A-Za-z0-9_.-])[a-z0-9][a-z0-9-]+(\.[a-z0-9][a-z0-9-]+)+\.(local|internal|lan|intranet)([^A-Za-z0-9.-]|$)
