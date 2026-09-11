@@ -46,7 +46,7 @@ that destroys the artifact's meaning, the artifact does not belong here. See
 
 | Path               | Holds                                                             |
 | ------------------ | ----------------------------------------------------------------- |
-| `repo-governance/` | conventions, development standards, and workflows                 |
+| `repo-governance/` | principles, conventions, development standards, workflows         |
 | `.agents/agents/`  | canonical agent definitions                                       |
 | `.agents/skills/`  | canonical skills, one directory per skill, each with a `SKILL.md` |
 | `specs/`           | behaviour specifications and the shared plan-structure corpus     |
