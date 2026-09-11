@@ -1,3 +1,11 @@
+---
+description: >-
+  Indexes the catalog's canonical agent definitions, each declaring what it needs and what it must not do before any
+  harness adapter translates that declaration.
+when_to_use: >-
+  Use when locating a canonical agent definition or deciding what a new one must declare.
+---
+
 # Canonical Agents
 
 Agent definitions in their canonical, harness-neutral form. One Markdown file per agent.
