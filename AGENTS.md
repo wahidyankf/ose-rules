@@ -52,12 +52,12 @@ that destroys the artifact's meaning, the artifact does not belong here. See
 | `specs/`           | behaviour specifications and the shared plan-structure corpus     |
 | `scripts/`         | the repository's own gates                                        |
 
-Roots are direct: nothing under them is generated, and nothing is nested inside a package or app directory. A
-harness-specific adapter is generated _from_ these roots and never becomes the thing an editor edits.
+Roots are direct: nothing under them is generated, and nothing is nested inside a package or app directory.
+`node scripts/generate-adapters.mjs` writes every harness adapter _from_ these roots, and
+`./rhino harness parity validate` decides whether disk matches what was declared.
 
-`specs/fixtures/` is byte-identical across implementations and verified by digest. It is excluded from formatting and
-linting on purpose: the corpus encodes malformed plans deliberately, and reformatting it would break the digest another
-repository checks.
+`specs/fixtures/` is byte-identical across implementations and verified by digest, so it is excluded from formatting and
+linting: reformatting it would break the digest another repository checks.
 
 ## Gates
 
