@@ -12,6 +12,58 @@
 schema: ose/repo-config/v2
 visibility: public
 
+# Directory names, matched at any depth. RHINO walks the filesystem rather than
+# the index, so a git-ignored directory is still read unless it is named here.
+scan:
+  exclude-directories:
+    - .git
+    - node_modules
+    - worktrees
+    - local-tmp
+
+# Which schema each artifact family is held to. Ordered: the last matching glob
+# wins, so the workflow subtree carries a different schema from the governance
+# tree it sits inside, and an index README carries the schema of an index rather
+# than the schema of the thing it indexes.
+#
+# Written in block style throughout. The v2 reader has no flow support, and a
+# flow mapping spanning lines makes it lose every top-level key that follows.
+metadata:
+  surfaces:
+    - glob: "repo-governance/**/*.md"
+      schema: governance
+    - glob: "repo-governance/workflows/**/*.md"
+      schema: workflow
+    - glob: ".agents/skills/*/SKILL.md"
+      schema: skill
+    - glob: ".agents/agents/*.md"
+      schema: agent
+    - glob: ".agents/**/README.md"
+      schema: governance
+
+# 750 words, counted the way the retired shell leaf counted them: anything
+# between two runs of whitespace, so `**bold**` is one word and a URL is one
+# word. Keeping the rule identical is the point -- this replaces an
+# implementation, not a policy, and a budget that moved during the swap would
+# make the two incomparable.
+governance-word-budget:
+  count: whitespace-separated
+  surfaces:
+    - glob: "AGENTS.md"
+      fail: 750
+    - glob: "CLAUDE.md"
+      fail: 750
+    - glob: "repo-governance/**/*.md"
+      fail: 750
+
+# The shared plan-structure fixture corpus is excluded as a link *source* only.
+# Every case in it is deliberately malformed in exactly one way, and its bytes
+# are a boundary two implementations agree on by digest. It stays a valid link
+# target.
+md-internal-link:
+  exclude-sources:
+    - "specs/fixtures/**"
+
 gates:
   - id: public-safety
     kind: check
@@ -54,12 +106,18 @@ gates:
       - pre-commit
       - ci
 
+  # The three rules below moved off this repository's own leaves and onto the
+  # pinned RHINO. Each was a faithful implementation of a shared contract, and
+  # nine repositories writing nine of those is how the contract drifts apart in
+  # the first place. The policy did not move: the schemas, the 750-word budget,
+  # its counting rule, and the fixture link exclusion are all declared above, in
+  # this repository's own configuration, and RHINO holds none of them.
   - id: artifact-metadata
     kind: check
     run:
-      - node
-      - scripts/validate-metadata.mjs
-      - .
+      - ./rhino
+      - metadata
+      - validate
     surfaces:
       - pre-commit
       - ci
@@ -67,8 +125,10 @@ gates:
   - id: word-budget
     kind: check
     run:
-      - bash
-      - scripts/check-word-budget.sh
+      - ./rhino
+      - governance
+      - word-budget
+      - validate
     surfaces:
       - pre-commit
       - ci
@@ -76,8 +136,10 @@ gates:
   - id: internal-links
     kind: check
     run:
-      - node
-      - scripts/check-links.mjs
+      - ./rhino
+      - md
+      - internal-link
+      - validate
     surfaces:
       - pre-commit
       - ci

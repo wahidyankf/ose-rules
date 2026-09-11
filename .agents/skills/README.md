@@ -1,3 +1,11 @@
+---
+description: >-
+  Indexes the catalog's canonical skills, one directory per skill, each holding the SKILL.md a harness reads and the
+  resources that skill resolves beside it.
+when_to_use: >-
+  Use when locating a canonical skill or deciding where a new skill's resources belong.
+---
+
 # Canonical Skills
 
 Skills in their canonical form. One directory per skill, each containing a `SKILL.md` and whatever resources that skill
