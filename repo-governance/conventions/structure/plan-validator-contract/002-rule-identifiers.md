@@ -54,6 +54,19 @@ Identifiers are stable. A rule whose meaning changes gets a new identifier rathe
 | `PLAN-DELIVERY-003` | `delivery phase heading carries no phase number`   |
 | `PLAN-DELIVERY-004` | `archival items appear before a substantive phase` |
 
+## What a Delivery Item Is
+
+The three delivery rules above all turn on one question, so the answer is frozen here rather than left to each
+implementation. A bullet is a checklist item when it carries a task marker -- `- [ ]` or `- [x]` -- or when it opens
+with a bare executor label, `- [AI] ...`. The label may be code-formatted once a marker has already made the bullet an
+item, so ``- [x] `[AI]` ...`` is an item; a quoted label with no marker is a plan explaining its own notation and is
+not. A bullet opening with a markdown link is never an item.
+
+A second-level heading is a delivery phase only when it holds items. `## Execution Checkout`, `## Delivery Boundaries`
+and a trailing `## Related Documents` are therefore read as the structure they are, not as unnumbered phases.
+
+An implementation that infers this instead of reading it reports a plan's own prose as a defect.
+
 ## Suppression Within a Family
 
 Rules in a family are evaluated in identifier order. A rule that cannot be meaningfully evaluated, because an earlier
