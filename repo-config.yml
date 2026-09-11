@@ -12,6 +12,22 @@
 schema: ose/repo-config/v2
 visibility: public
 
+# What each harness uses for each portable tier. Deliberately partial, and the
+# partiality is the statement: `claude` is the harness whose agent definitions
+# express both a model and an effort, so it is the one that can be given a
+# complete pin. Codex and OpenCode are omitted rather than mapped to nothing --
+# an omitted harness inherits its own default, and a tier mapped to an empty
+# value would be a pin this repository never chose wearing the shape of one it
+# did.
+#
+# `plan` is the only tier any canonical agent here declares. Mapping the other
+# three would be writing policy for artifacts that do not exist.
+model-tiers:
+  claude:
+    plan:
+      model: opus
+      effort: high
+
 # Directory names, matched at any depth. RHINO walks the filesystem rather than
 # the index, so a git-ignored directory is still read unless it is named here.
 scan:
@@ -20,6 +36,143 @@ scan:
     - node_modules
     - worktrees
     - local-tmp
+
+# How the canon reaches each coding harness.
+#
+# The canonical files under `.agents/` are what a human edits. An adapter is
+# generated from them, is never edited in place, and carries the harness's own
+# vocabulary rather than a second copy of the rule.
+#
+# Written in block style throughout, including the translation entries. RHINO's
+# own configuration writes these as multi-line flow mappings; the v2 reader
+# cannot read that form and loses every top-level key after it.
+harness-parity:
+  canonical:
+    instruction: AGENTS.md
+    instruction-adapter: CLAUDE.md
+    skills-root: .agents/skills
+    skill-route:
+      "Read {path} completely, resolve every relative resource from that skill directory, and follow it as authoritative
+      before acting."
+    agents-root: .agents/agents
+    agent-route:
+      "Before acting, read the complete canonical agent definition at the repository-root path {path} and follow it as
+      authoritative. If it cannot be read, stop and report the missing path."
+    # The field names this catalog's own agents use. `denials` names where a
+    # denial would be written; no agent here writes one, because the closed
+    # agent metadata schema declares a grant list and nothing else, and what is
+    # not granted is not available.
+    declaration:
+      grants: capabilities
+      denials: denies
+      limits: constraints
+  harnesses:
+    # Claude Code reads only `.claude/skills/`, so it is the one harness whose
+    # skills need a route. Codex and OpenCode read `.agents/skills/` natively:
+    # for them the canon is already the surface, and a wrapper would be a second
+    # copy of a file they were going to read anyway.
+    - name: claude
+      skill-adapter:
+        path: ".claude/skills/{name}/SKILL.md"
+        format: front-matter
+        route-field: body
+        identity:
+          name: name
+          description: description
+        # A wrapper declares its identity and the route. Nothing else: an
+        # adapter that could add front matter could add an instruction.
+        closed: true
+      agent-adapter:
+        path: ".claude/agents/{name}.md"
+        format: front-matter
+        route-field: body
+        identity:
+          name: name
+          description: description
+        tier-fields:
+          model: model
+          effort: effort
+        translations:
+          - when: always
+            field: tools
+            members:
+              - Read
+          - when: requires
+            capability: repository-read
+            field: tools
+            members:
+              - Glob
+              - Grep
+          - when: requires
+            capability: repository-write
+            field: tools
+            members:
+              - Write
+              - Edit
+          - when: requires
+            capability: shell
+            field: tools
+            members:
+              - Bash
+    - name: codex
+      agent-adapter:
+        path: ".codex/agents/{name}.toml"
+        format: toml
+        route-field: developer_instructions
+        identity:
+          name: name
+          description: description
+        # No `tier-fields`. Codex expresses no per-agent effort, so there is no
+        # complete pair to project and the mapping does not reach it.
+        absent:
+          - model
+    - name: opencode
+      agent-adapter:
+        path: ".opencode/agents/{name}.md"
+        format: front-matter
+        route-field: body
+        identity:
+          description: description
+        fixed:
+          mode: subagent
+        translations:
+          - when: always
+            field: permission
+            entries:
+              read: allow
+          - when: requires
+            capability: repository-read
+            field: permission
+            entries:
+              glob: allow
+              grep: allow
+          - when: requires
+            capability: repository-write
+            field: permission
+            entries:
+              edit: allow
+          - when: requires
+            capability: shell
+            field: permission
+            entries:
+              bash: allow
+  prohibited-instruction-sources:
+    - "**/AGENTS.md"
+    - "**/AGENTS.override.md"
+    - "**/CLAUDE.md"
+    - ".claude/rules/**/*.md"
+    - "**/GEMINI.md"
+    - "**/.cursorrules"
+    - "**/.windsurfrules"
+    - ".github/copilot-instructions.md"
+  capabilities:
+    - repository-read
+    - repository-write
+    - shell
+    - network
+    - subagent
+  constraints:
+    - read-only
 
 # Which schema each artifact family is held to. Ordered: the last matching glob
 # wins, so the workflow subtree carries a different schema from the governance
