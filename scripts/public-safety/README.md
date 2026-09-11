@@ -4,7 +4,7 @@ This repository is published, so everything it emits — file contents, file nam
 release notes — is outbound material. This directory is the gate that screens all of it, and it is the first gate to run
 on every surface that has one.
 
-Two pieces, deliberately separate:
+Two scripts and the set they read, deliberately separate:
 
 | File                    | Owns                                                                |
 | ----------------------- | ------------------------------------------------------------------- |

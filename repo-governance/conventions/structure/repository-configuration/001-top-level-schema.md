@@ -32,10 +32,22 @@ out rather than reaching by omission.
 
 Each is omitted when empty. An empty map is not a smaller map; it is a key that should not be there, and it fails.
 
+## Validator Sections
+
+Between the portable declarations and `gates` sit the sections that tell each validator what this repository decided:
+`scan`, `harness-parity`, `metadata`, `governance-word-budget`, `governance-directory-map`, `md-frontmatter`,
+`md-heading-hierarchy`, `md-internal-link`, `md-mermaid`, `md-naming`, `md-readme-index`, and `convention-emoji`.
+
+Every one is optional, and an absent section is not a disabled check — it is a rule the repository never wrote down, so
+the command that reads it refuses by name rather than enforcing a default nobody chose.
+
+They are top-level rather than nested under one `validators` key because each is a separate decision with a separate
+owner, and nesting them would suggest they are turned on and off together.
+
 ## Canonical Key Order
 
-`schema`, `visibility`, `governance`, `model-tiers`, `gates`, `extensions`. Optional keys keep their position when
-present and leave no gap when absent.
+`schema`, `visibility`, `governance`, `model-tiers`, the twelve validator sections in the order listed above, `gates`,
+`extensions`. Every optional key keeps its position when present and leaves no gap when absent.
 
 ## Unknown Keys Fail
 

@@ -24,14 +24,14 @@ different words does not have this convention; it has a different one, and its p
 ## Slug Rules
 
 A slug is lowercase, alphanumeric, and hyphen-separated. It names the outcome, not the ticket, the quarter, or the
-person: `standardize-governance-system`, not `q3-cleanup` or `alex-refactor`.
+person: `retire-the-legacy-importer`, not `q3-cleanup` or `alex-refactor`.
 
 Slugs carry no date while a plan is live. A dated slug in `backlog/` or `in-progress/` is wrong, because the date it
 would carry — creation, target, estimate — is either meaningless or a commitment the plan system does not make.
 
 `done/` is the exception, and the date it carries is the **completion** date, joined to the slug by a double underscore:
-`2026-09-11__standardize-governance-system`. The double underscore is what lets the date be split off mechanically
-without guessing where the slug begins.
+`2026-01-15__retire-the-legacy-importer`. The double underscore is what lets the date be split off mechanically without
+guessing where the slug begins.
 
 ## One Plan, One Root
 

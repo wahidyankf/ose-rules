@@ -30,7 +30,7 @@ named **exactly** after the document, without its extension and without a suffix
 conventions/structure/plans.md
 conventions/structure/plans/
   001-lifecycle-and-folders.md
-  002-the-six-documents.md
+  002-required-documents.md
   README.md
 ```
 
