@@ -38,8 +38,11 @@ have been omitted, and it fails.
 
 ## Diagnostics
 
-A metadata finding reports the path, the field, the rule, and the remediation. Diagnostics sort by path, then rule, then
-field — never by discovery order, which depends on the filesystem.
+A metadata finding reports the path, the position, the rule, and the field at fault. Diagnostics sort by path, then
+line, then column, then rule, then field — never by discovery order, which depends on the filesystem.
+
+The message says what is wrong and why the schema is shaped that way. It does not prescribe a remedy: an unknown key is
+either a key that should be deleted or a key the schema should have declared, and the validator cannot tell which.
 
 ## Metadata Is Content
 

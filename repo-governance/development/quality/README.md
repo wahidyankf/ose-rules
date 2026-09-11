@@ -12,6 +12,7 @@ to someone who was not there when it was produced.
 
 | Standard                                      | Governs                                                           |
 | --------------------------------------------- | ----------------------------------------------------------------- |
+| [Deletion With Proof](deletion-with-proof.md) | what must be demonstrated before something is removed             |
 | [Manual Verification](manual-verification.md) | the layers automation cannot reach, and the evidence they produce |
 
 ## Directory Map

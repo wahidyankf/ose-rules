@@ -36,8 +36,9 @@ The runner validates configuration completely, selects gates by the requested su
 executes each argument vector directly, forwards hook arguments and standard input unchanged, stops at the first nonzero
 result, and prints a sanitized summary.
 
-It exports the selected surface to the child in the environment, so a gate that behaves differently before a commit than
-in continuous integration can tell which it is in without being told twice.
+It exports the selected surface to the child as `OSE_GATE_SURFACE`, so a gate that behaves differently before a commit
+than in continuous integration can tell which it is in without being told twice. The name is part of the contract: a
+gate cannot read a variable whose spelling was left to the runner.
 
 That is the whole runner. It is not a task scheduler and does not retry, parallelize, or continue past a failure.
 

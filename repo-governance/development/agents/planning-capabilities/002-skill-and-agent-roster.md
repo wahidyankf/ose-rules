@@ -16,6 +16,8 @@ when_to_use: >-
 | `plan-creating-project-plans`   | how to author the six documents well                        |
 | `plan-grooming-idea-briefs`     | how to judge whether a brief is worth promoting             |
 | `plan-writing-gherkin-criteria` | how to write acceptance criteria that are actually testable |
+| `plan-validating-quality`       | how to judge a draft beyond what structure can be checked   |
+| `plan-verifying-execution`      | how to judge finished execution against the repository      |
 
 ## Agents
 
