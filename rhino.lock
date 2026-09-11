@@ -8,9 +8,9 @@
 #
 # A correction ships as a new pin, never as an edit to what a published tag
 # resolved to.
-version=v0.3.0-rc.2
-commit=0ee71ebca3b610246822ebb5794942ee09d86a25
-aarch64-apple-darwin=d7d925cf6b81289adbdf39a0e144e3e3b50519693c5486e7e92cf9bace099676
-aarch64-unknown-linux-gnu=72271cddab3be956a75a4113fd6db80f86d4ee50d8ebd894b40c8dfbbc11aac3
-x86_64-apple-darwin=a408c0b91491909696dba812666045775d35b79ba06d2c9424be5f888cfb9da3
-x86_64-unknown-linux-gnu=fb2745d84e6c6bdbba2dc702b54fb28c455ce74d0893004d370557216acd83cd
+version=v0.3.0-rc.3
+commit=9872bf4ce0c2443f23350de916283eaf822ad850
+aarch64-apple-darwin=b878e40102ad79f98ea3ff9bf2e0ff1a2bc52d2dbae00a22d5f5b8ac3a923a55
+aarch64-unknown-linux-gnu=93865d9dc3413fa9b2f466c5b9a1002154c0c60b2693884bf6e457c8249c1cff
+x86_64-apple-darwin=213fa4399264927803947fd0973fb0d81bca1075e12e03a8a72582c68b427a15
+x86_64-unknown-linux-gnu=ca6ec595bf7c004e7087e2de3d4c7da2a4becfa10ab0d4bd40d1afdcf4ea4437
