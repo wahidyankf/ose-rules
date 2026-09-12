@@ -41,6 +41,7 @@ Another language is used only where observable context makes the text one of the
 | language as the subject | a fixture proving other-language input is handled, or a term being defined                    |
 | material wording        | a faithful quotation, a proper name, or regulated or domain terminology whose wording matters |
 | third-party material    | vendored, imported, or generated content, or an external interface that dictates its strings  |
+| extracted material      | notes or excerpts citing a source in another language, kept in that source's language         |
 
 The exception belongs to the text, not to its file. A test asserting a translated string keeps its name, comments, and
 surrounding explanation in the working language; only the quoted string is exempt. Where readers need it, quoted text
@@ -48,6 +49,11 @@ carries working-language context or a translation beside it.
 
 Neither a contributor's preference nor a topic associated with a country or language is an exception. Documentation
 about a regional regulation is written in the working language, even where it quotes the regulation.
+
+## Translations
+
+A translated document is deliberate: requested, kept current by someone committed to it, and never an automatic mirror,
+which drifts from its original unnoticed. Original and translation link to each other.
 
 ## Two Adopter Decisions
 

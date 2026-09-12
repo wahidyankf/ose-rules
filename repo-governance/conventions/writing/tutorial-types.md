@@ -1,7 +1,7 @@
 ---
 description: >-
   Defines the seven tutorial types by the coverage each promises, fixes how a type is named and chosen, and requires
-  every tutorial to be exactly one type.
+  every tutorial to be exactly one type, kept apart from any progression model.
 when_to_use: >-
   Use when scoping, titling, or reviewing a tutorial, or when a proposed tutorial seems to fit more than one type.
 ---
@@ -35,14 +35,13 @@ The first three depth types also leave material out:
 
 ## Why the Ranges Overlap
 
-Beginner starts at zero on purpose. Its reader has read no earlier tutorial, so it absorbs Initial Setup and Quick Start
-rather than assuming them. Those two form the short path for a reader who will explore alone; Beginner, Intermediate,
-and Advanced form the long path, each assuming the one before.
+1. [Why the Ranges Overlap](tutorial-types/001-why-the-ranges-overlap.md) — the short and long paths, and where By
+   Example sits.
 
-By Example is a parallel route, not a later level. It reaches depth quickly because its reader already programs, and it
-organises its examples into beginner, intermediate, and advanced sets of its own. It replaces neither the narrative
-levels, which explain for a reader with no background, nor the Cookbook, which is problem-solving rather than
-learning-oriented.
+## Type and Progression
+
+The second module, [Type and Progression](tutorial-types/002-type-and-progression.md), holds a type apart from any
+progression model a repository keeps.
 
 ## Choosing a Type
 
