@@ -1,11 +1,12 @@
 ---
 name: maintenance
 description: >-
-  Indexes the workflows that keep a repository clean, current, and releasable: artifact clean-up, dependency bumps,
-  release cuts, and the workflows that write, groom, and judge its rules.
+  Indexes the workflows that keep a repository clean, current, and releasable, and its READMEs true to each change:
+  artifact clean-up, dependency bumps, release cuts, README refresh, and the workflows that write, groom, and judge its
+  rules.
 when_to_use: >-
   Use after finishing a task, plan, or investigation that created scratch files, branches, or worktrees, when planning
-  dependency bumps or a release, or before any rule edit.
+  dependency bumps or a release, before any rule edit, or before committing a change that a README describes.
 ---
 
 # Maintenance Workflows
@@ -20,6 +21,7 @@ of these workflows keep it current, releasable, and governed by rules written in
 
 - [Dev Artifact Clean-Up](dev-artifact-clean-up.md)
 - [Dependency Bump Planning](dependency-bump-planning.md)
+- [README Refresh](readme-refresh.md)
 - [Release Cut](release-cut.md)
 - [Rules Propagation](rules-propagation.md)
 - [Rules Grooming](rules-grooming.md)
