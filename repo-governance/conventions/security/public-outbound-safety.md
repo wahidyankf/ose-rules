@@ -1,9 +1,10 @@
 ---
 description: >-
   Requires every outbound artifact from a public repository to pass a safety screen first, with no allowlist,
-  suppression, or bypass.
+  suppression, or bypass, plus a full read of each change before commit, synthetic fixtures, and a disclosure response.
 when_to_use: >-
-  Use before any push, pull request, comment, release, or published log, and when adding a publication surface.
+  Use before any commit, push, pull request, comment, release, or published log, when adding a publication surface or
+  writing examples or fixtures, and after something unsafe was published.
 ---
 
 # Public Outbound Safety
@@ -31,12 +32,33 @@ review looks at branch names.
 
 ## What Is Prohibited
 
-Credentials and secrets; personal data not deliberately public; absolute paths belonging to a person or machine;
-internal hostnames, addresses, and network topology; private repository or group identifiers; and raw scanner output
-that could reproduce any of the above.
+Never publish secrets or credentials; identifiers of private repositories or groups; internal host names and addresses,
+and internal network layout; absolute paths bound to a person or machine; personal data nobody deliberately made public;
+or raw scanner output able to reproduce any of these.
 
-Replace with semantic placeholders — `<api-token>`, `<private-host>`, `<repository-path>`. Where replacement destroys
-the artifact's meaning, the artifact stays private.
+Also prohibited unless deliberately public: usernames, device names, hardware addresses, serial numbers, private network
+names, local mount paths, and account or project identifiers.
+
+Prefer a repository-relative path or a documented environment variable to a placeholder where either keeps the meaning;
+see [No Machine-Specific Values](no-machine-specific-values.md).
+
+Swap prohibited values for semantic placeholders: `<repository-path>`, `<private-host>`, `<api-token>`. If swapping
+leaves the artifact meaningless, it stays private.
+
+## Review Still Reads the Change
+
+A screen matches shapes. It cannot tell a deliberately public value, such as the repository's canonical address, from a
+plausible one copied from somewhere real.
+
+Before every commit, read the whole proposed change: staged content, intended untracked files, generated artifacts, and
+the message. Neither the screen nor the reading replaces the other. Ignore rules are not a security boundary; see
+[No Secrets in Tracked Files](no-secrets-in-tracked-files.md).
+
+## Fixtures Are Unmistakably Synthetic
+
+Examples, fixtures, logs, and screenshots use values nobody could take for real: placeholders, reserved example domains
+([RFC 2606](https://www.rfc-editor.org/rfc/rfc2606)), obviously invented names. Evidence captured from a real machine
+describes that machine; capture it from one holding nothing private, or say it cannot be shown.
 
 ## Three Outcomes, Two Refusals
 
@@ -46,8 +68,8 @@ the artifact's meaning, the artifact stays private.
 |    1 | blocked    | must not proceed |
 |    2 | scan error | must not proceed |
 
-`1` and `2` differ only in whether the problem is known. A scan that could not run is not a scan that passed, and
-treating an error as clean turns the one guard that had to be reliable into a formality.
+The refusals differ only in knowledge: under `1` the problem is known, under `2` it is not. A screen that failed to run
+passed nothing, and treating an error as clean reduces the one guard that must be dependable to a formality.
 
 ## No Bypass
 
@@ -65,3 +87,9 @@ rewritten the file, or after a push has already happened, screens the wrong thin
 
 A finding names what it found. Reports record the file, the rule, and the location — never the matched value, which
 would publish it a second time in the record of having caught it.
+
+## If Something Lands Anyway
+
+Treat it as disclosed. Preserve evidence of the exposure without recording the value, and report the affected scope. A
+history rewrite never substitutes for rotation; [No Secrets in Tracked Files](no-secrets-in-tracked-files.md) owns
+rotation and history rewriting.

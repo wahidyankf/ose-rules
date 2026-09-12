@@ -15,7 +15,7 @@ repository. A convention says which of several defensible options this repositor
 
 | Area         | Holds                                                      |
 | ------------ | ---------------------------------------------------------- |
-| `security/`  | what may leave a repository, and under what proof          |
+| `security/`  | what enters history, who reads real values, what leaves    |
 | `structure/` | how files, directories, and documents are shaped and named |
 | `writing/`   | how governed material is expressed and illustrated         |
 
