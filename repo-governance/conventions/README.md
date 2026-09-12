@@ -17,7 +17,7 @@ repository. A convention says which of several defensible options this repositor
 | ------------ | ------------------------------------------------------------------------------------------------------------------------------- |
 | `security/`  | what enters history, who reads real values, what leaves                                                                         |
 | `structure/` | how files, directories, and documents are shaped and named, how governance and plans are organized, and how repositories relate |
-| `writing/`   | how governed material is expressed and illustrated                                                                              |
+| `writing/`   | how a repository's documents are expressed, formatted, and illustrated                                                          |
 
 ## Directory Map
 
