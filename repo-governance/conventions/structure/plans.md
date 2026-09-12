@@ -27,6 +27,24 @@ is what a validator checks against.
 7. [Evidence and Quality](plans/007-evidence-and-quality.md)
 8. [Knowledge Capture and Archival](plans/008-knowledge-capture-and-archival.md)
 9. [Portability](plans/009-portability.md)
+10. [Authorization and Execution Record](plans/010-authorization-and-execution-record.md)
+11. [Phase Boundaries and Delivery Choices](plans/011-phase-boundaries-and-delivery-choices.md)
+12. [Decision Records](plans/012-decision-records.md)
+13. [File Impact](plans/013-file-impact.md)
+14. [Dependency Graph and Recovery](plans/014-dependency-graph-and-recovery.md)
+15. [Idea Brief Template](plans/015-idea-brief-template.md)
+16. [Evidence Files](plans/016-evidence-files.md)
+
+## Conditional Conventions
+
+Some plans carry more than every plan does. Each of these applies only when its trigger holds, and each adds to this
+convention without restating it.
+
+| Convention                                                  | Applies when a plan                                                                      |
+| ----------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| [Plan Specification Changes](plan-specification-changes.md) | changes observable behaviour, an interface, architecture, or an executable specification |
+| [Plan Migrations](plan-migrations.md)                       | moves, copies, normalizes, replaces, or retires data, configuration, or structure        |
+| [Plan UI Design](plan-ui-design.md)                         | creates or materially changes a user interface                                           |
 
 ## What This Convention Does Not Decide
 
