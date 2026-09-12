@@ -56,3 +56,30 @@ adapter is generated from it and is never edited in place.
 - [pr-review-scout](pr-review-scout.md) — classifying a review pass and assembling its shared brief
 - [pr-review-security-checker](pr-review-security-checker.md) — finding secrets, injection, and unsafe operations in a
   change
+- [pr-review-synthesis-checker](pr-review-synthesis-checker.md) — merging specialist findings into one published review
+- [pr-review-types-checker](pr-review-types-checker.md) — finding type escape hatches a change adds or widens
+- [readme-checker](readme-checker.md) — auditing READMEs for navigation, scannability, and plain language
+- [readme-fixer](readme-fixer.md) — applying re-validated, objective README findings
+- [readme-maker](readme-maker.md) — writing or restructuring READMEs as navigation documents
+- [repo-explorer](repo-explorer.md) — locating repository evidence with cited files and lines
+- [repo-rules-checker](repo-rules-checker.md) — auditing a repository's rules for contradictions and drift
+- [repo-rules-fixer](repo-rules-fixer.md) — applying re-validated rule repairs through Rules Propagation
+- [repo-rules-maker](repo-rules-maker.md) — authoring a rule at its level inside Rules Propagation
+- [repo-setup-manager](repo-setup-manager.md) — proving a checkout's bootstrap, toolchain, and gate baseline before plan
+  work
+- [repo-workflow-checker](repo-workflow-checker.md) — auditing workflow documents against the workflow pattern
+- [repo-workflow-fixer](repo-workflow-fixer.md) — applying re-validated workflow document findings
+- [repo-workflow-maker](repo-workflow-maker.md) — writing one workflow document to the workflow pattern
+- [specs-checker](specs-checker.md) — auditing listed specification folders for structure and consistency
+- [specs-fixer](specs-fixer.md) — applying re-validated specification structure findings
+- [specs-maker](specs-maker.md) — creating a specification corpus or its missing parts at a named path
+- [swe-code-checker](swe-code-checker.md) — auditing project code against adopted standards and test-first evidence
+- [swe-code-fixer](swe-code-fixer.md) — applying re-validated code findings, test-first where a fix needs a test
+- [swe-code-maker](swe-code-maker.md) — building behaviour test-first under the adopted and stack standards
+- [swe-ui-checker](swe-ui-checker.md) — auditing React component source for tokens, accessibility, and primitives
+- [swe-ui-fixer](swe-ui-fixer.md) — applying re-validated interface component findings
+- [swe-ui-maker](swe-ui-maker.md) — building React components test-first from an approved design
+- [web-design-tester](web-design-tester.md) — judging a live render against cited design ground truth
+- [web-exploratory-tester](web-exploratory-tester.md) — exploring a live web interface against its specifications
+- [web-researcher](web-researcher.md) — answering outside questions with cited, labelled public sources
+- [web-usability-tester](web-usability-tester.md) — judging first use of a live web interface without its specifications
