@@ -65,3 +65,21 @@ is the one harness that needs a generated route.
 - [programming-kotlin](programming-kotlin/SKILL.md) — Kotlin work under the shared standards
 - [programming-python](programming-python/SKILL.md) — Python work under the shared standards
 - [programming-rust](programming-rust/SKILL.md) — Rust work under the Rust standard
+- [programming-typescript](programming-typescript/SKILL.md) — TypeScript work under the TypeScript standard
+- [propagating-rules](propagating-rules/SKILL.md) — routing rule work through propagation
+- [resolving-review-threads](resolving-review-threads/SKILL.md) — answering a published review's findings
+- [scaffolding-specifications](scaffolding-specifications/SKILL.md) — creating a specification corpus
+- [synthesizing-review-findings](synthesizing-review-findings/SKILL.md) — deduplicating and verifying specialist
+  findings
+- [understanding-governance-architecture](understanding-governance-architecture/SKILL.md) — reading a repository as
+  ordered levels
+- [understanding-shared-vocabulary](understanding-shared-vocabulary/SKILL.md) — the terms scope decisions turn on
+- [usability-heuristic-evaluation](usability-heuristic-evaluation/SKILL.md) — judging first use by named principles
+- [validating-factual-accuracy](validating-factual-accuracy/SKILL.md) — verifying claims against settling sources
+- [validating-governance-rules](validating-governance-rules/SKILL.md) — a repository-wide rules check
+- [validating-links](validating-links/SKILL.md) — checking links resolve under recorded forms
+- [validating-specification-structure](validating-specification-structure/SKILL.md) — judging specification folder
+  structure
+- [validating-specifications](validating-specifications/SKILL.md) — checking a specification before building
+- [writing-browser-e2e-tests](writing-browser-e2e-tests/SKILL.md) — browser tests that act like users
+- [writing-readme-files](writing-readme-files/SKILL.md) — a root README template and repairs
