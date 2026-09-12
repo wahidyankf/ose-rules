@@ -34,6 +34,8 @@ is what a validator checks against.
 14. [Dependency Graph and Recovery](plans/014-dependency-graph-and-recovery.md)
 15. [Idea Brief Template](plans/015-idea-brief-template.md)
 16. [Evidence Files](plans/016-evidence-files.md)
+17. [Learning Triage](plans/017-learning-triage.md)
+18. [Learning Routing](plans/018-learning-routing.md)
 
 ## Conditional Conventions
 
@@ -45,6 +47,7 @@ convention without restating it.
 | [Plan Specification Changes](plan-specification-changes.md) | changes observable behaviour, an interface, architecture, or an executable specification |
 | [Plan Migrations](plan-migrations.md)                       | moves, copies, normalizes, replaces, or retires data, configuration, or structure        |
 | [Plan UI Design](plan-ui-design.md)                         | creates or materially changes a user interface                                           |
+| [Plan Content Corpora](plan-content-corpora.md)             | authors or restructures a content corpus inside its own folder                           |
 
 ## What This Convention Does Not Decide
 

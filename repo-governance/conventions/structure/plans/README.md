@@ -9,17 +9,19 @@ when_to_use: >-
 
 Read in order. Each module is a self-contained part of the rule the [Plans Convention](../plans.md) entrypoint indexes.
 
-Modules 010 to 016 hold:
+Modules 010 to 018 hold:
 
-| Module                                                                                    | Holds                                                                                |
-| ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| [010 Authorization and Execution Record](010-authorization-and-execution-record.md)       | the owner's request before a plan is written, and the execution record atop delivery |
-| [011 Phase Boundaries and Delivery Choices](011-phase-boundaries-and-delivery-choices.md) | the delivery-grammar choices an adopter fixes once, with their trade-offs            |
-| [012 Decision Records](012-decision-records.md)                                           | what each material decision records, including the trigger that reopens it           |
-| [013 File Impact](013-file-impact.md)                                                     | the annotated tree of every planned path, and its action labels                      |
-| [014 Dependency Graph and Recovery](014-dependency-graph-and-recovery.md)                 | delivery ordering, what may run concurrently, and conditional recovery items         |
-| [015 Idea Brief Template](015-idea-brief-template.md)                                     | the ordered sections of an idea brief, and what keeps it short                       |
-| [016 Evidence Files](016-evidence-files.md)                                               | where a plan's evidence files live, what stays inline, and how captures are named    |
+| Module                                                                                    | Holds                                                                                           |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| [010 Authorization and Execution Record](010-authorization-and-execution-record.md)       | the owner's request before a plan is written, and the execution record atop delivery            |
+| [011 Phase Boundaries and Delivery Choices](011-phase-boundaries-and-delivery-choices.md) | the delivery-grammar choices an adopter fixes once, with their trade-offs                       |
+| [012 Decision Records](012-decision-records.md)                                           | what each material decision records, including the trigger that reopens it                      |
+| [013 File Impact](013-file-impact.md)                                                     | the annotated tree of every planned path, and its action labels                                 |
+| [014 Dependency Graph and Recovery](014-dependency-graph-and-recovery.md)                 | delivery ordering, what may run concurrently, and conditional recovery items                    |
+| [015 Idea Brief Template](015-idea-brief-template.md)                                     | the ordered sections of an idea brief, and what keeps it short                                  |
+| [016 Evidence Files](016-evidence-files.md)                                               | where a plan's evidence files live, what stays inline, and how captures are named               |
+| [017 Learning Triage](017-learning-triage.md)                                             | the gates a learning passes before promotion, the empty-log record, and anti-theater guardrails |
+| [018 Learning Routing](018-learning-routing.md)                                           | why a code-changing learning leaves the plan, and the timing choices an adopter fixes           |
 
 ## Directory Map
 
@@ -39,3 +41,5 @@ Modules 010 to 016 hold:
 - [014 Dependency Graph and Recovery](014-dependency-graph-and-recovery.md)
 - [015 Idea Brief Template](015-idea-brief-template.md)
 - [016 Evidence Files](016-evidence-files.md)
+- [017 Learning Triage](017-learning-triage.md)
+- [018 Learning Routing](018-learning-routing.md)
