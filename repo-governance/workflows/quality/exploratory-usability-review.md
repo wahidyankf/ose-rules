@@ -2,7 +2,7 @@
 name: exploratory-usability-review
 description: >-
   Runs one bounded exploratory and usability pass over declared tasks, recording observations, failures, and a terminal
-  result.
+  result. A spec-aware exploratory lens runs before a structurally spec-blind usability lens.
 when_to_use: >-
   Use when a user-facing change reaches manual review, after programmatic checks have run.
 ---
@@ -13,6 +13,10 @@ when_to_use: >-
 
 A change with a user-facing surface, whose programmatic checks have already run. Running this first wastes a reviewer's
 attention on defects a machine would have caught.
+
+- `origin` (`string`, required): the exact address the surface is served from.
+- `routes` (`string`, required): the affected routes or screens.
+- `viewports` (`string`, optional, default every supported viewport class).
 
 ## Sequence
 
@@ -33,10 +37,39 @@ attention on defects a machine would have caught.
 
 Every declared task carries an outcome, every failure is recorded as behaviour, and the pass has one terminal result.
 
+Both lenses ran in order, each with its own findings section or an explicit none found, and shared root causes are
+cross-referenced.
+
+## Two Lenses, in Order
+
+The pass looks through two lenses in a real browser at `origin` across `viewports`, the first finished and recorded
+before the second begins. Fetched markup or source inspection is a baseline, never a pass. Steps 3 to 6 run once per
+lens, in that order:
+
+1. **Exploratory, spec-aware.** Read the scenarios the change affects, then probe past the scripted cases: edge and
+   boundary values, address structure, state transitions, and passive security signals such as an exposed identifier. A
+   contradiction is recorded as a finding; proving correctness stays the programmatic layer's.
+2. **Usability, spec-blind.** Blindness is structural, not declared. Give this lens to a fresh reviewer or agent context
+   holding only `origin`, `routes`, `viewports`, and the frozen task list, never specifications, source, or design
+   assets; with none available, label the lens spec-aware. Judge first use by a published heuristic set and a cognitive
+   walkthrough, the empty, loading, error, and zero-result states, keyboard and focus, and responsive layout, alongside
+   [Usability Probes and Completeness](../../development/quality/manual-verification/008-usability-probes-and-completeness.md).
+
+Findings stay in one section per lens. Two findings sharing a root cause cross-reference each other, so it is fixed
+once. Correct behaviour no scenario states becomes a proposed scenario, labelled with its lens, reconciled through
+[Behaviour-Driven Development](../../development/quality/testing/behaviour-driven-development.md) as its own delivery
+item, and never written into the specification directly.
+
+Both lenses are passive: nothing shared or live is mutated, per
+[Live-Service Continuity](../../development/quality/delivery/live-service-continuity.md), identities and data are
+isolated per [Test Data Isolation](../../development/quality/testing/test-data-isolation.md), and records name route,
+state, category, and result, never a private value.
+
 ## Bounded
 
 One pass over the declared tasks. Findings may be repaired within the quality gate's budget and the pass re-run once
-against the **same** tasks.
+against the **same** tasks. That budget belongs to the gate the adopter runs on the surface, such as
+[Live Surface Quality Gate](live-surface-quality-gate.md).
 
 Not re-run against new tasks until it comes back clean — that converges on a clean report rather than on a usable
 interface, and the two are easy to confuse from the outside.
