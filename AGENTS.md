@@ -32,15 +32,16 @@ that destroys the artifact's meaning, the artifact does not belong here. See
 
 - Every governed document declares `description` and `when_to_use` in frontmatter; skills and agents declare more. The
   schema is in [artifact-metadata.md](repo-governance/conventions/structure/artifact-metadata.md).
-- `AGENTS.md`, `CLAUDE.md`, and every `repo-governance/**/*.md` stay at or below **750 words**. A convention that
-  outgrows the budget splits into ordered companion modules in a sibling directory named after it.
-- Names are lowercase kebab-case, and a document that outgrows its budget splits into an entrypoint plus a sibling
-  directory named exactly after it. See [file-naming.md](repo-governance/conventions/structure/file-naming.md).
+- `AGENTS.md`, `CLAUDE.md`, and every `repo-governance/**/*.md` stay at or below **750 words**. A document that outgrows
+  the budget splits into an entrypoint plus ordered companion modules in a sibling directory named exactly after it.
+- Names are lowercase kebab-case. See [file-naming.md](repo-governance/conventions/structure/file-naming.md).
 - Every directory holding governed documents carries a `README.md` index. An empty governed directory fails; a category
   exists because it holds something.
 - Internal links resolve to a document, never to a directory. Verify unstable technical claims from authoritative
   sources.
 - Shell: Bash, `set -euo pipefail`, executable bit, descriptive comments.
+- Before any rule edit, follow [Rules Propagation](repo-governance/workflows/maintenance/rules-propagation.md)
+  unprompted.
 
 ## Layout
 
