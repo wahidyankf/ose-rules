@@ -44,8 +44,8 @@ soundness when no typed source changed. No other discipline is skipped by file t
 
 ## Shared Context, Extracted Once
 
-The scout assembles change metadata, linked plan or issue context, and the full diff once, into one brief every
-specialist reads. Each specialist re-deriving that context multiplies cost by the roster's size.
+The scout gathers change metadata, any linked plan or issue context, and the complete diff a single time, into one brief
+every specialist reads. Each specialist re-deriving that context multiplies cost by the roster's size.
 
 Nothing is silently excluded. Generated files, lock files, and mirrors stay in the diff, so a hand-edited generated file
 is never missed. When a diff exceeds a specialist's context, the scout slices it by relevance and records "reviewed in N

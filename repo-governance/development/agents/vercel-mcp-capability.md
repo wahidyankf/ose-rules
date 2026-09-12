@@ -1,26 +1,30 @@
 ---
 description: >-
-  Requires a plan touching a Vercel-deployed surface to probe Vercel MCP availability while planning and again at the
-  start of execution, record the outcome, and keep account settings human-owned.
+  Requires a plan touching a platform-deployed surface to probe the platform's agent integration server while planning
+  and again at the start of execution, record the outcome, and keep account settings human-owned.
 when_to_use: >-
-  Use when a plan on the Vercel stack will observe or verify deployments through a Vercel MCP server, or when executing
-  or resuming such a plan.
+  Use when a plan will observe or verify deployments through a deployment platform's agent integration server, or when
+  executing or resuming such a plan.
 ---
 
-# Vercel MCP Capability
+# Deployment Platform Agent Capability
 
-A connected Vercel MCP server makes deployment state agent-readable: deployment status and provenance, build logs,
-runtime logs, and runtime errors. That lets deployment-verification items be written `[AI]` rather than `[HUMAN]` — but
-only in a session where the server is actually connected and authenticated. An executor label is a claim about a
-capability, so the capability is probed, never remembered from a previous plan.
+A connected agent integration server makes a deployment platform's state agent-readable: deployment status and
+provenance, build logs, runtime logs, and runtime errors. That lets deployment-verification items be written `[AI]`
+rather than `[HUMAN]` — but only in a session where the server is actually connected and authenticated. An executor
+label is a claim about a capability, so the capability is probed, never remembered from a previous plan.
+
+```binding-example
+deployment platform: Vercel; agent integration server: the Vercel MCP server
+```
 
 ## Scope Is Decided Mechanically
 
 A plan is in scope when any of these holds:
 
-1. a path it changes is covered by a Vercel project configuration file;
-2. it names a branch a Vercel project deploys from;
-3. it changes an application that a deployment agent or pipeline ships to Vercel.
+1. a path it changes is covered by the platform's project configuration file;
+2. it names a branch the platform deploys from;
+3. it changes an application that a deployment agent or pipeline ships to the platform.
 
 Decide from tracked files, never from a remembered list, because the set drifts. A plan that meets none of the three
 probes nothing and records nothing; a vacuous check teaches readers to skip the section where it matters.
@@ -79,7 +83,7 @@ marked unavailable.
 
 Committed artifacts name projects and teams by slug wherever the interface accepts a slug, rather than by opaque
 identifier. Identifiers grant nothing without a token, but they are stable, not practically rotatable, and permanent
-once in a public history. Slugs already appear in deployment hostnames, so using them exposes nothing new.
+once in a public history. Where the platform's deployment hostnames already carry slugs, using them exposes nothing new.
 
 ## Enforcement
 

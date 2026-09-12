@@ -16,10 +16,10 @@ plan does not choose for itself.
 
 ## 1. How a Phase Ends
 
-| Option                  | Requires                                                                                                      | Trade-off                                                                          |
-| ----------------------- | ------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| phase gate              | each phase ends with a `### Phase N Gate` of exact commands and observable criteria, then a pause-safety note | every boundary is auditable and resumable; the checklist grows by a gate a phase   |
-| plan-level pause safety | only the single pause-safety declaration the delivery contract already requires                               | shorter; a resumed executor re-derives whether the last phase left things coherent |
+| Option                  | Requires                                                                                                       | Trade-off                                                                          |
+| ----------------------- | -------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| phase gate              | every phase closes on a `### Phase N Gate` of exact commands and observable criteria, then a pause-safety note | every boundary is auditable and resumable; the checklist grows by a gate a phase   |
+| plan-level pause safety | only the single pause-safety declaration the delivery contract already requires                                | shorter; a resumed executor re-derives whether the last phase left things coherent |
 
 Under a phase gate, phase N+1 does not begin while any item of phase N's gate fails, and the failure is repaired inside
 phase N. Gate items carry executor labels like any other item. The pause-safety note names the coherent state the phase

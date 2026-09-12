@@ -14,7 +14,7 @@ work was designed — including a cold executor picking it up months later — c
 is finished.
 
 This entrypoint is deliberately short. The modules below hold the complete rule; each is independently readable and each
-is what a validator checks against.
+is what an adopter's plan validator checks against; the catalog ships none.
 
 ## Modules
 

@@ -35,5 +35,6 @@ holds for how an agent works: how it plans, delegates, asks, tracks, and reviews
   result handling
 - [Task Tracking](task-tracking.md) — the task list kept before and during every task
 - [Task Tracking Modules](task-tracking/README.md) — list lifecycle, direction and continuity, and bindings
-- [Vercel MCP Capability](vercel-mcp-capability.md) — probing a deployment platform's agent integration while planning
+- [Deployment Platform Agent Capability](vercel-mcp-capability.md) — probing a deployment platform's agent integration
+  while planning
 - [Web Research Delegation](web-research-delegation.md) — routing public-web research to one designated agent

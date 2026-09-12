@@ -46,9 +46,9 @@ the day it goes live, and every later failure belongs to the change that caused 
 
 ## Waivers Are Documented Where They Apply
 
-A rule is suppressed only where applying it would cost clarity or reproducibility and buy no real safety. Every waiver
-sits at the point of suppression, as an inline directive or a commented entry in the tool's configuration, and states
-its reason.
+Suppress a rule only at the spots where following it would cost clarity or reproducibility while buying no real safety.
+Every waiver sits at the point of suppression, as an inline directive or a commented entry in the tool's configuration,
+and states its reason.
 
 Never suppress silently, and never disable a rule across the repository to quiet one file. A waiver nobody can find is
 indistinguishable from a rule nobody enforces.

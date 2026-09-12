@@ -14,7 +14,8 @@ that claims to be a test.
 
 ## Strict Resolution
 
-Every step resolves to exactly one binding in each applicable layer. Each of these fails the run:
+Every step resolves to exactly one binding in each applicable layer. The adopter configures its test run so that each of
+these fails it:
 
 - an undefined step;
 - an ambiguous step that matches more than one binding;

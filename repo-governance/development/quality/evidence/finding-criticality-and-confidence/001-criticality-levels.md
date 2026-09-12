@@ -25,7 +25,7 @@ Stop at the first question answered yes:
 
 1. Does it break something, block a user, weaken security, lose data, or violate a MUST? `CRITICAL`.
 2. Does it seriously lower quality, or break a documented SHOULD convention? `HIGH`.
-3. Is it a minor quality issue, a style inconsistency, or an unfollowed MAY? `MEDIUM`.
+3. Does it amount to a minor quality issue, a style inconsistency, or an unfollowed MAY? `MEDIUM`.
 4. Otherwise, `LOW`.
 
 Asking in this order stops a finding from being rated by how easy it is to fix rather than by what it does.

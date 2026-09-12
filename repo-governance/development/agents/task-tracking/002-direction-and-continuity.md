@@ -46,9 +46,9 @@ simply stops honouring it.
 ## Other Tasks Share the Repository
 
 Another session, another harness, or a person may be changing the repository at the same time, and plans, governance
-documents, and harness directories are where tasks collide, because every task reaches for them. Refresh those areas
-before relying on or editing them. Re-read the file rather than trusting what the list says about it: the list records
-what was intended, and the file records what is there.
+documents, and harness directories are where tasks collide, since each task depends on them. Check the current state of
+such an area each time you are about to use or change it. Re-read the file rather than trusting what the list says about
+it: the list records what was intended, and the file records what is there.
 
 A change you do not recognize belongs to someone else's task. Keep it and work around it; never revert it, overwrite it,
 or fold it into your own commit. Where it truly conflicts with your task, the owner of that work decides; it is not

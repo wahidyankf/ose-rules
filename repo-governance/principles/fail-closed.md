@@ -26,7 +26,7 @@ refusal. Silence is never consent.
 
 | Applied in                                                                                              | As                                                                       |
 | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| [Public Outbound Safety](../conventions/security/public-outbound-safety.md)                             | a scan that could not run is not a scan that passed                      |
+| [Public Outbound Safety](../conventions/security/public-outbound-safety.md)                             | a scan that failed to run never counts as a pass                         |
 | [Inputs and Exit Classes](../conventions/structure/plan-validator-contract/001-inputs-and-exits.md)     | exits `2` and `3` are never reported as a clean run                      |
 | [Top-Level Schema](../conventions/structure/repository-configuration/001-top-level-schema.md)           | an unknown top-level key fails rather than being ignored                 |
 | [Surfaces and Mutation](../conventions/structure/repository-configuration/003-surfaces-and-mutation.md) | a gate declaring no surface fails rather than being silently skipped     |
