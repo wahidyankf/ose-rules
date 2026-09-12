@@ -29,6 +29,7 @@ After every in-scope push, whether to a pull-request branch or directly to the t
 3. **Follow it to a terminal result.** Poll at a spaced interval under a declared ceiling, as
    [Bounded Convergence](bounded-convergence.md) requires. Never use a streaming watch or a tight loop; both spend the
    hosting service's request budget and can lock out the rest of the work.
+   [Remote Status Polling](remote-status-polling.md) sets the interval, trigger discipline, and rate-limit recovery.
 4. **Fix a failure at its cause.** Push the fix and start again from step 1.
 
 Which workflows cover which components is the adopter's to record, next to the workflows themselves.

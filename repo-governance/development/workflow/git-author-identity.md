@@ -28,7 +28,10 @@ reads the log. Correcting authorship that was already pushed means rewriting pub
    value is a violation, including one matching the person's real identity, because the mechanism is the fault rather
    than the value.
 2. **User-level configuration only.** Identity resolves from the person's own git configuration, in the home directory
-   or the XDG location. System-level configuration is reserved for shared automation hosts.
+   or the XDG location. System-level configuration is reserved for shared automation hosts. A pipeline may set its
+   service identity in its own definition, by variables or a write to its own checkout's configuration, which rule 1
+   does not cover; that is platform configuration, not an agent setting identity, and the local check below skips that
+   checkout.
 3. **More than one identity through conditional includes.** A person needing a different identity for a group of
    repositories adds an `includeIf "gitdir:<directory>/"` entry to their user-level configuration, pointing at a file
    that sets it. For a single commit, `GIT_AUTHOR_NAME`, `GIT_AUTHOR_EMAIL`, `GIT_COMMITTER_NAME`, and
