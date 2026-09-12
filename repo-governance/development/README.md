@@ -11,11 +11,11 @@ when_to_use: >-
 Engineering standards. A convention decides how the repository is arranged; a standard here decides how work inside it
 is done well.
 
-| Area        | Holds                                                              |
-| ----------- | ------------------------------------------------------------------ |
-| `agents/`   | standards for the coding-agent capabilities a repository publishes |
-| `quality/`  | what proves a change works, and what a proof has to look like      |
-| `workflow/` | the shape of work itself, rather than its subject                  |
+| Area        | Holds                                                                                                       |
+| ----------- | ----------------------------------------------------------------------------------------------------------- |
+| `agents/`   | standards for the coding-agent capabilities a repository publishes                                          |
+| `quality/`  | what proves a change works, what a proof has to look like, and how code is designed, tested, and contracted |
+| `workflow/` | the shape of work itself, rather than its subject                                                           |
 
 ## Directory Map
 
