@@ -40,7 +40,7 @@ it again every cycle — and so two cycles never place the same kind of finding 
   actual error scenarios → correctness.
 - **(d) Specifications.** Is a required specification file present → governance. Are its scenarios complete for the
   domain → correctness.
-- **(e) Performance and design.** A deliberate decision to accept a performance cost for a design benefit →
+- **(e) Performance and design.** A deliberate choice to give up some performance in exchange for a better design →
   architecture. A concrete or likely regression on a hot path → performance.
 - **(f) Documentation.** Mechanical conformance such as heading hierarchy, linking, and naming → governance. Substantive
   completeness, clarity, or drift from the code → documentation.

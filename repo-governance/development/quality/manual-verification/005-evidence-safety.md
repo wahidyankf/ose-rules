@@ -39,7 +39,7 @@ automated check, every text search, and every future reader working from a termi
 ## Nothing Private Reaches Evidence
 
 Evidence must contain no credential, token, personal data, absolute home path, internal hostname or address, topology
-detail, or private repository identifier — and no raw scanner output that could reproduce any of them.
+detail, or private repository identifier — and no raw scanner output from which any of them could be recovered.
 
 Captures are the usual leak. A screenshot taken while working carries whatever was on screen: a path, a branch name, a
 session token in a URL, an adjacent window.

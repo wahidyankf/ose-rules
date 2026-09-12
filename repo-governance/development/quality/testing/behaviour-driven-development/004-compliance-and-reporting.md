@@ -19,8 +19,8 @@ Static compliance resolves every step to its binding and applies the limits in
 tests what its sentence says.
 
 After a material change to scenarios or to their implementation, run the
-[Gherkin Implementation Review](../../../../workflows/quality/gherkin-implementation-review.md). It compares the
-scenarios with what the implementation and its tests actually do, across every applicable layer and every part of the
+[Gherkin Implementation Review](../../../../workflows/quality/gherkin-implementation-review.md). It checks the scenarios
+against the real behaviour of the implementation and its tests, across every applicable layer and every part of the
 corpus the change reaches, not only the files that changed.
 
 ## Each Check in Its Gate

@@ -48,8 +48,8 @@ scripts/public-safety/outbound-preflight.sh --surface <surface> \
 |    1 | blocked    | must not proceed; a finding    |
 |    2 | scan error | must not proceed; not screened |
 
-`1` and `2` are both refusals. They differ only in whether we know what is wrong. A scan that could not run is not a
-scan that passed, and there is no allowlist, suppression, or bypass for either.
+`1` and `2` are both refusals. They differ only in whether we know what is wrong. A scan that failed to run never counts
+as a pass, and there is no allowlist, suppression, or bypass for either.
 
 Leaf surfaces are `baseline`, `diff`, `commit`, `ref`, `pull-request`, `release`, and `logs`. A surface outside that set
 exits `2`, and so does a surface given no input.
@@ -58,8 +58,8 @@ exits `2`, and so does a surface given no input.
 
 Two layers, in this order:
 
-1. **Shape screening.** Each input is matched against `shape-terms.txt`. The input's own path is screened too: a path
-   that is itself prohibited is reported as `<blocked-path>` rather than printed.
+1. **Shape screening.** Each input is matched against `shape-terms.txt`. The input's own path is screened too: a
+   prohibited path is never printed, and appears as `<blocked-path>` instead.
 2. **Credential scanning.** TruffleHog `v3.97.1`, pinned by SHA-256, downloaded once into a cache outside the
    repository, verified before extraction, and run offline with
    `--no-verification --no-update --fail --fail-on-scan-errors`.
@@ -77,9 +77,9 @@ suffix. It is published, so a denylist of real names would publish exactly what 
 A workspace that must also screen for named private identifiers keeps that list outside every public checkout and passes
 it with `--terms`. That second layer is the owner's, not this repository's.
 
-The set is validated before it is trusted. Absent, unreadable, empty, comments-only, malformed, or carrying a
-credential-shaped value all exit `2`. An empty set is rejected precisely because it cannot be distinguished from "this
-repository has nothing to screen for" — the one answer that would be wrong.
+The set is validated before it is trusted. A set that is missing, unreadable, empty, only comments, malformed, or
+holding a credential-shaped value makes the leaf exit `2`. An empty set is refused on purpose: nothing separates it from
+"this repository has nothing to screen for" — the one answer that would be wrong.
 
 ## Output
 
@@ -92,18 +92,19 @@ The entire diagnostic vocabulary is four fields:
 `status` is `finding`, `scan-error`, or `blocked`; `detector` is a class name from the shape set or a TruffleHog
 detector name; `path` is repository-relative and screened; `line` is an integer.
 
-Matched text, term values, decoder output, verification errors, commit author data, and raw scanner JSON never appear —
-not on stdout, not on stderr, not in a temporary file, not in evidence. Raw scanner output flows through an in-memory
-pipe into a strict field extractor and nothing else survives; a record whose shape is not recognized is a scan error,
-which blocks.
+None of the following ever appears — not on stdout, not on stderr, not in a temporary file, not in evidence: text that
+matched, the values of terms, decoder output, verification errors, commit author data, or raw scanner JSON. The
+scanner's raw output passes over a pipe held only in memory to a strict extractor of named fields, and nothing else
+survives; an unrecognized record shape counts as a scan error, and a scan error blocks.
 
 ## What Is Prohibited
 
-Secrets and credentials; personal data not intentionally public; maintainer absolute home paths; internal hostnames,
-addresses, and topology; private repository identifiers; and raw detector output that could reproduce any of them.
+Secrets and credentials; personal data that was never meant to be public; absolute home paths of maintainers; internal
+hostnames, addresses, and topology; identifiers of private repositories; and raw detector output from which any of these
+could be recovered.
 
-Replace safe examples with semantic placeholders — `<api-token>`, `<private-host>`, `<repository-path>`. If replacement
-destroys the artifact's meaning, the artifact does not belong in a public repository.
+Make examples safe by swapping in semantic placeholders — `<api-token>`, `<private-host>`, `<repository-path>`. When a
+placeholder would destroy what the artifact means, the artifact has no place in a public repository.
 
 ## Tests
 

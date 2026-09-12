@@ -20,7 +20,8 @@ Case is the reason. Two of the operating systems this work runs on treat `Plans.
 one does not, so a rename that differs only in case is a change that some checkouts see and others silently do not.
 Removing capitals removes the entire class of problem rather than managing it.
 
-Fixed names imposed by a tool keep their spelling: `README.md`, `LICENSE`, `SKILL.md`, `AGENTS.md`, `CLAUDE.md`.
+Fixed names imposed by a tool keep their spelling: `README.md`, `LICENSE`, `SKILL.md`, `AGENTS.md`, and any root
+instruction shim a harness requires.
 
 ## Companion Directories
 

@@ -14,6 +14,9 @@ needs lives where that thing already lives.
 The file is small on purpose. Configuration attracts fields — each individually reasonable, collectively a second, worse
 place for facts that already have a home.
 
+The catalog ships no runner or validator for this file. Where a module below says a declaration fails or is refused, the
+adopter's own runner, its configuration validator, or the command that reads that section is what fails or refuses it.
+
 ## Modules
 
 1. [Top-Level Schema](repository-configuration/001-top-level-schema.md)

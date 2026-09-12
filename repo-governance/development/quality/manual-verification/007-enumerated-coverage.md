@@ -23,7 +23,7 @@ the equivalent the adopter records, or records them not applicable with the reas
 
 ## 1. Shared Controls Across Surfaces
 
-List every control that appears on more than one view, tab, or surface, and build a matrix of control against surface.
+List each control present on two or more views, tabs, or surfaces, and build a matrix of control against surface.
 Exercise every cell and confirm the behaviour is identical. A control that acts on one surface and does nothing on
 another is a consistency defect, and an unfilled cell is an open gap. Identical functions identified consistently is
 also [WCAG 2.2 Success Criterion 3.2.4](https://www.w3.org/TR/WCAG22/#consistent-identification).

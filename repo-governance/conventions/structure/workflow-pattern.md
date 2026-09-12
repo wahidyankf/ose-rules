@@ -11,7 +11,8 @@ when_to_use: >-
 
 A workflow is an ordered procedure written down so that anyone, or any agent, can run it the same way twice. This
 convention fixes the shape that makes that possible: a contract a reader can check before starting, steps whose order
-and dependencies are stated, and outcomes that end the run.
+and dependencies are stated, and outcomes that end the run. The catalog ships no workflow validator, so the pre-run
+checks that module 3 lists run in the adopter's own validator.
 
 ## What a Workflow Is
 

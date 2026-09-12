@@ -14,6 +14,9 @@ inputs, with the same rule identifiers, the same messages, and the same exit cla
 That requirement only means something if the contract exists before either implementation does. Written afterwards, a
 contract describes whichever one was built first, and the second is then judged against an accident.
 
+The catalog ships no validator. An adopter that checks plan structure builds or chooses the implementations, and each
+one conforms to this contract and reports every rule the modules below identify.
+
 ## Modules
 
 1. [Inputs and Exit Classes](plan-validator-contract/001-inputs-and-exits.md)

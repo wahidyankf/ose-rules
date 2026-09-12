@@ -23,23 +23,24 @@ rules below: an artifact that only makes sense in its original home is not publi
 This repository is published, so file contents, file names, commit messages, branch names, and release text are all
 outbound material. `scripts/public-safety/` screens every one of them, and it is the first gate on every surface.
 
-A finding blocks. There is no allowlist, suppression, or bypass, and a scan that could not run is not a scan that
-passed. Replace an unsafe example with a semantic placeholder — `<api-token>`, `<private-host>`, `<repository-path>`; if
-that destroys the artifact's meaning, the artifact does not belong here. See
+A finding blocks. There is no allowlist, suppression, or bypass, and a scan that failed to run never counts as a pass.
+Replace an unsafe example with a semantic placeholder — `<api-token>`, `<private-host>`, `<repository-path>`; if that
+destroys the artifact's meaning, the artifact does not belong here. See
 [scripts/public-safety/README.md](scripts/public-safety/README.md).
 
 ## Authoring Rules
 
 - Every governed document declares `description` and `when_to_use` in frontmatter; skills and agents declare more. The
   schema is in [artifact-metadata.md](repo-governance/conventions/structure/artifact-metadata.md).
-- `AGENTS.md`, `CLAUDE.md`, and every `repo-governance/**/*.md` stay at or below **750 words**. A document that outgrows
-  the budget splits into an entrypoint plus ordered companion modules in a sibling directory named exactly after it.
+- `AGENTS.md`, any root instruction shim a harness requires, and each `repo-governance/**/*.md` file hold **750 words**
+  at most. A document that outgrows the budget splits into an entrypoint plus ordered companion modules in a sibling
+  directory named exactly after it.
 - Names are lowercase kebab-case. See [file-naming.md](repo-governance/conventions/structure/file-naming.md).
 - Every directory holding governed documents carries a `README.md` index. An empty governed directory fails; a category
   exists because it holds something.
-- Internal links resolve to a document, never to a directory. Verify unstable technical claims from authoritative
+- Internal links resolve to a document, never to a directory. Check volatile technical claims against authoritative
   sources.
-- Shell: Bash, `set -euo pipefail`, executable bit, descriptive comments.
+- Shell scripts are Bash, run `set -euo pipefail`, stay executable, and carry descriptive comments.
 - Before any rule edit, follow [Rules Propagation](repo-governance/workflows/maintenance/rules-propagation.md)
   unprompted.
 
