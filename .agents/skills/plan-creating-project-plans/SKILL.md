@@ -57,3 +57,34 @@ fail. "Restarting mid-write leaves no partial file" can.
 
 Criteria that cannot fail are the ones that get marked complete without anyone checking, because there is nothing to
 check.
+
+## Check Each Claim While Writing It
+
+Every path, command, version, test name, and outside behaviour is checked as it is typed, then labelled or left out, per
+[Plan Anti-Hallucination](../../../repo-governance/development/quality/evidence/plan-anti-hallucination.md). Review is
+too late: an invented path reads like a real one.
+
+## A Rule Change Is Delivery Work
+
+Compare both the intended behaviour and the file-impact tree with the repository's rules; changing what a gate,
+validator, or hook accepts changes a rule. Each such change adds the
+[Rules Propagation](../../../repo-governance/workflows/maintenance/rules-propagation.md) outcome to the delivery unit
+making it, as concrete items per repository and action. One item reading "propagate the rules" can never be ticked
+honestly.
+
+## Interface Plans Widen Before They Narrow
+
+An interface-changing plan draws genuinely different alternatives before choosing, per
+[Plan UI Design](../../../repo-governance/conventions/structure/plan-ui-design.md) and
+[Interface Alternatives](../../../repo-governance/development/quality/manual-verification/004-interface-alternatives.md).
+Judgement sharpens the alternatives: inventory the components and tokens already present, so they are reused; study how
+comparable products handle the task, so alternatives are informed; and judge each candidate on the smallest device class
+it must serve first, since a layout that only works wide cannot be the selected alternative.
+
+## Code Items Show the Test Failing First
+
+Items shipping executable behaviour follow the test-first grammar recorded under
+[Phase Boundaries and Delivery Choices](../../../repo-governance/conventions/structure/plans/011-phase-boundaries-and-delivery-choices.md).
+Under the split cycle, red, green, and refactor are separate items naming test path, command, and expected result,
+repeated per behaviour. Under either choice the item names the test before the production path, as
+[Test-Driven Development](../../../repo-governance/development/quality/testing/test-driven-development.md) requires.
