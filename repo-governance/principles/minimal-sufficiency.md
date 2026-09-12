@@ -1,10 +1,10 @@
 ---
 description: >-
   States that an artifact carries what its purpose requires and nothing more, and that what is deliberately left out is
-  worth recording alongside what is in.
+  worth recording alongside what is in. A change likewise carries what its outcome and rules require, then stops.
 when_to_use: >-
   Use when a field, section, option, or document is about to be added, and when judging whether an existing one still
-  earns its place.
+  earns its place. Also use when scoping a change or deciding it is finished.
 ---
 
 # Minimal Sufficiency
@@ -49,3 +49,19 @@ from the other side, and "we kept it minimal" is not a defence for a rule nobody
 
 The target is the smallest form that still does the whole job — and the whole job includes being usable by someone who
 was not there when it was written.
+
+## Applied to a Change
+
+The same test governs work as well as artifacts. A change carries what its outcome and the applicable rules require, and
+then stops: understood before it is chosen, built from what already exists, proven by a check that could have failed,
+and never smaller than the obligations it touches.
+
+1. [Scope of a Change](minimal-sufficiency/001-scope-of-a-change.md)
+2. [What Minimality Never Removes](minimal-sufficiency/002-what-minimality-never-removes.md)
+
+Where the change half is already load-bearing:
+
+| Applied in                                             | As                                                                |
+| ------------------------------------------------------ | ----------------------------------------------------------------- |
+| [Quality Gate](../workflows/plan/plan-quality-gate.md) | the budget is not extended because the next attempt looks close   |
+| [Plan Execution](../workflows/plan/plan-execution.md)  | a failure that predates the work is an explanation, not exemption |
