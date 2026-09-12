@@ -20,6 +20,8 @@ holds for how an agent works: how it plans, delegates, asks, tracks, and reviews
   multi-step work
 - [Capability Forms](capability-forms.md) — the four capability forms and the responsibility each holds
 - [Harness Adapters](harness-adapters.md) — generating harness-specific files from canonical artifacts
+- [Harness Adapters Modules](harness-adapters/README.md) — the one instruction body, vendor notes, and harness
+  configuration and discovery
 - [Last-Resort Questions](last-resort-questions.md) — when an agent may ask the user, and how little it asks
 - [Planning Capabilities](planning-capabilities.md) — the planning roster a repository exposes and its uniform contract
 - [Planning Capabilities Modules](planning-capabilities/README.md) — rosters, decision gates, executor authority,
