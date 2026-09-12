@@ -13,11 +13,11 @@ that one of them decided, wrote it down, and now applies it consistently.
 That is what separates this layer from the one above it. A principle explains why something is true regardless of
 repository. A convention says which of several defensible options this repository picked.
 
-| Area         | Holds                                                      |
-| ------------ | ---------------------------------------------------------- |
-| `security/`  | what enters history, who reads real values, what leaves    |
-| `structure/` | how files, directories, and documents are shaped and named |
-| `writing/`   | how governed material is expressed and illustrated         |
+| Area         | Holds                                                                                                                           |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------- |
+| `security/`  | what enters history, who reads real values, what leaves                                                                         |
+| `structure/` | how files, directories, and documents are shaped and named, how governance and plans are organized, and how repositories relate |
+| `writing/`   | how governed material is expressed and illustrated                                                                              |
 
 ## Directory Map
 

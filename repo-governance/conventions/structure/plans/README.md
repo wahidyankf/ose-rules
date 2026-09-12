@@ -9,6 +9,18 @@ when_to_use: >-
 
 Read in order. Each module is a self-contained part of the rule the [Plans Convention](../plans.md) entrypoint indexes.
 
+Modules 010 to 016 hold:
+
+| Module                                                                                    | Holds                                                                                |
+| ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| [010 Authorization and Execution Record](010-authorization-and-execution-record.md)       | the owner's request before a plan is written, and the execution record atop delivery |
+| [011 Phase Boundaries and Delivery Choices](011-phase-boundaries-and-delivery-choices.md) | the delivery-grammar choices an adopter fixes once, with their trade-offs            |
+| [012 Decision Records](012-decision-records.md)                                           | what each material decision records, including the trigger that reopens it           |
+| [013 File Impact](013-file-impact.md)                                                     | the annotated tree of every planned path, and its action labels                      |
+| [014 Dependency Graph and Recovery](014-dependency-graph-and-recovery.md)                 | delivery ordering, what may run concurrently, and conditional recovery items         |
+| [015 Idea Brief Template](015-idea-brief-template.md)                                     | the ordered sections of an idea brief, and what keeps it short                       |
+| [016 Evidence Files](016-evidence-files.md)                                               | where a plan's evidence files live, what stays inline, and how captures are named    |
+
 ## Directory Map
 
 - [001 Lifecycle and Folders](001-lifecycle-and-folders.md)
@@ -20,3 +32,10 @@ Read in order. Each module is a self-contained part of the rule the [Plans Conve
 - [007 Evidence and Quality](007-evidence-and-quality.md)
 - [008 Knowledge Capture and Archival](008-knowledge-capture-and-archival.md)
 - [009 Portability](009-portability.md)
+- [010 Authorization and Execution Record](010-authorization-and-execution-record.md)
+- [011 Phase Boundaries and Delivery Choices](011-phase-boundaries-and-delivery-choices.md)
+- [012 Decision Records](012-decision-records.md)
+- [013 File Impact](013-file-impact.md)
+- [014 Dependency Graph and Recovery](014-dependency-graph-and-recovery.md)
+- [015 Idea Brief Template](015-idea-brief-template.md)
+- [016 Evidence Files](016-evidence-files.md)

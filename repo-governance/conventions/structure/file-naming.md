@@ -1,7 +1,8 @@
 ---
 description: >-
-  Fixes how files and directories are named: lowercase kebab-case, a companion directory named after its parent
-  document, and ordinal prefixes only where a reading order exists.
+  Fixes how documents and directories are named: lowercase kebab-case, a companion directory named after its parent
+  document, and ordinal prefixes only where a reading order exists, with modules extending it to characters, dates, and
+  source files.
 when_to_use: >-
   Use when naming a new document or directory, or when splitting a document into an ordered companion set.
 ---
@@ -55,3 +56,12 @@ into the reading order, and the reading order is the only thing these names are 
 
 After the ordinal, the name describes the content: `003-technical-shape-and-companions.md`, not `003-part-three.md`. The
 ordinal already says where it sits; repeating that is the one thing the name cannot afford to spend its length on.
+
+## Modules
+
+The rules above hold for every name. These modules extend them and are read in order: the second builds on the character
+set the first fixes, and the third names where source files depart from both.
+
+1. [Portable Names](file-naming/001-portable-names.md)
+2. [Dates and a Single Numbering System](file-naming/002-dates-and-single-numbering.md)
+3. [Source Files](file-naming/003-source-files.md)

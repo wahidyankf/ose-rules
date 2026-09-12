@@ -23,6 +23,10 @@ plus an optional sixth.
 The technical shape is one of the six, not an addition to them. A plan root therefore holds six documents when the
 technical shape is a single file, and five files plus one directory when it is a directory.
 
+Those counts are of plan documents. Beside them, a plan root may also hold two artifact folders: `evidence/`, governed
+by [Evidence Files](016-evidence-files.md), and `assets/`, governed by [Plan UI Design](../plan-ui-design.md). Neither
+is a plan document, and neither is a technical shape: the only directory that is a technical shape is `tech-docs/`.
+
 ## Why Six
 
 The first three separate concerns that are genuinely different and are routinely conflated: why the work is worth doing,

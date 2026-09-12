@@ -19,12 +19,12 @@ of its result.
    task branches, task worktrees, and any tooling installed only for this work.
 2. **Classify each one:**
 
-   | Class    | Disposition                                                             |
-   | -------- | ----------------------------------------------------------------------- |
-   | result   | keep; it is part of what the work delivered                             |
-   | evidence | keep, in the location the plan declared for evidence                    |
-   | scratch  | remove                                                                  |
-   | unknown  | investigate before removing; never delete something you cannot classify |
+   | Class    | Disposition                                                                                                                                                                                                                                        |
+   | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | result   | keep; it is part of what the work delivered                                                                                                                                                                                                        |
+   | evidence | keep, in the location the plan declared for evidence, which for a plan is its `evidence/` folder, per [Evidence Files](../../conventions/structure/plans/016-evidence-files.md); a task outside a plan keeps evidence where its own rules place it |
+   | scratch  | remove                                                                                                                                                                                                                                             |
+   | unknown  | investigate before removing; never delete something you cannot classify                                                                                                                                                                            |
 
 3. **Remove the scratch class.** Delete files, remove worktrees, delete task branches that have served their purpose.
 4. **Preserve unrelated work.** A dirty file that this task did not create is not cleanup's business. Cleanup removes
