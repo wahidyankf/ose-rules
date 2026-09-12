@@ -1,7 +1,7 @@
 ---
 description: >-
-  Requires a repository to declare one authoring rule for conceptual diagrams, fixes the accessibility requirement for
-  each form, and excludes literal content.
+  Requires a repository to declare one authoring rule for conceptual diagrams and, for rendered diagrams, its size
+  limits; fixes the accessibility requirement for each form, and excludes literal content.
 when_to_use: >-
   Use when adding a conceptual diagram, or when changing a repository's diagram authoring rule.
 ---
@@ -31,6 +31,47 @@ diagram shows, for a reader who will never see it. That includes every automated
 
 A plain-text diagram carries prose beside it doing the same work. ASCII art is not self-describing merely because it is
 text; a box-and-arrow drawing is as opaque to a screen reader as an image.
+
+## When a Diagram Earns Its Place
+
+Draw a diagram when relationships, sequence, state, or hierarchy are materially easier to follow drawn than written. A
+simple fact belongs in prose, an exact mapping in a table. A diagram that decorates, or repeats a neighbouring table
+less precisely, costs attention and returns nothing.
+
+Update a diagram in the same change as the structure it depicts.
+
+## One Concept per Diagram
+
+A diagram in either form shows one idea. Split it when it combines distinct concepts, draws a comparison as side-by-side
+groups, or exceeds a declared size limit, and give each part its own short heading. The size trigger applies wherever a
+repository declares limits. An oversized diagram renders too small to read on a narrow screen and too dense anywhere.
+
+## Declared Size Limits
+
+A repository using the rendered rule declares two limits in configuration, nodes per level and label-line length, and
+validates every diagram against them. The numbers and how a label is counted are its own decision. Illustrative options:
+
+| Option  | Nodes per level | Label-line length | Counted as                | Trade-off                                                                 |
+| ------- | --------------: | ----------------: | ------------------------- | ------------------------------------------------------------------------- |
+| tighter |               4 |                20 | characters                | readable on narrow screens; more splitting                                |
+| looser  |               6 |                30 | user-perceived characters | fewer splits and fair counting of non-Latin text; clips in some renderers |
+
+Limits are proxies: clipping depends on glyph widths and layout, which no text check sees, so inspect a new or
+materially changed diagram as rendered.
+
+## Colour in Diagrams
+
+A styled diagram takes its fills, text pairings, and outlines from [Colour Accessibility](color-accessibility.md), and
+its labels and shapes carry every distinction its colours draw.
+
+## Enforcement
+
+An adopter enforces the limits and the palette in its own diagram validator.
+
+## Left to the Adopter
+
+A palette-naming comment in diagram source, and the default flow direction, are left to the adopter: neither changes
+what a reader understands.
 
 ## What Is Excluded
 

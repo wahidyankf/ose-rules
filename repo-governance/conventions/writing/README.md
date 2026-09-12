@@ -1,18 +1,63 @@
 ---
 description: >-
-  Indexes the writing conventions governing how governed documents are expressed and illustrated.
+  Indexes the writing conventions governing how a repository's documents, from governance to READMEs and incident
+  reviews, are expressed, formatted, and illustrated.
 when_to_use: >-
-  Use when writing or illustrating a governed document.
+  Use when writing, formatting, or illustrating any tracked document, or when checking which writing rule applies.
 ---
 
 # Writing Conventions
 
-How governed material is expressed. Structure conventions decide where a document lives; these decide what is inside it.
+How a repository's documents are expressed. Structure conventions decide where a document lives; these decide what is
+inside it, how it is formatted, and how it stays true.
 
-| Convention              | Governs                                           |
-| ----------------------- | ------------------------------------------------- |
-| [Diagrams](diagrams.md) | when a diagram is used and what form it must take |
+| Convention                                                          | Governs                                                             |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| [Agent Vocabulary](agent-vocabulary.md)                             | what harness, agent, subagent, and instruction file each mean       |
+| [Bug Reports](bug-reports.md)                                       | what a bug report checks first and what it contains                 |
+| [Colour Accessibility](color-accessibility.md)                      | which colours may carry meaning, and at what contrast               |
+| [Content Quality](content-quality.md)                               | how prose, headings, formatting, and accessible content are written |
+| [Convention Documents](convention-documents.md)                     | what a convention contains, and when a new one is warranted         |
+| [Diagrams](diagrams.md)                                             | when a diagram is used and what form it must take                   |
+| [Dynamic Collection References](dynamic-collection-references.md)   | how a growing collection is referenced without a stale count        |
+| [Emoji Usage](emoji-usage.md)                                       | whether, where, and with what meaning an emoji may appear           |
+| [Factual Validation](factual-validation.md)                         | how a technical claim is verified before it is published            |
+| [Internal Links](internal-links.md)                                 | how internal links are written and kept resolving                   |
+| [Markdown Indentation](markdown-indentation.md)                     | how lists, frontmatter, and code blocks are indented                |
+| [Markdown Prose Wrap](markdown-prose-wrap.md)                       | the fixed width prose wraps at, and its one exemption               |
+| [Mathematical Notation](mathematical-notation.md)                   | how formulas are written, and where math does not go                |
+| [No Manual Date Metadata](no-manual-date-metadata.md)               | why last-changed dates are left to version control                  |
+| [Post-Mortems](post-mortems.md)                                     | how an incident is named, written up, and followed through          |
+| [README Quality](readme-quality.md)                                 | the rules specific to READMEs: navigation, language, sections       |
+| [Repository Documentation Files](repository-documentation-files.md) | the standard top-level files and immutable decision records         |
+| [Timestamps](timestamps.md)                                         | the format and zone every written timestamp uses                    |
+| [Working Language](working-language.md)                             | the one language authored text uses, and its exceptions             |
 
 ## Directory Map
 
+- [Agent Vocabulary](agent-vocabulary.md)
+- [Bug Reports](bug-reports.md)
+- [Colour Accessibility](color-accessibility.md)
+- [Content Quality](content-quality.md)
+- [Content Quality Modules](content-quality/README.md) — the modules on voice, headings, accessible content, formatting,
+  and time estimates.
+- [Convention Documents](convention-documents.md)
 - [Diagrams](diagrams.md)
+- [Dynamic Collection References](dynamic-collection-references.md)
+- [Emoji Usage](emoji-usage.md)
+- [Factual Validation](factual-validation.md)
+- [Internal Links](internal-links.md)
+- [Markdown Indentation](markdown-indentation.md)
+- [Markdown Prose Wrap](markdown-prose-wrap.md)
+- [Mathematical Notation](mathematical-notation.md)
+- [No Manual Date Metadata](no-manual-date-metadata.md)
+- [Post-Mortems](post-mortems.md)
+- [Post-Mortems Modules](post-mortems/README.md) — the modules on naming and blameless framing, required sections, and
+  severity and action items.
+- [README Quality](readme-quality.md)
+- [README Quality Modules](readme-quality/README.md) — the modules on navigation, plain language, and required sections.
+- [Repository Documentation Files](repository-documentation-files.md)
+- [Repository Documentation Files Modules](repository-documentation-files/README.md) — the modules on contributing and
+  conduct, the security policy, licensing, and changelog, and decision records.
+- [Timestamps](timestamps.md)
+- [Working Language](working-language.md)
