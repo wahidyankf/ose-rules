@@ -1,7 +1,7 @@
 ---
 description: >-
-  Defines what makes a valid delivery seam and fixes the boundary when one plan coordinates work across several
-  repositories.
+  Defines what makes a valid delivery seam, lands each unit as one integration change, and fixes the boundary when one
+  plan coordinates work across several repositories.
 when_to_use: >-
   Use when splitting a plan into delivery units, or when a plan touches more than one repository.
 ---
@@ -32,6 +32,37 @@ first and separately.
 
 Landing them together looks efficient and removes the only opportunity to prove the foundation works on its own. A gate
 introduced alongside the content it is meant to check has never been observed passing or failing for its own reasons.
+
+## One Unit, One Integration Change
+
+A unit reaches the integration branch as one reviewable change, in the delivery mode the adopter records under
+[Portability](../../../conventions/structure/plans/009-portability.md): a pull request from one branch, a direct commit,
+or a local-only commit. Its description justifies the seam and the resulting integration state.
+
+Changes follow unit boundaries, never phases. The last change-producing phase always ends a unit; a setup phase with
+nothing reviewable never ends one alone, and joins the next. Independent units deliver as separate changes in any order;
+dependent units in dependency order, each still its own change. A ready unit never waits for later work.
+
+Beyond the seam criteria above, a boundary adds one requirement, **safe to land**: every applicable gate passes on it,
+and its integration state meets the rule below.
+
+Size never creates or erases a boundary: unrelated purposes split, and an unreviewable unit splits only along a genuine
+seam.
+
+Units land one at a time, each starting only after the previous one lands. Before landing, each refreshes against the
+current integration branch and re-runs its gates; a unit built on an unlanded sibling is reviewed against a state that
+may never exist.
+
+## The Integration State Is an Adopter Decision
+
+The adopter records which state every landed change leaves:
+
+- **Releasable**, where versions are cut from the integration branch: incomplete work lands inert, and a public surface
+  lands complete or not at all. Partial work is exposed later.
+- **Deployable**, where the branch ships live: incomplete behaviour lands behind a disabled flag, both paths tested,
+  with rollout, rollback, and flag removal recorded. Flags cost upkeep and a second path.
+
+Neither permits landing on a promise that later work makes it safe.
 
 ## The Cross-Repository Boundary
 

@@ -1,9 +1,10 @@
 ---
 description: >-
-  Requires every harness-specific agent or skill file to be generated from the canonical artifact, never authored, and
-  fixes what a generator may and may not do.
+  Requires every harness-specific agent or skill file to be generated from the canonical artifact, never authored, fixes
+  what a generator may and may not do, and routes every harness to one canonical instruction body.
 when_to_use: >-
-  Use when adding support for a harness, or when a harness-specific file appears to have been edited directly.
+  Use when adding support for a harness, when a harness-specific file appears to have been edited directly, or when a
+  second instruction file appears.
 ---
 
 # Harness Adapters
@@ -52,3 +53,34 @@ compare, and an edited adapter shows up as a diff rather than as a surprise mont
 
 Nothing reads an adapter to learn about the artifact — not another generator, not a validator, not a person. An adapter
 is an output, and treating it as a source is how two sources appear.
+
+## One Instruction Body
+
+Always-on repository instructions have one canonical, vendor-neutral body: the root `AGENTS.md`. A harness that reads it
+natively needs no further file. A harness that reads another instruction file gets an adapter that imports or routes to
+that body and restates none of it.
+
+Instruction adapters are generated like every other adapter, and every rule above applies to them unchanged.
+
+Every competing always-on source is refused: a nested or override instruction file, a harness rules directory, or an
+instruction field in harness settings. A harness preferring its own file over the canonical body follows that file
+silently, and contributors on other harnesses never see the divergence. Personal and user-global configuration stays
+outside this rule.
+
+An adopter enforces this in its own parity gate: regenerate each instruction adapter, compare the result with the
+committed file, and refuse every competing source.
+
+## Where Vendor-Specific Notes Live
+
+A harness sometimes needs an operational note no other harness needs, such as where its generated files sit. The adopter
+chooses where such notes may live and records the choice:
+
+- **Import only.** The adapter is the import and nothing else. Parity is one exact comparison; the notes move to harness
+  settings or documentation, away from the instructions.
+- **Marked section.** One clearly headed vendor-specific section, kept only in a file declared as a generator input,
+  which the generator adds to that harness's adapter and the parity gate regenerates; never in the canonical body, and
+  never hand-written into the output. A harness reading the canonical body natively takes notes through the import-only
+  route. The section is one more input the generator and gate must recognize, and it is where rules creep in.
+
+Under either option a vendor-specific note is operational only. Anything that changes behaviour belongs in the canonical
+body, where every harness receives it.
