@@ -72,7 +72,7 @@ When no browser can be driven at all, record that the check could not run and wh
 ## API Requests
 
 Every affected API operation receives a direct request against the exact served origin, recorded as
-[API Testing](../api-testing.md) sets out.
+[API Testing](../testing/api-testing.md) sets out.
 
 ## What Does Not Substitute
 

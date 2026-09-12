@@ -53,7 +53,7 @@ instructions, and source comments. For each, enumerate every element it applies 
 
 One failing element violates the invariant, however many others pass. The violation is at least a `HIGH` finding, and a
 `CRITICAL` one where the invariant is a MUST or otherwise meets a `CRITICAL` condition under
-[Criticality Levels](../finding-criticality-and-confidence/001-criticality-levels.md).
+[Criticality Levels](../evidence/finding-criticality-and-confidence/001-criticality-levels.md).
 
 ## 4. Consistent Styling
 
