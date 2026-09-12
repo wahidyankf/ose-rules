@@ -15,7 +15,7 @@ is done well.
 | ----------- | ----------------------------------------------------------------------------------------------------------- |
 | `agents/`   | standards for the coding-agent capabilities a repository publishes                                          |
 | `quality/`  | what proves a change works, what a proof has to look like, and how code is designed, tested, and contracted |
-| `workflow/` | the shape of work itself, rather than its subject                                                           |
+| `workflow/` | the shape of work itself, rather than its subject, from setup through commit and integration                |
 
 ## Directory Map
 
