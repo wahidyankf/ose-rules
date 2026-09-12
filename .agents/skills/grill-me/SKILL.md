@@ -34,6 +34,40 @@ Good grilling is mostly research. The interview is short because the reading was
   of. Without a way to say "none of these" or "let's talk about it", the answer will be one of yours instead of the
   right one.
 
+## Shaping Each Question
+
+- **Two to four substantive options** spanning the realistic answers. One is a confirmation; five or more means the
+  field was never narrowed. Both standing alternatives come on top.
+- **A trade-off written for this decision,** one sentence each. "Simpler" fits every option and separates none.
+- **The recommendation marked in its own label,** with a reason from the repository or a stated constraint, never left
+  to position.
+- **One decision per question, asked in turn.** Ask a constraining decision first, so the next options reflect its
+  answer. A bundled question records a second decision nobody made.
+
+## Answers Off the List
+
+A written-in answer weighs the same as a listed one, and any branch it opens is questioned before moving on. Choosing
+discussion sets the options aside until the person is ready to choose.
+
+## The Asking Mechanism
+
+Use the harness's native selector whenever the session can ask interactively, since it returns a structured choice. Its
+free-text entry counts as the open alternative only where displayed. Without a selector, write the same complete
+question as text and wait.
+
+A selector too small for the question never trims an option or an alternative: group the options into two branches, ask
+for a branch, then ask within it, each stage recommending one.
+
+## Asked From a Delegated Agent
+
+A delegated agent may have no way to reach the person, so it never asks. It returns each open decision to its caller,
+with a stable identifier, the question, every option with an identifier and trade-off, and the recommendation with its
+reason, then stops before dependent work.
+
+The caller passes each answer back unchanged: the selected identifier, or the written-in text as given. Before relying
+on answers, the agent confirms each decision is answered once, each identifier is one it offered, and no written-in
+answer is empty; otherwise it asks for a corrected answer instead of repairing one.
+
 ## Resolving
 
 Every material branch closes. A branch left open is not deferred to a better moment — it is deferred to whoever hits it

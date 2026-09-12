@@ -39,6 +39,43 @@ does.
 A scenario asserting several things fails as a unit and reports nothing about which part broke. Splitting costs a few
 lines and buys a diagnosis.
 
+## Concrete Values
+
+State actual values: `Given a basket of 4 items worth 80.00`, `When the voucher "TENOFF" is redeemed`,
+`Then the amount due is 70.00`. A basket "with some items" and an amount that "goes down" pass against nearly any
+implementation, wrong ones included. When one behaviour holds across several inputs, use a scenario outline; each
+examples row runs as its own scenario, so keep only the inputs that change the outcome.
+
+## Each Success Has a Failing Twin
+
+Criteria covering only the path where everything works leave the plan silent about the rest. For each success scenario,
+ask which rule could refuse the same action, and write that case too:
+
+- **create:** a missing required field shows its error and creates nothing;
+- **list:** with nothing stored, the empty state appears;
+- **update:** an invalid value is refused and the old one stays;
+- **delete:** a record already gone is reported and nothing changes;
+- **restricted action:** another role is refused and told why; and
+- **dependency:** when it does not answer, the failure is shown and input is kept.
+
+Boundaries count too: the last accepted value and the first refused one are two scenarios.
+[Discovery and Scenarios](../../../repo-governance/development/quality/testing/behaviour-driven-development/001-discovery-and-scenarios.md)
+surfaces such examples; this check confirms none was dropped.
+
+## Behaviour, Not Clicks
+
+Write what the actor does and sees, such as `When the member signs in with a valid password`, not the controls used.
+Steps naming selectors, positions, or press sequences break on a redesign that leaves behaviour untouched. Use the
+present tense, so each scenario states how the system behaves.
+
+## Repeated Steps Are an Adopter Decision
+
+Whether a scenario may repeat `When` and `Then` as one continuous journey is recorded once, under
+[Discovery and Scenarios](../../../repo-governance/development/quality/testing/behaviour-driven-development/001-discovery-and-scenarios.md),
+never per scenario. The clause rules above describe one action; under the journey form they apply to each action and the
+`Then` that follows it, so every result still names its cause and the journey checks one logical outcome. Never split a
+recorded journey only to reach one `When`, nor join unrelated behaviours into one.
+
 ## Stable Identifiers
 
 Each scenario carries an identifier that does not change when the text is edited or the list is reordered. Delivery
