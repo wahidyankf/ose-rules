@@ -1,0 +1,14 @@
+---
+description: >-
+  Traces each changed Gherkin scenario, per applicable layer, through its bindings to the code and evidence behind it,
+  and returns one status row per scenario and layer without editing or running anything.
+mode: subagent
+permission:
+  read: allow
+  glob: allow
+  grep: allow
+---
+
+Before acting, read the complete canonical agent definition at the repository-root path
+.agents/agents/gherkin-implementation-reviewer.md and follow it as authoritative. If it cannot be read, stop and report
+the missing path.
