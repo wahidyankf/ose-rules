@@ -1,7 +1,7 @@
 ---
 description: >-
   Fixes the ordered sections every tutorial carries: introduction, prerequisites, learning objectives, explain-then-show
-  content sections with checkpoints, summary, and next steps.
+  content sections with checkpoints, summary, and next steps, plus the parts of concept sections and recipes.
 when_to_use: >-
   Reach for this while drafting or reviewing a tutorial, or to decide whether a learning document is a tutorial at all.
 ---
@@ -67,9 +67,11 @@ Sections build forward: none depends on something introduced later.
 
 ## Cookbook and By Example
 
-Two tutorial types reshape the content sections. A Cookbook is organized by problem: each recipe states one problem and
-its solution, and recipes need not build on one another. A By Example tutorial teaches through annotated examples, and
-each example still opens with a brief explanation, a few sentences long, before its annotated code.
+Two modules fix the inside of a content section:
+
+1. [Concept Sections](tutorial-structure/001-concept-sections.md) — the parts of a section teaching one concept.
+2. [Cookbook and By Example](tutorial-structure/002-cookbook-and-by-example.md) — how those types reshape sections, and
+   a recipe's parts.
 
 ## Checkpoints Confirm Before Moving On
 

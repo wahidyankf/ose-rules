@@ -26,6 +26,7 @@ inside it, how it is formatted, and how it stays true.
 | [Markdown Indentation](markdown-indentation.md)                     | how lists, frontmatter, and code blocks are indented                        |
 | [Markdown Prose Wrap](markdown-prose-wrap.md)                       | the fixed width prose wraps at, and its one exemption                       |
 | [Mathematical Notation](mathematical-notation.md)                   | how formulas are written, and where math does not go                        |
+| [Nested Code Fences](nested-code-fences.md)                         | how an example holding a fenced block is itself fenced                      |
 | [No Manual Date Metadata](no-manual-date-metadata.md)               | why last-changed dates are left to version control                          |
 | [Post-Mortems](post-mortems.md)                                     | how an incident is named, written up, and followed through                  |
 | [README Quality](readme-quality.md)                                 | the rules specific to READMEs: navigation, language, sections               |
@@ -54,6 +55,7 @@ inside it, how it is formatted, and how it stays true.
 - [Markdown Indentation](markdown-indentation.md)
 - [Markdown Prose Wrap](markdown-prose-wrap.md)
 - [Mathematical Notation](mathematical-notation.md)
+- [Nested Code Fences](nested-code-fences.md)
 - [No Manual Date Metadata](no-manual-date-metadata.md)
 - [Post-Mortems](post-mortems.md)
 - [Post-Mortems Modules](post-mortems/README.md) — the modules on naming and blameless framing, required sections, and
@@ -66,6 +68,10 @@ inside it, how it is formatted, and how it stays true.
 - [Rule Definition](rule-definition.md)
 - [Timestamps](timestamps.md)
 - [Tutorial Structure](tutorial-structure.md)
+- [Tutorial Structure Modules](tutorial-structure/README.md) — the modules on concept sections, and on Cookbook and By
+  Example shapes.
 - [Tutorial Types](tutorial-types.md)
+- [Tutorial Types Modules](tutorial-types/README.md) — the modules on why the ranges overlap, and on type and
+  progression.
 - [Vendor-Neutral Governance](vendor-neutral-governance.md)
 - [Working Language](working-language.md)
