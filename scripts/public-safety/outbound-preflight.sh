@@ -287,10 +287,27 @@ bootstrap_trufflehog() {
 	[[ -x "$TRUFFLEHOG_BIN" ]] || scan_error "the scanner is not executable after extraction"
 }
 
+input_label() {
+	# input_label <scanner-reported-path>
+	#
+	# The scanner reports the file it read, which is a staged copy under this
+	# run's temporary directory: a machine-specific absolute path that names
+	# nothing a reader can act on. Only the file name is kept, and a staged
+	# copy's `input-<i>` becomes the label its input was given. No directory
+	# prefix is compared, because the scanner normalises the path it was handed
+	# (a `TMPDIR` ending in `/` leaves `//` in it) before reporting it.
+	local name=${1##*/}
+	if [[ "$name" =~ ^input-([0-9]+)$ && -n "${input_labels[${BASH_REMATCH[1]}]+set}" ]]; then
+		printf '%s' "${input_labels[${BASH_REMATCH[1]}]}"
+	else
+		printf '%s' "$name"
+	fi
+}
+
 # Raw stdout flows only through this pipe into jq. No raw temporary file, no
 # artifact, no debug log. jq emits three fields; nothing else survives.
 credential_scan() {
-	# credential_scan <directory> <path-prefix-to-strip>
+	# credential_scan <directory>
 	local dir=$1 raw_err rc records detector path n
 	raw_err="$WORK/scanner.err"
 
@@ -319,8 +336,7 @@ credential_scan() {
 
 	while IFS=$'\t' read -r detector path n; do
 		[[ -z "${detector:-}" ]] && continue
-		path=${path#"$dir/"}
-		emit_finding "$detector" "$(screen_path "$path")" "${n:-0}"
+		emit_finding "$detector" "$(screen_path "$(input_label "$path")")" "${n:-0}"
 	done <<<"$records"
 }
 
