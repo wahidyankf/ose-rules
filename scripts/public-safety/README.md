@@ -39,7 +39,8 @@ because this particular commit did not introduce it.
 
 ```bash
 scripts/public-safety/outbound-preflight.sh --surface <surface> \
-  [--text <string>]... [--file <path>]... [--terms <path>]
+  [--text <string>]... [--file <path>]... [--file-list <path>]... [--names-list <path>]... \
+  [--terms <path>]
 ```
 
 | Exit | Meaning    | What it means for publication  |
@@ -114,18 +115,20 @@ bash scripts/public-safety/tests/run.sh            # all cases
 bash scripts/public-safety/tests/run.sh 080        # one case by name fragment
 ```
 
-| Case                                     | Asserts                                                     |
-| ---------------------------------------- | ----------------------------------------------------------- |
-| `010-missing-term-set`                   | an absent term set blocks                                   |
-| `020-empty-term-set`                     | empty and comments-only term sets block                     |
-| `030-malformed-term-set`                 | short lines, unknown class or kind, bad regex, credentials  |
-| `040-matching-content`                   | literal, regex, and name matches all block                  |
-| `050-clean-content`                      | clean input passes, including against the tracked shape set |
-| `060-non-disclosing-output`              | a blocked run reproduces neither credential nor term        |
-| `070-surface-coverage`                   | all seven leaf surfaces accept, block, and reject unknowns  |
-| `080-tracked-shape-set`                  | every tracked shape matches, and ordinary text still passes |
-| `090-surface-dispatch`                   | a missing, empty, or unknown gate surface is a scan error   |
-| `100-credential-finding-names-its-input` | a credential finding names its input, not a temporary copy  |
+| Case                                     | Asserts                                                                        |
+| ---------------------------------------- | ------------------------------------------------------------------------------ |
+| `010-missing-term-set`                   | an absent term set blocks                                                      |
+| `020-empty-term-set`                     | empty and comments-only term sets block                                        |
+| `030-malformed-term-set`                 | short lines, unknown class or kind, bad regex, credentials                     |
+| `040-matching-content`                   | literal, regex, and name matches all block                                     |
+| `050-clean-content`                      | clean input passes, including against the tracked shape set                    |
+| `060-non-disclosing-output`              | a blocked run reproduces neither credential nor term                           |
+| `070-surface-coverage`                   | all seven leaf surfaces accept, block, and reject unknowns                     |
+| `080-tracked-shape-set`                  | every tracked shape matches, and ordinary text still passes                    |
+| `090-surface-dispatch`                   | a missing, empty, or unknown gate surface is a scan error                      |
+| `100-credential-finding-names-its-input` | a credential finding names its input, not a temporary copy                     |
+| `110-file-list-inputs`                   | listed files and names are screened and attributed; a bad list is a scan error |
+| `120-large-tree-dispatch`                | a tracked tree larger than the host's argument limit is still screened         |
 
 Every probe value is assembled at run time from fragments, so no string this repository's own gate would flag exists in
 any test file — a test that hardcoded one would block the commit that added it. `assert_absent` reports only a length on
