@@ -66,6 +66,13 @@ A script that reads or writes JSON checks it with a real parser, such as `jq`, a
 lacks the field it relies on. Treating JSON as text to search breaks on whitespace, key order, and escaping, and it
 fails by quietly extracting the wrong value rather than by stopping.
 
+## Output Inspection Must Not Interrupt Mutation
+
+A state-changing command must finish independently of any reader allowed to stop before consuming all output. Capture
+the command's output, wait for its exit, then inspect the captured result. Piping a mutation directly into `head`,
+`grep -m`, or another early-exiting reader can close the pipe and interrupt a partly completed change. Review enforces
+this rule; no portable linter can identify every state-changing producer.
+
 ## Enforcement
 
 Review applies these rules. An adopter enforces the mechanical parts in its own hook or pipeline: the interpreter line,

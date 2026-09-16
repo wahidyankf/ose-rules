@@ -20,6 +20,11 @@ nothing. Name the probe target from the guard's own expected set, and record the
 [Absence and Completeness](../plan-anti-hallucination/002-absence-and-completeness.md) holds the matching positive
 control for a search.
 
+**A preservation comparison declares its normalization contract.** Name every field the comparison transforms or omits,
+the reason for each normalization, and the contract fields that remain unchanged. An unnamed fold can erase the evidence
+or the difference under test. This is an evidence-review obligation, unenforced mechanically because the admissible
+normalization depends on the contract being proved.
+
 **A scan asserts where it stopped.** A script that walks forward to the last matching line will run past the block it
 meant to end at, into another block that happens to match. Stop at the end of the contiguous block and assert its
 expected size: for a table, a header, a separator, and the counted rows.

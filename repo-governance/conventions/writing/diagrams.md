@@ -17,34 +17,29 @@ A repository declares exactly one authoring rule for conceptual diagrams and app
 | rendered   | a Mermaid diagram carrying both an accessible title and an accessible description |
 | plain-text | an ASCII diagram with prose immediately beside it, and no Mermaid                 |
 
-Both are defensible. Rendered diagrams read better where they render and are opaque where they do not. Plain-text
-diagrams read identically everywhere, including in a terminal, a diff, and a plain-text mail client, at the cost of what
-they can express.
-
-What is not defensible is having both in one repository, because a reader then cannot predict which they will get and
-tooling cannot check either rule.
+Rendered diagrams read better where supported but are opaque elsewhere. Plain text reads consistently in terminals,
+diffs, and mail at the cost of expressiveness. Mixing them is invalid: readers and tooling cannot predict which rule
+applies.
 
 ## Accessibility Is Not Optional in Either Form
 
-A rendered diagram carries a title and a description. Not a caption repeating the title — a description of what the
-diagram shows, for a reader who will never see it. That includes every automated check and every text search.
+A rendered diagram carries a title and a description of what it shows, not a caption repeating the title. Mechanically
+generated accessibility prose must be reviewed for readable word boundaries, including around dotted names. This
+semantic review is unenforced by decision because no portable mechanical rule covers every language.
 
-A plain-text diagram carries prose beside it doing the same work. ASCII art is not self-describing merely because it is
-text; a box-and-arrow drawing is as opaque to a screen reader as an image.
+A plain-text diagram carries equivalent prose beside it. ASCII art is not self-describing merely because it is text.
 
 ## When a Diagram Earns Its Place
 
-Draw a diagram when relationships, sequence, state, or hierarchy are materially easier to follow drawn than written. A
-simple fact belongs in prose, an exact mapping in a table. A diagram that decorates, or repeats a neighbouring table
-less precisely, costs attention and returns nothing.
+Draw relationships, sequence, state, or hierarchy only when a diagram is materially clearer. Put simple facts in prose
+and exact mappings in tables; do not decorate or repeat a table less precisely.
 
 Update a diagram in the same change as the structure it depicts.
 
 ## One Concept per Diagram
 
-A diagram in either form shows one idea. Split it when it combines distinct concepts, draws a comparison as side-by-side
-groups, or exceeds a declared size limit, and give each part its own short heading. The size trigger applies wherever a
-repository declares limits. An oversized diagram renders too small to read on a narrow screen and too dense anywhere.
+A diagram shows one idea. Split distinct concepts, side-by-side comparisons, or content exceeding a declared size limit,
+and give each part a short heading. Oversized diagrams become unreadable on narrow screens and dense elsewhere.
 
 ## Declared Size Limits
 
@@ -56,8 +51,8 @@ validates every diagram against them. The numbers and how a label is counted are
 | tighter |               4 |                20 | characters                | readable on narrow screens; more splitting                                |
 | looser  |               6 |                30 | user-perceived characters | fewer splits and fair counting of non-Latin text; clips in some renderers |
 
-Limits are proxies: clipping depends on glyph widths and layout, which no text check sees, so inspect a new or
-materially changed diagram as rendered.
+Limits are proxies because clipping depends on glyph widths and layout; inspect every new or materially changed diagram
+as rendered.
 
 ## Colour in Diagrams
 
@@ -68,10 +63,13 @@ its labels and shapes carry every distinction its colours draw.
 
 An adopter enforces the limits and the palette in its own diagram validator.
 
-## Left to the Adopter
+## Before Rewriting Existing Diagrams
 
-A palette-naming comment in diagram source, and the default flow direction, are left to the adopter: neither changes
-what a reader understands.
+Before a conceptual-diagram rewrite, screen every source line the rewrite will republish through the repository's
+outbound-safety boundary. An edited line returns on the added side even when its sensitive text already existed. The
+outbound screen over the frozen pre-rewrite selection covers this rule.
+
+Palette-naming comments and default flow direction remain adopter decisions because neither changes meaning.
 
 ## What Is Excluded
 
@@ -89,9 +87,5 @@ exists to keep.
 
 ## Reversals Are Recorded
 
-A repository changing its authoring rule records the change, its reason, and its date, and migrates the existing
-diagrams in the same decision.
-
-Applying a reversal silently produces a repository in two styles with no explanation, and the next person reads that as
-carelessness rather than as a decision. Two mixed styles are also the state in which nobody can tell which rule is
-current, so both keep being used.
+A repository changing its authoring rule records the change, reason, and date, and migrates existing diagrams in the
+same decision. A silent reversal leaves two styles and no discoverable authority, so both keep being used.
