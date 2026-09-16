@@ -52,3 +52,7 @@ instead.
 
 A loop closes with `TARGET_PASS`, `EXISTING_PASS`, or `SAFE_FAIL`, recorded in its row. It never closes by starting
 another run, and no result recursively opens a new loop.
+
+The operation that reaches the terminal outcome writes that result to the registered row in the same step. A result kept
+in conversation or deferred to a later sweep is indistinguishable from an open loop after interruption. Ledger
+reconciliation covers this rule by refusing a terminal operation whose row remains nonterminal.

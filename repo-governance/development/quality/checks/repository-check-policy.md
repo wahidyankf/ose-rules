@@ -65,6 +65,11 @@ after the commit asks for an amendment instead.
 What each surface runs is written in one place, the repository's declared gate list, and never only inside a hook file
 that nobody reads.
 
+Every validator the repository ships is assigned to a named gate surface or explicitly excluded with a reason. A
+validator with neither disposition looks authoritative but never runs. The adopter's repository-configuration check
+compares its shipped validator inventory with the declared gates and exclusions; the catalog defines the invariant but
+does not own that inventory.
+
 ## Removing One
 
 A check is removed the way it was added: with evidence. Name what now owns each behaviour it had, or state the ground on

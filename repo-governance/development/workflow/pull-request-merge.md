@@ -43,6 +43,12 @@ present each precondition's status and the evidence behind it.
 The repository records its landing method. A rebase keeps the branch's [thematic commits](thematic-commits.md), a squash
 collapses them, and a merge commit is unavailable where [Integration Path](integration-path.md) keeps history linear.
 
+## Landing Identity
+
+A rebase or squash landing must prove that the landed tree equals the reviewed pull-request head tree. Reconciliation
+records both tree identifiers and refuses cleanup when either is absent or they differ. Commit identifiers cannot prove
+this for rewritten history. The post-merge integration record covers the rule by failing on a missing or unequal tree.
+
 ## No Bypass Without Named Permission
 
 Never merge over a failing or pending required check, an unresolved conversation, or branch protection, and never use an
