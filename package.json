@@ -10,8 +10,9 @@
   },
   "scripts": {
     "prepare": "husky",
-    "format": "prettier --write .",
-    "check:complete": "./rhino gate run --surface ci"
+    "format": "./hippo run --class transactional --resource-tier standard --disk-path . -- prettier --write .",
+    "check:hippo-consumer": "./hippo run --class ephemeral --resource-tier light --disk-path . -- ./scripts/check-hippo-consumer.sh",
+    "check:complete": "npm run check:hippo-consumer && ./hippo run --class ephemeral --resource-tier heavy --disk-path . -- ./rhino gate run --surface ci"
   },
   "devDependencies": {
     "husky": "^9.1.7",

@@ -9,9 +9,9 @@ when_to_use: >-
 
 # Resource-Aware Development
 
-Scoped to adopters that run local compute through an admission guard: a wrapper that starts a command only when shared
-host capacity and current pressure allow, so independent work on one machine shares it instead of fighting over it. The
-guard is an upstream tool. This standard governs how a repository consumes it.
+Scoped to adopters that run local compute through HIPPO: a checksum-pinned wrapper that starts a command only when
+shared host capacity and current pressure allow, so independent work on one machine shares it instead of fighting over
+it. HIPPO is an upstream tool. This standard governs how a repository consumes it.
 
 This standard implements [Explicit Over Implicit](../../principles/explicit-over-implicit.md),
 [Root Cause Orientation](../../principles/root-cause-orientation.md),
@@ -31,11 +31,11 @@ This standard implements [Explicit Over Implicit](../../principles/explicit-over
 
 ## Outcomes
 
-| Outcome         | Means                                                                  | Response                                                                                             |
-| --------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| deferred        | capacity, queue order, or host pressure does not admit the command yet | let the deferral finish, then retry that same invocation; never start a duplicate or retry in a loop |
-| storage         | free space is insufficient                                             | free storage safely, then retry                                                                      |
-| invalid request | the request cannot be satisfied as stated                              | correct the command's configuration or its requested capacity, then run it again                     |
+| Outcome         | Means                                                     | Response                                                                                     |
+| --------------- | --------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| exit `75`       | the receipt classifies a never-started or stopped payload | requeue only `never-started`; apply payload-specific recovery to any started or shed outcome |
+| storage         | free space is insufficient                                | free storage safely, then retry                                                              |
+| invalid request | the request cannot be satisfied as stated                 | correct the command's configuration or its requested capacity, then run it again             |
 
 The guard signals each outcome in its own way; the signal belongs to the tool, not to this standard.
 
@@ -53,6 +53,10 @@ shared state fails closed, and recovery follows the guard's own guidance.
 
 The class follows from what the work is, never from which class is admitted sooner.
 
+Choose a resource tier independently: `light` for narrow static checks, `standard` for ordinary checks and writers, and
+`heavy` for full builds, full suites, browser suites, and complete gates. Schema 3 keeps one FIFO waiter and launches
+the payload at most once.
+
 ## Parallelism
 
 Independent commands may seek admission at the same time; the guard decides what each receives. Serialize two commands
@@ -65,6 +69,10 @@ different repositories or projects is not, alone, a reason to serialize.
   path that cannot occur there.
 - Guard records and evidence hold capacity and process-health measurements only, never command arguments, repository
   paths or origins, credentials, file contents, or user data.
+- Each repository tracks a privacy-safe `hippo.identity.json`. A contained worktree keeps that source and may add
+  `--tag checkout=worktree --tag plan=<slug>`. Every checkout uses the same default root; `HIPPO_ROOT` is for isolated
+  tests only. If the worktree has no ignored `hippo.local.json`, its wrapper uses the primary checkout's copy. Operators
+  run `./hippo status`, `./hippo watch --source <source>`, and `./hippo history --since 30d --source <source>` directly.
 - Tests of guard behaviour, such as admission and stopping work under pressure, use synthetic state and simulated
   pressure, never real host pressure.
 
