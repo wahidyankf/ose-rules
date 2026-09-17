@@ -40,8 +40,9 @@ and changes flow only from the trunk to them.
   commits in, complete [Integration Diff Review](integration-diff-review.md).
 - **Linear history.** Never merge the trunk into a task branch.
 - **One worktree per task, reused.** A plan or task provisions at most one worktree and reuses it for every delivery
-  unit it yields. Units land in turn: land one, sync, branch the next in the same directory. A second worktree for the
-  same work is a defect. A new worktree is bootstrapped per [Checkout Bootstrap](checkout-bootstrap.md).
+  unit it yields at `{repository location}/worktrees/<task>`. Units land in turn: land one, sync, branch the next in the
+  same directory. A sibling `*-worktrees/` path or a second worktree for the same work is a defect. A new worktree is
+  bootstrapped per [Checkout Bootstrap](checkout-bootstrap.md).
 - **One pull request per delivery unit,** cut at a seam meeting
   [Delivery Seams and Ownership](../agents/planning-capabilities/005-delivery-seams-and-ownership.md), opened as a
   draft, described per [Pull Request Body](pull-request-body.md).
@@ -52,15 +53,11 @@ and changes flow only from the trunk to them.
   say so, rather than deleting the evidence.
   [Dev Artifact Clean-Up](../../workflows/maintenance/dev-artifact-clean-up.md) proves it.
 
-## Adopter Decision: Worktree Location
+## Worktree Location
 
-| Location                                       | Benefit                                                       | Cost                                                                                                        |
-| ---------------------------------------------- | ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| inside the repository, in an ignored directory | one place to look, and paths resolve from the repository root | a tool that walks upward for a version-control root can find the enclosing checkout and record its revision |
-| beside the checkout, in a sibling directory    | no repository sits above the worktree, so upward walks stop   | worktree paths leave the repository root, and every machine needs that sibling directory                    |
-
-A build tool that walks upward to find its version-control root settles the choice for the sibling location. Record the
-location, and keep an inside one ignored so no worktree enters history.
+Branch-route worktrees live only at `{repository location}/worktrees/<task>`, and the repository ignores `/worktrees/`.
+Tools, guards, and bootstrap commands run from that checkout. A sibling `*-worktrees/` location is forbidden because it
+escapes the repository's discoverable lifecycle and makes command-center cleanup ambiguous.
 
 ## Why the Server Enforces It
 

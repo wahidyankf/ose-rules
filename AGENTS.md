@@ -1,13 +1,11 @@
 # ose-rules
 
-A reference catalog of governance, planning, agent, and skill artifacts that other repositories adopt one named artifact
-at a time, by explicit request, and never automatically. See [README.md](README.md) for what the catalog is and how
-adoption works.
+A portable catalog of governance, planning, agent, and skill artifacts adopted one at a time by explicit request. See
+[README.md](README.md) for the adoption model.
 
 ## What This Repository Is For
 
-Everything here is written to be copied into a repository that is not this one. That single fact decides most of the
-rules below: an artifact that only makes sense in its original home is not publishable, however correct it is.
+Everything here is copied into other repositories. An artifact meaningful only in its original home is not publishable.
 
 ## Publishing Rules
 
@@ -20,12 +18,9 @@ rules below: an artifact that only makes sense in its original home is not publi
 
 ## Public Safety
 
-This repository is published, so file contents, file names, commit messages, branch names, and release text are all
-outbound material. `scripts/public-safety/` screens every one of them, and it is the first gate on every surface.
-
-A finding blocks. There is no allowlist, suppression, or bypass, and a scan that failed to run never counts as a pass.
-Replace an unsafe example with a semantic placeholder — `<api-token>`, `<private-host>`, `<repository-path>`; if that
-destroys the artifact's meaning, the artifact does not belong here. See
+All file content, names, commits, branches, and release text are outbound. `scripts/public-safety/` screens them first.
+Any finding or failed scan blocks without allowlists or bypasses. Replace unsafe examples with semantic placeholders; if
+that destroys their meaning, they do not belong here. See
 [scripts/public-safety/README.md](scripts/public-safety/README.md).
 
 ## Authoring Rules
@@ -69,6 +64,9 @@ npm run check:complete
 npm run format       # rewrite what the format gate would reject
 ```
 
+Compute-bearing scripts carry the checksum-pinned `./hippo` guard; invoke them directly and never double-wrap them.
+Inspect queue, admission, and bounded history with unguarded `./hippo status`, `./hippo watch`, and `./hippo history`.
+
 `repo-config.yml` is the authority on what runs and where, and `./rhino gate run --surface <surface>` is the only thing
 that reads it. The hooks, the hosted workflow, and `check:complete` all dispatch that one registry rather than
 transcribing it, so a gate added to the config reaches every surface it declares without a second edit. Each gate
@@ -79,6 +77,7 @@ before extracting and the executable's own reported identity before running, and
 whatever `rhino` is on `PATH`. Exit `78` is the wrapper refusing; every other code is RHINO's. A correction to the pin
 ships as a new version, never as an edit to what a published tag resolved to.
 
-Delivery is worktree to pull request to merge, then cleanup. The hosted workflow runs on every push and every pull
-request; it is defence in depth rather than the primary control, because a local hook can be skipped and a hosted check
-cannot.
+Delivery worktrees live only at `{repository location}/worktrees/<task>`; sibling `*-worktrees/` directories are
+forbidden. Delivery is worktree to pull request to merge, then cleanup. The hosted workflow runs on every push and every
+pull request; it is defence in depth rather than the primary control, because a local hook can be skipped and a hosted
+check cannot.

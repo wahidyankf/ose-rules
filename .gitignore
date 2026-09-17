@@ -1,5 +1,8 @@
 node_modules/
 
+# Machine-specific HIPPO policy; the tracked example is the portable contract.
+/hippo.local.json
+
 # Task worktrees live inside the checkout and are never part of a commit.
 worktrees/
 
