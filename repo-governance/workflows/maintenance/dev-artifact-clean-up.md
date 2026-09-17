@@ -28,6 +28,11 @@ as a periodic sweep.
    task branches, task worktrees, and any tooling installed only for this work. Include regenerable build output. No
    real environment file, per [Agent Environment-File Access](../../conventions/security/agent-env-file-access.md), or
    other local secret is ever listed: nothing rebuilds one.
+
+   Never delete a secret-bearing file or directory from the primary `main` checkout. An exact ignored, nonshared cache
+   such as `.fvm-cache/` is scratch after recorded regeneration, non-use, and secret-free evidence, regardless of
+   origin.
+
 2. **Classify each one:**
 
    | Class    | Disposition                                                                                                                                                                                                                                        |
