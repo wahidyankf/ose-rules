@@ -7,12 +7,24 @@ repo_root=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
 jq -e '.schemaVersion == 1 and .source == "ose-rules"' "$repo_root/hippo.identity.json" >/dev/null
 jq -e '.schemaVersion == 3 and .coordination.tiers.light and .coordination.tiers.standard and .coordination.tiers.heavy' \
   "$repo_root/hippo.local.json.example" >/dev/null
-grep -Fxq 'version=v0.6.1' "$repo_root/hippo.lock"
+grep -Eq '^version=v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$' "$repo_root/hippo.lock"
+grep -Eq '^commit=[0-9a-f]{40}$' "$repo_root/hippo.lock"
 grep -Fq 'HIPPO_DEFAULT_IDENTITY' "$repo_root/hippo"
 grep -Fq -- '--path-format=absolute --git-common-dir' "$repo_root/hippo"
 grep -Eq '^/?worktrees/$' "$repo_root/.gitignore"
 grep -Fq '{repository location}/worktrees/<task>' \
   "$repo_root/repo-governance/development/workflow/integration-path.md"
+resource_rule="$repo_root/repo-governance/development/workflow/resource-aware-development.md"
+grep -Fq 'exit `75`' "$resource_rule"
+grep -Fq 'schema-1 `never-started` receipt' "$resource_rule"
+grep -Fq 'exit `76`' "$resource_rule"
+grep -Fq 'never retry blindly' "$resource_rule"
+grep -Fq 'legacy client without distinct exit `76`' "$resource_rule"
+grep -Fq 'read the Hippo repository at the commit' "$resource_rule"
+grep -Fq 'in `hippo.lock`, then align' "$resource_rule"
+grep -Fq 'worktree-local wrapper' "$resource_rule"
+grep -Fq './hippo status' "$resource_rule"
+grep -Fq '30 days' "$resource_rule"
 
 tier_findings=$(git -C "$repo_root" grep -n -E \
   '\./hippo run --class (ephemeral|service|transactional)' -- \
