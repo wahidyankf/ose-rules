@@ -13,14 +13,14 @@ Everything here is copied into other repositories. An artifact meaningful only i
   the rule and let the adopter record which of its own things the rule applies to.
 - **Publish ready work only.** A repository adopting from this catalog must never discover that a rule was a draft.
   Something experimental belongs in the repository experimenting with it.
-- **Never break a published contract quietly.** A released tag is immutable; a correction ships as a new version,
-  because an adopter recorded the old one in a commit trailer and that record has to stay true.
+- **Publish through `main` only.** Do not create a repository version tag or GitHub Release. An adopter resolves the
+  published `main` head to a full commit SHA, and published history is never rewritten.
 
 ## Public Safety
 
-All file content, names, commits, branches, and release text are outbound. `scripts/public-safety/` screens them first.
-Any finding or failed scan blocks without allowlists or bypasses. Replace unsafe examples with semantic placeholders; if
-that destroys their meaning, they do not belong here. See
+All file content, names, commits, branches, pull-request text, and published logs are outbound. `scripts/public-safety/`
+screens them first. Any finding or failed scan blocks without allowlists or bypasses. Replace unsafe examples with
+semantic placeholders; if that destroys their meaning, they do not belong here. See
 [scripts/public-safety/README.md](scripts/public-safety/README.md).
 
 ## Authoring Rules

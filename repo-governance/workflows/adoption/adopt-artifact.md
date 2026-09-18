@@ -1,7 +1,7 @@
 ---
 name: adopt-artifact
 description: >-
-  Copies explicitly named catalog artifacts into a target repository, resolving the source version first and recording
+  Copies explicitly named catalog artifacts into a target repository, resolving the source commit first and recording
   provenance in the adopting commit.
 when_to_use: >-
   Use only after a user names an artifact or bounded family to adopt into a specific repository.
@@ -18,14 +18,14 @@ the option and its trade-off, and must stop there.
 
 ## Sequence
 
-1. **Resolve the source before editing anything.** If the request names a version, use it. If it does not:
+1. **Resolve the source before reading or editing anything.** A version, tag, or moving branch name is not a source. If
+   the request names a commit, require a full SHA reachable from the canonical remote's published `main`. Otherwise:
 
-   1. list the catalog's releases;
-   2. discard prereleases;
-   3. select the highest stable semantic version;
-   4. resolve that tag to its full commit SHA;
-   5. show the resolved source; and
-   6. stop if resolution is ambiguous or cannot be verified.
+   1. resolve the canonical remote's default branch and require it to be `main`;
+   2. resolve its published head to a full 40-character commit SHA;
+   3. verify that the commit and every named artifact can be read;
+   4. show the resolved source; and
+   5. stop if any identity, reachability, or content check is ambiguous or unverifiable.
 
 2. **Read the target repository's instructions.** Adoption is intent-first: the artifact is mapped into local ownership,
    not pasted into place.
@@ -40,11 +40,11 @@ the option and its trade-off, and must stop there.
    ```text
    OSE-Rules-Source: <artifact-path>
    OSE-Rules-Source: <second-artifact-path>
-   OSE-Rules-Version: <stable-tag>
    OSE-Rules-Commit: <full-commit-sha>
    ```
 
-   `OSE-Rules-Source` repeats once per artifact. Version and commit appear exactly once.
+   `OSE-Rules-Source` repeats once per artifact. `OSE-Rules-Commit` appears exactly once. No catalog version trailer is
+   recorded.
 
 ## Exit
 

@@ -11,12 +11,14 @@ when_to_use: >-
 
 ## Entry
 
-A user asks how a repository compares with the catalog. The request may name a scope, a catalog version, or specific
+A user asks how a repository compares with the catalog. The request may name a scope, a full catalog commit, or specific
 artifact paths; all three are optional.
 
 ## Sequence
 
-1. **Resolve the scope.** No scope means every catalog artifact. No version means the latest stable release.
+1. **Resolve the scope and source.** No scope means every catalog artifact. A named commit must be a full SHA reachable
+   from the canonical remote's published `main`; when omitted, resolve that published `main` head to a full SHA. Stop
+   before comparison if the source is ambiguous or unverifiable.
 2. **Read the target repository's own instructions first.** A local rule that deliberately contradicts a catalog
    artifact is a decision, not a deficiency, and an assessment that does not read those instructions will misreport it.
 3. **Compare by intent, not by text.** The question is whether the repository already achieves what the artifact is for

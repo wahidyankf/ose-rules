@@ -55,26 +55,31 @@ Feature: Alignment assessment and artifact adoption
     Then only those artifacts and the local integration files they require are changed
     And unrelated improvements noticed during adoption are reported rather than applied
 
-  Scenario: An omitted version resolves to the latest stable tag
-    Given an adoption request that names no catalog version
-    And the catalog has released v0.1.0, v0.2.0, and v0.3.0-rc.1
+  Scenario: An omitted commit resolves to the published main head
+    Given an adoption request that names no catalog commit
+    And the canonical remote's published main head resolves to a full commit SHA
     When adopt-artifact resolves its source
-    Then it selects v0.2.0
-    And it ignores the prerelease
-    And it records the resolved tag and full commit SHA before any file is edited
+    Then it records that full commit SHA before any artifact is read or edited
+    And it performs no version, tag, or release lookup
+
+  Scenario: An explicit published commit stays selected
+    Given an adoption request names a full commit SHA reachable from published main
+    And the published main head later advances
+    When adopt-artifact resolves its source
+    Then it retains the named commit SHA
 
   Scenario: An unverifiable source stops the adoption
-    Given an adoption request whose version cannot be resolved unambiguously
+    Given an adoption request whose commit is not a full SHA reachable from published main
     When adopt-artifact attempts to resolve the source
-    Then it stops before editing anything
+    Then it stops before reading or editing any artifact
     And it reports why resolution failed
 
   Scenario: Provenance is recorded in the adopting commit
-    Given adopt-artifact has applied three named artifacts at a resolved stable tag
+    Given adopt-artifact has applied three named artifacts from a resolved full commit SHA
     When the adopting commit is created
     Then it carries three OSE-Rules-Source trailers
-    And exactly one OSE-Rules-Version trailer
     And exactly one OSE-Rules-Commit trailer holding a full commit SHA
+    And it carries no OSE-Rules-Version trailer
 
   Scenario: A stronger local requirement survives adoption
     Given the target repository's local rule is stricter than the artifact being adopted
@@ -91,8 +96,8 @@ Feature: Alignment assessment and artifact adoption
   # ---------------------------------------------------------------- after adoption
 
   Scenario: Adoption creates no ongoing obligation
-    Given a repository adopted a catalog artifact at v0.2.0
-    And the catalog has since released v0.3.0
+    Given a repository adopted a catalog artifact from one published commit
+    And the catalog main branch has since advanced to another commit
     When either repository changes
     Then no automatic synchronization runs
     And no pin check, byte-identity check, or drift ledger runs
