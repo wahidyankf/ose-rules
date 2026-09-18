@@ -33,7 +33,7 @@ from a question asked again at every install into a record.
 | Applied in                                                                                          | As                                                                  |
 | --------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | [The Shared Fixture Corpus](../conventions/structure/plan-validator-contract/003-fixture-corpus.md) | two implementations agree only on bytes pinned by a digest          |
-| [Adopt Artifact](../workflows/adoption/adopt-artifact.md)                                           | a source resolves to a stable tag and a full commit before any edit |
+| [Adopt Artifact](../workflows/adoption/adopt-artifact.md)                                           | a source resolves from published `main` to a full commit before use |
 | [Evidence and Quality](../conventions/structure/plans/007-evidence-and-quality.md)                  | evidence records the exact command and the commit it ran against    |
 | [Quality Gate Results](../development/quality/manual-verification/001-quality-gate-results.md)      | a result is about a recorded commit, never a changing draft         |
 | [Top-Level Schema](../conventions/structure/repository-configuration/001-top-level-schema.md)       | a configuration names the schema version it conforms to             |

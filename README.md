@@ -53,15 +53,15 @@ Two capabilities describe the whole interaction:
   contradictory comes back as a conflict or a gap.
 - **`adopt-artifact`** copies named artifacts into a target repository on explicit request. It changes only the
   requested scope plus whatever local integration those artifacts need, and it records where each one came from:
-  repeatable `OSE-Rules-Source` trailers, one `OSE-Rules-Version`, and one full-SHA `OSE-Rules-Commit`.
+  repeatable `OSE-Rules-Source` trailers and one full-SHA `OSE-Rules-Commit`.
 
-If an adoption request names no version, the source resolves to the latest stable semantic-version tag — prereleases are
-ignored — and the resolved tag and commit are recorded before anything is edited.
+If an adoption request names no commit, the source resolves the canonical remote's published `main` head to a full
+commit SHA before anything is read or edited. A named commit must be a full SHA reachable from published `main`.
 
-## Versioning
+## Publishing
 
-Released under semantic version tags. A tag is immutable: a correction ships as a new version rather than as a moved
-tag, because an adopting repository recorded the old one in a commit trailer and that record has to stay true.
+The catalog publishes adoption-ready artifacts directly through `main`. It has no repository versions, version tags, or
+GitHub Releases. A correction is another commit on `main`; prior commits remain the exact provenance of earlier copies.
 
 ## License
 
