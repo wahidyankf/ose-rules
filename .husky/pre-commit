@@ -4,4 +4,4 @@
 # two drift the first time a gate is added to one and not the other.
 set -euo pipefail
 
-exec ./rhino gate run --surface pre-commit -- "$@"
+exec ./rhino gate run --surface pre-commit

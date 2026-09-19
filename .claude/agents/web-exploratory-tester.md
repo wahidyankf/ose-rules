@@ -1,12 +1,7 @@
 ---
+description: "Explores a running web interface in a real browser within frozen charters, comparing behaviour with its specifications, contracts, and designs, and records cited defects and specification-gap proposals without fixing anything."
 name: web-exploratory-tester
-description: >-
-  Explores a running web interface in a real browser within frozen charters, comparing behaviour with its
-  specifications, contracts, and designs, and records cited defects and specification-gap proposals without fixing
-  anything.
-tools: Read, Glob, Grep, Write, Edit, Bash
+tools: "Read, Glob, Grep, Write, Edit, Bash"
 ---
 
-Before acting, read the complete canonical agent definition at the repository-root path
-.agents/agents/web-exploratory-tester.md and follow it as authoritative. If it cannot be read, stop and report the
-missing path.
+Before acting, read the complete canonical agent definition at the repository-root path .agents/agents/web-exploratory-tester.md and follow it as authoritative. If it cannot be read, stop and report the missing path.

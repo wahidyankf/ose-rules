@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # The last local moment before anything reaches a remote. Git's ref-update
-# lines arrive on stdin and are forwarded unchanged, so a gate that screens the
-# outbound ref reads what Git is actually about to send.
+# lines are the declared typed input, so Rhino reads what Git is actually about
+# to send without forwarding arbitrary hook arguments.
 set -euo pipefail
 
-exec ./rhino gate run --surface pre-push -- "$@"
+exec ./rhino gate run --surface pre-push --push-updates-stdin

@@ -23,20 +23,20 @@ instruction field in harness settings. A harness preferring its own file over th
 silently, and contributors on other harnesses never see the divergence. Personal and user-global configuration stays
 outside this rule.
 
-An adopter enforces this in its own parity gate: regenerate each instruction adapter, compare the result with the
-committed file, and refuse every competing source.
+An adopter enforces this through its declared adapter-validation gate: validate every instruction adapter, its catalog,
+and provenance, then refuse every competing source.
 
 ## Where Vendor-Specific Notes Live
 
 A harness sometimes needs an operational note no other harness needs, such as where its generated files sit. The adopter
 chooses where such notes may live and records the choice:
 
-- **Import only.** The adapter is the import and nothing else. Parity is one exact comparison; the notes move to harness
-  settings or documentation, away from the instructions.
-- **Marked section.** One clearly headed vendor-specific section, kept only in a file declared as a generator input,
-  which the generator adds to that harness's adapter and the parity gate regenerates; never in the canonical body, and
+- **Import only.** The adapter is the import and nothing else. Validation is one exact comparison; the notes move to
+  harness settings or documentation, away from the instructions.
+- **Marked section.** One clearly headed vendor-specific section, kept only in a declared renderer input, which the
+  profile adds to that harness's adapter and the adapter-validation gate verifies; never in the canonical body, and
   never hand-written into the output. A harness reading the canonical body natively takes notes through the import-only
-  route. The section is one more input the generator and gate must recognize, and it is where rules creep in.
+  route. The section is one more input the renderer and gate must recognize, and it is where rules creep in.
 
 Under either option a vendor-specific note is operational only. Anything that changes behaviour belongs in the canonical
 body, where every harness receives it.

@@ -1,8 +1,7 @@
 ---
 description: >-
-  Requires every harness-specific agent or skill file to be generated from the canonical artifact, never authored, fixes
-  what a generator may and may not do, and routes every harness to one canonical instruction body, keeping harness
-  configuration free of rules.
+  Requires every harness-specific agent or skill file to be generated from one canonical artifact and declared profile,
+  never authored, with lossless capability projection and no competing instruction source.
 when_to_use: >-
   Use when adding support for a harness, when a harness-specific file appears to have been edited directly, when a
   second instruction file appears, or when editing a harness's project configuration.
@@ -10,50 +9,50 @@ when_to_use: >-
 
 # Harness Adapters
 
-Canonical artifacts live in one place and are the only ones a person edits. A harness that needs a different path or a
-different file format gets a **generated** adapter.
+Canonical artifacts live in one place and are the only ones a person edits. A harness that needs another path or format
+gets a **generated** adapter. The configuration declares the canonical field mapping, requirements, and exactly the
+three profiles the repository supports; it never copies a body into the profile.
 
 ## The Rule
 
 An adapter holds no authored body. Everything in it is derived: the body from the canonical artifact, the harness-shaped
 metadata from the canonical metadata, by a mapping the generator owns.
 
-This is the rule broken most often by accident, because breaking it works. Copying a skill body into a harness directory
-produces a working skill immediately. The failure arrives later and quietly: the canonical file is improved, the copy is
-not, and the harness keeps teaching the previous version with nothing to indicate it is stale.
+Copying a skill body into a harness directory appears to work, then silently goes stale. A profile is a rendering
+contract, not a second source: it selects native paths, metadata, permissions, routes, and any explicit tier mapping.
 
-## What the Generator Translates
+## What a Profile Translates
 
-| Canonical      | Becomes                                                  |
-| -------------- | -------------------------------------------------------- |
-| body           | the body, unchanged                                      |
-| `name`         | whatever the harness calls an identifier                 |
-| `capabilities` | the harness's tool or permission names                   |
-| `tier`         | a model and effort, if the repository declared a mapping |
-| `constraints`  | the harness's equivalent restriction, where one exists   |
+| Canonical      | Becomes                                                |
+| -------------- | ------------------------------------------------------ |
+| body           | the body, unchanged                                    |
+| `name`         | whatever the harness calls an identifier               |
+| `capabilities` | the harness's tool or permission names                 |
+| `tier`         | a model and effort, only where that profile maps both  |
+| `constraints`  | the harness's equivalent restriction, where one exists |
 
-A capability with no equivalent in a harness is a hard failure of the generator, not a silent omission and not a broader
-permission that happens to include it. Where a harness genuinely cannot express a restriction, the artifact is not
-published for that harness.
+A requirement with no equivalent in a profile is a hard failure before any write. It is never silently omitted and never
+replaced by a broader permission. Where a harness cannot express a restriction, the artifact is not published for it.
 
 Failing loudly here matters because the silent alternatives both grant more than was declared.
 
 ## Omission Is a Valid Mapping
 
-An absent tier mapping means the generator emits no model and no effort, and the harness applies its own inheritance.
+An absent tier mapping means the renderer emits no model or effort, and the harness applies its own inheritance.
 
 That is the designed default rather than a gap. Emitting a default the repository did not choose replaces the harness's
 current behaviour with a guess frozen at generation time.
 
-## Generated Files Are Verifiable
+## Generation and Validation Are Separate
 
-Regenerating from unchanged canonical input produces byte-identical adapters. A gate can therefore regenerate and
-compare, and an edited adapter shows up as a diff rather than as a surprise months later.
+`harness adapters generate` renders the three profile families, their catalogs, and provenance atomically from canonical
+input. `harness adapters validate` is read-only and rejects missing, stale, handwritten, or semantically lossy output.
+Regenerating unchanged input is byte-identical, so an adapter edit becomes a diff rather than a surprise.
 
 ## Adapters Are Not Canonical Input
 
-Nothing reads an adapter to learn about the artifact — not another generator, not a validator, not a person. An adapter
-is an output, and treating it as a source is how two sources appear.
+Nothing reads an adapter to learn about the artifact — not another renderer, validator, or author. An adapter is output,
+and treating it as source creates two authorities.
 
 ## Modules
 

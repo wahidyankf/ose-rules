@@ -1,71 +1,47 @@
 ---
 description: >-
-  Fixes the required and optional top-level configuration keys, and fails any unknown key that is not namespaced.
+  Defines the grouped top-level configuration keys, requires each declared policy to have a visible owner, and rejects
+  unknown keys rather than inheriting policy.
 when_to_use: >-
   Use when creating a repository configuration file or adding a top-level key to one.
 ---
 
 # Top-Level Schema
 
-## Required
+## Grouped Core
 
-| Key          | Holds                                                   |
-| ------------ | ------------------------------------------------------- |
-| `schema`     | the schema identifier and version this file conforms to |
-| `visibility` | exactly `public` or `private`                           |
-| `gates`      | a nonempty, ordered list of gate entries                |
+| Key           | Holds                                                 |
+| ------------- | ----------------------------------------------------- |
+| `schema`      | the grouped schema identifier and version             |
+| `repository`  | repository-owned identity and structural policy       |
+| `scan`        | explicit walk exclusions                              |
+| `harness`     | canonical meaning, requirements, and adapter profiles |
+| `policies`    | opt-in Markdown, governance, and convention policy    |
+| `environment` | declared environment safety contract                  |
+| `toolchains`  | direct probe and provision policy                     |
+| `gates`       | typed lifecycle entries and PR composition            |
+| `extensions`  | opaque, named data owned outside the shared schema    |
 
-`visibility` is required rather than inferred. A repository's remote can change, a fork inherits nothing useful, and a
-tool that guesses will guess wrong exactly once — on the repository where being wrong matters.
+Only `schema` is universal. Every other group is omitted when the repository has no policy to declare; an empty group is
+not a substitute for a decision. A command whose group is absent refuses rather than applying a hidden default.
 
-`gates` is ordered, and the order is meaningful: gates run in declaration order and stop at the first failure. It is
-nonempty because a repository declaring no gate has declared that nothing must pass, which is a decision worth writing
-out rather than reaching by omission.
+`gates.entries` is ordered. A runner executes the selected entries in that order and stops at the first nonzero result.
+A repository with no lifecycle gate omits `gates`; it never invents an unregistered gate at a caller.
 
-## Optional
+## Policy Groups Have Owners
 
-| Key           | Holds                                                     |
-| ------------- | --------------------------------------------------------- |
-| `governance`  | repository-specific governance settings                   |
-| `model-tiers` | a mapping from harness and tier to a concrete model       |
-| `extensions`  | namespaced payloads, one first-level key per profile name |
+| Group         | Owns                                                    |
+| ------------- | ------------------------------------------------------- |
+| `harness`     | canonical field mapping, required meaning, and profiles |
+| `policies`    | opt-in validator settings the repository selected       |
+| `environment` | named safe examples, detectors, and staged paths        |
+| `toolchains`  | declared probes and explicit provision vectors          |
+| `extensions`  | payload an independently named owner validates          |
 
-Each is omitted when empty. An empty map is not a smaller map; it is a key that should not be there, and it fails.
-
-## Validator Sections
-
-Between the portable declarations and `gates` sit the sections that tell each validator what this repository decided:
-`scan`, `harness-parity`, `metadata`, `governance-word-budget`, `governance-directory-map`, `md-frontmatter`,
-`md-heading-hierarchy`, `md-internal-link`, `md-mermaid`, `md-naming`, `md-readme-index`, and `convention-emoji`.
-
-Every one is optional, and an absent section is not a disabled check — it is a rule the repository never wrote down, so
-the command that reads it refuses by name rather than enforcing a default nobody chose.
-
-They are top-level rather than nested under one `validators` key because each is a separate decision with a separate
-owner, and nesting them would suggest they are turned on and off together.
-
-## Canonical Key Order
-
-`schema`, `visibility`, `governance`, `model-tiers`, the twelve validator sections in the order listed above, `gates`,
-`extensions`. Every optional key keeps its position when present and leaves no gap when absent.
+An extension is not an exemption: it may not conceal a credential, host, or an untyped command. It is visible so a
+reviewer can identify its owner and select the validator that understands it.
 
 ## Unknown Keys Fail
 
-A top-level key outside this set fails. Anything a repository needs that this schema does not describe goes under
-`extensions`, whose first-level key names the owning profile; the validator checks that the namespace exists and leaves
-the payload to whatever owns it.
-
-Without that escape, the schema either forbids real needs or grows a field per repository until it describes nothing in
-particular. Putting every escape inside one key keeps them visible: `extensions` is the first place a reader looks for
-what this repository does that the shared contract does not cover.
-
-A namespace is not an exemption. An extension payload is screened by the same rules as the rest of the file, and a
-repository cannot smuggle a private host or a credential into one by naming it after a vendor.
-
-## Model Tiers Are Optional Everywhere
-
-Any harness and any tier may be omitted. A present tier carries a nonempty model and a nonempty effort — both or
-neither; a half-pair fails.
-
-Omission is the designed default, not a gap: the harness applies its own inheritance, which is the behaviour a mapping
-would otherwise have to reimplement and keep current.
+A top-level key outside the grouped contract fails. Guessing an unknown key makes policy look enforced while no command
+can prove what it meant. A repository needs a reviewed extension or a shared schema change, never a tolerated typo.

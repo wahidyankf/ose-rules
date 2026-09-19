@@ -13,8 +13,8 @@ declares the addition rather than simply creating a directory.
 
 ## Declared, Not Inferred
 
-A category outside the shared registry is accepted only when the configuration declares it under
-`governance.local-categories`. An undeclared category fails.
+A category outside the shared registry is accepted only when the consuming repository declares it in its governance
+layer policy under `policies.governance.layers.categories`. An undeclared category fails.
 
 Inferring categories from directories sounds friendlier and removes the only moment anyone considers whether the
 category should exist. A typo becomes a category. A directory left behind by an abandoned experiment becomes a category.

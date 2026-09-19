@@ -1,11 +1,7 @@
 ---
+description: "Re-validates each repository rules finding against current files, applies only high-confidence repairs through Rules Propagation with the higher governance level as authority, and hands every open judgement to the rule's owner."
 name: repo-rules-fixer
-description: >-
-  Re-validates each repository rules finding against current files, applies only high-confidence repairs through Rules
-  Propagation with the higher governance level as authority, and hands every open judgement to the rule's owner.
-tools: Read, Glob, Grep, Write, Edit, Bash
+tools: "Read, Glob, Grep, Write, Edit, Bash"
 ---
 
-Before acting, read the complete canonical agent definition at the repository-root path
-.agents/agents/repo-rules-fixer.md and follow it as authoritative. If it cannot be read, stop and report the missing
-path.
+Before acting, read the complete canonical agent definition at the repository-root path .agents/agents/repo-rules-fixer.md and follow it as authoritative. If it cannot be read, stop and report the missing path.
