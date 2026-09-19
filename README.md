@@ -40,9 +40,9 @@ Every file under those roots is authored and read directly. None of them is gene
 them is nested inside a package, workspace, or app directory. A harness-specific adapter, where a harness needs one, is
 generated _from_ these roots and never becomes the thing an editor edits.
 
-`node scripts/generate-adapters.mjs` writes every adapter this repository ships, reading the canon and the model-tier
-map in `repo-config.yml`. It checks nothing: `./rhino harness parity validate` decides whether what is on disk matches
-what was declared, and the writer and the judge are kept apart so the judge is worth running.
+`./rhino harness adapters generate` writes every adapter this repository ships, reading the canon and the three declared
+profiles in `repo-config.yml`. `./rhino harness adapters validate` decides whether what is on disk matches that model;
+the generated output is never edited directly.
 
 ## Adoption
 

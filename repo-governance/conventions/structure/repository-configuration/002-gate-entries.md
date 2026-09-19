@@ -1,28 +1,33 @@
 ---
 description: >-
-  Restricts a gate entry to four fields, requires its command to be an argument vector run without a shell, and leaves
-  file filtering to the leaf command.
+  Defines typed lifecycle gate entries: one semantic ID, declared inputs, direct executable and argv projections, and
+  explicit membership without a shell command string.
 when_to_use: >-
   Use when adding a gate, or when a gate needs to decide which files to inspect.
 ---
 
 # Gate Entries
 
-A gate entry contains exactly four fields:
+A gate entry contains a semantic `id`, a `type` (`check` or `mutation`), a direct `command`, optional typed `inputs`,
+and direct `run-on` memberships. A mutation additionally declares its local and replay modes.
 
-| Field      | Holds                                             |
-| ---------- | ------------------------------------------------- |
-| `id`       | a stable identifier, unique within the repository |
-| `kind`     | exactly `check` or `mutation`                     |
-| `run`      | an argument vector                                |
-| `surfaces` | the surfaces on which this gate runs              |
+| Field      | Holds                                                              |
+| ---------- | ------------------------------------------------------------------ |
+| `id`       | a stable identifier, unique within the repository                  |
+| `type`     | `check` or `mutation`                                              |
+| `inputs`   | named `files`, message, range, or repository-state data            |
+| `command`  | one executable plus literal or typed argv and environment mappings |
+| `run-on`   | lifecycle membership and each input binding                        |
+| `mutation` | `apply-index` locally and `verify-clean` for replay                |
 
-No description, no enabled flag, no timeout, no continue-on-error. Each of those turns the list from data into a small
-programming language, and the runner into an interpreter of it.
+No shell string, caller-supplied trailing argv, enabled flag, timeout, or continue-on-error belongs here. Those turn a
+reviewed declaration into a second programming language.
 
-## `run` Is a Vector, Not a String
+## `command` Is Typed
 
-`run` is a list of arguments, executed directly. No shell, no interpolation, no globbing, no word splitting.
+`command.executable` and every `command.args` item are direct. An argument is exactly one literal or one typed input
+projection; an environment entry likewise names one resolved input field. No shell, interpolation, globbing, or word
+splitting runs between the declaration and the child.
 
 A command string is executed by a shell, and a shell rewrites it: it expands globs against the current directory, splits
 on whitespace, and interprets quotes, `$`, and `&&`. A path with a space then becomes two arguments, and a filename
@@ -30,25 +35,23 @@ containing a metacharacter becomes an instruction.
 
 The vector form has no such layer. What is written is what runs.
 
-## The Runner Passes Through
+## Bind Inputs at Their Lifecycle Boundary
 
-The runner validates configuration completely, selects gates by the requested surface, preserves declaration order,
-executes each argument vector directly, forwards hook arguments and standard input unchanged, stops at the first nonzero
-result, and prints a sanitized summary.
+Inputs are generic: `files`, `commit-message`, `commit-range`, and `repository-state`. Their sources are explicit:
+`git-index`, `hook-message-file`, `push-updates`, `explicit-range`, or `checkout`. A hook or workflow only supplies the
+declared boundary input; it never appends an unreviewed argument after `--`.
 
-It exports the selected surface to the child as `OSE_GATE_SURFACE`, so a gate that behaves differently before a commit
-than in continuous integration can tell which it is in without being told twice. The name is part of the contract: a
-gate cannot read a variable whose spelling was left to the runner.
+The runner validates the complete configuration, resolves those bindings, preserves declaration order, starts each
+direct argv, stops at the first nonzero result, and prints a sanitized summary. It exposes only its documented runtime
+context; repository-owned environment variables remain the repository's choice.
 
 That is the whole runner. It is not a task scheduler and does not retry, parallelize, or continue past a failure.
 
-## Leaf Commands Own Filtering
+## Inputs Decide Scope
 
-The runner never decides which files a gate should inspect.
-
-It cannot. A formatter, a linter, and a secret scanner disagree about what "the changed files" means, and each already
-knows the answer for itself. A runner guessing on their behalf would be wrong in a different way for each one, and the
-gate would silently check a smaller set than anyone believed.
+The declaration, not a caller guess, selects the scope. `git-index` is a local mutation boundary; `explicit-range`
+resolves an immutable pull-request selection; `checkout` means the complete checked-out state. A tool-specific selector
+does not belong in the shared input vocabulary.
 
 ## Identifiers Are Stable
 

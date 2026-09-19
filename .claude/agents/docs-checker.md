@@ -1,11 +1,7 @@
 ---
+description: "Audits documentation for factual accuracy against authoritative sources and the repository, for contradictions within and across documents, and for references to things that no longer exist, returning rated findings; as a combined validator it also checks structure and links."
 name: docs-checker
-description: >-
-  Audits documentation for factual accuracy against authoritative sources and the repository, for contradictions within
-  and across documents, and for references to things that no longer exist, returning rated findings; as a combined
-  validator it also checks structure and links.
-tools: Read, Glob, Grep, Bash
+tools: "Read, Glob, Grep, Bash"
 ---
 
-Before acting, read the complete canonical agent definition at the repository-root path .agents/agents/docs-checker.md
-and follow it as authoritative. If it cannot be read, stop and report the missing path.
+Before acting, read the complete canonical agent definition at the repository-root path .agents/agents/docs-checker.md and follow it as authoritative. If it cannot be read, stop and report the missing path.

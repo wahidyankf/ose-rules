@@ -27,7 +27,8 @@ Which files a harness discovers, where it looks, and what it does with an index 
 between harnesses and change between releases. Before a repository relies on a harness finding an instruction file, an
 agent, a skill, or a directory index, it tests that behaviour in that harness.
 
-An adapter generated for a discovery rule the harness does not follow passes every parity check and is never read.
+An adapter generated for a discovery rule the harness does not follow can match its expected bytes and still never be
+read. Runtime discovery proof remains separate from adapter validation.
 
 ## A Missing Control Is Not Substituted
 

@@ -50,8 +50,8 @@ semantic placeholders; if that destroys their meaning, they do not belong here. 
 | `scripts/`         | the repository's own gates                                        |
 
 Roots are direct: nothing under them is generated, and nothing is nested inside a package or app directory.
-`node scripts/generate-adapters.mjs` writes every harness adapter _from_ these roots, and
-`./rhino harness parity validate` decides whether disk matches what was declared.
+`./rhino harness adapters generate` writes every harness adapter _from_ these roots, and
+`./rhino harness adapters validate` decides whether disk matches the declared profiles.
 
 `specs/fixtures/` is byte-identical across implementations and verified by digest, so it is excluded from formatting and
 linting: reformatting it would break the digest another repository checks.

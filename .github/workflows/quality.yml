@@ -25,9 +25,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          # The gates screen the tracked tree and the outbound ref, not the
-          # repository's history. A shallow checkout is what they need.
-          fetch-depth: 1
+          # Pull-request range gates receive immutable base/head commits and
+          # inspect that exact range, so both commits and their history must
+          # be available in this checkout.
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
@@ -49,4 +50,12 @@ jobs:
           test "$(./rhino version)" = "${pinned%%-*}"
 
       - name: Gates
-        run: ./rhino gate run --surface ci
+        run: |
+          set -eu
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            ./rhino gate run --surface pull-request \
+              --base "${{ github.event.pull_request.base.sha }}" \
+              --head "${{ github.event.pull_request.head.sha }}"
+          else
+            ./rhino gate run --surface main
+          fi

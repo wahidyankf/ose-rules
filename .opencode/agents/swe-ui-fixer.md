@@ -1,16 +1,12 @@
 ---
-description: >-
-  Applies interface component findings after re-validating each against the current React source, token layer, and
-  design, edits only what those settle, pins changed behaviour with a test, and records what it fixed, disproved, and
-  left for a person.
+description: "Applies interface component findings after re-validating each against the current React source, token layer, and design, edits only what those settle, pins changed behaviour with a test, and records what it fixed, disproved, and left for a person."
 mode: subagent
 permission:
-  read: allow
+  bash: allow
+  edit: allow
   glob: allow
   grep: allow
-  edit: allow
-  bash: allow
+  read: allow
 ---
 
-Before acting, read the complete canonical agent definition at the repository-root path .agents/agents/swe-ui-fixer.md
-and follow it as authoritative. If it cannot be read, stop and report the missing path.
+Before acting, read the complete canonical agent definition at the repository-root path .agents/agents/swe-ui-fixer.md and follow it as authoritative. If it cannot be read, stop and report the missing path.

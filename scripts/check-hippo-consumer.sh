@@ -48,7 +48,11 @@ jq -e '
   .scripts.format | contains("./hippo run --class transactional --resource-tier standard")
 ' "$repo_root/package.json" >/dev/null
 jq -e '
-  .scripts["check:complete"] | contains("./hippo run --class ephemeral --resource-tier heavy")
+  .scripts["check:complete"] | contains("./hippo run --class ephemeral --resource-tier heavy") and contains("gate run --surface main")
 ' "$repo_root/package.json" >/dev/null
+grep -Fq './rhino harness adapters generate' "$repo_root/AGENTS.md"
+grep -Fq './rhino harness adapters validate' "$repo_root/README.md"
+! grep -R -Fq 'gate run --surface ci' \
+  "$repo_root/.github" "$repo_root/.husky" "$repo_root/package.json" "$repo_root/AGENTS.md" "$repo_root/README.md"
 
 printf '%s\n' 'HIPPO consumer and worktree containment: PASS'
