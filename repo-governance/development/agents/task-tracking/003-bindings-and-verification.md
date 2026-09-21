@@ -33,6 +33,11 @@ Inside plan-mediated work, the plan's delivery checklist is the authoritative pr
 change as the work it describes. The live list tracks in-session state during that execution. Both stay in sync, and
 neither exempts the other.
 
+It is also the only written one. A scratch or report directory holds what an execution needs and then discards —
+scripts, assets, logs, intermediate data, the touched-path ledger — and never a copy of the checklist, its ticks, or its
+status. Two written records drift apart, and nothing decides which one was true. Outside plan-mediated work there is no
+checklist, and a scratch file may carry working notes that have to survive a context boundary.
+
 ## What Does Not Satisfy This
 
 - a list written after the work, describing what already happened;
