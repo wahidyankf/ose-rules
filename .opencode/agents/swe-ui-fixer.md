@@ -1,5 +1,6 @@
 ---
-description: "Applies interface component findings after re-validating each against the current React source, token layer, and design, edits only what those settle, pins changed behaviour with a test, and records what it fixed, disproved, and left for a person."
+description: |-
+  Applies interface component findings after re-validating each against the current React source, token layer, and design, edits only what those settle, pins changed behaviour with a test, and records what it fixed, disproved, and left for a person.
 mode: subagent
 permission:
   bash: allow

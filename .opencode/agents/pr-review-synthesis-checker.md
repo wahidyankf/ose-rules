@@ -1,5 +1,6 @@
 ---
-description: "Coordinates one review pass after its specialists report, deduplicating, re-categorizing, filtering, and verifying raw findings, then publishes the single consolidated review bound to the pinned head."
+description: |-
+  Coordinates one review pass after its specialists report, deduplicating, re-categorizing, filtering, and verifying raw findings, then publishes the single consolidated review bound to the pinned head.
 mode: subagent
 permission:
   bash: allow

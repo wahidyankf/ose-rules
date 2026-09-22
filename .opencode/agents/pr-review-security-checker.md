@@ -1,5 +1,6 @@
 ---
-description: "Reviews one pinned change for the security discipline, finding secrets in the change, injection, untrusted-input gaps, and unsafe filesystem or version-control operations, and returns anchored findings to the review coordinator."
+description: |-
+  Reviews one pinned change for the security discipline, finding secrets in the change, injection, untrusted-input gaps, and unsafe filesystem or version-control operations, and returns anchored findings to the review coordinator.
 mode: subagent
 permission:
   bash: allow

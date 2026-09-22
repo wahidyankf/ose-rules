@@ -1,5 +1,6 @@
 ---
-description: "Resolves failing type checks, lint findings, and tests one cause at a time, diagnosing each before changing code, keeping pinned behaviour intact, and never suppressing or bypassing a check."
+description: |-
+  Resolves failing type checks, lint findings, and tests one cause at a time, diagnosing each before changing code, keeping pinned behaviour intact, and never suppressing or bypassing a check.
 mode: subagent
 permission:
   bash: allow

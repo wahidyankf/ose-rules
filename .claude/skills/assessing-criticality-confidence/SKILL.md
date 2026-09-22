@@ -1,5 +1,6 @@
 ---
-description: "Guides rating a finding's criticality from its consequence and its confidence from re-validation, and avoiding the inflation, conflation, and shortcuts that make both scales useless."
+description: |-
+  Guides rating a finding's criticality from its consequence and its confidence from re-validation, and avoiding the inflation, conflation, and shortcuts that make both scales useless.
 name: assessing-criticality-confidence
 ---
 

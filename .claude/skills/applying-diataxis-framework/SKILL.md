@@ -1,5 +1,6 @@
 ---
-description: "Guides classifying a documentation page by the reader need it serves, recognizing content that drifted in from another mode, and splitting a mixed page into one primary page linked to the others."
+description: |-
+  Guides classifying a documentation page by the reader need it serves, recognizing content that drifted in from another mode, and splitting a mixed page into one primary page linked to the others.
 name: applying-diataxis-framework
 ---
 

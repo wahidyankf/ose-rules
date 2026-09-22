@@ -1,5 +1,6 @@
 ---
-description: "Builds React interface components and their variants test-first from an approved design, composing design-system primitives, referring to tokens by role, and meeting the adopted accessibility standards."
+description: |-
+  Builds React interface components and their variants test-first from an approved design, composing design-system primitives, referring to tokens by role, and meeting the adopted accessibility standards.
 mode: subagent
 permission:
   bash: allow

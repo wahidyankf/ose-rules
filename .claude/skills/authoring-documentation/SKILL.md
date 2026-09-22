@@ -1,5 +1,6 @@
 ---
-description: "Guides writing documentation that stays true: grounding each claim in the repository before publishing, keeping always-read files as navigation, and linking a governing document at its first mention."
+description: |-
+  Guides writing documentation that stays true: grounding each claim in the repository before publishing, keeping always-read files as navigation, and linking a governing document at its first mention.
 name: authoring-documentation
 ---
 

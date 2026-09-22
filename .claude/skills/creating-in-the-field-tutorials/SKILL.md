@@ -1,5 +1,6 @@
 ---
-description: "Guides writing in-the-field tutorials: one concrete scenario narrated step by step with verified output, checkpoints, and recovery notes, the built-in approach before any framework, and production-complete code."
+description: |-
+  Guides writing in-the-field tutorials: one concrete scenario narrated step by step with verified output, checkpoints, and recovery notes, the built-in approach before any framework, and production-complete code.
 name: creating-in-the-field-tutorials
 ---
 

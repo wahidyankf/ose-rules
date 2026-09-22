@@ -1,5 +1,6 @@
 ---
-description: "Guides applying the content quality rules to one Markdown document: which pass to run first, which defects stop a reader, and how to repair common defects without changing what the text means."
+description: |-
+  Guides applying the content quality rules to one Markdown document: which pass to run first, which defects stop a reader, and how to repair common defects without changing what the text means.
 name: applying-content-quality
 ---
 

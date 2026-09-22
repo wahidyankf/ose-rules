@@ -1,5 +1,6 @@
 ---
-description: "Guides the judgement inside a make, check, and fix loop: which role a request calls for, how applied findings are re-validated, when an edit counts as a fix, and when a disagreement leaves the loop for a person."
+description: |-
+  Guides the judgement inside a make, check, and fix loop: which role a request calls for, how applied findings are re-validated, when an edit counts as a fix, and when a disagreement leaves the loop for a person.
 name: applying-maker-checker-fixer
 ---
 

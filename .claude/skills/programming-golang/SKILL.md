@@ -1,5 +1,6 @@
 ---
-description: "Guides Go work under the shared quality standards: mapping the Go toolchain to the named gates, placing tests by the boundary they touch, and judging error forms, interface placement, goroutine ownership, and context use."
+description: |-
+  Guides Go work under the shared quality standards: mapping the Go toolchain to the named gates, placing tests by the boundary they touch, and judging error forms, interface placement, goroutine ownership, and context use.
 name: programming-golang
 ---
 

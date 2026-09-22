@@ -1,5 +1,6 @@
 ---
-description: "Authors a new or changed governance rule at the level whose question it answers, as a falsifiable statement with its reason, principle trace, and enforcement, writing it inside a Rules Propagation run."
+description: |-
+  Authors a new or changed governance rule at the level whose question it answers, as a falsifiable statement with its reason, principle trace, and enforcement, writing it inside a Rules Propagation run.
 mode: subagent
 permission:
   bash: allow

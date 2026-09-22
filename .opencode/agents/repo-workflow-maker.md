@@ -1,5 +1,6 @@
 ---
-description: "Writes or substantially revises one workflow document to the workflow pattern: an observable entry with typed inputs, declared steps that name only existing agents and workflows, bounded repetition, and a stated exit."
+description: |-
+  Writes or substantially revises one workflow document to the workflow pattern: an observable entry with typed inputs, declared steps that name only existing agents and workflows, bounded repetition, and a stated exit.
 mode: subagent
 permission:
   edit: allow

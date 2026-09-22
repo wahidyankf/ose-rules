@@ -1,5 +1,6 @@
 ---
-description: "Guides verifying commands, versions, code examples, and interfaces against the source that settles each question, choosing between the four verification labels, keeping each label beside its criticality, and deciding when to recheck."
+description: |-
+  Guides verifying commands, versions, code examples, and interfaces against the source that settles each question, choosing between the four verification labels, keeping each label beside its criticality, and deciding when to recheck.
 name: validating-factual-accuracy
 ---
 

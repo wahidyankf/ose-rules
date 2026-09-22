@@ -1,5 +1,6 @@
 ---
-description: "Guides Elixir work under the shared quality standards: holding the formatter and compiler warnings at zero, and judging tagged tuples against raising, when a process is warranted, thin callbacks, and concurrent test isolation."
+description: |-
+  Guides Elixir work under the shared quality standards: holding the formatter and compiler warnings at zero, and judging tagged tuples against raising, when a process is warranted, thin callbacks, and concurrent test isolation.
 name: programming-elixir
 ---
 

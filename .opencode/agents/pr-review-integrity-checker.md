@@ -1,5 +1,6 @@
 ---
-description: "Reviews one pinned change for the test integrity discipline, finding tests that were loosened, disabled, or cut back, gamed coverage, and bug fixes that land without a regression test, and returns anchored findings."
+description: |-
+  Reviews one pinned change for the test integrity discipline, finding tests that were loosened, disabled, or cut back, gamed coverage, and bug fixes that land without a regression test, and returns anchored findings.
 mode: subagent
 permission:
   bash: allow

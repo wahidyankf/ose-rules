@@ -1,7 +1,9 @@
 ---
-description: "Drafts one canonical agent definition from a decided role, checks its name and metadata, regenerates the harness adapters from it, and adds its annotated index entry."
+description: |-
+  Drafts one canonical agent definition from a decided role, checks its name and metadata, regenerates the harness adapters from it, and adds its annotated index entry.
 name: agent-maker
-tools: "Read, Glob, Grep, Write, Edit, Bash"
+tools: |-
+  Read, Glob, Grep, Write, Edit, Bash
 ---
 
 Before acting, read the complete canonical agent definition at the repository-root path .agents/agents/agent-maker.md and follow it as authoritative. If it cannot be read, stop and report the missing path.

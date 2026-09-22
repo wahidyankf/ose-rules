@@ -1,5 +1,6 @@
 ---
-description: "Checks that internal links and anchors in documentation resolve and that external addresses respond, under the link form and result memory the repository recorded, and returns rated findings."
+description: |-
+  Checks that internal links and anchors in documentation resolve and that external addresses respond, under the link form and result memory the repository recorded, and returns rated findings.
 mode: subagent
 permission:
   bash: allow

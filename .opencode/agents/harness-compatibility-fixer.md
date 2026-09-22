@@ -1,5 +1,6 @@
 ---
-description: "Re-validates harness compatibility findings against current files and their cited sources, repairs mechanical drift at the canonical source, regenerates adapters, and hands every decision to a person."
+description: |-
+  Re-validates harness compatibility findings against current files and their cited sources, repairs mechanical drift at the canonical source, regenerates adapters, and hands every decision to a person.
 mode: subagent
 permission:
   bash: allow

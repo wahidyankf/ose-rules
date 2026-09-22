@@ -1,5 +1,6 @@
 ---
-description: "Guides telling internal parity from upstream drift, deciding which harness differences are substantive, rating confidence from the cited source, and separating mechanical repairs from decisions a person makes."
+description: |-
+  Guides telling internal parity from upstream drift, deciding which harness differences are substantive, rating confidence from the cited source, and separating mechanical repairs from decisions a person makes.
 name: checking-harness-compatibility
 ---
 

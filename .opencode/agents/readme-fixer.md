@@ -1,5 +1,6 @@
 ---
-description: "Applies README checker findings after re-validating each against the current file, edits only objective, high-confidence repairs, and leaves judgements of tone, hook, and emphasis for a person."
+description: |-
+  Applies README checker findings after re-validating each against the current file, edits only objective, high-confidence repairs, and leaves judgements of tone, hook, and emphasis for a person.
 mode: subagent
 permission:
   bash: allow

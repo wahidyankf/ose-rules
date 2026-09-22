@@ -1,5 +1,6 @@
 ---
-description: "Writes and revises documentation pages in the Diátaxis mode their reader needs, grounding every claim in the repository or an authoritative source and shipping no placeholder."
+description: |-
+  Writes and revises documentation pages in the Diátaxis mode their reader needs, grounding every claim in the repository or an authoritative source and shipping no placeholder.
 mode: subagent
 permission:
   bash: allow

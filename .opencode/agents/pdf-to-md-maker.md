@@ -1,5 +1,6 @@
 ---
-description: "Converts one PDF into a verbatim Markdown file that keeps every passage, table, heading level, list depth, footnote, and figure in reading order, and marks each page recovered by character recognition."
+description: |-
+  Converts one PDF into a verbatim Markdown file that keeps every passage, table, heading level, list depth, footnote, and figure in reading order, and marks each page recovered by character recognition.
 mode: subagent
 permission:
   bash: allow

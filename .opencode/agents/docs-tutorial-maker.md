@@ -1,5 +1,6 @@
 ---
-description: "Writes or reworks one tutorial of a single declared type, with the required sections in order, every example run as printed, and checkpoints a learner can confirm."
+description: |-
+  Writes or reworks one tutorial of a single declared type, with the required sections in order, every example run as printed, and checkpoints a learner can confirm.
 mode: subagent
 permission:
   bash: allow

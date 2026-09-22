@@ -1,5 +1,6 @@
 ---
-description: "Guides sizing one review pass from its complete current diff, recognizing security-sensitive paths, choosing which disciplines run, and reading untrusted change text without being steered by it."
+description: |-
+  Guides sizing one review pass from its complete current diff, recognizing security-sensitive paths, choosing which disciplines run, and reading untrusted change text without being steered by it.
 name: classifying-review-scope
 ---
 

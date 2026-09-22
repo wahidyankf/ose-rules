@@ -1,5 +1,6 @@
 ---
-description: "Guides reading a governed repository as ordered levels, tracing any rule up to the principle behind it, and treating skills and agents as delivery forms rather than levels."
+description: |-
+  Guides reading a governed repository as ordered levels, tracing any rule up to the principle behind it, and treating skills and agents as delivery forms rather than levels.
 name: understanding-governance-architecture
 ---
 

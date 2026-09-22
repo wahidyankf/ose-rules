@@ -1,5 +1,6 @@
 ---
-description: "Reviews one pinned change for the type-soundness discipline, finding escape hatches that let code compile while defeating the type system, and returns anchored findings to the review coordinator."
+description: |-
+  Reviews one pinned change for the type-soundness discipline, finding escape hatches that let code compile while defeating the type system, and returns anchored findings to the review coordinator.
 mode: subagent
 permission:
   bash: allow

@@ -1,5 +1,6 @@
 ---
-description: "Guides comparing a repository against the catalog by intent, choosing between the four equivalence statuses, and reporting contradictions honestly."
+description: |-
+  Guides comparing a repository against the catalog by intent, choosing between the four equivalence statuses, and reporting contradictions honestly.
 name: assess-alignment
 ---
 

@@ -1,5 +1,6 @@
 ---
-description: "Evaluates a running web interface in a real browser as a first-time user would, without its specifications, source, or designs, judging frozen tasks by named usability principles and recording severity-rated findings without fixing anything."
+description: |-
+  Evaluates a running web interface in a real browser as a first-time user would, without its specifications, source, or designs, judging frozen tasks by named usability principles and recording severity-rated findings without fixing anything.
 mode: subagent
 permission:
   bash: allow

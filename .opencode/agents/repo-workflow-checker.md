@@ -1,5 +1,6 @@
 ---
-description: "Audits named workflow documents against the workflow pattern for their contract, step declarations, references, checkpoints, bounded repetition, and exit, and returns rated findings without modifying anything."
+description: |-
+  Audits named workflow documents against the workflow pattern for their contract, step declarations, references, checkpoints, bounded repetition, and exit, and returns rated findings without modifying anything.
 mode: subagent
 permission:
   bash: allow

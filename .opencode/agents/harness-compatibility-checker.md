@@ -1,5 +1,6 @@
 ---
-description: "Audits a repository's harness bindings for internal parity with their canonical sources and for drift from each harness's current documented conventions, and returns rated findings without editing."
+description: |-
+  Audits a repository's harness bindings for internal parity with their canonical sources and for drift from each harness's current documented conventions, and returns rated findings without editing.
 mode: subagent
 permission:
   bash: allow

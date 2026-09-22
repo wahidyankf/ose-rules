@@ -1,5 +1,6 @@
 ---
-description: "Re-validates each repository rules finding against current files, applies only high-confidence repairs through Rules Propagation with the higher governance level as authority, and hands every open judgement to the rule's owner."
+description: |-
+  Re-validates each repository rules finding against current files, applies only high-confidence repairs through Rules Propagation with the higher governance level as authority, and hands every open judgement to the rule's owner.
 mode: subagent
 permission:
   bash: allow

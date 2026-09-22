@@ -1,5 +1,6 @@
 ---
-description: "Reviews one pinned change for the instruction currency discipline, finding toolchain, dependency-manager, environment, or pipeline changes the agent instruction files no longer describe, and filler that adds no rule."
+description: |-
+  Reviews one pinned change for the instruction currency discipline, finding toolchain, dependency-manager, environment, or pipeline changes the agent instruction files no longer describe, and filler that adds no rule.
 mode: subagent
 permission:
   bash: allow

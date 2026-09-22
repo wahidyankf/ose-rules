@@ -1,5 +1,6 @@
 ---
-description: "Guides building interface components test-first: listing each variant, state, and interaction as its own cycle, choosing which failing check starts it, and judging tokens, primitives, and logic placement as the component grows."
+description: |-
+  Guides building interface components test-first: listing each variant, state, and interaction as its own cycle, choosing which failing check starts it, and judging tokens, primitives, and logic placement as the component grows.
 name: developing-frontend-ui
 ---
 

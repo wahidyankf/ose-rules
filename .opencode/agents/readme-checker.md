@@ -1,5 +1,6 @@
 ---
-description: "Audits READMEs against the README conventions for summaries that link out, scannable paragraphs, plain language, acronym context, and the sections each kind carries, and returns rated findings without editing."
+description: |-
+  Audits READMEs against the README conventions for summaries that link out, scannable paragraphs, plain language, acronym context, and the sections each kind carries, and returns rated findings without editing.
 mode: subagent
 permission:
   bash: allow

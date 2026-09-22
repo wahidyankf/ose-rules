@@ -1,5 +1,6 @@
 ---
-description: "Compares a running surface's rendered pages in a real browser with approved designs, runtime tokens, design-system primitives, and cited design practice, and records cited design-fidelity findings without fixing anything."
+description: |-
+  Compares a running surface's rendered pages in a real browser with approved designs, runtime tokens, design-system primitives, and cited design practice, and records cited design-fidelity findings without fixing anything.
 mode: subagent
 permission:
   bash: allow

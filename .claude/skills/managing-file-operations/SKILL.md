@@ -1,5 +1,6 @@
 ---
-description: "Guides renaming, moving, and deleting documents safely: finding every reference first, preserving version history, planning a large reorganization for confirmation, and proving afterwards that nothing was left broken."
+description: |-
+  Guides renaming, moving, and deleting documents safely: finding every reference first, preserving version history, planning a large reorganization for confirmation, and proving afterwards that nothing was left broken.
 name: managing-file-operations
 ---
 

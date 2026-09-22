@@ -1,5 +1,6 @@
 ---
-description: "Guides checking a specification before anyone builds from it for completeness, consistency, correctness, and testability, turning each vague term into a measurable criterion and rating every finding by its consequence."
+description: |-
+  Guides checking a specification before anyone builds from it for completeness, consistency, correctness, and testability, turning each vague term into a measurable criterion and rating every finding by its consequence.
 name: validating-specifications
 ---
 

@@ -1,5 +1,6 @@
 ---
-description: "Traces each changed Gherkin scenario, per applicable layer, through its bindings to the code and evidence behind it, and returns one status row per scenario and layer without editing or running anything."
+description: |-
+  Traces each changed Gherkin scenario, per applicable layer, through its bindings to the code and evidence behind it, and returns one status row per scenario and layer without editing or running anything.
 mode: subagent
 permission:
   glob: allow

@@ -1,5 +1,6 @@
 ---
-description: "Guides judging listed specification folders for useful indexes, well-formed features, agreement across folders, consistent architecture views, meaningful references, and implementation alignment, and what a repair may touch."
+description: |-
+  Guides judging listed specification folders for useful indexes, well-formed features, agreement across folders, consistent architecture views, meaningful references, and implementation alignment, and what a repair may touch.
 name: validating-specification-structure
 ---
 
