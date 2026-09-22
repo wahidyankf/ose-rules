@@ -12,7 +12,7 @@ compatibility: Requires read access to the repository's governance conventions.
 # Building Command-Line Interfaces
 
 [Command-Line Interface](../../../repo-governance/conventions/structure/command-line-interface.md) fixes the contract
-and its [seven modules](../../../repo-governance/conventions/structure/command-line-interface-details/README.md) hold
+and its [eight modules](../../../repo-governance/conventions/structure/command-line-interface-details/README.md) hold
 the rules. This skill covers the judgement of applying them, not the rules themselves.
 
 ## Ask What the Caller May Conclude
