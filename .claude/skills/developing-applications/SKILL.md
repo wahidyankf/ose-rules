@@ -1,5 +1,6 @@
 ---
-description: "Guides language-agnostic application work: placing code in the right layer, deciding where each error is handled or propagated, what a log line carries, where input is validated, and building every behaviour test-first."
+description: |-
+  Guides language-agnostic application work: placing code in the right layer, deciding where each error is handled or propagated, what a log line carries, where input is validated, and building every behaviour test-first.
 name: developing-applications
 ---
 

@@ -1,5 +1,6 @@
 ---
-description: "Reviews one pinned change for the architecture discipline, judging new tradeoffs, module boundaries, reversibility, blast radius, and new dependencies, and returns anchored findings to the review coordinator."
+description: |-
+  Reviews one pinned change for the architecture discipline, judging new tradeoffs, module boundaries, reversibility, blast radius, and new dependencies, and returns anchored findings to the review coordinator.
 mode: subagent
 permission:
   bash: allow

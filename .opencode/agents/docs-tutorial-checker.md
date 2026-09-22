@@ -1,5 +1,6 @@
 ---
-description: "Reviews tutorials for one declared type, required sections in order, runnable examples with real output, progressive complexity, and checkpoints, and returns rated findings without editing anything."
+description: |-
+  Reviews tutorials for one declared type, required sections in order, runnable examples with real output, progressive complexity, and checkpoints, and returns rated findings without editing anything.
 mode: subagent
 permission:
   bash: allow

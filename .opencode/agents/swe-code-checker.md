@@ -1,5 +1,6 @@
 ---
-description: "Audits application and library code in named projects against the adopted language-neutral and stack standards, including test-first evidence and regression tests, and returns rated findings without modifying anything."
+description: |-
+  Audits application and library code in named projects against the adopted language-neutral and stack standards, including test-first evidence and regression tests, and returns rated findings without modifying anything.
 mode: subagent
 permission:
   bash: allow

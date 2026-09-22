@@ -1,5 +1,6 @@
 ---
-description: "Writes and substantially revises READMEs as navigation documents: the right kind and sections, summaries that link out, plain language for a newcomer, and every command and link confirmed before handover."
+description: |-
+  Writes and substantially revises READMEs as navigation documents: the right kind and sections, summaries that link out, plain language for a newcomer, and every command and link confirmed before handover.
 mode: subagent
 permission:
   bash: allow

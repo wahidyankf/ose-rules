@@ -1,5 +1,6 @@
 ---
-description: "Guides applying the command-line interface contract while building or reviewing a tool — choosing an exit status, placing output on the right stream, and recognising which runtime default has to be overridden."
+description: |-
+  Guides applying the command-line interface contract while building or reviewing a tool — choosing an exit status, placing output on the right stream, and recognising which runtime default has to be overridden.
 name: building-command-line-interfaces
 ---
 

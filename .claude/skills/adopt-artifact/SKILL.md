@@ -1,5 +1,6 @@
 ---
-description: "Guides mapping a named catalog artifact into a target repository's own ownership, preserving stronger local rules and refusing contradictions."
+description: |-
+  Guides mapping a named catalog artifact into a target repository's own ownership, preserving stronger local rules and refusing contradictions.
 name: adopt-artifact
 ---
 

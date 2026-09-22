@@ -1,5 +1,6 @@
 ---
-description: "Explores a running web interface in a real browser within frozen charters, comparing behaviour with its specifications, contracts, and designs, and records cited defects and specification-gap proposals without fixing anything."
+description: |-
+  Explores a running web interface in a real browser within frozen charters, comparing behaviour with its specifications, contracts, and designs, and records cited defects and specification-gap proposals without fixing anything.
 mode: subagent
 permission:
   bash: allow

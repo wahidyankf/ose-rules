@@ -1,5 +1,6 @@
 ---
-description: "Answers every finding of a published review on one change with a fix, a reasoned reject, or a deferral, tags each answer's cause, replies where the finding is recorded, and resolves only what evidence settles."
+description: |-
+  Answers every finding of a published review on one change with a fix, a reasoned reject, or a deferral, tags each answer's cause, replies where the finding is recorded, and resolves only what evidence settles.
 mode: subagent
 permission:
   bash: allow

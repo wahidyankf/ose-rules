@@ -1,5 +1,6 @@
 ---
-description: "Guides recognising rule work, whether named, stated in ordinary words, or implied by the file being edited, and routing it through Rules Propagation before the first edit, without softening a rule to make it fit."
+description: |-
+  Guides recognising rule work, whether named, stated in ordinary words, or implied by the file being edited, and routing it through Rules Propagation before the first edit, without softening a rule to make it fit.
 name: propagating-rules
 ---
 

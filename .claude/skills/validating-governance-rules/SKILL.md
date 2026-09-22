@@ -1,5 +1,6 @@
 ---
-description: "Guides a repository-wide rules check across names, links, duplicated bodies, contradictions between levels, traceability, and word budgets, writing findings as they are confirmed and recommending consolidation only when safe."
+description: |-
+  Guides a repository-wide rules check across names, links, duplicated bodies, contradictions between levels, traceability, and word budgets, writing findings as they are confirmed and recommending consolidation only when safe.
 name: validating-governance-rules
 ---
 

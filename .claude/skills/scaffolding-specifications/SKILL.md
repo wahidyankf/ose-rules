@@ -1,5 +1,6 @@
 ---
-description: "Guides creating a specification corpus, or its missing parts, at a named path: sizing the tree to the owner's surfaces, modelling each file on sibling corpora, and making every first file already true."
+description: |-
+  Guides creating a specification corpus, or its missing parts, at a named path: sizing the tree to the owner's surfaces, modelling each file on sibling corpora, and making every first file already true.
 name: scaffolding-specifications
 ---
 

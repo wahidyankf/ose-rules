@@ -1,5 +1,6 @@
 ---
-description: "Applies a CI checker's findings to test targets, hooks, and pipeline definitions after re-validating each one, and records what it fixed, disproved, and left for a person."
+description: |-
+  Applies a CI checker's findings to test targets, hooks, and pipeline definitions after re-validating each one, and records what it fixed, disproved, and left for a person.
 mode: subagent
 permission:
   bash: allow

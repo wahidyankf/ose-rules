@@ -1,5 +1,6 @@
 ---
-description: "Creates a specification corpus, or its missing index, architecture document, or first behaviour files, at an explicitly named path, sized to the owner's real surfaces and true from its first commit."
+description: |-
+  Creates a specification corpus, or its missing index, architecture document, or first behaviour files, at an explicitly named path, sized to the owner's real surfaces and true from its first commit.
 mode: subagent
 permission:
   bash: allow

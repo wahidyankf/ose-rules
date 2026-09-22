@@ -1,5 +1,6 @@
 ---
-description: "Prepares one pinned review pass before fan-out by choosing its risk tier, route, and specialist set with reasons, reading settled thread outcomes, and assembling one shared brief, without reviewing the change."
+description: |-
+  Prepares one pinned review pass before fan-out by choosing its risk tier, route, and specialist set with reasons, reading settled thread outcomes, and assembling one shared brief, without reviewing the change.
 mode: subagent
 permission:
   bash: allow

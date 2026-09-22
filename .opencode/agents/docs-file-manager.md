@@ -1,5 +1,6 @@
 ---
-description: "Renames, moves, and deletes documents and directories after mapping every reference to them, repairs those references and the affected indexes, and proves nothing was left broken."
+description: |-
+  Renames, moves, and deletes documents and directories after mapping every reference to them, repairs those references and the affected indexes, and proves nothing was left broken.
 mode: subagent
 permission:
   bash: allow

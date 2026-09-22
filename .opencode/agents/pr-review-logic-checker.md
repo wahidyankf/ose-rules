@@ -1,5 +1,6 @@
 ---
-description: "Reviews one pinned change for the correctness discipline, judging behaviour against domain intent and the acceptance criteria across normal, edge, and error cases, and returns anchored findings."
+description: |-
+  Reviews one pinned change for the correctness discipline, judging behaviour against domain intent and the acceptance criteria across normal, edge, and error cases, and returns anchored findings.
 mode: subagent
 permission:
   bash: allow

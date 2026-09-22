@@ -1,5 +1,6 @@
 ---
-description: "Locates code, tests, documentation, and governance rules in a repository and answers with cited file and line evidence, without editing, running commands, or delegating."
+description: |-
+  Locates code, tests, documentation, and governance rules in a repository and answers with cited file and line evidence, without editing, running commands, or delegating.
 mode: subagent
 permission:
   glob: allow

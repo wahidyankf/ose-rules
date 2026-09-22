@@ -1,5 +1,6 @@
 ---
-description: "Guides authoring a workflow document that runs the same way twice: recognizing when a procedure is one, avoiding the recurring authoring mistakes, and asking the questions mechanical validation cannot answer before publishing."
+description: |-
+  Guides authoring a workflow document that runs the same way twice: recognizing when a procedure is one, avoiding the recurring authoring mistakes, and asking the questions mechanical validation cannot answer before publishing.
 name: defining-workflows
 ---
 

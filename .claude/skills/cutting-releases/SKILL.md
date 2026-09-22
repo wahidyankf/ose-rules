@@ -1,5 +1,6 @@
 ---
-description: "Guides the judgement around publishing a version: whether a revision is ready, when a version number is already spent, what makes documentation true to a build, and how to verify what consumers will receive."
+description: |-
+  Guides the judgement around publishing a version: whether a revision is ready, when a version number is already spent, what makes documentation true to a build, and how to verify what consumers will receive.
 name: cutting-releases
 ---
 

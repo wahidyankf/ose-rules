@@ -1,5 +1,6 @@
 ---
-description: "Guides Kotlin work under the shared quality standards: mapping the build to the named gates, and judging nullability at Java boundaries, coroutine scope and cancellation, closed state types, and the choice of scope function."
+description: |-
+  Guides Kotlin work under the shared quality standards: mapping the build to the named gates, and judging nullability at Java boundaries, coroutine scope and cancellation, closed state types, and the choice of scope function.
 name: programming-kotlin
 ---
 

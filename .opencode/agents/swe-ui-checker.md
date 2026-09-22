@@ -1,5 +1,6 @@
 ---
-description: "Audits React interface component source for token use, accessibility, contrast in every theme, primitive composition, and viewport layout against the adopted interface standards, and returns rated findings without modifying anything."
+description: |-
+  Audits React interface component source for token use, accessibility, contrast in every theme, primitive composition, and viewport layout against the adopted interface standards, and returns rated findings without modifying anything.
 mode: subagent
 permission:
   bash: allow

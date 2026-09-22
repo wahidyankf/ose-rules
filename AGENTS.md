@@ -74,7 +74,7 @@ decides for itself which files it inspects — a runner guessing on their behalf
 
 `./rhino` is a wrapper, not the tool: it installs the release `rhino.lock` pins, verifies the published archive digest
 before extracting and the executable's own reported identity before running, and refuses rather than falling back to
-whatever `rhino` is on `PATH`. Exit `78` is the wrapper refusing; every other code is RHINO's. A correction to the pin
+whatever `rhino` is on `PATH`. Exit `125` is the wrapper refusing; every other code is RHINO's. A correction to the pin
 ships as a new version, never as an edit to what a published tag resolved to.
 
 Delivery worktrees live only at `{repository location}/worktrees/<task>`; sibling `*-worktrees/` directories are

@@ -1,5 +1,6 @@
 ---
-description: "Explores a running request-based interface against its contract and behaviour specifications through real requests, and records reproducible, cited findings and specification-gap proposals without fixing anything."
+description: |-
+  Explores a running request-based interface against its contract and behaviour specifications through real requests, and records reproducible, cited findings and specification-gap proposals without fixing anything.
 mode: subagent
 permission:
   bash: allow

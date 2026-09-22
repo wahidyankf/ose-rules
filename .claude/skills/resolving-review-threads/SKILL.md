@@ -1,5 +1,6 @@
 ---
-description: "Guides a repairer through a published review: running each finding's refutation before triage, replying on the finding's own thread, resolving only what is fixed on the live head or rejected with evidence, and fixing every occurrence."
+description: |-
+  Guides a repairer through a published review: running each finding's refutation before triage, replying on the finding's own thread, resolving only what is fixed on the live head or rejected with evidence, and fixing every occurrence.
 name: resolving-review-threads
 ---
 

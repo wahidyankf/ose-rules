@@ -1,5 +1,6 @@
 ---
-description: "Guides Rust work under the Rust standard: reaching a red that fails on an assertion, resolving borrow checker friction through ownership design, replacing each wanted unwrap, and spotting calls that block the async runtime."
+description: |-
+  Guides Rust work under the Rust standard: reaching a red that fails on an assertion, resolving borrow checker friction through ownership design, replacing each wanted unwrap, and spotting calls that block the async runtime.
 name: programming-rust
 ---
 

@@ -1,5 +1,6 @@
 ---
-description: "Implements application, library, script, and test code in named projects test-first under the adopted language-neutral and stack standards, reusing what the repository already holds before adding code."
+description: |-
+  Implements application, library, script, and test code in named projects test-first under the adopted language-neutral and stack standards, reusing what the repository already holds before adding code.
 mode: subagent
 permission:
   bash: allow

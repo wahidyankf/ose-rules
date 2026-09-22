@@ -1,5 +1,6 @@
 ---
-description: "Guides writing an audit or fix report that survives interruption, links to the runs before and after it, closes with an honest status, and carries what a re-run needs so the loop converges."
+description: |-
+  Guides writing an audit or fix report that survives interruption, links to the runs before and after it, closes with an honest status, and carries what a re-run needs so the loop converges.
 name: generating-validation-reports
 ---
 

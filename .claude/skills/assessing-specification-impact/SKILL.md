@@ -1,5 +1,6 @@
 ---
-description: "Guides finding the specifications a change could reach, deciding for each whether it changes or is a verified no-op, and leading a behaviour change with a scenario that fails for the right reason."
+description: |-
+  Guides finding the specifications a change could reach, deciding for each whether it changes or is a verified no-op, and leading a behaviour change with a scenario that fails for the right reason.
 name: assessing-specification-impact
 ---
 

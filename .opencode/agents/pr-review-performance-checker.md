@@ -1,5 +1,6 @@
 ---
-description: "Reviews one pinned change for the performance discipline, finding concrete or likely regressions, hot-path changes, complexity growth, and memory and I/O cost, and returns anchored findings to the review coordinator."
+description: |-
+  Reviews one pinned change for the performance discipline, finding concrete or likely regressions, hot-path changes, complexity growth, and memory and I/O cost, and returns anchored findings to the review coordinator.
 mode: subagent
 permission:
   bash: allow

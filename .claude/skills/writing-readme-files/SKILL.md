@@ -1,5 +1,6 @@
 ---
-description: "Supplies a root README section template and repairs for the most common README mistakes, applying the README conventions without restating their rules."
+description: |-
+  Supplies a root README section template and repairs for the most common README mistakes, applying the README conventions without restating their rules.
 name: writing-readme-files
 ---
 
