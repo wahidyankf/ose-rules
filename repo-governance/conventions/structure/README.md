@@ -24,6 +24,7 @@ mechanically.
 | [Plan Content Corpora](plan-content-corpora.md)             | who may change a content corpus a plan authors, and where it ends up                     |
 | [Capability Naming](capability-naming.md)                   | the scope-first grammar for agent and workflow names                                     |
 | [CI Workflow File Naming](ci-workflow-file-naming.md)       | how a CI workflow's filename follows from its declared name                              |
+| [Command-Line Interface](command-line-interface.md)         | the exit vocabulary, streams, and output a tool owes its callers                         |
 | [Coordination Repository](coordination-repository.md)       | routing work to owning repositories without transferring ownership                       |
 | [Directory Indexes](directory-indexes.md)                   | the README index every indexed directory carries                                         |
 | [Document Word Budget](document-word-budget.md)             | the word ceiling on instruction and governance documents, and repair                     |
@@ -64,6 +65,8 @@ mechanically.
   corpus
 - [Capability Naming](capability-naming.md)
 - [CI Workflow File Naming](ci-workflow-file-naming.md)
+- [Command-Line Interface](command-line-interface.md)
+- [Command-Line Interface Modules](command-line-interface-details/README.md) — the seven interface modules
 - [Coordination Repository](coordination-repository.md)
 - [Directory Indexes](directory-indexes.md)
 - [Document Word Budget](document-word-budget.md)

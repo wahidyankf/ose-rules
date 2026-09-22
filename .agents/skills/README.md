@@ -28,6 +28,8 @@ is the one harness that needs a generated route.
 - [assessing-specification-impact](assessing-specification-impact/SKILL.md) — finding the specifications a change
   reaches
 - [authoring-documentation](authoring-documentation/SKILL.md) — keeping documentation claims grounded and true
+- [building-command-line-interfaces](building-command-line-interfaces/SKILL.md) — judging exit statuses, streams, and
+  which runtime default to override
 - [checking-harness-compatibility](checking-harness-compatibility/SKILL.md) — telling upstream drift from internal
   parity gaps
 - [classifying-review-scope](classifying-review-scope/SKILL.md) — sizing a review pass and choosing disciplines
