@@ -35,9 +35,10 @@ These names mean one thing everywhere and are never reused for anything else.
 | `--no-input`   | Never prompt                                                   |
 | `--`           | End of options                                                 |
 
-`-h` is accepted on every subcommand, not only at the top level. A caller who has navigated three levels into a
-subcommand tree is exactly the caller who needs help, and making them return to the root to get it is a small cruelty
-repeated often.
+`-h` is accepted on every subcommand, not only at the top level, and a tool with a subcommand tree also accepts `help`
+as a subcommand — see [Help and Discovery](008-help-and-discovery.md), which also fixes what a tool does when it is
+invoked with no arguments at all. A caller who has navigated three levels into a subcommand tree is exactly the caller
+who needs help, and making them return to the root to get it is a small cruelty repeated often.
 
 `--help` and `--version` suppress the tool's normal function entirely. Once either is seen, other options and arguments
 are ignored and no work is performed. Both print to standard output and exit successfully; this is what the established
