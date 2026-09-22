@@ -55,6 +55,7 @@ A tool that starts other programs additionally owes the supervisor statuses. One
 5. [Arguments and Flags](command-line-interface-details/005-arguments-and-flags.md)
 6. [Errors and Diagnostics](command-line-interface-details/006-errors-and-diagnostics.md)
 7. [Terminal and Environment](command-line-interface-details/007-terminal-and-environment.md)
+8. [Help and Discovery](command-line-interface-details/008-help-and-discovery.md)
 
 ## What This Convention Does Not Decide
 
