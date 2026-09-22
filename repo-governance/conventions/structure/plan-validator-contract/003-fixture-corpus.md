@@ -18,7 +18,6 @@ accepted/<NNN>-<slug>/plans/...   a tree that must produce exit 0
 rejected/<NNN>-<slug>/plans/...   a tree that must produce exit 1
 manifest.tsv                      case, expected exit, expected rule identifiers, note
 SHA256SUMS                        per-file digests over every corpus file
-CORPUS-DIGEST                     one digest over SHA256SUMS
 ```
 
 `manifest.tsv` is the contract's test table. A run is correct when, for every case, the exit class matches and the set
@@ -39,20 +38,25 @@ work.
 This is a safety property, not a stylistic one. The corpus is public and is copied into other repositories, so a fixture
 derived from real content would carry whatever that content contained.
 
-## Byte Identity
+## The Bytes Are the Fixture
 
-The corpus is excluded from this repository's formatter and Markdown linter, and that exclusion is deliberate.
+The corpus is excluded from this repository's formatter and Markdown linter, and that exclusion is deliberate. A
+reformat is not cosmetic here: it changes what the suite tests, and its first visible effect is a result nobody can
+attribute.
 
-A reformat is not cosmetic here. It changes bytes that other repositories verify by digest, and its first visible effect
-is two implementations disagreeing for a reason unrelated to either.
+## No Obligation Upstream
+
+This corpus is published here, and an adopting repository owns its copy. No digest pins that copy back, there is no pin
+check and no drift ledger, and an adopter is never required to notice that this corpus changed. That is this catalog's
+own adoption model, and publishing a corpus does not create a subscription to it.
+
+Parity is restored by a named re-adoption task, not by a check. Between such tasks the copies may legitimately diverge.
 
 ## Changing the Corpus
 
 Adding a case is routine. Editing one is not, unless the rule it encodes changed.
 
-Any change regenerates `SHA256SUMS` and `CORPUS-DIGEST` in the same change, and is announced to every implementation
-that pins the digest. Silent drift is worse than having no shared corpus, because both implementations keep reporting
-agreement while testing different things.
+Any change regenerates `SHA256SUMS` in the same change, so the local integrity check keeps describing what is there.
 
 ## Verifying
 
@@ -61,4 +65,4 @@ shasum -a 256 -c SHA256SUMS
 ```
 
 Run from the corpus root. A mismatch is a stop, not a warning: whatever the validator then reports was measured against
-something other than the frozen corpus.
+something other than the corpus under test.
