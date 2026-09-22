@@ -41,14 +41,21 @@ to re-run it until it agrees.
 
 ## Exit Classes
 
-| Exit | Means                           |
-| ---: | ------------------------------- |
-|    0 | no findings                     |
-|    1 | one or more findings            |
-|    2 | invalid configuration or usage  |
-|    3 | dependency or execution failure |
+| Exit | Means                                          |
+| ---: | ---------------------------------------------- |
+|    0 | no findings                                    |
+|    1 | one or more findings                           |
+|    2 | the validator did not run, or could not finish |
 
-`2` and `3` are not findings and must never be reported as a clean run. A validator that could not run has not validated
+`2` is not a finding and must never be reported as a clean run. A validator that could not run has not validated
 anything, and collapsing that into `0` is the failure mode this table exists to prevent.
 
 `1` means the validator worked correctly. Findings are its output, not its error.
+
+Earlier revisions of this contract split `2` into invalid usage and a dependency or execution failure, returning `3` for
+the second. That distinction is real and is still reported — it moved to the layer built to carry it, as a namespaced
+`error.code` in the machine-readable body, under
+[Machine-Readable Output](../command-line-interface-details/004-machine-readable-output.md). The exit status answers
+only whether the caller may trust the result; `3` is outside the vocabulary that
+[Command-Line Interface](../command-line-interface.md) fixes, so it is retired. Nothing this table protects is lost,
+because `2` is non-zero and is never a finding.
