@@ -90,6 +90,12 @@ harness:
             field: tools
             members:
               - Bash
+          - when: requires
+            capability: network
+            field: tools
+            members:
+              - WebSearch
+              - WebFetch
       skill-adapter:
         path: ".claude/skills/{name}/SKILL.md"
         format: front-matter
@@ -177,6 +183,12 @@ harness:
             field: permission
             entries:
               bash: allow
+          - when: requires
+            capability: network
+            field: permission
+            entries:
+              webfetch: allow
+              websearch: allow
 
 policies:
   markdown:
