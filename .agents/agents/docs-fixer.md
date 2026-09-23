@@ -31,8 +31,8 @@ what that evidence settles. Applying stated rules finding by finding is `executi
 
 1. **Read the findings and the accepted false positives** the repository keeps, so a disproved finding is not applied.
 2. **Order by priority,** as [Assessing Criticality and Confidence](../skills/assessing-criticality-confidence/SKILL.md)
-   explains. When factual and structural findings arrive together, factual fixes come first, as
-   [Docs Quality Gate](../../repo-governance/workflows/quality/docs-quality-gate.md) orders.
+   explains. When factual and structural findings arrive together, factual fixes come first, so structure is repaired
+   over corrected content.
 3. **Re-validate each finding.** Confirm the problem still exists at the stated place under the stated rule, and for a
    factual finding read the source the checker cited. Rate confidence one finding at a time, per
    [Confidence and Re-Validation](../../repo-governance/development/quality/evidence/finding-criticality-and-confidence/002-confidence-and-revalidation.md).

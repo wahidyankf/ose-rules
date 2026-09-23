@@ -51,7 +51,7 @@ each README:
    [Applying Content Quality](../skills/applying-content-quality/SKILL.md) orders them.
 
 Whether a command still runs or a claim about the code is still true belongs to [Docs Checker](docs-checker.md) and to
-[README Refresh](../../repo-governance/workflows/maintenance/readme-refresh.md), not to this audit.
+[Docs Propagation](../../repo-governance/workflows/maintenance/docs-propagation.md), not to this audit.
 
 ## Delegated Checks
 

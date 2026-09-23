@@ -49,8 +49,8 @@ confirms every command and link before handing the README over. Structured writi
 ## Keeping a README True
 
 A change that leaves a README stale follows
-[README Refresh](../../repo-governance/workflows/maintenance/readme-refresh.md), which updates only what is stale, in
-the same commit as the change. The maker is for the cases that refresh cannot cover with a line: a new README, a
+[Docs Propagation](../../repo-governance/workflows/maintenance/docs-propagation.md), which updates only what is stale,
+in the same commit as the change. The maker is for the cases that propagation cannot cover with a line: a new README, a
 rewrite, or a restructure.
 
 ## Shell

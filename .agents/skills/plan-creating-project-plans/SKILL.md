@@ -72,6 +72,10 @@ validator, or hook accepts changes a rule. Each such change adds the
 making it, as concrete items per repository and action. One item reading "propagate the rules" can never be ticked
 honestly.
 
+A delivery unit that changes what a README, documentation page, or specification describes also carries a
+[Docs Propagation](../../../repo-governance/workflows/maintenance/docs-propagation.md) item, landing in the same commit
+as the change.
+
 ## Interface Plans Widen Before They Narrow
 
 An interface-changing plan draws genuinely different alternatives before choosing, per

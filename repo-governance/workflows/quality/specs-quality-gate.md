@@ -68,7 +68,8 @@ Run specs-quality-gate over the folders billing/api and billing/web, counting th
 ## Related Workflows
 
 - [Gherkin Implementation Review](gherkin-implementation-review.md) checks that the code honours these scenarios.
-- [Docs Quality Gate](docs-quality-gate.md) runs the same bounded loop over documentation.
+- [Docs Propagation](../maintenance/docs-propagation.md) keeps the documents that cite these specifications true to
+  them.
 
 ## Why Listed Folders Only
 

@@ -15,7 +15,7 @@ compatibility: Requires read access to the project the README describes and the 
 navigation, plain language, paragraph length, and the sections each kind carries.
 [Project READMEs](../../../repo-governance/conventions/structure/project-readmes.md) owns what a project README covers,
 [Directory Indexes](../../../repo-governance/conventions/structure/directory-indexes.md) owns index READMEs, and
-[README Refresh](../../../repo-governance/workflows/maintenance/readme-refresh.md) owns keeping a README true as its
+[Docs Propagation](../../../repo-governance/workflows/maintenance/docs-propagation.md) owns keeping a README true as its
 project changes. This skill supplies shape and repairs; where it and a convention seem to differ, the convention wins.
 
 ## Decide the Kind First
