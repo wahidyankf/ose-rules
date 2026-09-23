@@ -30,7 +30,7 @@
     {
       "id": "agent/docs-checker",
       "path": ".agents/agents/docs-checker.md",
-      "digest": "3b4dfa17a2dc0dd0d945ad0b9ab5451b30b68d48afc2e6aa9f5ad330655f277e"
+      "digest": "82195e70d437d36340c761c5cab2089bfa86e9a9cb53cd894ec48c52c8a1c894"
     },
     {
       "id": "agent/docs-file-manager",
@@ -40,12 +40,12 @@
     {
       "id": "agent/docs-fixer",
       "path": ".agents/agents/docs-fixer.md",
-      "digest": "f20f5c9cd4cdc5dd36c81b9e0e1662f2aa330a6f07b80c2b49dbff06476900b9"
+      "digest": "4b5ceb76567ead2c4ef1f1f9fa9fdd3f96a5efcdbc46fe80efcea1c048e8cc81"
     },
     {
       "id": "agent/docs-link-checker",
       "path": ".agents/agents/docs-link-checker.md",
-      "digest": "7b358c392389215e1781763649355c6041fcc772fd0e1a499fd38167f06e0d3d"
+      "digest": "6a037e52c35fdb461b7240a9089b6f0c68b61098fb8ccfb7640f78e5cd7624f3"
     },
     {
       "id": "agent/docs-maker",
@@ -55,7 +55,7 @@
     {
       "id": "agent/docs-tutorial-checker",
       "path": ".agents/agents/docs-tutorial-checker.md",
-      "digest": "f8ab501417b5be6416118a103ccf289540c2cbd0bc70c4671815f0131b29a1c0"
+      "digest": "8af4eed41b0141ae4449f30afdceb8a7ac8a015279a79721441fa84cfcb3b4a1"
     },
     {
       "id": "agent/docs-tutorial-fixer",
@@ -175,7 +175,7 @@
     {
       "id": "agent/readme-checker",
       "path": ".agents/agents/readme-checker.md",
-      "digest": "7e064d53e664704d4522cd340b9b4c12009e767311aca3bbedfd0a29d83dfd14"
+      "digest": "5a4b6e2b59a4287c38bd2df44495824ea98177ba37f150c1beeb29c75ebfa3d8"
     },
     {
       "id": "agent/readme-fixer",
@@ -185,7 +185,7 @@
     {
       "id": "agent/readme-maker",
       "path": ".agents/agents/readme-maker.md",
-      "digest": "8a46e2b90eefac9c27ef5563faa965454bcb66bdfa0d3a6b774b71989f806194"
+      "digest": "c27124c4c353bda03f3449452b9639fb35a374dc87797c6afcd6d365fa13333d"
     },
     {
       "id": "agent/repo-explorer",
@@ -255,7 +255,7 @@
     {
       "id": "agent/swe-code-maker",
       "path": ".agents/agents/swe-code-maker.md",
-      "digest": "419a0734c370b36e934b5fd934496ce3fc6ceb19810fab68977f1291e8425c49"
+      "digest": "8bfb1b8e58d5bbfa222ad8ac0c999de3c25e081095150510cb296179aa9216c7"
     },
     {
       "id": "agent/swe-ui-checker",
@@ -315,7 +315,7 @@
     {
       "id": "skill/applying-maker-checker-fixer",
       "path": ".agents/skills/applying-maker-checker-fixer/SKILL.md",
-      "digest": "0ecb647f039dde98a28bc84f33de6849b8f30eda00ca12edb983eae5c18c74c8"
+      "digest": "e1478cbde3643c0741f171b8d80ee49c065b796ba499ee96392f0d9814c31934"
     },
     {
       "id": "skill/assess-alignment",
@@ -335,7 +335,7 @@
     {
       "id": "skill/authoring-documentation",
       "path": ".agents/skills/authoring-documentation/SKILL.md",
-      "digest": "70c5d13e702b9fb919414cb59ade21d41fbe234017cd110c84f6fdbf3bc4c35f"
+      "digest": "ff713cfacbccc90d82245e8ac33ce6f8457eee9936814d50bc3f083bf11ca0f3"
     },
     {
       "id": "skill/building-command-line-interfaces",
@@ -425,7 +425,7 @@
     {
       "id": "skill/plan-creating-project-plans",
       "path": ".agents/skills/plan-creating-project-plans/SKILL.md",
-      "digest": "3948e5d33f3d9873a28de2b9b852ce1c40cbbb4df2ffc6880b87745b3cd3bee4"
+      "digest": "56acb3dfd0026e1030cb0b44228eb05be92e26803cfe1cc942552a9c927b4568"
     },
     {
       "id": "skill/plan-grooming-idea-briefs",
@@ -580,7 +580,7 @@
     {
       "id": "skill/writing-readme-files",
       "path": ".agents/skills/writing-readme-files/SKILL.md",
-      "digest": "581276b92ede65b23528ab38764fb08ecbf366824a4356a41611fc0f07c71edc"
+      "digest": "68d966dc201ded0ced92c079165c585031163665c6575d5282861ea7a169db52"
     },
     {
       "id": "instruction",

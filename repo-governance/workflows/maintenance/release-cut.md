@@ -28,7 +28,7 @@ been authorized.
 3. **Run the full gate** on `revision`. A release that skipped a gate publishes whatever the gate would have caught.
 4. **Confirm the documentation describes this version.** The changelog records it, per
    [Security, License, and Changelog](../../conventions/writing/repository-documentation-files/002-security-license-and-changelog.md),
-   and the readme and documentation are true to what is being built.
+   and a [Docs Quality Gate](../quality/docs-quality-gate.md) run with scope `all` passes.
 5. **Build only through the release build command.** One scripted command, run where the adopter's build-location
    decision places it, builds each artifact from `revision` in a clean checkout of that revision, and refuses when the
    checkout head differs from `revision` or `revision` is not a full commit identifier. The script enforces both itself.

@@ -1,88 +1,91 @@
 ---
 name: docs-quality-gate
 description: >-
-  Validates documentation for factual accuracy, structure, and link validity in parallel, and repairs findings in
-  bounded sequential check-fix cycles until two consecutive validations find nothing at the chosen threshold.
+  Audits human-facing documents on explicit request and returns a verdict with a finite ledger of stale, obsolete,
+  misplaced, and unreadable documents, handing every finding to Docs Propagation instead of editing.
 when_to_use: >-
-  Use after creating or restructuring documentation, after bulk documentation changes, before a release, or as a
-  periodic documentation audit.
+  Use when someone explicitly asks for a documentation review, before a release, or to sweep a whole repository.
 ---
 
 # Docs Quality Gate
 
 ## Entry
 
-The documentation to validate exists, and the adopter has recorded its validator set (see the decision below).
+Someone explicitly names this gate or directs its audit, or [Release Cut](../maintenance/release-cut.md) runs it before
+publishing. A change or a propagation run never authorizes it alone.
 
-- `scope` (`string`, optional, default `all`): every document, one directory, or one file.
-- `mode` (optional `enum`, default `strict`): the lowest criticality counted. `lax` counts only `CRITICAL`, `normal`
-  adds `HIGH`, `strict` adds `MEDIUM`, and `all` counts every level, per
-  [Criticality Levels](../../development/quality/evidence/finding-criticality-and-confidence/001-criticality-levels.md).
-- `max-iterations` (`number`, optional, default `7`): the ceiling on check-fix cycles.
+- `scope` (`enum`: `change`, `all`; required): the documents one change affects, or the whole document set
+  [Docs Propagation](../maintenance/docs-propagation.md) defines.
+- `change` (`string`, required when `scope` is `change`): the revision range or working-tree change.
 
 ## Sequence
 
-1. **Separate delegated checks.** Predicates a hook or pipeline already owns, such as mechanical link resolution, keep
-   their own evidence; no validator reruns or imitates them, and missing evidence stays `pending`.
-2. **Validate in parallel.** Each validator in the recorded set reads `scope` and writes its own report:
-   - **factual accuracy**: commands, versions, interfaces, and claims checked against authoritative sources per
-     [Factual Validation](../../conventions/writing/factual-validation.md), plus contradictions within and across
-     documents;
-   - **structure**: each document against its type, per [Tutorial Types](../../conventions/writing/tutorial-types.md)
-     and [Tutorial Structure](../../conventions/writing/tutorial-structure.md), applying only universal checks to a
-     document of another type;
-   - **link validity**: internal targets per [Internal Links](../../conventions/writing/internal-links.md), and external
-     addresses by response.
+1. **Freeze the snapshot:** scope, revision, and uncommitted paths. A material change ends the run as input changed,
+   never restarting it.
+2. **Bound the audit.** Under `change`, the documents the change touches and every document citing what it changed;
+   under `all`, the whole document set.
+3. **Audit without editing.** Decide for each document whether:
+   1. every claim is true to the implementation, per
+      [Factual Validation](../../conventions/writing/factual-validation.md), and every command shown was run or is
+      marked not exercised, per
+      [Only What Was Run](../../conventions/structure/documentation-architecture.md#only-what-was-run);
+   2. it still describes something the repository has; if not, it is obsolete and its resolution is removal;
+   3. each fact has one home, a summary sits above its detail per
+      [Progressive Disclosure](../../principles/progressive-disclosure.md), and a page serves one mode per
+      [Documentation Architecture](../../conventions/structure/documentation-architecture.md);
+   4. a newcomer learns from the opening what it is and why it matters, and finds the next step, per
+      [README Quality](../../conventions/writing/readme-quality.md) and
+      [Content Quality](../../conventions/writing/content-quality.md), judged by reading, never by a score;
+   5. under `all`, or when setup changed, a reader with no prior context can follow the setup exactly as written from a
+      clean checkout, each step marked smooth, frustrating, or blocking; and
+   6. it agrees with its specification, which is canonical.
+4. **Record a finite ledger.** Each row names the document, the gap, the required resolution — update, move, or remove —
+   the evidence, and a status: open, resolved, not applicable with evidence, or blocked. Admit only a document that is
+   wrong, obsolete, unreachable, or unusable by a newcomer; wording preference is not a finding, per
+   [Minimal Sufficiency](../../principles/minimal-sufficiency.md).
+5. **Leave machine checks to their tools.** Formatting, links, indexes, and budgets belong to deterministic checks, per
+   [Deterministic and Judgement Validation](../../development/quality/checks/deterministic-and-judgement-validation.md);
+   the audit consumes their result instead of repeating them.
+6. **Return the verdict.** It passes when the ledger is clear and the repository's checks pass. Otherwise the gate hands
+   its ledger to [Docs Propagation](../maintenance/docs-propagation.md). A finding only the owner can decide, such as a
+   specification that disagrees with the implementation, is asked through
+   [Grill Me](../../../.agents/skills/grill-me/SKILL.md).
 
-   A validator that cannot finish ends the run `fail`.
-
-3. **Count at the threshold.** Sum the findings `mode` admits across every report. Below-threshold findings stay in the
-   reports without being counted or fixed. Zero counts as one clean validation and goes to step 5; a nonzero count
-   resets the clean count and goes to step 4.
-4. **Fix in sequence.** Factual fixes come first and structural fixes second, so structure is repaired over corrected
-   content and the two never edit the same passage at once. Each fixer re-confirms a finding before editing, and records
-   a confirmed false positive with its reason so later cycles skip it. Link findings have no automatic fix: each is
-   reported with file and line for a person to repair. A finding only a person can repair, or one the checker and fixer
-   keep disputing, is recorded once for a person and leaves the count; a run with only such findings left ends
-   `partial`. A fixer that errors on one finding logs it and continues; a fixer that cannot start ends the run `fail`.
-5. **Re-validate.** Run the validators again. Two consecutive clean validations end the run `pass`, or `partial` when a
-   finding was left to a person, and a single clean one repeats this step without fixing. A nonzero count returns to
-   step 4 while cycles remain, and ends the run `partial` at `max-iterations`. A count that has not fallen by the fifth
-   cycle is reported as a convergence warning.
+The audit may delegate the reading in step 3 to the repository's documentation checkers.
 
 ## Exit
 
-`final-status` (`enum`: `pass`, `partial`, `fail`) records two consecutive clean validations, findings remaining at the
-ceiling or left to a person, or a validator that could not run. The run also leaves `iterations-completed` (`number`),
-one final report per validator (`file-list`), and `lifecycle-status` (`enum`: `verified`, `pending`, `not-applicable`)
-for delegated checks.
+Outputs: `verdict` (`enum`: `pass`, `needs-propagation`, `input-changed`) and the ledger (`file`, in the scratch
+location per [Temporary Files](../../conventions/structure/temporary-files.md)).
+
+`needs-propagation` is a handoff, not a blocked result: the caller runs propagation with the ledger without another
+request. Partial outcome: an input change ends the audit with its ledger kept. A verdict authorizes no commit or push.
 
 ## Example Usage
 
 ```text
-Run docs-quality-gate on docs/tutorials in strict mode.
+Run docs-quality-gate with scope all.
+Run docs-quality-gate with scope change for the current branch.
 ```
 
 ## Related Workflows
 
-- [CI Quality Gate](ci-quality-gate.md) runs the same bounded loop over pipeline conformance.
-- [Specs Quality Gate](specs-quality-gate.md) runs it over behaviour specifications.
+- [Docs Propagation](../maintenance/docs-propagation.md) repairs every finding, removals included.
+- [Release Cut](../maintenance/release-cut.md) runs this gate with scope `all` before publishing.
 
-## Adopter Decision: Validator Set
+## Adopter Decision: After a Finding
 
-| Option                                                                                         | Trade-off                                                                                     |
-| ---------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| factual accuracy, structure, and links                                                         | full coverage; a repository with learning material needs the structure validator              |
-| one combined validator, run in order, extended with the repository's metadata and naming rules | one ordered pass that also checks metadata and naming; slower than validators run in parallel |
+| Option                  | What happens                                                                                              | Trade-off                                                    |
+| ----------------------- | --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| verdict only            | the caller reports propagation's result, and the gate does not run again                                  | one audit per request; a second audit needs a second request |
+| repair to zero findings | propagation repairs, then the gate audits the effective state again while open findings strictly decrease | ends on a clean audit; costs repeated audits and a ceiling   |
 
-Record the option. Under the combined validator, step 2 runs its three checks in one ordered pass rather than in
-parallel, and step 4 runs one fixer over every finding, metadata, naming, and link format included, while an
-unresolvable link target also goes to a person.
+Record the option. Either way the gate never edits a document, and the loop's ceiling is declared per
+[Bounded Convergence](../../development/workflow/bounded-convergence.md).
 
-## Why Factual Fixes Come First
+## Why It Runs on Request
 
-Restructuring a wrong passage spends effort on text that will change, and a structural fixer that meets an error it
-cannot judge either preserves it or guesses. Ordering the fixers keeps each cycle's edits independent, and the cycle
-ceiling keeps it bounded, per [Bounded Convergence](../../development/workflow/bounded-convergence.md). This workflow
+Judging whether a document is still true, still needed, and still readable is a reading task. Wired into every change,
+it produces noise nobody reads or a pass nobody earned; propagation already refreshes each change. This workflow
 implements [Evidence Over Assertion](../../principles/evidence-over-assertion.md) and
-[Automation Over Manual](../../principles/automation-over-manual.md).
+[Minimal Sufficiency](../../principles/minimal-sufficiency.md).

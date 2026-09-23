@@ -45,11 +45,6 @@ rates every claim that fails. Validating against fixed criteria is `execution` w
 5. **Invented evidence.** Illustrative figures or outcomes attributed to an organization with no primary source, as
    Factual Validation forbids.
 
-Where the repository recorded the combined validator under
-[Docs Quality Gate](../../repo-governance/workflows/quality/docs-quality-gate.md), the checker also applies the recorded
-structure, metadata, and naming rules in the same ordered pass, and checks link validity as Docs Link Checker sets out,
-including the remembered-result entries it returns.
-
 ## Findings
 
 Every finding carries its verification label and its criticality, the document and location, the claim, the exact page

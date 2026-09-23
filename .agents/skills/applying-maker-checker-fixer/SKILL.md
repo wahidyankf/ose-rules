@@ -12,8 +12,8 @@ compatibility: Requires read access to the content under review and to the repor
 # Applying Maker, Checker, and Fixer
 
 The check-fix workflows own the loop:
-[Docs Quality Gate](../../../repo-governance/workflows/quality/docs-quality-gate.md) and its siblings say what runs, in
-what order, and when it stops.
+[Specs Quality Gate](../../../repo-governance/workflows/quality/specs-quality-gate.md) and its siblings say what runs,
+in what order, and when it stops.
 [Finding Criticality and Confidence](../../../repo-governance/development/quality/evidence/finding-criticality-and-confidence.md)
 owns the scales. This skill covers the judgement each role needs inside that loop.
 

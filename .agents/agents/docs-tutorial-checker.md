@@ -41,8 +41,7 @@ Check each tutorial in scope against every row, and return what fails:
 | examples    | every example is complete, runs as printed, and shows output it actually produced            | [By Example](../skills/creating-by-example-tutorials/SKILL.md) or the in-the-field skill |
 | checkpoints | a concrete criterion to confirm appears before a learner could lose the thread               | Tutorial Structure                                                                       |
 
-In [Docs Quality Gate](../../repo-governance/workflows/quality/docs-quality-gate.md), a document of another mode in
-scope receives only the universal checks.
+A document of another mode in scope receives only the universal checks.
 
 ## Running Examples
 

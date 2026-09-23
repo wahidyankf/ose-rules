@@ -69,9 +69,7 @@ returns that need to its caller. A network failure or a refusal of automated tra
 
 Each finding names the document, the line, the link text, the target, the observed result, and its criticality, plus the
 likely new location when a moved target is found. The checker returns findings to its caller with how many documents and
-links it inspected. In [Docs Quality Gate](../../repo-governance/workflows/quality/docs-quality-gate.md), a person
-repairs link findings when validators run separately; under the combined validator its fixer repairs link format, and a
-person resolves a target that cannot be found.
+links it inspected. A fixer may repair link format; a person resolves a target that cannot be found.
 
 ## Stopping Rule
 

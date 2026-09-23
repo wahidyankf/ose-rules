@@ -62,8 +62,8 @@ standards alone, and the hand-off says so. A browser end-to-end suite counts as 
    changed projects, plus the end-to-end journeys the change affects. Name every check
    [Behaviour Change Verification](../../repo-governance/development/quality/manual-verification/006-behaviour-change-verification.md)
    still requires of the change, and every README or document the change leaves stale, per
-   [README Refresh](../../repo-governance/workflows/maintenance/readme-refresh.md), so the caller can route it to Docs
-   Maker or run that workflow before committing.
+   [Docs Propagation](../../repo-governance/workflows/maintenance/docs-propagation.md), so the caller can route it to
+   Docs Maker or run that workflow before committing.
 
 ## Shell
 

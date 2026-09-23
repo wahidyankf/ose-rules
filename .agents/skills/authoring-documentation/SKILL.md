@@ -69,9 +69,8 @@ seen the first one.
 ## Change the Page With the Behaviour
 
 Update a page in the same change as the behaviour it describes;
-[Documentation First](../../../repo-governance/principles/documentation-first.md) argues why. When the change also
-alters what a README promises, [README Refresh](../../../repo-governance/workflows/maintenance/readme-refresh.md) owns
-the sequence.
+[Documentation First](../../../repo-governance/principles/documentation-first.md) argues why.
+[Docs Propagation](../../../repo-governance/workflows/maintenance/docs-propagation.md) owns the sequence.
 
 ## Before Publishing
 
