@@ -72,9 +72,10 @@ that reads it. The hooks, the hosted workflow, and `check:complete` all dispatch
 transcribing it, so a gate added to the config reaches every surface it declares without a second edit. Each gate
 decides for itself which files it inspects — a runner guessing on their behalf would be wrong differently for each one.
 
-`./ferret` pins FERRET from `ferret.lock` the same way. Every surface here — wrappers, hooks, shipped scripts — sits at
-the floor tier of the [Command-Line Interface](repo-governance/conventions/structure/command-line-interface.md)
-convention; this repository builds no command-line product.
+`./ferret` pins FERRET from `ferret.lock` the same way; [README.md](README.md#harness-capture) covers capture. Every
+surface here — wrappers, hooks, shipped scripts — sits at the floor tier of the
+[Command-Line Interface](repo-governance/conventions/structure/command-line-interface.md) convention; this repository
+builds no command-line product.
 
 `./rhino` is a wrapper, not the tool: it installs the release `rhino.lock` pins, verifies the published archive digest
 before extracting and the executable's own reported identity before running, and refuses rather than falling back to

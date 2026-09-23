@@ -44,6 +44,12 @@ generated _from_ these roots and never becomes the thing an editor edits.
 profiles in `repo-config.yml`. `./rhino harness adapters validate` decides whether what is on disk matches that model;
 the generated output is never edited directly.
 
+## Harness Capture
+
+FERRET records coding-agent harness activity. Capture is registered at the user level of the maintainer's harness
+configuration, not in this repository, so nothing here forwards hook payloads. Use `./ferret` to query the local record
+— `./ferret status --json`, whose `dataHome` names where it lives, and `./ferret usage --group-by tool --json`.
+
 ## Adoption
 
 Two capabilities describe the whole interaction:
