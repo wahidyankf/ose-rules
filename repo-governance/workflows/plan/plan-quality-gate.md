@@ -51,8 +51,8 @@ Repositories genuinely disagree on what the gate does after it finds something, 
 
 Under the audit-first option, the gate runs only when someone explicitly directs it or a workflow named as its caller
 invokes it; creating, editing, or executing a plan never authorizes it. Each run serves one named checkpoint: before
-execution, after a material change, or at completion. Its pass authorizes neither execution nor commit, no mandatory
-finding is waived, and a not-applicable row carries evidence.
+execution or after a material change. Its pass authorizes neither execution nor commit, no mandatory finding is waived,
+and a not-applicable row carries evidence.
 
 The second and third options replace steps 4 to 6, and a caller reads a `blocked` or `partial` result as `FAIL`, and a
 clean end as `PASS`, or `PASS_WITH_FINDINGS` when findings are recorded.
