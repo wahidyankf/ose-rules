@@ -1,6 +1,6 @@
 ---
 description: |-
-  Guides Clojure work under the shared quality standards: turning REPL discoveries into failing tests, keeping effects at namespace edges, realizing lazy sequences before resources close, and replacing collaborators without global state.
+  Guides Clojure work under the Clojure standard: turning REPL discoveries into failing tests, placing boundary validation, spotting effects and laziness that escape their scope, and replacing collaborators without global state.
 name: programming-clojure
 ---
 

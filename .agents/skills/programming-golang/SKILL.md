@@ -1,8 +1,8 @@
 ---
 name: programming-golang
 description: >-
-  Guides Go work under the shared quality standards: mapping the Go toolchain to the named gates, placing tests by the
-  boundary they touch, and judging error forms, interface placement, goroutine ownership, and context use.
+  Guides Go work under the Go standard: starting from the module's recorded gates, placing tests by the boundary they
+  touch, and judging error forms, interface placement, goroutine ownership, and context use.
 when_to_use: >-
   Use when writing, changing, or reviewing Go code in a module, before the first test of the change.
 compatibility: Requires a Go module with the Go toolchain on the path.
@@ -10,23 +10,20 @@ compatibility: Requires a Go module with the Go toolchain on the path.
 
 # Go Programming
 
-The catalog has no Go stack standard, so this skill works under the standards every language shares.
+Every Go rule is owned by [Go Standards](../../../repo-governance/development/quality/stacks/golang-standards.md).
 [Test-Driven Development](../../../repo-governance/development/quality/testing/test-driven-development.md) and
 [Test Boundaries and Gates](../../../repo-governance/development/quality/testing/test-boundaries-and-gates.md) govern
 tests and gates, [Red, Green, Refactor](../../../repo-governance/workflows/quality/red-green-refactor.md) runs each
-cycle, [Lint Strictness](../../../repo-governance/development/quality/checks/lint-strictness.md) sets the threshold, and
-[Developing Applications](../developing-applications/SKILL.md) carries the judgement on layers, errors, logs, and input.
-Go's own toolchain is its enforced choice; other tools appear only as marked examples.
+cycle, and [Developing Applications](../developing-applications/SKILL.md) carries the judgement on layers, errors, logs,
+and input that holds in every language. This skill adds only the procedure and judgement of applying them in Go. Where a
+sentence here seems to state a rule, the standard decides.
 
-## Map the Toolchain to the Gates
+## Start From What the Module Records
 
-| Target      | In Go                                                                   |
-| ----------- | ----------------------------------------------------------------------- |
-| format      | `gofmt -l` lists no file                                                |
-| type check  | `go build ./...`                                                        |
-| lint        | `go vet ./...`, plus the recorded linter set; example: golangci-lint    |
-| unit        | `go test` over unit tests with `-race`, collecting coverage in that run |
-| integration | tests touching real resources, selected apart from the unit run         |
+Read the module's `go` directive, its committed linter configuration, and the recorded choices for assertions and
+integration selection. Run the standard's gates, then the unit run with the race detector, on the untouched tree. A gate
+already failing is handled under
+[Preexisting Error Resolution](../../../repo-governance/development/quality/evidence/preexisting-error-resolution.md).
 
 ## Place a Test by What It Touches
 
@@ -39,16 +36,12 @@ is a new cycle: add it, watch it fail, then change the code.
 
 ## Choose the Form of an Error
 
-| Callers need to                 | Form                                                       |
-| ------------------------------- | ---------------------------------------------------------- |
-| test for one specific condition | an exported sentinel value, compared with `errors.Is`      |
-| read details out of the failure | an exported error type, extracted with `errors.As`         |
-| only report or pass it on       | a wrapped error with context through `%w`, and no identity |
-
-An exported sentinel or type joins the package's
-[Public Contract](../../../repo-governance/development/quality/architecture/public-contract.md), so export one only when
-a caller needs it. Never branch on message text. A `panic` signals a programmer error or a failed startup, never a
-failure a caller could handle.
+Ask what the nearest caller will do with the failure. If it only reports or passes it on, wrap it with context and give
+it no identity. Only when a caller must test for the condition, or read details from it, does the error take one of the
+exported forms the standard lists. An exported sentinel or type joins the package's
+[Public Contract](../../../repo-governance/development/quality/architecture/public-contract.md), so exporting one "in
+case" commits the package to it. When a `panic` seems tempting, ask whether any caller could handle the failure; if one
+could, it is a returned error.
 
 ## Declare the Interface Where It Is Used
 
@@ -63,24 +56,14 @@ port.
 Before starting a goroutine, name who waits for it and what tells it to stop. One nobody waits for leaks on the first
 error path; one with no stop signal outlives its request.
 
-- Take `context.Context` as the first parameter of every call that may wait, and never keep it in a struct field.
+- Pass the caller's `context.Context` down through every call that may wait, rather than starting a fresh one.
 - Use a channel to hand over a value or signal completion, and a mutex to guard state several goroutines read.
-- The race detector sees only races that ran.
-
-## Adopter Decisions
-
-| Decision              | Option                               | Gains                                 | Costs                                                                                                                       |
-| --------------------- | ------------------------------------ | ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| assertions            | the standard `testing` package only  | no dependency                         | longer comparisons and hand-written diffs                                                                                   |
-|                       | a library; example: testify          | shorter assertions and readable diffs | a dependency, weighed per [Dependency Selection](../../../repo-governance/development/quality/code/dependency-selection.md) |
-| integration selection | a build tag on each integration file | tests stay beside their package       | a forgotten tag moves a test into unit                                                                                      |
-|                       | a separate test directory            | the layer is visible from the path    | tests reach only the exported API                                                                                           |
-
-Record each choice once.
+- The race detector sees only races that ran, so a test for concurrent code drives the goroutines it starts to
+  completion.
 
 ## Before Handing Off
 
-- `gofmt`, the build, vet, and the recorded linters report nothing, and the unit run passed with the race detector;
+- the standard's gates report nothing, and the unit run passed with the race detector;
 - every returned error is handled or returned, never discarded;
 - every goroutine added has an owner and a stop signal;
 - randomness that protects anything comes from `crypto/rand`; and

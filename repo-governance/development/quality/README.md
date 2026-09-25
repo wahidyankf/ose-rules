@@ -27,8 +27,8 @@ repository-check standards sit alongside them.
 - [Manual Verification](manual-verification.md) — the layers automation cannot reach, behaviour-change checks, coverage,
   and the evidence they produce
 - [Manual Verification Modules](manual-verification/README.md) — eight modules, from gate results to usability probes
-- [Stacks](stacks/README.md) — per-language and per-framework gates, defaults, and design rules, adopted only with that
-  stack
+- [Stacks](stacks/README.md) — per-stack gates, defaults, and design rules for languages, frameworks, infrastructure,
+  and tooling, adopted only with that stack
 - [Testing](testing/README.md) — test layers and gates, test-first work, and API, behaviour, and end-to-end tests with
   isolated data
 - [User Interfaces](user-interfaces/README.md) — accessibility, design tokens, styling, and user-facing delivery

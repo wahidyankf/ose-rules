@@ -1,8 +1,8 @@
 ---
 name: programming-kotlin
 description: >-
-  Guides Kotlin work under the shared quality standards: mapping the build to the named gates, and judging nullability
-  at Java boundaries, coroutine scope and cancellation, closed state types, and the choice of scope function.
+  Guides Kotlin work under the Kotlin standard: reading the build's recorded choices, deciding nullability at Java
+  boundaries, replacing each wanted bang, structuring coroutine scope and cancellation, and choosing scope functions.
 when_to_use: >-
   Use when writing, changing, or reviewing Kotlin code on the JVM, before the first test of the change.
 compatibility: Requires a Kotlin project with its build, lint, and test tasks.
@@ -10,50 +10,47 @@ compatibility: Requires a Kotlin project with its build, lint, and test tasks.
 
 # Kotlin Programming
 
-The catalog has no Kotlin stack standard, so this skill works under the standards every language shares.
+Every Kotlin rule is owned by
+[Kotlin Standards](../../../repo-governance/development/quality/stacks/kotlin-standards.md).
 [Test-Driven Development](../../../repo-governance/development/quality/testing/test-driven-development.md) and
 [Test Boundaries and Gates](../../../repo-governance/development/quality/testing/test-boundaries-and-gates.md) govern
 tests and gates, [Red, Green, Refactor](../../../repo-governance/workflows/quality/red-green-refactor.md) runs each
-cycle, [Lint Strictness](../../../repo-governance/development/quality/checks/lint-strictness.md) sets the threshold,
-[Test Doubles](../../../repo-governance/development/quality/testing/test-doubles.md) chooses replacements, and
-[Developing Applications](../developing-applications/SKILL.md) carries the judgement on layers, errors, logs, and input.
-Any tool named below is a marked example.
+cycle, [Test Doubles](../../../repo-governance/development/quality/testing/test-doubles.md) chooses replacements, and
+[Developing Applications](../developing-applications/SKILL.md) carries the judgement on layers, errors, logs, and input
+that holds in every language. This skill adds only the procedure and judgement of applying them in Kotlin. Where a
+sentence here seems to state a rule, the standard decides.
 
-## Map the Build to the Gates
+## Start From What the Build Records
 
-| Target          | In Kotlin                                                              |
-| --------------- | ---------------------------------------------------------------------- |
-| type check      | compilation with every warning treated as an error                     |
-| lint and format | the recorded Kotlin linter and formatter; example: ktlint and detekt   |
-| unit            | the build's test task over unit tests, collecting coverage in that run |
+Read the module's `compilerOptions`, whether it is a library in explicit API mode, the formatter and analyser
+configuration, the coverage rules, and the test-framework and failure choices the adopter recorded. Compare them with
+the standard: a warning left advisory is a finding to raise, not a baseline to copy. Run the standard's gates on the
+untouched tree. A gate already failing before any edit is handled under
+[Preexisting Error Resolution](../../../repo-governance/development/quality/evidence/preexisting-error-resolution.md).
 
-## Treat Java Values as Unknown
+## Reach a Red That Counts
 
-A value returned by a Java API has a platform type: the compiler neither proves it present nor makes callers check it.
-Decide its nullability at the first Kotlin line that receives it, by assigning it to an explicitly nullable or non-null
-type, so the uncertainty ends at the boundary instead of surfacing as a null pointer several calls deeper.
+A test calling a missing function fails to compile, and `TODO()` compiles but fails by throwing; neither is a red. Give
+the function its signature and a body returning a value the assertion rejects, then run it.
 
-## `!!` and `lateinit` Are Claims
+## Decide Java Values Where They Enter
 
-`!!` asserts presence without proving it. Replace it with a check the compiler smart-casts, an Elvis default or early
-return, or a type that cannot hold null. `lateinit` postpones the same claim until the first read; keep it for a
-property a framework or test setup assigns before any read, and take a constructor parameter everywhere else.
+For each Java call the change adds, ask whether the value can be absent in the case at hand: read the API's
+documentation and annotations, then assign the result to the matching Kotlin type on the first line that receives it.
+When unsure, choose nullable; a later check is cheap, a null pointer several calls deeper is not.
 
-## Coroutines Live Inside an Owned Scope
+## Replace Each `!!` You Reach For
 
-- Launch each coroutine in a scope whose end is owned, such as a request, a component, or an injected scope cancelled on
-  shutdown, never a global scope nobody cancels.
-- A `suspend` function never blocks its thread; a blocking call moves to a dispatcher intended for it.
-- Inject dispatchers instead of naming them inline, so a test runs on a test dispatcher with virtual time; the unit
-  layer excludes a real clock. Example: `runTest` from kotlinx-coroutines-test.
-- A broad `catch` around suspending code must rethrow `CancellationException`, and `runCatching` catches it too, so
-  rethrow it explicitly. Swallowing it leaves a cancelled coroutine running as if nothing happened.
+When code wants `!!`, choose what the situation actually is: a check the compiler can smart-cast, an Elvis default or
+early return, or a type that cannot hold null. When code wants `lateinit`, prefer a constructor parameter unless a
+framework or test setup assigns the property.
 
-## Closed States Are Sealed
+## Give Each Coroutine an Owner
 
-Model a closed set of states as a sealed interface or class, and handle it in a `when` with no `else` branch, so adding
-a state breaks compilation at every site that must decide about it. A data class holds `val` properties and changes
-through `copy`, keeping values immutable as [Immutability](../../../repo-governance/principles/immutability.md) asks.
+Before launching, name what cancels the coroutine: a request, a component, or an injected scope closed on shutdown. Look
+for blocking calls inside `suspend` functions, such as file, socket, or JDBC access, and move them to the injected
+blocking dispatcher. Search each broad `catch` and `runCatching` around suspending code for a path that swallows
+cancellation.
 
 ## Pick the Scope Function by What It Returns
 
@@ -63,23 +60,12 @@ through `copy`, keeping values immutable as [Immutability](../../../repo-governa
 | a side effect, keeping the receiver unchanged | `also`         |
 | a result computed from the receiver           | `let` or `run` |
 
-Never nest one scope function inside another: once `it` or `this` could mean two things, a named local reads better, per
+When one scope function nests inside another, `it` or `this` can mean two things; a named local reads better, per
 [Code Clarity](../../../repo-governance/development/quality/code/code-clarity.md).
-
-## Adopter Decisions
-
-| Decision          | Option                                    | Gains                                       | Costs                                      |
-| ----------------- | ----------------------------------------- | ------------------------------------------- | ------------------------------------------ |
-| test framework    | JUnit with kotlin.test assertions         | one runner shared with any Java tests       | plainer specification style                |
-|                   | a Kotlin-first framework; example: Kotest | specification styles and property testing   | a second test idiom beside any Java tests  |
-| expected failures | exceptions                                | the JVM idiom, and no wrapping of libraries | the signature does not show what can fail  |
-|                   | sealed result types                       | the compiler makes every caller decide      | every throwing library call needs wrapping |
-
-Record each choice once.
 
 ## Before Handing Off
 
-- compilation with warnings as errors, the recorded linter and formatter, and the unit run all passed;
-- every value from a Java API has its nullability decided where it enters;
-- every coroutine launched has an owner that cancels it; and
+- every gate in the standard passed, coverage verification included;
+- every value from a Java API has its nullability decided where it enters, and each `!!` added is backed by a proof;
+- every coroutine launched has an owner that cancels it, and no path swallows cancellation; and
 - each recorded red failed on an assertion about the missing behaviour.

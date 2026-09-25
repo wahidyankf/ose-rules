@@ -32,9 +32,9 @@ The caller names the projects or paths to audit. The checker reads those and not
 
 ## Adopter Decision: Which Stack Rules Apply
 
-Language-neutral standards apply to every project. Stack rules come from what the repository records for each language
-or framework it builds with, and only for the projects built with it; see
-[Stack Standards](../../repo-governance/development/quality/stacks/README.md).
+Language-neutral standards apply to every project. Stack rules come from the stacks the project's inventory entry lists,
+read from the repository's local copies, as [Stack Packs](../../repo-governance/conventions/structure/stack-packs.md)
+resolves them; see [Stack Standards](../../repo-governance/development/quality/stacks/README.md).
 
 | Recorded for a stack     | The checker also applies                      | Trade-off                                                          |
 | ------------------------ | --------------------------------------------- | ------------------------------------------------------------------ |
@@ -48,7 +48,8 @@ or framework it builds with, and only for the projects built with it; see
    [Hexagonal Architecture](../../repo-governance/development/quality/architecture/hexagonal-architecture.md) and
    [Functional Core, Imperative Shell](../../repo-governance/development/quality/architecture/functional-core-imperative-shell.md),
    with error fates, logging, and input validation judged as
-   [Developing Applications](../skills/developing-applications/SKILL.md) teaches.
+   [Developing Applications](../skills/developing-applications/SKILL.md) teaches, and types and boundaries per
+   [Type and Boundary Safety](../../repo-governance/development/quality/code/type-and-boundary-safety.md).
 2. **Clarity and cost.** [Code Clarity](../../repo-governance/development/quality/code/code-clarity.md),
    [Code as Liability](../../repo-governance/development/quality/code/code-as-liability.md), and
    [Dependency Selection](../../repo-governance/development/quality/code/dependency-selection.md), with
@@ -59,7 +60,9 @@ or framework it builds with, and only for the projects built with it; see
    doubles, data, and any git fixture following
    [Test Doubles](../../repo-governance/development/quality/testing/test-doubles.md),
    [Test Data Isolation](../../repo-governance/development/quality/testing/test-data-isolation.md), and
-   [Git Fixture Isolation](../../repo-governance/development/quality/testing/git-fixture-isolation.md).
+   [Git Fixture Isolation](../../repo-governance/development/quality/testing/git-fixture-isolation.md), and any coverage
+   number measuring what [Meaningful Coverage](../../repo-governance/development/quality/testing/meaningful-coverage.md)
+   allows.
 5. **Test-first evidence.** New or changed behaviour has a test, and the red, green, and refactor records that
    [Cycle and Evidence](../../repo-governance/development/quality/testing/test-driven-development/001-cycle-and-evidence.md)
    requires exist wherever the work kept them. Behaviour shipped with no test is a finding. A green suite proves the

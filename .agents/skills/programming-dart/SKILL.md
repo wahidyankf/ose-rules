@@ -1,8 +1,8 @@
 ---
 name: programming-dart
 description: >-
-  Guides Dart work under the shared quality standards: holding the SDK's formatter and analyzer at zero, and judging
-  nullable types, late and bang claims, unawaited futures, stream cleanup, and time in tests.
+  Guides Dart work under the Dart standard: reading the analysis options, replacing each wanted bang or late, decoding
+  boundary data, finding unawaited futures and unclosed streams, and controlling time in tests.
 when_to_use: >-
   Use when writing, changing, or reviewing Dart code, Flutter application code included, before the first test of the
   change.
@@ -11,77 +11,60 @@ compatibility: Requires a Dart or Flutter project with the Dart SDK on the path.
 
 # Dart Programming
 
-The catalog has no Dart stack standard, so this skill works under the standards every language shares.
+Every Dart rule is owned by [Dart Standards](../../../repo-governance/development/quality/stacks/dart-standards.md).
 [Test-Driven Development](../../../repo-governance/development/quality/testing/test-driven-development.md) and
 [Test Boundaries and Gates](../../../repo-governance/development/quality/testing/test-boundaries-and-gates.md) govern
 tests and gates, [Red, Green, Refactor](../../../repo-governance/workflows/quality/red-green-refactor.md) runs each
-cycle, [Lint Strictness](../../../repo-governance/development/quality/checks/lint-strictness.md) sets the threshold, and
-[Developing Applications](../developing-applications/SKILL.md) carries the judgement on layers, errors, logs, and input.
-The SDK's own formatter, analyzer, and test package are the language's enforced choices; any other tool named below is a
-marked example.
+cycle, and [Developing Applications](../developing-applications/SKILL.md) carries the judgement on layers, errors, logs,
+and input that holds in every language. This skill adds only the procedure and judgement of applying them in Dart. Where
+a sentence here seems to state a rule, the standard decides.
 
-## Map the SDK to the Gates
+## Start From What the Project Records
 
-| Target              | In Dart                                                                              |
-| ------------------- | ------------------------------------------------------------------------------------ |
-| format              | `dart format --output=none --set-exit-if-changed .`                                  |
-| type check and lint | `dart analyze --fatal-infos`, reading the rule set in `analysis_options.yaml`        |
-| unit                | `dart test`, or `flutter test` in a Flutter project, collecting coverage in that run |
+Read `pubspec.yaml`, `analysis_options.yaml`, and the failure and value-class choices the adopter recorded. Compare the
+analysis options with the standard: a strict mode switched off or a rule set missing is a finding to raise, not a
+baseline to copy. Run the standard's gates on the untouched tree. A gate already failing before any edit is handled
+under
+[Preexisting Error Resolution](../../../repo-governance/development/quality/evidence/preexisting-error-resolution.md).
 
-Lint rules report at info severity by default, so without `--fatal-infos` an enabled rule prints and never fails, the
-advisory tier Lint Strictness removes. Example rule set: the recommended set from package:lints.
+## Reach a Red That Counts
 
-## Nullability States Something About the Domain
+A test calling a missing member fails analysis, and a body of `throw UnimplementedError()` fails by throwing; neither is
+a red. Give the member its signature and a body returning a value the assertion rejects, then run it.
 
-Declare a type nullable only where absence means something to the caller; sound null safety has the compiler hold the
-rest.
+## Replace Each Bang You Reach For
 
-- `!` asserts presence and throws at runtime when wrong. Copy the value into a local and check it, return early, or use
-  a type that cannot be null; the compiler promotes a checked local where it may not promote a field.
-- `late` moves the initialization check from compile time to the first read. Keep it for a value truly assigned before
-  use that no constructor can supply, such as state set in a lifecycle hook.
-- A named parameter with no sensible default is `required`, not nullable.
+When code wants `!` or `late`, ask what is actually true:
 
-## Every Future Is Awaited or Deliberately Released
+- the value is checked nearby, so copy it into a local and check it; the compiler promotes a checked local where it will
+  not promote a field;
+- absence has a sensible answer, so return early or supply the default;
+- a named parameter has no sensible default, so it is `required` rather than nullable; or
+- a lifecycle step truly assigns it before any read, so `late` fits, with that step named in a comment.
 
-A future that is neither awaited nor handled reports its error nowhere. Await it, return it, or pass it to `unawaited`
-with a comment naming why it may run on. Turn this into a finding rather than a habit with the analyzer's rule for
-unawaited futures; example: `unawaited_futures`.
+## Decode Where Data Arrives
 
-## Streams Are Closed by Their Owner
+Follow each `jsonDecode`, platform-channel result, or storage read to the first function that touches it. That function
+turns the untyped value into a typed one or a named failure; write its failing test with a malformed input first. A
+decoded map indexed anywhere deeper is a boundary drawn in the wrong place.
 
-Whoever creates a stream controller closes it, and whoever listens cancels the subscription when its own lifetime ends,
-in Flutter inside a widget's `dispose`. A subscription never cancelled keeps its listener, and everything the listener
-references, alive.
+## Find Futures and Streams Left Running
 
-## Time Is a Parameter
+Read each call returning a `Future` and ask who observes its error. The analyzer's rule catches most, but not a future
+stored in a variable and never awaited. For each stream controller the change creates, find where it closes; for each
+subscription, find the owner whose end cancels it. A subscription never cancelled keeps its listener, and everything the
+listener references, alive.
 
-The unit layer excludes a real clock. Pass a clock in for code reading the time, and run code built on timers and delays
-under a fake clock that advances on command; example: package:fake_async. A test waiting real seconds is slow, and
-eventually one of the intermittent failures
+## Control Time in Tests
+
+A test waiting real seconds is slow and eventually intermittent, which
 [Intermittent Failures](../../../repo-governance/development/quality/testing/test-driven-development/004-intermittent-failures.md)
-rules out.
-
-## Prefer Immutable Values
-
-Use `final` for anything not reassigned, `const` constructors where every field allows one, and collection literals with
-spreads and collection `if` to build collections. Records compare by value; a class compares by identity until it
-overrides equality, so a value class states its equality deliberately.
-
-## Adopter Decisions
-
-| Decision          | Option                               | Gains                                       | Costs                                                                                                                           |
-| ----------------- | ------------------------------------ | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| expected failures | exceptions                           | the idiom the core libraries follow         | the signature does not show what can fail                                                                                       |
-|                   | a sealed result hierarchy            | an exhaustive `switch` makes callers decide | every throwing library call needs wrapping                                                                                      |
-| value classes     | equality and copying written by hand | no build step                               | hand-written members drift from the fields                                                                                      |
-|                   | generated; example: freezed          | members stay in step with the fields        | a code generator, weighed per [Dependency Selection](../../../repo-governance/development/quality/code/dependency-selection.md) |
-
-Record each choice once.
+rules out. Pass a clock to code reading the time, and run timers and delays under a fake clock that advances on command.
 
 ## Before Handing Off
 
 - the format check and the analyzer report nothing, infos included;
+- every `!` and `late` added is backed by a check or a named lifecycle step;
 - no unit test waits on a real timer or reads the real clock;
 - every controller created is closed, and every subscription is cancelled by its owner; and
 - each recorded red failed on an assertion about the missing behaviour.
