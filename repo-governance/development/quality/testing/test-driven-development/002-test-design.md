@@ -40,7 +40,7 @@ reader of a failure nothing about what broke.
 
 Each test verifies one logical outcome. Several checks on a single result that together express one outcome are one
 logical assertion. Unrelated checks bundled together are not: the first failure hides the rest, and no name can describe
-them all.
+them all. Each expected failure is a behaviour with its own test.
 
 ## No Shared Mutable State
 

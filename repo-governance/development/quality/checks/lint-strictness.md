@@ -67,4 +67,6 @@ reason, because a rule that named one site has said nothing about whether anythi
 Each repository records its own gates: the artifact type, the tool, the threshold or configuration, and where the gate
 runs. The inventory differs between repositories; the threshold, the rollout order, and the waiver rule do not.
 
+Where a stack has both a formatter and a linter, the linter's layout rules are disabled so the two never disagree.
+
 An adopter enforces the threshold in the linter configuration its own hooks and pipeline read.

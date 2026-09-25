@@ -28,15 +28,15 @@ decision open goes back to its owner instead of raising the tier.
 
 ## Adopter Decision: How the Stack Skill Reaches the Maker
 
-[Developing Applications](../skills/developing-applications/SKILL.md) applies to every project. Each language or
-framework the repository builds with adds its programming skill from the [skills index](../skills/README.md), which
-defers to the matching entry in [Stack Standards](../../repo-governance/development/quality/stacks/README.md) where one
-exists.
+[Developing Applications](../skills/developing-applications/SKILL.md) applies to every project. Each stack the project
+lists in its inventory adds its local skill and
+[stack standard](../../repo-governance/development/quality/stacks/README.md), resolved as
+[Stack Packs](../../repo-governance/conventions/structure/stack-packs.md) defines.
 
 | Option         | The maker                                                                          | Trade-off                                                           |
 | -------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | declared       | lists, in its adopted copy's `skills`, the skill of each stack the repository uses | the harness loads exactly those skills; a new stack edits this file |
-| read on demand | reads the skill for the project's stack from the index before the first test       | no edit per stack; only this procedure makes the read happen        |
+| read on demand | loads each listed stack's local skill and standard before the first test           | no edit per stack; a listed stack with no local copy is reported    |
 
 Under either option, a project whose stack has neither a skill nor a standard is built under the language-neutral
 standards alone, and the hand-off says so. A browser end-to-end suite counts as a stack here, with
@@ -52,14 +52,15 @@ standards alone, and the hand-off says so. A browser end-to-end suite counts as 
    [Code as Liability](../../repo-governance/development/quality/code/code-as-liability.md), and any new dependency
    passes [Dependency Selection](../../repo-governance/development/quality/code/dependency-selection.md).
 3. **Place the code** by what each piece decides or does, as Developing Applications teaches.
-4. **Build each increment test-first.** A scenario that specifies the behaviour is added or updated before its red, per
-   [Behaviour-Driven Development](../../repo-governance/development/quality/testing/behaviour-driven-development.md),
-   and each increment runs through
-   [Red, Green, Refactor](../../repo-governance/workflows/quality/red-green-refactor.md), with its runs recorded where
-   the caller names.
+4. **Build each increment test-first.** Where the project keeps a scenario corpus, a scenario that specifies the
+   behaviour is added or updated before its red, per
+   [Behaviour-Driven Development](../../repo-governance/development/quality/testing/behaviour-driven-development.md).
+   Each increment runs through [Red, Green, Refactor](../../repo-governance/workflows/quality/red-green-refactor.md),
+   with its runs recorded where the caller names.
 5. **Make it right, then fast only on a measurement,** in the order Implementation Stages sets, editing surgically.
-6. **Check before handing over.** Run the repository's type check, lint, and format checks and the fast gate over the
-   changed projects, plus the end-to-end journeys the change affects. Name every check
+6. **Check before handing over.** Run the type check, lint, and format checks and the fast gate that the project README
+   or repository adapter records, over the changed projects, plus the end-to-end journeys the change affects. Name every
+   check
    [Behaviour Change Verification](../../repo-governance/development/quality/manual-verification/006-behaviour-change-verification.md)
    still requires of the change, and every README or document the change leaves stale, per
    [Docs Propagation](../../repo-governance/workflows/maintenance/docs-propagation.md), so the caller can route it to

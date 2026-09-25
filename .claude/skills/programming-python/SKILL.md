@@ -1,6 +1,6 @@
 ---
 description: |-
-  Guides Python work under the shared quality standards: annotating every signature for a strict checker, handling paths as pathlib values, placing tests by the boundary they touch, and judging data shapes, failures, and async code.
+  Guides Python work under the Python standard: annotating every signature for Pyright in strict mode, handling paths as pathlib values, placing tests by the boundary they touch, and judging data shapes, failures, and async code.
 name: programming-python
 ---
 

@@ -59,8 +59,9 @@ ahead of the complete end-to-end run, so a local failure surfaces before the slo
 
 ## Coverage Is Measured Where It Gates
 
-Gating coverage comes from the run that executed the tests, because two runs can disagree. Each module excluded from
-measurement is named in the project's README, with the reason a test at that layer may not reach it.
+Gating coverage comes from the run that executed the tests, because two runs can disagree. What coverage may measure is
+owned by [Meaningful Coverage](meaningful-coverage.md). Each module excluded from measurement is named in the project's
+README, with the reason a test at that layer may not reach it.
 
 Lowering a floor or widening an exclusion changes what the repository is willing to ship. It is a change to a gate, made
 as [Software Quality Enforcement](../checks/software-quality-enforcement.md) requires.

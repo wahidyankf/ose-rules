@@ -1,8 +1,8 @@
 ---
 name: programming-elixir
 description: >-
-  Guides Elixir work under the shared quality standards: holding the formatter and compiler warnings at zero, and
-  judging tagged tuples against raising, when a process is warranted, thin callbacks, and concurrent test isolation.
+  Guides Elixir work under the Elixir standard: reading what the project records, choosing between a tagged tuple and
+  raising, deciding whether a process is warranted, keeping callbacks thin, and isolating concurrent tests.
 when_to_use: >-
   Use when writing, changing, or reviewing Elixir code, OTP applications included, before the first test of the change.
 compatibility: Requires an Elixir project with Mix and ExUnit.
@@ -10,38 +10,49 @@ compatibility: Requires an Elixir project with Mix and ExUnit.
 
 # Elixir Programming
 
-The catalog has no Elixir stack standard, so this skill works under the standards every language shares.
+Every Elixir rule is owned by
+[Elixir Standards](../../../repo-governance/development/quality/stacks/elixir-standards.md).
 [Test-Driven Development](../../../repo-governance/development/quality/testing/test-driven-development.md) and
 [Test Boundaries and Gates](../../../repo-governance/development/quality/testing/test-boundaries-and-gates.md) govern
 tests and gates, [Red, Green, Refactor](../../../repo-governance/workflows/quality/red-green-refactor.md) runs each
-cycle, [Lint Strictness](../../../repo-governance/development/quality/checks/lint-strictness.md) sets the threshold, and
-[Developing Applications](../developing-applications/SKILL.md) carries the judgement on layers, errors, logs, and input.
-Mix and ExUnit ship with the language and are its enforced choices; any other tool named below is a marked example.
+cycle, and [Developing Applications](../developing-applications/SKILL.md) carries the judgement on layers, errors, logs,
+and input that holds in every language. This skill adds only the procedure and judgement of applying them in Elixir.
+Where a sentence here seems to state a rule, the standard decides.
 
-## Map Mix to the Gates
+## Start From What the Project Records
 
-| Target              | In Elixir                                                                     |
-| ------------------- | ----------------------------------------------------------------------------- |
-| format              | `mix format --check-formatted`                                                |
-| type check and lint | `mix compile --warnings-as-errors`, plus the recorded linter; example: Credo  |
-| unit                | `mix test` over unit tests, collecting coverage in that run                   |
-| integration         | tests tagged as integration and excluded from the unit run by the test helper |
+Read `mix.exs`, `.formatter.exs`, the linter and Dialyzer configuration, the test helper's tag exclusions, and the
+choices the adopter recorded. Run the standard's gates on the untouched tree. A gate already failing before any edit is
+handled under
+[Preexisting Error Resolution](../../../repo-governance/development/quality/evidence/preexisting-error-resolution.md).
+
+Dialyzer's first analysis is slow; run it once at the start so each later run reads the cached table.
+
+## Reach a Red That Counts
+
+A test calling a missing function raises `UndefinedFunctionError`, and the compiler's warning about the call fails the
+test-load gate; neither is a red. Define the function with a body returning a value the assertion rejects, such as
+`{:error, :not_implemented}`, and run it.
 
 ## Tagged Tuple or Raise
 
-A function whose failure a caller can act on returns `{:ok, value}` or `{:error, reason}`. Chain several with `with`,
-and match every error shape the chain can produce in its `else`. A failure only a defect produces raises. The library
-convention pairs the two forms: `name` returns a tuple and `name!` raises. Offer the tuple form wherever a caller can
-decide, and call the bang form only where failing should crash.
+Ask who can act on the failure. When a caller can decide, return the tuple and match each error shape it adds in every
+`with` that reaches it. When only a defect produces it, raise. Offer the bang form only where a caller wants failing to
+crash.
 
-Data arriving at a boundary is cast and validated once into a known shape, and no write goes around that step; example:
-an Ecto changeset.
+A `rescue` added to make a test pass is a signal to look again: inside a supervised process, the supervisor restarting
+from a known state is usually the handling the design wants.
 
-## Let a Supervised Process Crash
+## Does This Need a Process?
 
-Inside a supervised process, a `rescue` that hides an unexpected failure keeps the process running in a state nobody
-designed. Handle only what the process can act on, and let anything else crash so its supervisor restarts it from a
-known state. Choose the restart strategy from how the children depend on one another:
+Before writing a GenServer, name its runtime reason: state that changes over time, concurrent work, or failure
+isolation. If none applies, a module of functions is the answer. When one does, write the pure function of state and
+message first, test it directly, and add the callback that delegates to it last. Keep only a few tests for the process
+itself, as
+[Functional Core, Imperative Shell](../../../repo-governance/development/quality/architecture/functional-core-imperative-shell.md)
+intends.
+
+Choose the supervisor strategy from the dependency between children:
 
 | Children                                               | Strategy        |
 | ------------------------------------------------------ | --------------- |
@@ -49,40 +60,22 @@ known state. Choose the restart strategy from how the children depend on one ano
 | each later child depends on the ones started before it | `:rest_for_one` |
 | so entangled that none is valid after another restarts | `:one_for_all`  |
 
-## A Process Needs a Runtime Reason
+## Spot Atoms Built From Input
 
-Start a process for state that changes over time, for concurrent work, or to isolate failure. Organizing code is not a
-reason; a module of functions already does that. When a GenServer is warranted, keep each callback thin: it takes the
-message, calls a pure function of the state and the message, and returns what that function decided. Test the pure
-function directly, and keep only a few tests for the process itself, as
-[Functional Core, Imperative Shell](../../../repo-governance/development/quality/architecture/functional-core-imperative-shell.md)
-intends.
-
-## Never Build Atoms From Input
-
-Atoms are never garbage-collected and the atom table has a fixed limit, so converting external input into atoms can take
-the whole node down. Use `String.to_existing_atom/1` against a known set, or keep the value a string. Name dynamic
-processes through a registry with a `:via` tuple, never through generated atoms.
+Search the change for `String.to_atom/1`, atom interpolation such as `:"#{...}"`, and generated process names. Each one
+fed by a request, file, or message from outside is a finding the standard names; trace the value back to its source
+before deciding.
 
 ## Isolate Concurrent Tests
 
-Mark a test module `async: true` only when it touches no global state: application environment, named processes, shared
-files, or a database without per-test isolation. Give each database test its own sandboxed transaction; example: the
-Ecto SQL sandbox. Replace a collaborator with an in-memory implementation of its behaviour, as
-[Test Doubles](../../../repo-governance/development/quality/testing/test-doubles.md) prefers.
-
-## Adopter Decision
-
-| Static analysis                       | Gains                                      | Costs                                           |
-| ------------------------------------- | ------------------------------------------ | ----------------------------------------------- |
-| the compiler and linter only          | fast checks, no extra tool                 | contradictory types surface only when code runs |
-| success typing too; example: Dialyzer | contradictions caught without running code | a slow first analysis and terse messages        |
-
-Record the choice once.
+Before marking a module `async: true`, list what it touches: application environment, named processes, shared files, or
+the database. Replace a collaborator with an in-memory implementation of its behaviour, as
+[Test Doubles](../../../repo-governance/development/quality/testing/test-doubles.md) prefers. A test that passes alone
+and fails in the full run usually shares one of those.
 
 ## Before Handing Off
 
-- the format check, the compile with warnings as errors, the recorded linter, and the unit run all passed;
-- every `async: true` module touches no global state;
-- no atom is created from external input; and
+- every gate in the standard passed, Dialyzer included;
+- each new public function at a boundary has its `@spec` and `@doc`, with an example as a doctest where it helps;
+- no atom is created from external input, and every `async: true` module touches no global state; and
 - each recorded red failed on an assertion about the missing behaviour.

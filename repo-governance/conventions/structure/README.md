@@ -36,6 +36,7 @@ mechanically.
 | [Project READMEs](project-readmes.md)                       | what a project's root README covers, and what it leaves to its specification             |
 | [Related Repositories](related-repositories.md)             | parity, consumption, and knowledge-sharing relationships                                 |
 | [Specification Tree](specification-tree.md)                 | one specification corpus per logical owner, fully specified for Gherkin, C4, and OpenAPI |
+| [Stack Packs](stack-packs.md)                               | stack standard and skill paths, stack IDs, the inventory, and the repository adapter     |
 | [Temporary Files](temporary-files.md)                       | where scratch files and reports go, and how they are named and written                   |
 | [Workflow Pattern](workflow-pattern.md)                     | the contract, steps, checkpoints, and composition of a workflow document                 |
 
@@ -61,8 +62,7 @@ mechanically.
 - [Plan Migrations Modules](plan-migrations/README.md) — the source inventory and contracts, then transition and
   recovery
 - [Plan UI Design](plan-ui-design.md)
-- [Plan Content Corpora](plan-content-corpora.md) — custody, destination, and archival hand-off of a plan-authored
-  corpus
+- [Plan Content Corpora](plan-content-corpora.md)
 - [Capability Naming](capability-naming.md)
 - [CI Workflow File Naming](ci-workflow-file-naming.md)
 - [Command-Line Interface](command-line-interface.md)
@@ -76,10 +76,12 @@ mechanically.
 - [Licensing Modules](licensing/README.md) — the repository licensing model, and dependency-license decisions
 - [Monorepo Layout](monorepo-layout.md)
 - [Principle Traceability](principle-traceability.md)
-- [Project READMEs](project-readmes.md) — the sections of a project README and its boundary with the specification
+- [Project READMEs](project-readmes.md)
 - [Related Repositories](related-repositories.md)
-- [Specification Tree](specification-tree.md) — corpus placement, required files, and as-built architecture
-- [Temporary Files](temporary-files.md) — designated directories, collision-free names, and progressive reports
-- [Workflow Pattern](workflow-pattern.md) — what a workflow is, when to write one, and where its contract lives
+- [Specification Tree](specification-tree.md)
+- [Stack Packs](stack-packs.md)
+- [Stack Packs Modules](stack-packs/README.md) — the repository adapter template and the inventory extension
+- [Temporary Files](temporary-files.md)
+- [Workflow Pattern](workflow-pattern.md)
 - [Workflow Pattern Modules](workflow-pattern/README.md) — the document contract, steps and state, then checkpoints,
   composition, and execution

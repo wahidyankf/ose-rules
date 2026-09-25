@@ -57,7 +57,8 @@ smallest change then passes it, through
 [Red, Green, Refactor](../../repo-governance/workflows/quality/red-green-refactor.md) and as
 [Regression Tests](../../repo-governance/development/quality/testing/test-driven-development/003-regression-tests.md)
 requires. For behaviour that already works, the test proves it can fail by breaking that behaviour, running it, and
-restoring, as Cycle and Evidence describes. A test never seen failing leaves the finding open.
+restoring, as Cycle and Evidence describes. A test never seen failing leaves the finding open. A test-first fix loads
+the project's stack skill as the maker's recorded option does.
 
 ## When the Standard Settles the Edit
 
@@ -86,9 +87,9 @@ requires.
 
 ## Stopping Rule
 
-It stops when every finding has a disposition, whether applied and confirmed, failed, disproved, or left for a person,
-and the fix report is complete. A fixer with no readable findings says so and stops. A finding already accepted as a
-false positive that is raised again is escalated for the rule's owner, not dismissed a second time.
+It stops when every finding has a disposition and the fix report is complete. A fixer with no readable findings says so
+and stops. A finding already accepted as a false positive that is raised again is escalated for the rule's owner, not
+dismissed a second time.
 
 ## What It Does Not Do
 

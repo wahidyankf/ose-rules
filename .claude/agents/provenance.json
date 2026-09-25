@@ -245,17 +245,17 @@
     {
       "id": "agent/swe-code-checker",
       "path": ".agents/agents/swe-code-checker.md",
-      "digest": "2f5792c585b0af88ac3cba8de80ba609392c4fb3bb64a042304154d4113e833d"
+      "digest": "e833dec58ebf923e17f68a612042c3f30dc57e7f2cec22e37c9e39ea1cfa224c"
     },
     {
       "id": "agent/swe-code-fixer",
       "path": ".agents/agents/swe-code-fixer.md",
-      "digest": "568911157d9e00d545899e9b1bfbd2160079b553e7e7ec07d7941c5fa1f8f526"
+      "digest": "3e54656826f4c278051d35fc0ac753e40bf912df86806d1021c23c96533f7f2e"
     },
     {
       "id": "agent/swe-code-maker",
       "path": ".agents/agents/swe-code-maker.md",
-      "digest": "8bfb1b8e58d5bbfa222ad8ac0c999de3c25e081095150510cb296179aa9216c7"
+      "digest": "47ac877ebbec4aaab9322fa73cfaf60bbb407ce46fc3540b1fb10d41497f2b30"
     },
     {
       "id": "agent/swe-ui-checker",
@@ -408,6 +408,41 @@
       "digest": "9483a8d6a2e7d35fc23f71fb7f81ce2562e291d4ceddf6096ae54d8c73c40229"
     },
     {
+      "id": "skill/framework-aspnet-core",
+      "path": ".agents/skills/framework-aspnet-core/SKILL.md",
+      "digest": "e8a1628975c7c77b3cc336dbbd91e7ccc5564077da9a38a34f69c6ccf2ac3ed1"
+    },
+    {
+      "id": "skill/framework-gin",
+      "path": ".agents/skills/framework-gin/SKILL.md",
+      "digest": "b274e36afd8f5d656faf829ba675e81a214ba244b033fb0488e83e3b6f29a96a"
+    },
+    {
+      "id": "skill/framework-giraffe",
+      "path": ".agents/skills/framework-giraffe/SKILL.md",
+      "digest": "fd763c09aae46e2072970d5c9d522edf5ba8c59ed47770a4b5f596e80abf6365"
+    },
+    {
+      "id": "skill/framework-nextjs",
+      "path": ".agents/skills/framework-nextjs/SKILL.md",
+      "digest": "134bf5a4075b32d05c04b78d591f20be8e5636ce3d18167cb491283c8cdbbde5"
+    },
+    {
+      "id": "skill/framework-phoenix-liveview",
+      "path": ".agents/skills/framework-phoenix-liveview/SKILL.md",
+      "digest": "878e0b8884fe338e7528f1ac437483c97d1b24d02004564369c7d4e61b2caf11"
+    },
+    {
+      "id": "skill/framework-react",
+      "path": ".agents/skills/framework-react/SKILL.md",
+      "digest": "b8b4e029f15686b2257243649932696fef61262c1a529a56dfc7b569f732d662"
+    },
+    {
+      "id": "skill/framework-spring-boot",
+      "path": ".agents/skills/framework-spring-boot/SKILL.md",
+      "digest": "d5b6a4900b9dc6d2730124ccc80f036569352c5618533562fc77f6e7f2186730"
+    },
+    {
       "id": "skill/generating-validation-reports",
       "path": ".agents/skills/generating-validation-reports/SKILL.md",
       "digest": "238da78a9d9cfbfaff0c2d49d95b6b7907c9c7fe995a4fabab412c6624b939d2"
@@ -416,6 +451,16 @@
       "id": "skill/grill-me",
       "path": ".agents/skills/grill-me/SKILL.md",
       "digest": "1e8a9218b9c7287c3cccf430bbd4749f5a591da0b97c05e8f58142e423a84a09"
+    },
+    {
+      "id": "skill/infrastructure-ansible",
+      "path": ".agents/skills/infrastructure-ansible/SKILL.md",
+      "digest": "cdd177a23e908a7a19b6e1a8b7357d0a17d1c88dd9b35ba358116ea143869447"
+    },
+    {
+      "id": "skill/infrastructure-terraform",
+      "path": ".agents/skills/infrastructure-terraform/SKILL.md",
+      "digest": "e390673f0b9e1b377cdf2071958147a6e77914515fe1644e68581e040b583e82"
     },
     {
       "id": "skill/managing-file-operations",
@@ -460,7 +505,7 @@
     {
       "id": "skill/programming-clojure",
       "path": ".agents/skills/programming-clojure/SKILL.md",
-      "digest": "e714014dff9e3cba486c91744f02cad5a1b9d7b0bf69406f2fefe2cd0c392cb0"
+      "digest": "4ae30d4270b9692e872ab315b193fe30e6765a94b9e6a77aa3dbfe6b6dae1464"
     },
     {
       "id": "skill/programming-csharp",
@@ -470,12 +515,12 @@
     {
       "id": "skill/programming-dart",
       "path": ".agents/skills/programming-dart/SKILL.md",
-      "digest": "f579478a8f4d8ecc91ecdebf49f1c687729c5c872d66b90005a235b2006e35b2"
+      "digest": "472ca9c5866b80a80c4e1990c19ade4c1e11e134af3361c7c3c6d41ed6809bb2"
     },
     {
       "id": "skill/programming-elixir",
       "path": ".agents/skills/programming-elixir/SKILL.md",
-      "digest": "464acb00dc2ffed17198ccea3ba0217cb4410f5555ebde8bf0cd500d847bbf5d"
+      "digest": "2773611472dbedb751d412f9764026c408e27eb8f804f2482657dbb6cf37d5ba"
     },
     {
       "id": "skill/programming-fsharp",
@@ -485,7 +530,7 @@
     {
       "id": "skill/programming-golang",
       "path": ".agents/skills/programming-golang/SKILL.md",
-      "digest": "7b66facd515da1ce82e8241617a24c9cc102458a4f53e3d71b1376b7a183fa2f"
+      "digest": "805a68bbe9fda594cf908d68ce29338563b20991eef97cb35c1be1a7a09c82fb"
     },
     {
       "id": "skill/programming-java",
@@ -493,19 +538,34 @@
       "digest": "bf8c97eb9a4d694e45bfd13cf385afe738f9438e920b590de4136fce7c2141de"
     },
     {
+      "id": "skill/programming-javascript",
+      "path": ".agents/skills/programming-javascript/SKILL.md",
+      "digest": "13a7ecc2f3ad39ddbf6e96b5ccb854cd3ac2f2ab46b25d8a524cfc60f50c9900"
+    },
+    {
       "id": "skill/programming-kotlin",
       "path": ".agents/skills/programming-kotlin/SKILL.md",
-      "digest": "d30c41c8a10b3acf861e5bb4aa2d2f004cbcdd7d46acd902f1d968db8b472f78"
+      "digest": "f109d559ea331aa431134a7f4415c580c9ed4c64bd2af5fda43fc662021ab524"
+    },
+    {
+      "id": "skill/programming-lua",
+      "path": ".agents/skills/programming-lua/SKILL.md",
+      "digest": "93643a3e8cbdaee65e3ed5a5c8fc0c4c2a7b88a933c51ff9cfe245ce747bd327"
     },
     {
       "id": "skill/programming-python",
       "path": ".agents/skills/programming-python/SKILL.md",
-      "digest": "505d03924e7f15cd9b46b9c070b87578bda854c3e119f4759661b38d54beb844"
+      "digest": "6b8a58760fb6c3725d7e9dea86886aa8c6ef1fe89dfe457c11e88fc723f1a7a0"
     },
     {
       "id": "skill/programming-rust",
       "path": ".agents/skills/programming-rust/SKILL.md",
       "digest": "bf71e32bd8564265adac55f2bf7fdb1265e48dd3d7e2557e5490f220ace8c3ee"
+    },
+    {
+      "id": "skill/programming-shell",
+      "path": ".agents/skills/programming-shell/SKILL.md",
+      "digest": "af7ea319171bae5f5482cd01b6db0dbf171d5fd72fc2269a1571c61dc094410f"
     },
     {
       "id": "skill/programming-typescript",
@@ -531,6 +591,11 @@
       "id": "skill/synthesizing-review-findings",
       "path": ".agents/skills/synthesizing-review-findings/SKILL.md",
       "digest": "822deeca99fa070431faf1624430c3afa2160f65117a0f9bde0e6a6efaa87ce2"
+    },
+    {
+      "id": "skill/tooling-nx",
+      "path": ".agents/skills/tooling-nx/SKILL.md",
+      "digest": "2d80ff7fc113bde03cbf9b0ee6f754a6917e50633cf8430f47f0c0e3134fb52a"
     },
     {
       "id": "skill/understanding-governance-architecture",

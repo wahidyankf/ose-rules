@@ -45,9 +45,19 @@ is the one harness that needs a generated route.
 - [developing-applications](developing-applications/SKILL.md) — placing layers, errors, logs, and input checks
 - [developing-frontend-ui](developing-frontend-ui/SKILL.md) — building interface components test-first
 - [exploratory-testing](exploratory-testing/SKILL.md) — charters and tours against a running surface
+- [framework-aspnet-core](framework-aspnet-core/SKILL.md) — ASP.NET Core work on the .NET language skill
+- [framework-gin](framework-gin/SKILL.md) — Gin services on the Go skill
+- [framework-giraffe](framework-giraffe/SKILL.md) — Giraffe handlers on the F# and ASP.NET Core skills
+- [framework-nextjs](framework-nextjs/SKILL.md) — Next.js work under the Next.js standard
+- [framework-phoenix-liveview](framework-phoenix-liveview/SKILL.md) — LiveView work on the Elixir skill
+- [framework-react](framework-react/SKILL.md) — React state, effects, and data under the React standard
+- [framework-spring-boot](framework-spring-boot/SKILL.md) — Spring Boot work on the Java skill
 - [generating-validation-reports](generating-validation-reports/SKILL.md) — audit and fix reports that survive
   interruption
 - [grill-me](grill-me/SKILL.md) — resolving a decision through recommended options
+- [infrastructure-ansible](infrastructure-ansible/SKILL.md) — Ansible roles and playbooks verified natively
+- [infrastructure-terraform](infrastructure-terraform/SKILL.md) — Terraform modules verified by native tests and plan
+  review
 - [managing-file-operations](managing-file-operations/SKILL.md) — renaming, moving, and deleting documents safely
 - [plan-creating-project-plans](plan-creating-project-plans/SKILL.md) — authoring a formal plan's six documents
 - [plan-grooming-idea-briefs](plan-grooming-idea-briefs/SKILL.md) — promoting, keeping, or retiring an idea brief
@@ -57,22 +67,26 @@ is the one harness that needs a generated route.
 - [practicing-trunk-based-development](practicing-trunk-based-development/SKILL.md) — keeping work on one trunk in small
   pieces
 - [producing-review-findings](producing-review-findings/SKILL.md) — raising findings that survive their fix
-- [programming-clojure](programming-clojure/SKILL.md) — Clojure work under the shared standards
+- [programming-clojure](programming-clojure/SKILL.md) — Clojure work under the Clojure standard
 - [programming-csharp](programming-csharp/SKILL.md) — C# work under the C# standard
-- [programming-dart](programming-dart/SKILL.md) — Dart work under the shared standards
-- [programming-elixir](programming-elixir/SKILL.md) — Elixir work under the shared standards
+- [programming-dart](programming-dart/SKILL.md) — Dart work under the Dart standard
+- [programming-elixir](programming-elixir/SKILL.md) — Elixir work under the Elixir standard
 - [programming-fsharp](programming-fsharp/SKILL.md) — F# work under the F# standard
-- [programming-golang](programming-golang/SKILL.md) — Go work under the shared standards
+- [programming-golang](programming-golang/SKILL.md) — Go work under the Go standard
 - [programming-java](programming-java/SKILL.md) — Java work under the Java standard
-- [programming-kotlin](programming-kotlin/SKILL.md) — Kotlin work under the shared standards
-- [programming-python](programming-python/SKILL.md) — Python work under the shared standards
+- [programming-javascript](programming-javascript/SKILL.md) — JavaScript work under the JavaScript standard
+- [programming-kotlin](programming-kotlin/SKILL.md) — Kotlin work under the Kotlin standard
+- [programming-lua](programming-lua/SKILL.md) — Lua work under the Lua standard
+- [programming-python](programming-python/SKILL.md) — Python work under the Python standard
 - [programming-rust](programming-rust/SKILL.md) — Rust work under the Rust standard
+- [programming-shell](programming-shell/SKILL.md) — shell scripts under the Shell standard
 - [programming-typescript](programming-typescript/SKILL.md) — TypeScript work under the TypeScript standard
 - [propagating-rules](propagating-rules/SKILL.md) — routing rule work through propagation
 - [resolving-review-threads](resolving-review-threads/SKILL.md) — answering a published review's findings
 - [scaffolding-specifications](scaffolding-specifications/SKILL.md) — creating a specification corpus
 - [synthesizing-review-findings](synthesizing-review-findings/SKILL.md) — deduplicating and verifying specialist
   findings
+- [tooling-nx](tooling-nx/SKILL.md) — Nx workspace graph, affected runs, and caching
 - [understanding-governance-architecture](understanding-governance-architecture/SKILL.md) — reading a repository as
   ordered levels
 - [understanding-shared-vocabulary](understanding-shared-vocabulary/SKILL.md) — the terms scope decisions turn on

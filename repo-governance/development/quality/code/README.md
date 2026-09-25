@@ -1,7 +1,7 @@
 ---
 description: >-
   Indexes the code standards: what added code and dependencies must justify, how code stays clear, how cross-file rules
-  are mechanized, and how shell scripts and runtime data files are written.
+  are mechanized, how shell scripts and runtime data files are written, and where types are checked.
 when_to_use: >-
   Use when adding code or a dependency, writing a shell script or a runtime data file, or keeping a rule that spans
   several files consistent.
@@ -23,3 +23,5 @@ and consistent.
   replacement writes, paths never built from external input, and one storage profile per process
 - [Shell Scripts](shell-scripts.md) — one declared interpreter in strict mode, the committed executable bit, explanatory
   comments, and parsed JSON
+- [Type and Boundary Safety](type-and-boundary-safety.md) — the strongest practical static checker, reasoned type
+  escapes, and external input validated where it arrives

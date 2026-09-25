@@ -1,6 +1,6 @@
 ---
 description: |-
-  Guides Dart work under the shared quality standards: holding the SDK's formatter and analyzer at zero, and judging nullable types, late and bang claims, unawaited futures, stream cleanup, and time in tests.
+  Guides Dart work under the Dart standard: reading the analysis options, replacing each wanted bang or late, decoding boundary data, finding unawaited futures and unclosed streams, and controlling time in tests.
 name: programming-dart
 ---
 
