@@ -72,4 +72,4 @@ because nothing independent would be left to judge it.
 
 It does not review tutorials or apply review findings; [Docs Tutorial Checker](docs-tutorial-checker.md) and
 [Docs Tutorial Fixer](docs-tutorial-fixer.md) own those. It does not write how-to guides, reference, or explanation
-pages, and it never states a time estimate, since depth is stated as coverage.
+pages.

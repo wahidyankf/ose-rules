@@ -2,7 +2,7 @@
 description: >-
   Indexes the ordered modules holding the complete writing rules the content quality convention owns.
 when_to_use: >-
-  Use to locate the module covering voice, headings, accessible content, formatting, or time estimates.
+  Use to locate the module covering voice, headings, accessible content, or formatting.
 ---
 
 # Content Quality Modules
@@ -18,4 +18,3 @@ Read in order. Together these hold the rules the [Content Quality](../content-qu
 - [003 Accessible Content](003-accessible-content.md) — alt text, link text, semantic elements, and meaning beyond
   colour.
 - [004 Formatting](004-formatting.md) — code blocks, inline formatting, callouts, and tables.
-- [005 No Time Estimates](005-no-time-estimates.md) — why documents omit time estimates, and what they say instead.

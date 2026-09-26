@@ -67,13 +67,13 @@ Ask about the reader's experience first.
   the wrong name.
 - **Intermediate and Advanced require the level below** or equivalent experience, so a learner who skipped it knows
   where to go back.
-- **Depth is stated as coverage, never as time.** Coverage describes the content, which the author controls. A time
-  estimate describes the reader, which the author does not.
+- **Depth is stated as coverage.** Coverage describes the content, which the author controls. A time estimate may
+  accompany it, labelled as an estimate, but never replaces it, because it describes the reader, which the author does
+  not.
 - **No ad-hoc types.** A new label is a promise no reader has learned to calibrate. A need the seven do not cover is a
   change to this convention, not a local invention.
 
 ## Enforcement
 
 A reviewer checks that a tutorial's title, prerequisites, and content agree with its type. An adopter that wants this
-mechanical adds a check to its own documentation gate that every tutorial title carries exactly one type name and that
-no tutorial states a time estimate.
+mechanical adds a check to its own documentation gate that every tutorial title carries exactly one type name.

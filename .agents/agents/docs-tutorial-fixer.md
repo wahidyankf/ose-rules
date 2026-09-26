@@ -38,12 +38,11 @@ Applies the tutorial review findings that survive a second look.
 
 Most tutorial quality is judgement, so most findings are not this agent's to apply:
 
-| Usually `HIGH`                                                                          | Usually `MEDIUM`                                 |
-| --------------------------------------------------------------------------------------- | ------------------------------------------------ |
-| a missing prerequisites section on a tutorial that needs none, written "none"           | reordering sections or steps                     |
-| a missing output block after a command whose output does not vary, filled by running it | writing a new checkpoint or example              |
-| a type name absent from a title whose type the tutorial already declares                | changing a tutorial's type or coverage           |
-| a stated time estimate, removed                                                         | moving a passage into another documentation mode |
+| Usually `HIGH`                                                                          | Usually `MEDIUM`                                                                            |
+| --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| a missing prerequisites section on a tutorial that needs none, written "none"           | reordering sections or steps                                                                |
+| a missing output block after a command whose output does not vary, filled by running it | writing a new checkpoint or example                                                         |
+| a type name absent from a title whose type the tutorial already declares                | changing a tutorial's type or coverage, or moving a passage into another documentation mode |
 
 Why content creation stays out is in
 [Applying Maker, Checker, and Fixer](../skills/applying-maker-checker-fixer/SKILL.md).

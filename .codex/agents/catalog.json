@@ -55,17 +55,17 @@
     {
       "id": "agent/docs-tutorial-checker",
       "path": ".agents/agents/docs-tutorial-checker.md",
-      "digest": "8af4eed41b0141ae4449f30afdceb8a7ac8a015279a79721441fa84cfcb3b4a1"
+      "digest": "b758199121545063744d6ef19577a99732dffe5639ef90b5b5ea360bb37f7f02"
     },
     {
       "id": "agent/docs-tutorial-fixer",
       "path": ".agents/agents/docs-tutorial-fixer.md",
-      "digest": "11f482218fb67a3c5a9d8eb79a317f06ad98945a7958f4b01a00bccfaffa4fe4"
+      "digest": "5955a08ccd283e8177f0b5694dab2ab2a3a25a87f947cf372d46ba56148fdd3e"
     },
     {
       "id": "agent/docs-tutorial-maker",
       "path": ".agents/agents/docs-tutorial-maker.md",
-      "digest": "5cfe931712e5437aec6dfb54d5fe43d6104bdc934ecbd6604670b0fbf368aa9c"
+      "digest": "540ea2d069f05b4860a87a64c948e036085a55c192babb865de7f3350d2d86ee"
     },
     {
       "id": "agent/gherkin-implementation-reviewer",
@@ -305,7 +305,7 @@
     {
       "id": "skill/applying-content-quality",
       "path": ".agents/skills/applying-content-quality/SKILL.md",
-      "digest": "24569a5536d1f9f712c05ca3eb141d69155b9e9071e67c60c0771e456580a472"
+      "digest": "9433297226bd3c4b345a17925944419e0fe04e4a78cb877ce00574d8ebe104ce"
     },
     {
       "id": "skill/applying-diataxis-framework",

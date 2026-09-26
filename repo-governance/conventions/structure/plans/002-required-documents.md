@@ -1,9 +1,10 @@
 ---
 description: >-
-  Requires six documents in every formal plan and states that no five-document rule may remain live anywhere in a
-  repository.
+  Requires six documents in every formal plan, states that no five-document rule may remain live anywhere in a
+  repository, and bars time estimates from plan documents.
 when_to_use: >-
-  Use when creating a plan root, reviewing one for completeness, or removing an inherited five-document rule.
+  Use when creating a plan root, reviewing one for completeness, removing an inherited five-document rule, or deciding
+  whether a document may state a time estimate.
 ---
 
 # Required Documents
@@ -52,3 +53,17 @@ another live rule, and an executor following it will produce a plan that fails v
 was correct.
 
 Any five-document description that remains is a defect regardless of where it lives or how old it is.
+
+## No Time Estimates
+
+`README.md`, `brd.md`, `prd.md`, the technical shape, `delivery.md`, and an idea brief state no time estimate, and no
+duration or date as an effort commitment, at any lifecycle stage. They schedule by dependency, order, and resource
+instead. An estimate there reads as a commitment the plan system does not make, and nobody maintains it as the plan
+changes.
+
+Everywhere else an estimate is permitted and labelled as an estimate: `learnings.md`, `evidence/`, execution status,
+conversation, tutorials, and other documentation. A duration that is a fact about a system, such as a timeout or a
+rollback trigger's window, is not an estimate. Archives under `plans/done/` stay as written.
+
+This is judged in review rather than mechanically, because telling an effort estimate from a system duration needs
+judgement.

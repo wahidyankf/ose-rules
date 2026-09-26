@@ -44,8 +44,8 @@ inside it, how it is formatted, and how it stays true.
 - [Bug Reports](bug-reports.md)
 - [Colour Accessibility](color-accessibility.md)
 - [Content Quality](content-quality.md)
-- [Content Quality Modules](content-quality/README.md) — the modules on voice, headings, accessible content, formatting,
-  and time estimates.
+- [Content Quality Modules](content-quality/README.md) — the modules on voice, headings, accessible content, and
+  formatting.
 - [Convention Documents](convention-documents.md)
 - [Diagrams](diagrams.md)
 - [Dynamic Collection References](dynamic-collection-references.md)

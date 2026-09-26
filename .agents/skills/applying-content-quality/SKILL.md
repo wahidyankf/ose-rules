@@ -12,8 +12,8 @@ compatibility: Requires read access to the document and to the conventions it li
 # Applying Content Quality
 
 [Content Quality](../../../repo-governance/conventions/writing/content-quality.md) owns the rules for voice, headings,
-accessible content, formatting, and time estimates, and its Owned Elsewhere table routes colour, diagrams, links, emoji,
-and facts to their own conventions. This skill covers the judgement of applying those rules to one document: what to
+accessible content, and formatting, and its Owned Elsewhere table routes colour, diagrams, links, emoji, facts, and time
+estimates to their own conventions. This skill covers the judgement of applying those rules to one document: what to
 check first, what matters most, and how to repair a defect without creating another.
 
 ## Outline Before Sentences
@@ -27,8 +27,7 @@ whose order carries no meaning wants bullets. Changing the form usually removes 
 ## Mechanical First, Judgement Second
 
 Some defects have one correct answer anyone can confirm: a code fence with no language, a skipped heading level, an
-informative image with no alt text, a duration promised in a tutorial. Settle those first; they are quick and rarely
-need the author.
+informative image with no alt text. Settle those first; they are quick and rarely need the author.
 
 Voice, concision, and tone are judgements. Repair them afterwards, and rate them as quality rather than correctness, as
 [Assessing Criticality and Confidence](../assessing-criticality-confidence/SKILL.md) explains.
@@ -58,8 +57,6 @@ Accessibility defects come first because they shut part of the audience out; sty
   this" link after it.
 - **Filler.** Delete the word, then reread. "Just" and "simply" often cover a step the text never explained, and the
   real repair is writing that step.
-- **Time estimates.** Replace the duration with the outcome, the prerequisites, or the depth. A duration describing a
-  system, such as a timeout, is a fact and stays.
 - **Heading levels.** Promote or demote a heading together with everything beneath it, so each subsection keeps its
   parent.
 

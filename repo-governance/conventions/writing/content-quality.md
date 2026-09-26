@@ -1,7 +1,7 @@
 ---
 description: >-
-  Owns the writing rules for authored Markdown: voice and clarity, heading structure, accessible content, formatting,
-  and the prohibition on time estimates in documentation and learning content.
+  Owns the writing rules for authored Markdown: voice and clarity, heading structure, accessible content, and
+  formatting.
 when_to_use: >-
   Use when writing or reviewing any Markdown document, or when a skill, checker, or template needs the complete writing
   rules to apply.
@@ -21,7 +21,6 @@ than restating them, so a correction reaches every consumer at once.
 2. [Headings and Structure](content-quality/002-headings-and-structure.md)
 3. [Accessible Content](content-quality/003-accessible-content.md)
 4. [Formatting](content-quality/004-formatting.md)
-5. [No Time Estimates](content-quality/005-no-time-estimates.md)
 
 ## Scope
 
@@ -33,14 +32,15 @@ rewriting an archive to satisfy a later rule destroys the record it exists to ke
 
 ## Owned Elsewhere
 
-| Concern                       | Owner                                          |
-| ----------------------------- | ---------------------------------------------- |
-| colour, contrast, and palette | [Colour Accessibility](color-accessibility.md) |
-| diagrams                      | [Diagrams](diagrams.md)                        |
-| link form and link integrity  | [Internal Links](internal-links.md)            |
-| emoji                         | [Emoji Usage](emoji-usage.md)                  |
-| factual accuracy              | [Factual Validation](factual-validation.md)    |
-| the structure of a plan       | [Plans](../structure/plans.md)                 |
+| Concern                       | Owner                                                              |
+| ----------------------------- | ------------------------------------------------------------------ |
+| colour, contrast, and palette | [Colour Accessibility](color-accessibility.md)                     |
+| diagrams                      | [Diagrams](diagrams.md)                                            |
+| link form and link integrity  | [Internal Links](internal-links.md)                                |
+| emoji                         | [Emoji Usage](emoji-usage.md)                                      |
+| factual accuracy              | [Factual Validation](factual-validation.md)                        |
+| the structure of a plan       | [Plans](../structure/plans.md)                                     |
+| time estimates                | [Required Documents](../structure/plans/002-required-documents.md) |
 
 ## Enforcement
 
