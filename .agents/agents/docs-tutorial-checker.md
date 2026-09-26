@@ -32,14 +32,14 @@ exists to find.
 
 Check each tutorial in scope against every row, and return what fails:
 
-| Check       | Holds when                                                                                   | Rule owner                                                                               |
-| ----------- | -------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| mode        | the page is learning-oriented, with no passage serving another mode                          | [Applying the Diátaxis Framework](../skills/applying-diataxis-framework/SKILL.md)        |
-| type        | one type, named in the title, with prerequisites and content inside its coverage and no time | [Tutorial Types](../../repo-governance/conventions/writing/tutorial-types.md)            |
-| sections    | every required section is present and in order, prerequisites written even when empty        | [Tutorial Structure](../../repo-governance/conventions/writing/tutorial-structure.md)    |
-| progression | each concept is explained before it is shown, and no section leans on a later one            | Tutorial Structure                                                                       |
-| examples    | every example is complete, runs as printed, and shows output it actually produced            | [By Example](../skills/creating-by-example-tutorials/SKILL.md) or the in-the-field skill |
-| checkpoints | a concrete criterion to confirm appears before a learner could lose the thread               | Tutorial Structure                                                                       |
+| Check       | Holds when                                                                            | Rule owner                                                                               |
+| ----------- | ------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| mode        | the page is learning-oriented, with no passage serving another mode                   | [Applying the Diátaxis Framework](../skills/applying-diataxis-framework/SKILL.md)        |
+| type        | one type, named in the title, with prerequisites and content inside its coverage      | [Tutorial Types](../../repo-governance/conventions/writing/tutorial-types.md)            |
+| sections    | every required section is present and in order, prerequisites written even when empty | [Tutorial Structure](../../repo-governance/conventions/writing/tutorial-structure.md)    |
+| progression | each concept is explained before it is shown, and no section leans on a later one     | Tutorial Structure                                                                       |
+| examples    | every example is complete, runs as printed, and shows output it actually produced     | [By Example](../skills/creating-by-example-tutorials/SKILL.md) or the in-the-field skill |
+| checkpoints | a concrete criterion to confirm appears before a learner could lose the thread        | Tutorial Structure                                                                       |
 
 A document of another mode in scope receives only the universal checks.
 
