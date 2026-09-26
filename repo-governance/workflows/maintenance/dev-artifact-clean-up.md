@@ -51,11 +51,12 @@ as a periodic sweep.
    abandoned; otherwise retain it with the reason. Remove from outside the directory, and never force a worktree removal
    or stash to empty one, since all worktrees of a clone share one stash stack. A plain branch delete refuses after a
    rebase or squash merge; force it only when the merged head equals the local tip, or every commit is patch-equivalent
-   to one on the remote default branch. Delete the remote branch only if merging did not.
+   to one on the remote default branch. Delete the remote branch only if merging did not. A branch the Git host protects
+   against deletion is protected on purpose: retain it, and never lift that protection to delete it.
 4. **Preserve unrelated work.** A dirty file that this task did not create is not cleanup's business. Cleanup removes
    what the task made; it never restores a working copy to some imagined clean state.
 5. **Prove absence.** Re-list the paths and confirm they are gone, and confirm the working tree holds only what it
-   should. A cleanup that was performed but not verified is a claim.
+   should. An unverified cleanup is a claim.
 6. **Reconcile the default branch.** With a remote, fetch with pruning, fast-forward, and prove zero divergence both
    ways. A refused fast-forward is a local commit to inspect, never to force, and ends the run `retained`, naming that
    commit.
@@ -84,6 +85,5 @@ Run dev-artifact-clean-up with integration pull-request and outcome pass.
 Version control restores what was committed. Scratch artifacts are, by definition, uncommitted — deleting one is
 permanent.
 
-That is why `unknown` exists as a class and why it routes to investigation rather than to removal. The cost of keeping
-one unrecognized file for another day is a stale file. The cost of deleting the one thing that was not reproducible is
-the work itself.
+That is why `unknown` routes to investigation rather than removal. Keeping an unrecognized file another day costs a
+stale file; deleting the one irreproducible thing costs the work itself.
