@@ -12,7 +12,8 @@ when_to_use: >-
 ## Entry
 
 The revision to release is on the default branch, reached through the repository's integration path, and the release has
-been authorized.
+been authorized. An adopted [Upstream Tool Defects](../../development/workflow/upstream-tool-defects.md) standard
+authorizes releasing a covered tool's merged fix.
 
 - `version` (`string`, required): the version to publish, chosen by the change class
   [Public Contract](../../development/quality/architecture/public-contract.md) assigns.
@@ -41,8 +42,8 @@ been authorized.
 A successful run leaves `tag` (`string`), naming `version` on `revision`, and `artifacts` (`file-list`, at
 `<output-dir>/*`) with the digest file covering each. Every artifact traces to `revision`.
 
-A step that fails before step 7 ends the run with no tag created, so nothing needs undoing. A defect found after step 7
-is not repaired in place; it becomes a new run with a new version.
+A failure before step 7 ends the run with no tag, so nothing needs undoing. A defect found after step 7 is not repaired
+in place; it becomes a new run with a new version.
 
 A failure inside step 7 ends the run `partial`: the tag stays, nothing published is replaced, and the next version is
 cut.
@@ -70,17 +71,17 @@ platform, each matching its digest.
 
 ## A Released Tag Never Moves
 
-Consumers pin a release by version and digest. A replaced tag silently turns every one of those pins false, because the
-version string did not change. A mistake in a published release is therefore fixed by publishing the next version: never
-by replacing a tag, re-uploading an artifact, or weakening digest verification to accept a bad one. A consumer whose
+Consumers pin a release by version and digest. A replaced tag silently falsifies every such pin, because the version
+string did not change. A mistake in a published release is therefore fixed by publishing the next version: never by
+replacing a tag, re-uploading an artifact, or weakening digest verification to accept a bad one. A consumer whose
 bootstrap refuses a mismatched digest is behaving correctly; the fix belongs upstream of it.
 
-An adopter enforces this with its forge's tag protection and its consumers' digest checks, and the build command's own
-refusals enforce step 5.
+An adopter enforces this with its forge's tag protection and its consumers' digest checks; the build command's refusals
+enforce step 5.
 
 ## One Build Path
 
-A hand-built artifact is one nobody can reproduce. Building from a clean checkout of the exact revision keeps the output
+Nobody can reproduce a hand-built artifact. Building from a clean checkout of the exact revision keeps the output
 independent of the machine and whatever else was on its disk. Promoting a release of a running service adds candidate,
 migration, and traffic rules, which
 [Release Cutover](../../development/quality/delivery/live-service-continuity/002-release-cutover.md) owns.
