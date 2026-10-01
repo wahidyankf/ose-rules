@@ -57,7 +57,13 @@ as rendered.
 ## Colour in Diagrams
 
 A styled diagram takes its fills, text pairings, and outlines from [Colour Accessibility](color-accessibility.md), and
-its labels and shapes carry every distinction its colours draw.
+its labels and shapes carry every distinction its colours draw. A rendered diagram also:
+
+- sets colour only in named classes, with a complete default class wherever the renderer applies one;
+- declares no theme override, such as an initialization directive or a front-matter theme;
+- uses no diagram type that cannot carry an accessible title and description.
+
+A fill or its outline reaches 3:1 against both canvases named in Colour Accessibility.
 
 ## Enforcement
 

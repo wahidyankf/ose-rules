@@ -17,8 +17,7 @@ is measured rather than judged by eye.
 Everything colour distinguishes is also distinguished by text, shape, line style, position, or pattern. A reader viewing
 the content in greyscale, through a colour-vision simulation, or through a screen reader understands all of it.
 
-Colour vision deficiency is common, and it is not the only way colour disappears: greyscale printing, projector washout,
-and forced high-contrast modes remove it for everyone. This is WCAG success criterion
+Colour also disappears in greyscale printing, projector washout, and forced high-contrast modes. This is WCAG criterion
 [1.4.1 Use of Color](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html).
 
 ## Palette
@@ -35,17 +34,15 @@ colour vision deficiency:
 | brown  | `#CA9161` | black `#000000`  |        7.73:1 |
 | grey   | `#808080` | black `#000000`  |        5.32:1 |
 
-The text column is not a preference. For each fill it is the only one of black and white that reaches 4.5:1: black text
-on blue measures 4.10:1, and white text on any other fill measures between 2.61:1 and 3.95:1. Every ratio here is
-computed with the WCAG relative-luminance formula, and any new pairing is measured the same way before use. Where other
-guidance pairs these fills differently, this table adopts the stricter, measured pairing.
+The text column is not a preference: for each fill it is the only one of black and white that reaches 4.5:1. Black text
+on blue measures 4.10:1; white text on any other fill measures between 2.61:1 and 3.95:1. Every ratio uses the WCAG
+relative-luminance formula, and any new pairing is measured the same way before use.
 
 ## Colours to Avoid
 
-Red, green, yellow, light pink, and bright magenta never carry meaning, and red is never paired with green. Red and
-green collapse into the same muddy tone under the most common deficiencies, and yellow and light pink wash out under
-blue–yellow deficiency and against light backgrounds. That includes pass-and-fail semantics: a passing state is teal and
-labelled, not green.
+Red, green, yellow, light pink, and bright magenta never carry meaning, and red is never paired with green: red and
+green collapse together under the most common deficiencies, and yellow and light pink wash out. A passing state is teal
+and labelled, not green.
 
 ## Contrast Floor
 
@@ -60,9 +57,11 @@ the rendered size, and only the higher threshold holds at every size.
 
 ## Outlines
 
-Every filled shape carries a black outline. Against a white page, orange measures 2.61:1 and brown 2.72:1, below the 3:1
-a graphical object needs, so on a light background the outline is what defines the shape. On a dark background the fills
-reach 3:1 on their own. The outline makes one style correct on both.
+Every filled shape carries an outline that is black or a palette fill. The fill or the outline reaches 3:1 against each
+canvas the content appears on: the light canvas `#FFFFFF` and the dark canvas `#0D1117`. Against white, orange measures
+2.61:1 and brown 2.72:1, below the 3:1 a graphical object needs, so there the outline defines the shape. Against
+`#0D1117` every palette fill measures at least 3.69:1 unaided, and a black outline vanishes. One style therefore holds
+on both canvases only when each shape has its outline and its fill.
 
 ## Implementation
 
@@ -74,7 +73,7 @@ reach 3:1 on their own. The outline makes one style correct on both.
 
 Test every new or materially changed use of colour:
 
-1. Only palette fills are used, each with its paired text colour and a black outline.
+1. Only palette fills are used, each with its paired text colour and an outline.
 2. Every element stays distinct under simulated red-blind, green-blind, and blue–yellow-blind vision.
 3. Every contrast ratio is measured, not estimated.
 4. The content is checked rendered on a light and on a dark background.
