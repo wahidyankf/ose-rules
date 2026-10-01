@@ -24,6 +24,7 @@ way each time, and so that its result is a verdict rather than an impression.
 - [Harness Upstream Drift Review](harness-upstream-drift-review.md)
 - [Live Surface Quality Gate](live-surface-quality-gate.md)
 - [PR Leak Review](pr-leak-review.md)
+- [PR Leak Review Modules](pr-leak-review/README.md)
 - [PR Review](pr-review.md)
 - [PR Review Cycle](pr-review-cycle.md)
 - [PR Review Cycle Modules](pr-review-cycle/README.md)
