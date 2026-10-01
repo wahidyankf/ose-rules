@@ -18,10 +18,11 @@ Everything here is copied into other repositories. An artifact meaningful only i
 
 ## Public Safety
 
-All file content, names, commits, branches, pull-request text, and published logs are outbound. `scripts/public-safety/`
-screens them first. Any finding or failed scan blocks without allowlists or bypasses. Replace unsafe examples with
-semantic placeholders; if that destroys their meaning, they do not belong here. See
-[scripts/public-safety/README.md](scripts/public-safety/README.md).
+All file content, names, commits, branches, pull-request text, and published logs are outbound.
+[`scripts/public-safety/`](scripts/public-safety/README.md) screens them;
+[leak review](repo-governance/workflows/quality/pr-leak-review.md) gates each push and merge. Any finding or failed scan
+blocks without allowlists or bypasses. Replace unsafe examples with semantic placeholders, or drop examples that lose
+their meaning.
 
 ## Authoring Rules
 

@@ -25,13 +25,18 @@ The surface arrives in the environment and nowhere else. A missing or unknown va
 default. A gate that infers its own surface will eventually infer a weaker one, and that is exactly the case where
 inferring is expensive.
 
-| Surface        | Outbound at that moment                                            |
-| -------------- | ------------------------------------------------------------------ |
-| `commit-msg`   | the declared message text and current ref name                     |
-| `pre-commit`   | the tracked tree and its names, then the staged additions          |
-| `pre-push`     | one declared immutable range: IDs, messages, and changed paths     |
-| `pull-request` | the declared tree, message, and range gates replayed independently |
-| `main`         | the ref, the head commit message, and the checked-out tree         |
+| Surface        | Outbound at that moment                                                         |
+| -------------- | ------------------------------------------------------------------------------- |
+| `commit-msg`   | the declared message text and current ref name                                  |
+| `pre-commit`   | the tracked tree and its names, then the staged additions                       |
+| `pre-push`     | one declared immutable range: IDs, messages, names, and each commit's additions |
+| `pull-request` | the declared tree, message, and range gates replayed independently              |
+| `main`         | the ref, the head commit message, and the checked-out tree                      |
+
+A range is screened commit by commit, never as its final files: a value one commit adds and the next deletes is still in
+every clone. Each commit contributes only the lines it added, at the line numbers they occupy, labelled
+`<commit>/<path>:<line>`; a merge contributes what it resolved beyond the automatic merge. Content the range did not add
+is not screened again.
 
 `pre-commit` screens the whole tracked tree, not only the change. A leak that is already committed does not become safe
 because this particular commit did not introduce it.
