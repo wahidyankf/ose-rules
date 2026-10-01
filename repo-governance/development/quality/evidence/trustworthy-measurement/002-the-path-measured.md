@@ -37,7 +37,7 @@ rises. A diagnosis that treats both as symptoms of one cause will be wrong about
 
 Plans often pair a metric with a prescribed fix at the time they are written. That pairing is a guess about which
 component will hold the number, and it is recorded as a guess, as
-[Grounding and Labels](../plan-anti-hallucination/001-grounding-and-labels.md) requires of a target with no measured
+[Grounding and Citation](../plan-anti-hallucination/001-grounding-and-citation.md) requires of a target with no measured
 baseline.
 
 When the gate fires, re-derive the component from the observed timeline before applying the prescribed remedy. Where the

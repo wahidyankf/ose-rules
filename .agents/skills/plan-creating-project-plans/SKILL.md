@@ -61,7 +61,7 @@ check.
 
 ## Check Each Claim While Writing It
 
-Every path, command, version, test name, and outside behaviour is checked as it is typed, then labelled or left out, per
+Every path, command, version, test name, and outside behaviour is checked as it is typed, then cited or left out, per
 [Plan Anti-Hallucination](../../../repo-governance/development/quality/evidence/plan-anti-hallucination.md). Review is
 too late: an invented path reads like a real one.
 

@@ -29,7 +29,8 @@ solution.
 7. **Risks and open questions** — the rabbit holes worth flagging now, and the unknowns that block promotion. None at
    all means the idea is either over-specified or under-thought.
 8. **Success and promotion signal** — what would make pursuing it worthwhile, and what ready for `backlog/` means for
-   this idea. State an observable fact, a cited and dated figure, or a labelled judgement, never an invented metric.
+   this idea. State an observable fact, a cited and dated figure, or a judgement stated as one, never an invented
+   metric.
 
 Sections 1 to 3 say what the problem is and why it is worth solving. Sections 4 to 6 say what solving it involves.
 Sections 7 and 8 say what would make it not worth doing: the risks that could sink it, and the signal whose absence

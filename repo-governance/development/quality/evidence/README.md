@@ -18,9 +18,9 @@ Evidence standards. They answer what a claim, a finding, or a measurement has to
   priority, and report contents
 - [Finding Criticality and Confidence Modules](finding-criticality-and-confidence/README.md) — levels, confidence and
   re-validation, priority and reporting
-- [Plan Anti-Hallucination](plan-anti-hallucination.md) — grounding, confidence labels, and refusal for plan claims
-- [Plan Anti-Hallucination Modules](plan-anti-hallucination/README.md) — grounding and labels, absence and completeness,
-  anti-patterns
+- [Plan Anti-Hallucination](plan-anti-hallucination.md) — grounding, plain citation, and refusal for plan claims
+- [Plan Anti-Hallucination Modules](plan-anti-hallucination/README.md) — grounding and citation, absence and
+  completeness, anti-patterns
 - [Preexisting Error Resolution](preexisting-error-resolution.md) — triaging and separately fixing a gate that was
   already failing
 - [Preexisting Error Resolution Modules](preexisting-error-resolution/README.md) — the modules on triage and

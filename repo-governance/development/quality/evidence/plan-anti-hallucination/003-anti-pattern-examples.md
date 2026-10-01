@@ -9,24 +9,24 @@ when_to_use: >-
 
 # Anti-Pattern Examples
 
-These examples support the rules in [Grounding and Labels](001-grounding-and-labels.md) and
+These examples support the rules in [Grounding and Citation](001-grounding-and-citation.md) and
 [Absence and Completeness](002-absence-and-completeness.md). They add no rule; each shows what an invented claim looks
 like and the check that exposes it.
 
 ## Invented References
 
-| Anti-pattern                         | Looks like                                                         | Check that catches it                                   |
-| ------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------- |
-| a version stated from memory         | "upgrade from version 4", when the manifest pins 5                 | read the manifest or lock file                          |
-| a path that ought to exist           | "update `<config-directory>/settings.json`", which was never there | list the directory at the current commit                |
-| a command target that is assumed     | "run the `lint:strict` target"                                     | read the target definitions or the tool's listing       |
-| a function or method name that fits  | "call `validateAll()`" where the real function has another name    | find the definition in the source                       |
-| a numeric target with no baseline    | "cut build time by 40 percent"                                     | measure a baseline first, or label it `[Judgment call]` |
-| a test name that sounds right        | "extend the `handles-empty-input` test"                            | find the test in the test files                         |
-| an agent or skill nobody defined     | "delegate to the release checker agent"                            | confirm the definition file exists                      |
-| a flag taken on trust                | "pass `--fix-all`"                                                 | read the installed tool's help output                   |
-| a behaviour claim with no source     | "the library retries three times by default"                       | cite the documentation with URL, date, and excerpt      |
-| a link to a file that does not exist | a relative link to a guide that was renamed                        | resolve every link before writing                       |
+| Anti-pattern                         | Looks like                                                         | Check that catches it                                        |
+| ------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------ |
+| a version stated from memory         | "upgrade from version 4", when the manifest pins 5                 | read the manifest or lock file                               |
+| a path that ought to exist           | "update `<config-directory>/settings.json`", which was never there | list the directory at the current commit                     |
+| a command target that is assumed     | "run the `lint:strict` target"                                     | read the target definitions or the tool's listing            |
+| a function or method name that fits  | "call `validateAll()`" where the real function has another name    | find the definition in the source                            |
+| a numeric target with no baseline    | "cut build time by 40 percent"                                     | measure a baseline first, or state it as a reasoned decision |
+| a test name that sounds right        | "extend the `handles-empty-input` test"                            | find the test in the test files                              |
+| an agent or skill nobody defined     | "delegate to the release checker agent"                            | confirm the definition file exists                           |
+| a flag taken on trust                | "pass `--fix-all`"                                                 | read the installed tool's help output                        |
+| a behaviour claim with no source     | "the library retries three times by default"                       | cite the documentation with URL, date, and excerpt           |
+| a link to a file that does not exist | a relative link to a guide that was renamed                        | resolve every link before writing                            |
 
 ## Invented Evidence
 
