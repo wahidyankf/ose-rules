@@ -12,8 +12,9 @@ when_to_use: >-
 
 A plan in `plans/in-progress/` whose quality gate returned a terminal verdict permitting execution.
 
-The verdict is current and comes from an explicitly directed gate run; without one, execution stops and says so. A
-queued plan is moved into `plans/in-progress/` first, never copied. Input: `plan` (`directory`, required).
+The verdict is current and comes from an explicitly directed gate run; without one, execution stops and says so. For a
+bug-fix plan, an adopted Upstream Tool Defects standard is that direction. A queued plan is moved into
+`plans/in-progress/` first, never copied. Input: `plan` (`directory`, required).
 
 ## Sequence
 
