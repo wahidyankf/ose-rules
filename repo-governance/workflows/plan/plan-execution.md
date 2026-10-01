@@ -43,8 +43,8 @@ queued plan is moved into `plans/in-progress/` first, never copied. Input: `plan
 8. **Land each delivery unit** by the route Integration Path records. A unit is complete once it reaches the trunk.
 9. **Fix what fails, including what was already failing.** A check that was red before the plan started is still red
    because of this plan's work by the time it ships. Pre-existing is an explanation, not an exemption.
-10. **Route discoveries to `learnings.md`** as they happen, not from memory afterwards. Discovered work becomes a new
-    checkbox only when it serves an outcome the plan already has.
+10. **Route discoveries to `learnings.md`**, or a bug-fix plan's Learnings section, as they happen, not from memory
+    afterwards. Discovered work becomes a new checkbox only when it serves an outcome the plan already has.
 11. **Run [Execution Check](plan-execution-check.md)** once every substantive item is terminal.
 12. **Close out on a permitting verdict.** Give each dormant recovery item a dated `Not triggered` disposition with its
     evidence, run [Dev Artifact Clean-Up](../maintenance/dev-artifact-clean-up.md) once every delivery unit has landed,

@@ -25,7 +25,8 @@ Audits a frozen plan draft and reports. It changes nothing.
 2. Run structural validation, and report its diagnostics verbatim rather than re-deriving them.
 3. Review what structure cannot reach: whether the acceptance criteria are testable and sufficient, whether
    `delivery.md` is executable by someone who was not present, whether the technical shape matches the work, and whether
-   the six documents each answer their own question.
+   the six documents each answer their own question — for a bug-fix plan, whether its root cause carries checkable
+   evidence and its solution cites references.
 4. Return one terminal verdict with sanitized findings.
 
 ## Read-Only Is a Property, Not a Preference

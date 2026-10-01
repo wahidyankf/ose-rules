@@ -36,9 +36,10 @@ optional, default the adopter's recorded stage, or `backlog` for a promoted brie
 3. **Verify unstable facts before authoring.** Check each flagged claim, such as a library version, an interface's
    behaviour, or a third-party practice, against an authoritative source, and cite it. A finding that changes an answer
    reopens that branch of the pre-write gate; no plan document is written until it closes again.
-4. **Author all six documents.** `README.md`, `brd.md`, `prd.md`, one technical shape, `delivery.md`, `learnings.md`.
-   The document set and its rules are the [Plans Convention](../../conventions/structure/plans.md)'s; this workflow does
-   not restate them. They land in `plans/<target-stage>/<identifier>/`.
+4. **Author all six documents.** `README.md`, `brd.md`, `prd.md`, one technical shape, `delivery.md`, `learnings.md`. A
+   [Bug-Fix Plan](../../conventions/structure/plans/019-bug-fix-plan.md) is not planned through this workflow. The
+   document set and its rules are the [Plans Convention](../../conventions/structure/plans.md)'s; this workflow does not
+   restate them. They land in `plans/<target-stage>/<identifier>/`.
 5. **Write `delivery.md` last.** It depends on every other document, and writing it first produces a checklist for a
    plan that does not exist yet.
 6. **Check structure before judgement.** Run the checks

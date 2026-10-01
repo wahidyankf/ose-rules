@@ -67,4 +67,5 @@ the task entirely has two defensible dispositions, and an adopter records which 
 | report it to its owner with the failure, impact, and a next step | the change stays reviewable, and the owner decides                            | the defect survives until someone acts, and unread reports accumulate          |
 
 Under either, a defect once found is never silently worked around or ignored. And a fix that needs a decision only its
-owner can make is reported with evidence, whichever disposition applies, rather than guessed.
+owner can make is reported with evidence, whichever disposition applies, rather than guessed. A defect in a pinned tool
+consumed from an upstream follows [Upstream Tool Defects](../development/workflow/upstream-tool-defects.md).
