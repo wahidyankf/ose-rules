@@ -9,7 +9,7 @@ when_to_use: >-
 
 Read in order. Each module is a self-contained part of the rule the [Plans Convention](../plans.md) entrypoint indexes.
 
-Modules 010 to 018 hold:
+Modules 010 to 019 hold:
 
 | Module                                                                                    | Holds                                                                                           |
 | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
@@ -22,6 +22,7 @@ Modules 010 to 018 hold:
 | [016 Evidence Files](016-evidence-files.md)                                               | where a plan's evidence files live, what stays inline, and how captures are named               |
 | [017 Learning Triage](017-learning-triage.md)                                             | the gates a learning passes before promotion, the empty-log record, and anti-theater guardrails |
 | [018 Learning Routing](018-learning-routing.md)                                           | why a code-changing learning leaves the plan, and the timing choices an adopter fixes           |
+| [019 Bug-Fix Plan](019-bug-fix-plan.md)                                                   | the one-document plan for a single defect, its sections, and the rules it is exempt from        |
 
 ## Directory Map
 
@@ -43,3 +44,4 @@ Modules 010 to 018 hold:
 - [016 Evidence Files](016-evidence-files.md)
 - [017 Learning Triage](017-learning-triage.md)
 - [018 Learning Routing](018-learning-routing.md)
+- [019 Bug-Fix Plan](019-bug-fix-plan.md)

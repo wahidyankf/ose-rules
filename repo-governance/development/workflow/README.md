@@ -39,6 +39,7 @@ standards sit alongside them.
 | [Resource-Aware Development](resource-aware-development.md)       | one outer pinned admission guard per compute-bearing command, its outcomes, workload classes, and parallelism            |
 | [Task Runner Target Standards](task-runner-target-standards.md)   | target prerequisites, caching only deterministic targets, inputs and outputs, names, aggregates, no placeholders         |
 | [Thematic Commits](thematic-commits.md)                           | one complete purpose per commit, the boundary test, and splitting and ordering a change set                              |
+| [Upstream Tool Defects](upstream-tool-defects.md)                 | handling pinned upstream tool defects                                                                                    |
 | [Workspace Container Builds](workspace-container-builds.md)       | the root build context, per-application build files, hoisted dependencies, and internal-package resolution               |
 
 ## Directory Map
@@ -69,4 +70,5 @@ standards sit alongside them.
 - [Resource-Aware Development](resource-aware-development.md)
 - [Task Runner Target Standards](task-runner-target-standards.md)
 - [Thematic Commits](thematic-commits.md)
+- [Upstream Tool Defects](upstream-tool-defects.md)
 - [Workspace Container Builds](workspace-container-builds.md)

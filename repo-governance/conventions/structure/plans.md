@@ -36,6 +36,7 @@ is what an adopter's plan validator checks against; the catalog ships none.
 16. [Evidence Files](plans/016-evidence-files.md)
 17. [Learning Triage](plans/017-learning-triage.md)
 18. [Learning Routing](plans/018-learning-routing.md)
+19. [Bug-Fix Plan](plans/019-bug-fix-plan.md)
 
 ## Conditional Conventions
 

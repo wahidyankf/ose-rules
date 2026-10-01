@@ -22,6 +22,9 @@ Nothing else authorizes one:
 - a harness planning mode, which produces a proposal for the session rather than a repository artifact; or
 - an agent judging that the work would benefit from a plan.
 
+The one standing request is an adopted [Upstream Tool Defects](../../../development/workflow/upstream-tool-defects.md)
+standard: it covers a blocking defect's [Bug-Fix Plan](019-bug-fix-plan.md) and any other defect's idea brief.
+
 A plan is a commitment the repository carries. It occupies a lifecycle root, and it is groomed, reviewed, and archived,
 each at the cost of someone's attention. An agent that files a plan because the work looked substantial has spent that
 attention on the owner's behalf without asking. Without a request, the work proceeds under the repository's ordinary
