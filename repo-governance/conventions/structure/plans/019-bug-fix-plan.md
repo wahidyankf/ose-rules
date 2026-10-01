@@ -24,7 +24,7 @@ One document, `plans/in-progress/fix-<slug>/README.md`, with these sections in t
 | Section         | Contains                                                                                                  |
 | --------------- | --------------------------------------------------------------------------------------------------------- |
 | Bug Report      | every field [Bug Reports](../../writing/bug-reports.md) requires, the version and commit included         |
-| Duplicate Check | each search of open issues, open pull requests, and in-flight plans, with its query and result            |
+| Duplicate Check | each search of open issues, pull requests, plans, and idea briefs, with its query and result              |
 | Root Cause      | the mechanism that produces the symptom, with evidence a reviewer can check                               |
 | Solution        | the change, why it removes the cause, and every reference consulted, cited by URL                         |
 | Delivery        | `## Execution Record`, then labelled checklist items: failing regression test, fix, verification, release |

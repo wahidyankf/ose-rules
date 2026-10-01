@@ -14,10 +14,10 @@ chosen for that, and anything that does not help reproduce or judge the failure 
 
 ## Before Filing
 
-1. **Search the existing reports** — open issues, open pull requests, and in-flight plans in the owning repository. The
-   same failure may already be filed or in repair, and its discussion is usually further along than a fresh report would
-   be. Add what is new to that report rather than opening a second one, and record each query and its result so a reader
-   can trust the search rather than repeat it.
+1. **Search the existing reports** — open issues, open pull requests, in-flight plans, and idea briefs in the owning
+   repository. The same failure may already be filed or in repair, and its discussion is usually further along than a
+   fresh report would be. Add what is new to that report rather than opening a second one, and record each query and its
+   result so a reader can trust the search rather than repeat it.
 2. **Retry on the latest mainline.** The fix may already have landed, and a report against an old revision costs a
    maintainer the time to discover that. Record the version and commit the failure reproduces on.
 3. **Check the documentation.** When behaviour differed from what a page said to expect, name the page. The report is
