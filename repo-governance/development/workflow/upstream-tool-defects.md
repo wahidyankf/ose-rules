@@ -34,8 +34,9 @@ surprised the same way; its fix may be documentation.
 2. **Check for duplicates** in the owning repository — open issues, open pull requests, in-flight plans, and idea briefs
    — per [Bug Reports](../../conventions/writing/bug-reports.md).
 3. **When a match exists, wait for it.** Link it from the current work, add to it what it lacks, and continue on a
-   workaround. Repin once it lands. With no workaround, a match already in repair leaves the current work blocked on
-   that link, while a match that is only an idea brief is promoted to a bug-fix plan as in step 5.
+   workaround. Repin once it lands, releasing it first per step 5 if no release carries it. With no workaround, a match
+   already in repair leaves the current work blocked on that link, while a match that is only an idea brief is promoted
+   to a bug-fix plan as in step 5.
 4. **When the defect has a workaround or does not block the work in hand, file it and continue.** Write an
    [idea brief](../../conventions/structure/plans/015-idea-brief-template.md) in the owner's `plans/ideas/`, with the
    report in its problem section and the duplicate check and references in its prior art. Land it through the owner's
@@ -44,7 +45,9 @@ surprised the same way; its fix may be documentation.
    [bug-fix plan](../../conventions/structure/plans/019-bug-fix-plan.md) in the owning repository, researching the cause
    and the solution and citing every source. Land the plan alone on the owner's trunk through its route first, run the
    plan quality gate on it, and on a passing verdict execute it through the owner's delivery, regression test first.
-   Release where the owner releases, and repin every consumer.
+   Once its regression test and the owner's full release gate pass on the exact revision, release the fix through the
+   owner's [Release Cut](../../workflows/maintenance/release-cut.md) without a further prompt, skipping no step, and
+   repin every consumer.
 
 A workaround is any route to the current work's outcome that does not edit the tool or its pin: another option or
 command, a documented manual step, or a retry that reliably succeeds. It is recorded beside the link or brief so the
@@ -62,4 +65,5 @@ that found the defect continues on a workaround rather than absorbing the fix, s
 ## Adopter Decision
 
 Record the tools covered, the repository that owns each, and the route a plan lands by. Adopting this standard is the
-standing request under which a defect's idea brief, and a blocking defect's bug-fix plan, need no further authorization.
+standing request under which a defect's idea brief, a blocking defect's bug-fix plan, and a merged fix's release once
+its tests pass need no further authorization.
