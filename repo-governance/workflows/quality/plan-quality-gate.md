@@ -55,7 +55,7 @@ judgeable.
 ## Cycle
 
 Each cycle is one full audit by `plan-checker`, loading the `plan-validating-quality` skill, and one repair by
-`plan-propagation`, run by `plan-fixer`, per
+[Plan Propagation](plan-propagation.md), run by `plan-fixer`, per
 [Sequence and Termination](../../development/workflow/quality-gate-contract/002-sequence-and-termination.md). The audit
 reads the frozen plan and asks whether:
 

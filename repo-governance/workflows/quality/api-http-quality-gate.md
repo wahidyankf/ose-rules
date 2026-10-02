@@ -47,8 +47,9 @@ gate runs. A property no tool of its own owns leaves the table and becomes judge
 
 ## Cycle
 
-Each cycle is one full audit by `api-http-checker` and one repair by `api-http-propagation`, run by `api-http-fixer`,
-per [Sequence and Termination](../../development/workflow/quality-gate-contract/002-sequence-and-termination.md). The
+Each cycle is one full audit by `api-http-checker` and one repair by [API HTTP Propagation](api-http-propagation.md),
+run by `api-http-fixer`, per
+[Sequence and Termination](../../development/workflow/quality-gate-contract/002-sequence-and-termination.md). The
 checker may delegate the requests to the repository's interface tester. It sends real requests against the contract and
 behaviour specifications, and judges:
 
@@ -60,10 +61,8 @@ behaviour specifications, and judges:
 
 A tester rating on another severity scale maps severity, never priority, onto the criticality levels.
 
-The writer lands each repair with a reproducing test that fails before it and passes after, per
-[Regression Tests](../../development/quality/testing/test-driven-development/003-regression-tests.md). Behaviour that is
-correct but unspecified gains scenarios in the specification. When the interface runs as a service, it is rebuilt and
-redeployed after the repair and before the next audit; a build or deployment error marks the row `not-resolved`.
+How the writer repairs and verifies each row, with a reproducing test and a redeploy, is in
+[API HTTP Propagation](api-http-propagation.md).
 
 ## Termination
 

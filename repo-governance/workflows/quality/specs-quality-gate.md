@@ -47,7 +47,8 @@ owns leaves the table and becomes judgeable, per
 
 ## Cycle
 
-Each cycle is one full audit by `specs-checker` and one repair by `specs-propagation`, run by `specs-fixer`, per
+Each cycle is one full audit by `specs-checker` and one repair by [Specs Propagation](specs-propagation.md), run by
+`specs-fixer`, per
 [Sequence and Termination](../../development/workflow/quality-gate-contract/002-sequence-and-termination.md). The writer
 edits only within the listed folders. The audit reads every listed folder for:
 

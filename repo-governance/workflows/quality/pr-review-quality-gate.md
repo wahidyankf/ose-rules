@@ -54,8 +54,9 @@ Each cycle runs per
 1. **Audit.** `pr-review-checker` runs [PR Review](pr-review.md) on the live head, fanning out to the lens checkers its
    route selects, with a probe class no earlier cycle used as `angle` and the settled findings as `prior-findings`. A
    pass ending `failed` ends the run `BLOCKED` (unavailable); one ending `stale` ends it `BLOCKED` (input-changed).
-2. **Repair.** `pr-review-propagation`, run by `pr-review-fixer`, answers every blocking row with a fix, a reasoned
-   reject, or a deferral, per [Answering Findings](pr-review-quality-gate/002-answering-findings.md).
+2. **Repair.** [PR Review Propagation](pr-review-propagation.md), run by `pr-review-fixer`, answers every blocking row
+   with a fix, a reasoned reject, or a deferral, per
+   [Answering Findings](pr-review-quality-gate/002-answering-findings.md).
 3. **Confirm the pipeline** on the writer's new head, with evidence bound to that revision, before the next audit. A
    failure is diagnosed at its cause, never rerun until green; a repair that caused it is reverted, its row
    `not-resolved`.

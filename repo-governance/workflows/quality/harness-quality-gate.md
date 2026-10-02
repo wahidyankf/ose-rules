@@ -49,7 +49,7 @@ repository replaces the last column with the tools its declared gate runs.
 ## Cycle
 
 Each cycle is one full audit by `harness-checker`, loading the `checking-harness-compatibility` skill, and one repair by
-`harness-propagation`, run by `harness-fixer`, per
+[Harness Propagation](harness-propagation.md), run by `harness-fixer`, per
 [Sequence and Termination](../../development/workflow/quality-gate-contract/002-sequence-and-termination.md).
 
 The audit researches each harness in the subject, one task per harness, in parallel because none reads another's result,
@@ -60,10 +60,8 @@ fact's authoritative source and retrieval date. Disagreeing sources come back as
 The checker compares the research with the reference record and the committed bindings. Each difference is a finding
 with its local path and upstream citation.
 
-The writer repairs drift the evidence settles unambiguously, such as a renamed metadata key or a moved file location, in
-the canonical artifact, the generator mapping, or the reference record, then regenerates the adapters. A source
-conflict, a change to a permission's meaning, a harness addition or removal, and a generator logic change are
-`needs-decision`, with evidence.
+How the writer repairs drift in the canonical sources, regenerates the adapters, and leaves decisions to people is in
+[Harness Propagation](harness-propagation.md).
 
 ## Termination
 

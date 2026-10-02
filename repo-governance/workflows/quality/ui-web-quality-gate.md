@@ -47,7 +47,8 @@ gate runs. A property no tool of its own owns leaves the table and becomes judge
 
 ## Cycle
 
-Each cycle is one full audit by `ui-web-checker` and one repair by `ui-web-propagation`, run by `ui-web-fixer`, per
+Each cycle is one full audit by `ui-web-checker` and one repair by [UI Web Propagation](ui-web-propagation.md), run by
+`ui-web-fixer`, per
 [Sequence and Termination](../../development/workflow/quality-gate-contract/002-sequence-and-termination.md). The
 checker may delegate reading to the repository's interface testers and judges, through the interface's components and
 interactions:
@@ -60,10 +61,8 @@ interactions:
 
 A tester rating on another severity scale maps severity, never priority, onto the criticality levels.
 
-The writer lands each repair with a reproducing test that fails before it and passes after, per
-[Regression Tests](../../development/quality/testing/test-driven-development/003-regression-tests.md). Behaviour that is
-correct but unspecified gains scenarios in the specification. When the interface runs as a service, it is rebuilt and
-redeployed after the repair and before the next audit; a build or deployment error marks the row `not-resolved`.
+How the writer repairs and verifies each row, with a reproducing test and a redeploy, is in
+[UI Web Propagation](ui-web-propagation.md).
 
 ## Termination
 

@@ -47,7 +47,7 @@ An adopting repository replaces the last column with the tools its declared gate
 ## Cycle
 
 Each cycle is one full audit by `ci-checker`, loading the `applying-ci-standards` skill, and one repair by
-`ci-propagation`, run by `ci-fixer`, per
+[CI Propagation](ci-propagation.md), run by `ci-fixer`, per
 [Sequence and Termination](../../development/workflow/quality-gate-contract/002-sequence-and-termination.md). The audit
 judges the subject against the adopted standards:
 
