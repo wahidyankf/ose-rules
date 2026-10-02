@@ -18,9 +18,13 @@ adapter is generated from it and is never edited in place.
 
 - [agent-maker](agent-maker.md) — drafting a new canonical agent and its adapters
 - [api-exploratory-tester](api-exploratory-tester.md) — exploring a live API against its contract
+- [api-http-checker](api-http-checker.md) — judging a running HTTP interface with real requests against its contract
+- [api-http-fixer](api-http-fixer.md) — repairing an HTTP service test-first from a frozen ledger
 - [bugs-solver](bugs-solver.md) — repairing failing type checks, lint, and tests at the cause
 - [ci-checker](ci-checker.md) — auditing test targets, hooks, and pipeline wiring
 - [ci-fixer](ci-fixer.md) — applying re-validated gate wiring findings
+- [content-checker](content-checker.md) — judging published pages for writing, facts, links, and adapter rules
+- [content-fixer](content-fixer.md) — repairing published pages from a frozen ledger and cited sources
 - [docs-checker](docs-checker.md) — auditing documentation claims against their sources
 - [docs-file-manager](docs-file-manager.md) — moving, renaming, and deleting documents with every reference repaired
 - [docs-fixer](docs-fixer.md) — applying re-validated documentation findings
@@ -30,16 +34,18 @@ adapter is generated from it and is never edited in place.
 - [docs-tutorial-fixer](docs-tutorial-fixer.md) — applying re-validated tutorial review findings
 - [docs-tutorial-maker](docs-tutorial-maker.md) — writing one tutorial of a declared type
 - [gherkin-implementation-reviewer](gherkin-implementation-reviewer.md) — tracing what each scenario binding asserts
-- [harness-compatibility-checker](harness-compatibility-checker.md) — auditing bindings for parity and upstream drift
-- [harness-compatibility-fixer](harness-compatibility-fixer.md) — repairing binding drift at its canonical source
+- [harness-checker](harness-checker.md) — auditing bindings for upstream drift and parity
+- [harness-fixer](harness-fixer.md) — repairing binding drift at its canonical source through Harness Propagation
 - [pdf-to-md-checker](pdf-to-md-checker.md) — judging a PDF conversion's fidelity against its source
 - [pdf-to-md-fixer](pdf-to-md-fixer.md) — restoring confirmed conversion gaps from the source
 - [pdf-to-md-maker](pdf-to-md-maker.md) — converting a PDF to verbatim Markdown
 - [plan-checker](plan-checker.md) — auditing a plan draft against the plan specification
 - [plan-execution-checker](plan-execution-checker.md) — auditing finished plan execution before archival
+- [plan-fixer](plan-fixer.md) — repairing the rows of a frozen plan ledger through Plan Propagation
 - [plan-maker](plan-maker.md) — authoring a formal plan through both decision gates
 - [pr-review-architecture-checker](pr-review-architecture-checker.md) — reviewing a change's new tradeoffs, boundaries,
   and dependencies
+- [pr-review-checker](pr-review-checker.md) — coordinating one review pass and publishing its single consolidated review
 - [pr-review-docs-checker](pr-review-docs-checker.md) — reviewing a change's documentation for completeness, clarity,
   and drift
 - [pr-review-fixer](pr-review-fixer.md) — answering every finding a published review raised on the change
@@ -56,20 +62,19 @@ adapter is generated from it and is never edited in place.
 - [pr-review-scout](pr-review-scout.md) — classifying a review pass and assembling its shared brief
 - [pr-review-security-checker](pr-review-security-checker.md) — finding secrets, injection, and unsafe operations in a
   change
-- [pr-review-synthesis-checker](pr-review-synthesis-checker.md) — merging specialist findings into one published review
 - [pr-review-types-checker](pr-review-types-checker.md) — finding type escape hatches a change adds or widens
 - [readme-checker](readme-checker.md) — auditing READMEs for navigation, scannability, and plain language
 - [readme-fixer](readme-fixer.md) — applying re-validated, objective README findings
 - [readme-maker](readme-maker.md) — writing or restructuring READMEs as navigation documents
 - [repo-explorer](repo-explorer.md) — locating repository evidence with cited files and lines
-- [repo-rules-checker](repo-rules-checker.md) — auditing a repository's rules for contradictions and drift
-- [repo-rules-fixer](repo-rules-fixer.md) — applying re-validated rule repairs through Rules Propagation
 - [repo-rules-maker](repo-rules-maker.md) — authoring a rule at its level inside Rules Propagation
 - [repo-setup-manager](repo-setup-manager.md) — proving a checkout's bootstrap, toolchain, and gate baseline before plan
   work
 - [repo-workflow-checker](repo-workflow-checker.md) — auditing workflow documents against the workflow pattern
 - [repo-workflow-fixer](repo-workflow-fixer.md) — applying re-validated workflow document findings
 - [repo-workflow-maker](repo-workflow-maker.md) — writing one workflow document to the workflow pattern
+- [rules-checker](rules-checker.md) — auditing a repository's rules for contradictions and drift
+- [rules-fixer](rules-fixer.md) — applying re-validated rule repairs through Rules Propagation
 - [specs-checker](specs-checker.md) — auditing listed specification folders for structure and consistency
 - [specs-fixer](specs-fixer.md) — applying re-validated specification structure findings
 - [specs-maker](specs-maker.md) — creating a specification corpus or its missing parts at a named path
@@ -79,6 +84,20 @@ adapter is generated from it and is never edited in place.
 - [swe-ui-checker](swe-ui-checker.md) — auditing React component source for tokens, accessibility, and primitives
 - [swe-ui-fixer](swe-ui-fixer.md) — applying re-validated interface component findings
 - [swe-ui-maker](swe-ui-maker.md) — building React components test-first from an approved design
+- [tutorial-annotated-concept-checker](tutorial-annotated-concept-checker.md) — judging an annotated-concept tutorial's
+  mode and worked examples
+- [tutorial-annotated-concept-fixer](tutorial-annotated-concept-fixer.md) — repairing what each worked example itself
+  settles
+- [tutorial-by-example-checker](tutorial-by-example-checker.md) — judging a By Example tutorial's examples against the
+  kind's rules
+- [tutorial-by-example-fixer](tutorial-by-example-fixer.md) — repairing what each By Example example itself settles
+- [tutorial-in-the-field-checker](tutorial-in-the-field-checker.md) — judging an in-the-field guide for scenario,
+  built-in-first, and production code
+- [tutorial-in-the-field-fixer](tutorial-in-the-field-fixer.md) — repairing what each in-the-field step itself settles
+- [tutorial-primer-checker](tutorial-primer-checker.md) — judging a primer's scope, capstone, and examples
+- [tutorial-primer-fixer](tutorial-primer-fixer.md) — repairing a primer's examples within its stated scope
+- [ui-web-checker](ui-web-checker.md) — judging a running web interface against its specification, design, and first use
+- [ui-web-fixer](ui-web-fixer.md) — repairing a web interface test-first from a frozen ledger
 - [web-design-tester](web-design-tester.md) — judging a live render against cited design ground truth
 - [web-exploratory-tester](web-exploratory-tester.md) — exploring a live web interface against its specifications
 - [web-researcher](web-researcher.md) — answering outside questions with cited, labelled public sources

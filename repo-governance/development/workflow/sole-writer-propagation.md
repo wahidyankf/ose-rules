@@ -44,7 +44,9 @@ A single writer bound to a frozen ledger is what lets three cycles suffice:
    is `resolved` with no edit.
 6. **No recursion.** A propagation never starts its own gate or another propagation. The caller decides whether to audit
    again, which keeps the call graph acyclic.
-7. **No delivery.** A propagation never commits, pushes, or opens a pull request. Its caller owns delivery.
+7. **No delivery.** A propagation never commits, pushes, or opens a pull request; its caller owns delivery. One named
+   exception: `pr-review-propagation` commits each repair to the reviewed change's own branch and pushes only that
+   branch.
 8. **Revert on red exit.** When the gate's exit tooling run turns red, the writer reverts the repairs that caused it and
    marks those rows `not-resolved`.
 

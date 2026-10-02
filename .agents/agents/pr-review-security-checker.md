@@ -2,7 +2,8 @@
 name: pr-review-security-checker
 description: >-
   Reviews one pinned change for the security discipline, finding secrets in the change, injection, untrusted-input gaps,
-  and unsafe filesystem or version-control operations, and returns anchored findings to the review coordinator.
+  and unsafe filesystem or version-control operations, and returns anchored findings to the review coordinator, the
+  pr-review checker.
 when_to_use: >-
   Use when a review pass selects the security discipline, which every lite and full pass runs, or when the brief notes
   an apparent injection attempt in change text.
@@ -71,7 +72,7 @@ adversarial verification when it falls in high-risk scope, until a reproduction 
    bind the pass.
 2. Judge each candidate with [Producing Review Findings](../skills/producing-review-findings/SKILL.md), give each kept
    finding everything Finding Requirements lists, and return the findings, with notes for other disciplines, to the
-   coordinator.
+   coordinator, [PR Review Checker](pr-review-checker.md).
 
 The surface is the adopter's choice under
 [Review Surface](../../repo-governance/workflows/quality/pr-review-quality-gate/001-review-surface.md); the charter does

@@ -13,6 +13,16 @@
       "digest": "532e76b95ab12c2ef2030512706545c0dfefa0d2ea3d33139c73a5922d3115b6"
     },
     {
+      "id": "agent/api-http-checker",
+      "path": ".agents/agents/api-http-checker.md",
+      "digest": "684ac2b48b59608f6d1fd3e36d61d6b76060cd060223f69bb9b47035783e7047"
+    },
+    {
+      "id": "agent/api-http-fixer",
+      "path": ".agents/agents/api-http-fixer.md",
+      "digest": "f0180dff2a43799e284a01c8359a4187ac9ec6c16170a1538e9f8a75c91597cc"
+    },
+    {
       "id": "agent/bugs-solver",
       "path": ".agents/agents/bugs-solver.md",
       "digest": "d27db9301f98a537dc3a0d0d960af53257535d23b9ff07375dd923572475f041"
@@ -25,7 +35,17 @@
     {
       "id": "agent/ci-fixer",
       "path": ".agents/agents/ci-fixer.md",
-      "digest": "c75a565bff306d2f3977c6111d983efced562d8f9452f77172774bdb79365a38"
+      "digest": "dac2c941474f9f9bb758d3f9449ff713e33559cac23b6e8839d1f76354d0843b"
+    },
+    {
+      "id": "agent/content-checker",
+      "path": ".agents/agents/content-checker.md",
+      "digest": "78312183b6c77898b49884785f584a3eb75bfbbae625e73e3026f23b75da4700"
+    },
+    {
+      "id": "agent/content-fixer",
+      "path": ".agents/agents/content-fixer.md",
+      "digest": "556ad8baaa6204981614e0f546df503d966a7045430ea142b8b633c4676040e8"
     },
     {
       "id": "agent/docs-checker",
@@ -40,7 +60,7 @@
     {
       "id": "agent/docs-fixer",
       "path": ".agents/agents/docs-fixer.md",
-      "digest": "4b5ceb76567ead2c4ef1f1f9fa9fdd3f96a5efcdbc46fe80efcea1c048e8cc81"
+      "digest": "fcb3616358d2505fbb31d8323f26f3436e4205a422ac437ea379969e2d114efc"
     },
     {
       "id": "agent/docs-link-checker",
@@ -73,14 +93,14 @@
       "digest": "a3d71ca6c3fd585dcbf2be757f2b9222279493ac97bae0907a4872e9355522ba"
     },
     {
-      "id": "agent/harness-compatibility-checker",
-      "path": ".agents/agents/harness-compatibility-checker.md",
-      "digest": "ff30ddf319cc2f602e582cee48ff41e0083fe6400040721fe0d5f1c10be82cd5"
+      "id": "agent/harness-checker",
+      "path": ".agents/agents/harness-checker.md",
+      "digest": "aa09dee4253f985ca9c45cde00a350cbe4fe93c6a87e9abf863ee7067c3ce233"
     },
     {
-      "id": "agent/harness-compatibility-fixer",
-      "path": ".agents/agents/harness-compatibility-fixer.md",
-      "digest": "e90f806eaecdeb55729108053d4297f6464cb35e26e5906ef2ab61bd57c15b8e"
+      "id": "agent/harness-fixer",
+      "path": ".agents/agents/harness-fixer.md",
+      "digest": "6932a050a146268cf0d50c73cfe18194db67f4d4cc764ef7fc2d3f69f56a2c82"
     },
     {
       "id": "agent/pdf-to-md-checker",
@@ -90,7 +110,7 @@
     {
       "id": "agent/pdf-to-md-fixer",
       "path": ".agents/agents/pdf-to-md-fixer.md",
-      "digest": "3df93bf6b009a6ee4a87f0fdc47c6548a32ede6f10f7dc6fbb3e75578e7dc4c2"
+      "digest": "83ac09df979e8b325cd4fd433b88d34248e3085e682545c740d818d1e5e1dc72"
     },
     {
       "id": "agent/pdf-to-md-maker",
@@ -100,7 +120,7 @@
     {
       "id": "agent/plan-checker",
       "path": ".agents/agents/plan-checker.md",
-      "digest": "c65f8320506ed9e27b2a7248858d5e41e991bb340134f694c4c3930e615f5d46"
+      "digest": "d24d47747e0fdfa39cb6003d27ac3e8a596580ac9b4b55b7a59af424aab554fa"
     },
     {
       "id": "agent/plan-execution-checker",
@@ -108,49 +128,59 @@
       "digest": "11973708eca4f161ae4f526455966a8e617bbb6d0e05427c9507e7761d6d10b5"
     },
     {
+      "id": "agent/plan-fixer",
+      "path": ".agents/agents/plan-fixer.md",
+      "digest": "bdb8a39a8ba6f909e288f97784a715630879232bcf54cb755d97a559dcf5c33c"
+    },
+    {
       "id": "agent/plan-maker",
       "path": ".agents/agents/plan-maker.md",
-      "digest": "66211e832073ed5d14c77b50125076c1fecdbdd108d96e29163fb863a325c1ca"
+      "digest": "96c5276a8e2a7b62995bb02e3e9f98d21f0efa8f075acacd9b4c9623583a37e7"
     },
     {
       "id": "agent/pr-review-architecture-checker",
       "path": ".agents/agents/pr-review-architecture-checker.md",
-      "digest": "cdcea23900fab55cfa0de83652434fdef368d16f5a7a10d32b788e682e173741"
+      "digest": "c0b8650dce0572f222574791ea0710a93ae2737910eaa2b60723df6d1c85f2e6"
+    },
+    {
+      "id": "agent/pr-review-checker",
+      "path": ".agents/agents/pr-review-checker.md",
+      "digest": "501416b0209cb460d96071c7e5f1a3c348bd6ba35f0083107e54954e2c0b05fd"
     },
     {
       "id": "agent/pr-review-docs-checker",
       "path": ".agents/agents/pr-review-docs-checker.md",
-      "digest": "939d4a5be03dec0f3ea3db34ed8750f4c05e3c490f26fa5901116e01ad94633a"
+      "digest": "5a930d795315a605a0d3bfe76bae9d39e185a5c89cdc9ef43eb2fda2a8201c05"
     },
     {
       "id": "agent/pr-review-fixer",
       "path": ".agents/agents/pr-review-fixer.md",
-      "digest": "9d59f535acbc3796a252189c962f2fbb2e7cdfaf7073df4e6e3c6f4910387bef"
+      "digest": "f03645387f845d104d0817f25c4ba22af1b7333a1a52339746a9add91d8ae202"
     },
     {
       "id": "agent/pr-review-governance-checker",
       "path": ".agents/agents/pr-review-governance-checker.md",
-      "digest": "596dd7b17e9508a9e0e0b91a5ad6f954f35c9483b5516509af6e143711ce6fde"
+      "digest": "d432d1df075b6fad5cce84c10895b09ce12bcb47cd9bfb78bb6425622096e438"
     },
     {
       "id": "agent/pr-review-instruction-checker",
       "path": ".agents/agents/pr-review-instruction-checker.md",
-      "digest": "fdd8d25ee878d8a16065fcf64020c1496f2a36915de9ec5411146938258c29bb"
+      "digest": "71b1fb0f1681ddcbbd74e7f97505953f669e2c4525d0daafd8a28de825086d7c"
     },
     {
       "id": "agent/pr-review-integrity-checker",
       "path": ".agents/agents/pr-review-integrity-checker.md",
-      "digest": "4cb2b63480789c1a8575975f7005e4e77d2632502a4952e3be3857abf0980c77"
+      "digest": "6f21a74c0fc05f905823b386666b9a7e07f8a47afdd5f6a4cc0775568f46bc75"
     },
     {
       "id": "agent/pr-review-logic-checker",
       "path": ".agents/agents/pr-review-logic-checker.md",
-      "digest": "e3fd80a736d21e8573f5314b8df9a8dd7dcd879197f74bad111b07535bb74953"
+      "digest": "0ae766a526d028ee4d070cc8376b19701a11d47dbad3f4eacf34d653485aa3aa"
     },
     {
       "id": "agent/pr-review-performance-checker",
       "path": ".agents/agents/pr-review-performance-checker.md",
-      "digest": "895dc0f95f920688a48378c4128fa41ee2e6f53d0a0ee569073a6a37af1d4668"
+      "digest": "6d12438da365dc84b5df53f6345d4a234638c0b8d00b71b9eaf874dd142fe1df"
     },
     {
       "id": "agent/pr-review-scout",
@@ -160,17 +190,12 @@
     {
       "id": "agent/pr-review-security-checker",
       "path": ".agents/agents/pr-review-security-checker.md",
-      "digest": "36838e4f532aad114c22ed98507535a7948c50ee420a4ad47102df13afe54bc1"
-    },
-    {
-      "id": "agent/pr-review-synthesis-checker",
-      "path": ".agents/agents/pr-review-synthesis-checker.md",
-      "digest": "ef9c2765a882b35467fa8fad8ea799a43de5a513f95b3a6b8742b4fb8164b210"
+      "digest": "56a4ef9427f1a0ee5ce26514f5ed096246c192640ba12b50e7119790a9bb1b10"
     },
     {
       "id": "agent/pr-review-types-checker",
       "path": ".agents/agents/pr-review-types-checker.md",
-      "digest": "f1360cabc04d69a7ea65e30d740efc4493a828933f01673333a68bfa78c3927c"
+      "digest": "1525e93ed122ead03d205f14abb51f5d2c0b0e593265e01a3a7e86708618393a"
     },
     {
       "id": "agent/readme-checker",
@@ -193,19 +218,9 @@
       "digest": "f860550c4340954ae5429483c00a4bfd672ba4e0bd706ab667d455f74cb062e2"
     },
     {
-      "id": "agent/repo-rules-checker",
-      "path": ".agents/agents/repo-rules-checker.md",
-      "digest": "a0f6015f030ce4a7be51cbc2942988e56909dd2ea1139b207b3301fb556cf3c9"
-    },
-    {
-      "id": "agent/repo-rules-fixer",
-      "path": ".agents/agents/repo-rules-fixer.md",
-      "digest": "a429579155e7d4ee3f32e31e74ca9d17a47f1d963c29fbfd0343e1a8d57e1640"
-    },
-    {
       "id": "agent/repo-rules-maker",
       "path": ".agents/agents/repo-rules-maker.md",
-      "digest": "741df84d197de38cf6fe98a3db3650955b6896e210ef422ed02c40420980e48b"
+      "digest": "d5e1be8eda120c53bbf687397268234d00569b5663a6c7784b03ba43efe5ff0e"
     },
     {
       "id": "agent/repo-setup-manager",
@@ -228,6 +243,16 @@
       "digest": "ff48e52c948aa10c26159a528e1ed70eb229386da3bcd1c577ca440973396322"
     },
     {
+      "id": "agent/rules-checker",
+      "path": ".agents/agents/rules-checker.md",
+      "digest": "c9225b01111cadca7841b6094bd47956105e98e134b8de26cb830c772e12fb3d"
+    },
+    {
+      "id": "agent/rules-fixer",
+      "path": ".agents/agents/rules-fixer.md",
+      "digest": "2c22f841cfe32414165708719df217daacfb95ca4d767c196c4d881dd5040659"
+    },
+    {
       "id": "agent/specs-checker",
       "path": ".agents/agents/specs-checker.md",
       "digest": "043d00af1837b5ec5f0a5c08c3895cb1d338271db4950cee16fde320d48a4eb9"
@@ -235,7 +260,7 @@
     {
       "id": "agent/specs-fixer",
       "path": ".agents/agents/specs-fixer.md",
-      "digest": "9ca2eb61ad9036cad6422a363eed890d1c0bde0be5b66b49b4558037a5460726"
+      "digest": "b806ead4e7da1330fd7667aa5c737bd2b0197665499cc803813ae21125d8a227"
     },
     {
       "id": "agent/specs-maker",
@@ -271,6 +296,56 @@
       "id": "agent/swe-ui-maker",
       "path": ".agents/agents/swe-ui-maker.md",
       "digest": "cd5b09416eaeb05a8905e421289a594bc4608d2b1d22d72eb353dc9fa2f41b45"
+    },
+    {
+      "id": "agent/tutorial-annotated-concept-checker",
+      "path": ".agents/agents/tutorial-annotated-concept-checker.md",
+      "digest": "fe8f2b9e33f48194e34860983f6e48fade29ea5af30e1ceb6be213a57bffd6cd"
+    },
+    {
+      "id": "agent/tutorial-annotated-concept-fixer",
+      "path": ".agents/agents/tutorial-annotated-concept-fixer.md",
+      "digest": "8e8f5227b18fe356356da6c0c1b6d6442a3489416db69069ea439b4e8690ccbd"
+    },
+    {
+      "id": "agent/tutorial-by-example-checker",
+      "path": ".agents/agents/tutorial-by-example-checker.md",
+      "digest": "fadaca6cd7533913cfa9aec80d9c694a223a34b6ae077e326a67f30e14e9bd3e"
+    },
+    {
+      "id": "agent/tutorial-by-example-fixer",
+      "path": ".agents/agents/tutorial-by-example-fixer.md",
+      "digest": "353de73df8723a7485ccd8f3732cc2e108d1d3a789070d9b7068fc4531019e44"
+    },
+    {
+      "id": "agent/tutorial-in-the-field-checker",
+      "path": ".agents/agents/tutorial-in-the-field-checker.md",
+      "digest": "ff4205f9d28b3aecc78ca411d35e5ce510c19a786cbd8b4efff1789f1b5a6c2b"
+    },
+    {
+      "id": "agent/tutorial-in-the-field-fixer",
+      "path": ".agents/agents/tutorial-in-the-field-fixer.md",
+      "digest": "17f8c9b99da2d01ccff2806ba108267945c5ed3725e329dee4fa79a7a2e400b6"
+    },
+    {
+      "id": "agent/tutorial-primer-checker",
+      "path": ".agents/agents/tutorial-primer-checker.md",
+      "digest": "980e12aaed8c255def56fb5a221e3f51af38fc8888e0dff0bb8971e72dacd815"
+    },
+    {
+      "id": "agent/tutorial-primer-fixer",
+      "path": ".agents/agents/tutorial-primer-fixer.md",
+      "digest": "4ffaef19ecd794b11bc1de65adb0c0c0d3c93d1b981e59067e6f590d291a4757"
+    },
+    {
+      "id": "agent/ui-web-checker",
+      "path": ".agents/agents/ui-web-checker.md",
+      "digest": "c21ce122bbde8bb8aaa89039bd579c9ce4ceff6ae69cbaaa1b9c02c1878e4997"
+    },
+    {
+      "id": "agent/ui-web-fixer",
+      "path": ".agents/agents/ui-web-fixer.md",
+      "digest": "351186eb233d26ec86351a4251cca33b23b763e145f31354d82d9247549f7580"
     },
     {
       "id": "agent/web-design-tester",
@@ -315,7 +390,7 @@
     {
       "id": "skill/applying-maker-checker-fixer",
       "path": ".agents/skills/applying-maker-checker-fixer/SKILL.md",
-      "digest": "daa9b5f9c80bbd3e837be83efb46ea1d05ccfb637c8146712b9b6dc7e1b9e343"
+      "digest": "699bb06a60b84a717d88969497cd02dad60106ddbc57659004a906570437cfda"
     },
     {
       "id": "skill/assess-alignment",

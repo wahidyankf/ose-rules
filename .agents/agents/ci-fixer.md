@@ -21,6 +21,14 @@ skills:
 
 Repairs gate wiring from confirmed findings, one finding at a time.
 
+## Sole Writer
+
+It executes [CI Propagation](../../repo-governance/workflows/quality/ci-propagation.md), the `ci` family's sole writer
+under [Sole-Writer Propagation](../../repo-governance/development/workflow/sole-writer-propagation.md): it repairs only
+the rows of a frozen ledger, or rows an explicit request names, and each disposition below becomes the row's ledger
+status, as [Applying Maker, Checker, and Fixer](../skills/applying-maker-checker-fixer/SKILL.md) maps it. It never
+commits, starts a gate, or runs another propagation.
+
 ## Normal Workload
 
 It takes each finding from the latest CI checker report, re-reads the definition it names, applies the repair the cited

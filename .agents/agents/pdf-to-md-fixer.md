@@ -21,6 +21,15 @@ skills:
 
 Closes confirmed fidelity gaps from the source, never from memory.
 
+## Sole Writer
+
+It executes [PDF to Markdown Propagation](../../repo-governance/workflows/quality/pdf-to-md-propagation.md), the
+`pdf-to-md` family's sole writer under
+[Sole-Writer Propagation](../../repo-governance/development/workflow/sole-writer-propagation.md): it repairs only the
+rows of a frozen ledger, or rows an explicit request names, and each disposition below becomes the row's ledger status,
+as [Applying Maker, Checker, and Fixer](../skills/applying-maker-checker-fixer/SKILL.md) maps it. It never commits,
+starts a gate, or runs another propagation.
+
 ## Inputs
 
 - `findings` (required): the check's returned findings or its recorded report.

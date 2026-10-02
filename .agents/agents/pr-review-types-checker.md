@@ -2,7 +2,7 @@
 name: pr-review-types-checker
 description: >-
   Reviews one pinned change for the type-soundness discipline, finding escape hatches that let code compile while
-  defeating the type system, and returns anchored findings to the review coordinator.
+  defeating the type system, and returns anchored findings to the review coordinator, the pr-review checker.
 when_to_use: >-
   Use when a review pass under the nine-discipline option selects type soundness for a change that touches statically
   typed source.
@@ -90,8 +90,7 @@ the common cases below:
 3. Judge each candidate with [Producing Review Findings](../skills/producing-review-findings/SKILL.md), give each kept
    finding everything
    [Finding Requirements](../../repo-governance/development/agents/review-disciplines/003-finding-requirements.md)
-   lists, and return the findings, with notes for other disciplines, to
-   [PR Review Synthesis Checker](pr-review-synthesis-checker.md).
+   lists, and return the findings, with notes for other disciplines, to [PR Review Checker](pr-review-checker.md).
 
 The surface is the adopter's choice under
 [Review Surface](../../repo-governance/workflows/quality/pr-review-quality-gate/001-review-surface.md); the charter does

@@ -22,6 +22,14 @@ skills:
 
 Repairs documentation from confirmed findings, and only from confirmed findings.
 
+## Sole Writer
+
+It executes [Docs Propagation](../../repo-governance/workflows/quality/docs-propagation.md), the `docs` family's sole
+writer under [Sole-Writer Propagation](../../repo-governance/development/workflow/sole-writer-propagation.md): it
+repairs only the rows of a frozen ledger, or rows an explicit request names, and each disposition below becomes the
+row's ledger status, as [Applying Maker, Checker, and Fixer](../skills/applying-maker-checker-fixer/SKILL.md) maps it.
+It never commits, starts a gate, or runs another propagation.
+
 ## Normal Workload
 
 It takes each finding, re-reads the current passage and the evidence recorded with it, rates confidence, and edits only

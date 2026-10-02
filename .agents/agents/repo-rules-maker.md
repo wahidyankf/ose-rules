@@ -72,6 +72,6 @@ into guidance so that it can be written.
 
 ## What It Does Not Do
 
-It does not write workflow documents, skills, or agents, apply checker findings, which
-[Repo Rules Fixer](repo-rules-fixer.md) owns, or audit the corpus, which [Repo Rules Checker](repo-rules-checker.md)
-owns. It never raises a word budget to fit a rule or lets a lower rule override a higher one in practice.
+It does not write workflow documents, skills, or agents, apply checker findings, which [Rules Fixer](rules-fixer.md)
+owns, or audit the corpus, which [Rules Checker](rules-checker.md) owns. It never raises a word budget to fit a rule or
+lets a lower rule override a higher one in practice.

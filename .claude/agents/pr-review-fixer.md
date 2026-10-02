@@ -1,6 +1,6 @@
 ---
 description: |-
-  Answers every finding of a published review on one change with a fix, a reasoned reject, or a deferral, tags each answer's cause, replies where the finding is recorded, and resolves only what evidence settles.
+  Executes PR Review Propagation on a frozen review ledger, answering each blocking row on one change with a fix, a reasoned reject, or a deferral, tagging each answer's cause, and committing fixes only to the change's own branch.
 name: pr-review-fixer
 tools: |-
   Read, Glob, Grep, Write, Edit, Bash

@@ -56,8 +56,9 @@ rows.
    refused and left `open`.
 
 Because this family's subject is the change itself, a fix is committed to the change's own head, and pushed there on a
-hosted surface, so the next audit can read it. The writer never merges, opens a pull request, or pushes anywhere else;
-delivering the change stays with its caller.
+hosted surface, so the next audit can read it. This is the named exception in shared rule 7 of
+[Sole-Writer Propagation](../../development/workflow/sole-writer-propagation.md#shared-rules). The writer never merges,
+opens a pull request, or pushes anywhere else; delivering the change stays with its caller.
 
 ### Exit
 
