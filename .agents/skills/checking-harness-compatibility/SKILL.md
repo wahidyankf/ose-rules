@@ -12,9 +12,9 @@ compatibility: Requires read access to canonical artifacts, generated adapters, 
 # Checking Harness Compatibility
 
 [Harness Parity Verification](../../../repo-governance/workflows/quality/harness-parity-verification.md) and
-[Harness Upstream Drift Review](../../../repo-governance/workflows/quality/harness-upstream-drift-review.md) own the two
-sequences. [Harness Adapters](../../../repo-governance/development/agents/harness-adapters.md) owns what a binding may
-contain. This skill covers the judgement both sequences call on.
+[Harness Quality Gate](../../../repo-governance/workflows/quality/harness-quality-gate.md) own the two sequences.
+[Harness Adapters](../../../repo-governance/development/agents/harness-adapters.md) owns what a binding may contain.
+This skill covers the judgement both sequences call on.
 
 ## Two Questions, Kept Apart
 

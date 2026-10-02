@@ -11,10 +11,10 @@ compatibility: Requires read access to the whole repository and write access to 
 
 # Validating Governance Rules
 
-[Rules Quality Gate](../../../repo-governance/workflows/maintenance/rules-quality-gate.md) owns the semantic audit of
-one rule, and [Rules Grooming](../../../repo-governance/workflows/maintenance/rules-grooming.md) owns the sweep that
+[Rules Quality Gate](../../../repo-governance/workflows/quality/rules-quality-gate.md) owns the semantic audit of one
+rule, and [Rules Grooming](../../../repo-governance/workflows/maintenance/rules-grooming.md) owns the sweep that
 proposes reductions; both hand their findings to
-[Rules Propagation](../../../repo-governance/workflows/maintenance/rules-propagation.md), which alone writes. This skill
+[Rules Propagation](../../../repo-governance/workflows/quality/rules-propagation.md), which alone writes. This skill
 covers the judgement a repository-wide consistency check needs: what to look at, and how to report it without fixing.
 
 ## What a Full Check Covers

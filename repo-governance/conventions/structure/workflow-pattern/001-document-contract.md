@@ -38,6 +38,12 @@ steps, or outcomes. Those are the body's.
 | `Sequence` | the numbered steps, in the order they run                                                                     |
 | `Exit`     | the outcome that ends a successful run and what it leaves behind, plus any partial or failed outcome it names |
 
+A `<family>-quality-gate` carries the sections the
+[Quality Gate Contract](../../../development/workflow/quality-gate-contract.md) requires in place of these three. A
+`<family>-propagation` carries the headings
+[Sole-Writer Propagation](../../../development/workflow/sole-writer-propagation.md) requires, with its entry, sequence,
+and exit under `## Family Rules`.
+
 ### Entry
 
 The condition is observable: a plan in a named lifecycle root, a verdict recorded, a directory that holds at least one

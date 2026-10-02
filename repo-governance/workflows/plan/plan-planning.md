@@ -28,9 +28,9 @@ optional, default the adopter's recorded stage, or `backlog` for a promoted brie
    The gate also confirms the plan identifier, the target stage unless a caller passed it, the delivery target the
    repository's topology allows per
    [Delivery Seams and Ownership](../../development/agents/planning-capabilities/005-delivery-seams-and-ownership.md),
-   whether the change alters a repository rule, which adds a [Rules Propagation](../maintenance/rules-propagation.md)
+   whether the change alters a repository rule, which adds a [Rules Propagation](../quality/rules-propagation.md)
    outcome, split into actions rather than one generic checkbox, to the delivery unit changing it; whether it changes
-   what a document describes, which adds a [Docs Propagation](../maintenance/docs-propagation.md) item to that unit; and
+   what a document describes, which adds a [Docs Propagation](../quality/docs-propagation.md) item to that unit; and
    whether any claim needs outside verification.
 
 3. **Verify unstable facts before authoring.** Check each flagged claim, such as a library version, an interface's
@@ -48,7 +48,7 @@ optional, default the adopter's recorded stage, or `backlog` for a promoted brie
 7. **Run the post-write gate.** A separate gate, on the complete draft, resolving what only became visible once the plan
    existed. It does not merge into the first gate — see
    [Decision Gates](../../development/agents/planning-capabilities/003-decision-gates.md).
-8. **Run the [Quality Gate](plan-quality-gate.md)** and repair within its bounded budget.
+8. **Run the [Quality Gate](../quality/plan-quality-gate.md)** and record its verdict.
 9. **Land the plan as the repository authorizes.** Commit and integrate it by the delivery target the first gate
    confirmed, where the repository's rules permit, then release the checkout it was written in per
    [Dev Artifact Clean-Up](../maintenance/dev-artifact-clean-up.md).

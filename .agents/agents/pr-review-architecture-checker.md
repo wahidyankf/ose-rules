@@ -2,7 +2,7 @@
 name: pr-review-architecture-checker
 description: >-
   Reviews one pinned change for the architecture discipline, judging new tradeoffs, module boundaries, reversibility,
-  blast radius, and new dependencies, and returns anchored findings to the review coordinator.
+  blast radius, and new dependencies, and returns anchored findings to the review coordinator, the pr-review checker.
 when_to_use: >-
   Use when a review pass selects the architecture discipline for a pull request or a local commit range, plan-only
   changes included.
@@ -83,11 +83,12 @@ decides every level, and its fixed adjustments override the common cases below:
    kept finding everything
    [Finding Requirements](../../repo-governance/development/agents/review-disciplines/003-finding-requirements.md)
    lists.
-3. Return the findings, and notes of problems another discipline owns, to the coordinator.
+3. Return the findings, and notes of problems another discipline owns, to the coordinator,
+   [PR Review Checker](pr-review-checker.md).
 
 The surface, a hosted pull request or a local commit range, is the adopter's choice under
-[Review Surface](../../repo-governance/workflows/quality/pr-review-cycle/001-review-surface.md). The charter and the
-findings do not change with it.
+[Review Surface](../../repo-governance/workflows/quality/pr-review-quality-gate/001-review-surface.md). The charter and
+the findings do not change with it.
 
 ## Shell
 

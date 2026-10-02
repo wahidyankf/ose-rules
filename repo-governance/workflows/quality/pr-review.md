@@ -4,15 +4,15 @@ description: >-
   Runs one explicitly requested semantic review of a pinned pull-request head through risk-routed reviewers, and posts
   one consolidated, stale-safe review that fixes nothing and decides no merge.
 when_to_use: >-
-  Use when someone explicitly asks for a review pass on an open pull request, or when a review cycle requests one.
+  Use when someone explicitly asks for a review pass on an open pull request, or when a PR review gate requests one.
 ---
 
 # PR Review
 
 ## Entry
 
-Someone explicitly requests one review of an open pull request, or an enclosing review cycle calls for one. Every change
-type qualifies, prose, governance, and plans included.
+Someone explicitly requests one review of an open pull request, or an enclosing PR review gate calls for one. Every
+change type qualifies, prose, governance, and plans included.
 
 - `pull-request` (`string`, required): the pull request's number or address.
 - `angle` (`string`, optional, default `general`): a review emphasis a caller supplies.
@@ -65,7 +65,7 @@ Run pr-review for pull request 412.
 
 ## Related Workflows
 
-- [PR Review Cycle](pr-review-cycle.md) repeats this pass with fixes and pipeline checks until it converges.
+- [PR Review Quality Gate](pr-review-quality-gate.md) runs this pass as its audit, for at most three cycles.
 - [PR Leak Review](pr-leak-review.md) owns the focused leak screen this pass never duplicates.
 
 ## One Pass, No Decisions

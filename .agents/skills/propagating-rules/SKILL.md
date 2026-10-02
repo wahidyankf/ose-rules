@@ -10,7 +10,7 @@ compatibility: Requires read access to the repository's rule-bearing locations.
 
 # Propagating Rules
 
-[Rules Propagation](../../../repo-governance/workflows/maintenance/rules-propagation.md) owns the sequence, and
+[Rules Propagation](../../../repo-governance/workflows/quality/rules-propagation.md) owns the sequence, and
 [Rule Definition](../../../repo-governance/conventions/writing/rule-definition.md) owns what a rule is and where rules
 live. This skill covers the judgement that comes first: noticing that a request is rule work at all.
 

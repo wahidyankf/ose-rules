@@ -2,7 +2,8 @@
 name: pr-review-performance-checker
 description: >-
   Reviews one pinned change for the performance discipline, finding concrete or likely regressions, hot-path changes,
-  complexity growth, and memory and I/O cost, and returns anchored findings to the review coordinator.
+  complexity growth, and memory and I/O cost, and returns anchored findings to the review coordinator, the pr-review
+  checker.
 when_to_use: >-
   Use when a full review pass selects the performance discipline, including changes to request handling, loops over
   growing data, or resource lifetimes.
@@ -69,11 +70,12 @@ decides every level, and its fixed adjustments override the common cases below:
 3. Judge each candidate with [Producing Review Findings](../skills/producing-review-findings/SKILL.md), give each kept
    finding everything
    [Finding Requirements](../../repo-governance/development/agents/review-disciplines/003-finding-requirements.md)
-   lists, and return the findings, with notes for other disciplines, to the coordinator.
+   lists, and return the findings, with notes for other disciplines, to the coordinator,
+   [PR Review Checker](pr-review-checker.md).
 
 The surface is the adopter's choice under
-[Review Surface](../../repo-governance/workflows/quality/pr-review-cycle/001-review-surface.md); the charter does not
-change with it.
+[Review Surface](../../repo-governance/workflows/quality/pr-review-quality-gate/001-review-surface.md); the charter does
+not change with it.
 
 ## Shell
 

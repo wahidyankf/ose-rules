@@ -1,6 +1,6 @@
 ---
 description: |-
-  Reviews one pinned change for the security discipline, finding secrets in the change, injection, untrusted-input gaps, and unsafe filesystem or version-control operations, and returns anchored findings to the review coordinator.
+  Reviews one pinned change for the security discipline, finding secrets in the change, injection, untrusted-input gaps, and unsafe filesystem or version-control operations, and returns anchored findings to the review coordinator, the pr-review checker.
 name: pr-review-security-checker
 tools: |-
   Read, Glob, Grep, Bash

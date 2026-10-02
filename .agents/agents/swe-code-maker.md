@@ -63,8 +63,8 @@ standards alone, and the hand-off says so. A browser end-to-end suite counts as 
    check
    [Behaviour Change Verification](../../repo-governance/development/quality/manual-verification/006-behaviour-change-verification.md)
    still requires of the change, and every README or document the change leaves stale, per
-   [Docs Propagation](../../repo-governance/workflows/maintenance/docs-propagation.md), so the caller can route it to
-   Docs Maker or run that workflow before committing.
+   [Docs Propagation](../../repo-governance/workflows/quality/docs-propagation.md), so the caller can route it to Docs
+   Maker or run that workflow before committing.
 
 ## Shell
 

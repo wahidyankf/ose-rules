@@ -69,13 +69,12 @@ too late: an invented path reads like a real one.
 
 Compare both the intended behaviour and the file-impact tree with the repository's rules; changing what a gate,
 validator, or hook accepts changes a rule. Each such change adds the
-[Rules Propagation](../../../repo-governance/workflows/maintenance/rules-propagation.md) outcome to the delivery unit
-making it, as concrete items per repository and action. One item reading "propagate the rules" can never be ticked
-honestly.
+[Rules Propagation](../../../repo-governance/workflows/quality/rules-propagation.md) outcome to the delivery unit making
+it, as concrete items per repository and action. One item reading "propagate the rules" can never be ticked honestly.
 
 A delivery unit that changes what a README, documentation page, or specification describes also carries a
-[Docs Propagation](../../../repo-governance/workflows/maintenance/docs-propagation.md) item, landing in the same commit
-as the change.
+[Docs Propagation](../../../repo-governance/workflows/quality/docs-propagation.md) item, landing in the same commit as
+the change.
 
 ## Interface Plans Widen Before They Narrow
 

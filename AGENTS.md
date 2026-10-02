@@ -37,8 +37,7 @@ their meaning.
 - Internal links resolve to a document, never to a directory. Check volatile technical claims against authoritative
   sources.
 - Shell scripts are Bash, run `set -euo pipefail`, stay executable, and carry descriptive comments.
-- Before any rule edit, follow [Rules Propagation](repo-governance/workflows/maintenance/rules-propagation.md)
-  unprompted.
+- Before any rule edit, follow [Rules Propagation](repo-governance/workflows/quality/rules-propagation.md) unprompted.
 
 ## Layout
 

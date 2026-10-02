@@ -51,13 +51,13 @@ that cannot decide must refuse.
 
 ## Where It Is Already Load-Bearing
 
-| Applied in                                                                                          | As                                                                          |
-| --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| [Principles](README.md)                                                                             | a rule gets a page only after several artifacts already apply it            |
-| [Bounded Convergence](../development/workflow/bounded-convergence.md)                               | a fixed sequence of three named steps is three steps, not a loop to govern  |
-| [Skill and Agent Roster](../development/agents/planning-capabilities/002-skill-and-agent-roster.md) | no separate fixer role; the maker repairs within a bound                    |
-| [Gate Entries](../conventions/structure/repository-configuration/002-gate-entries.md)               | the runner schedules, retries, and parallelizes nothing                     |
-| [Top-Level Schema](../conventions/structure/repository-configuration/001-top-level-schema.md)       | an omitted tier defers to the harness instead of reimplementing inheritance |
+| Applied in                                                                                    | As                                                                          |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| [Principles](README.md)                                                                       | a rule gets a page only after several artifacts already apply it            |
+| [Bounded Convergence](../development/workflow/bounded-convergence.md)                         | a fixed sequence of three named steps is three steps, not a loop to govern  |
+| [Sole-Writer Propagation](../development/workflow/sole-writer-propagation.md)                 | one writer per gate family edits only what a frozen ledger row requires     |
+| [Gate Entries](../conventions/structure/repository-configuration/002-gate-entries.md)         | the runner schedules, retries, and parallelizes nothing                     |
+| [Top-Level Schema](../conventions/structure/repository-configuration/001-top-level-schema.md) | an omitted tier defers to the harness instead of reimplementing inheritance |
 
 ## When Complexity Is Right
 

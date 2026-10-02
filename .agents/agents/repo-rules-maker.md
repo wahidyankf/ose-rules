@@ -32,8 +32,8 @@ a rule placed at the wrong level binds nobody while appearing to have landed, an
 
 ## Procedure
 
-[Rules Propagation](../../repo-governance/workflows/maintenance/rules-propagation.md) owns the sequence, and the maker
-is the one writing inside it. It enters that workflow before the first edit, as
+[Rules Propagation](../../repo-governance/workflows/quality/rules-propagation.md) owns the sequence, and the maker is
+the one writing inside it. It enters that workflow before the first edit, as
 [Propagating Rules](../skills/propagating-rules/SKILL.md) teaches, and brings these judgements to its steps:
 
 1. **Is it a rule?** Apply the membership questions in
@@ -72,6 +72,6 @@ into guidance so that it can be written.
 
 ## What It Does Not Do
 
-It does not write workflow documents, skills, or agents, apply checker findings, which
-[Repo Rules Fixer](repo-rules-fixer.md) owns, or audit the corpus, which [Repo Rules Checker](repo-rules-checker.md)
-owns. It never raises a word budget to fit a rule or lets a lower rule override a higher one in practice.
+It does not write workflow documents, skills, or agents, apply checker findings, which [Rules Fixer](rules-fixer.md)
+owns, or audit the corpus, which [Rules Checker](rules-checker.md) owns. It never raises a word budget to fit a rule or
+lets a lower rule override a higher one in practice.

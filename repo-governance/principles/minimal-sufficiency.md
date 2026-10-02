@@ -61,7 +61,7 @@ and never smaller than the obligations it touches.
 
 Where the change half is already load-bearing:
 
-| Applied in                                             | As                                                                |
-| ------------------------------------------------------ | ----------------------------------------------------------------- |
-| [Quality Gate](../workflows/plan/plan-quality-gate.md) | the budget is not extended because the next attempt looks close   |
-| [Plan Execution](../workflows/plan/plan-execution.md)  | a failure that predates the work is an explanation, not exemption |
+| Applied in                                                | As                                                                |
+| --------------------------------------------------------- | ----------------------------------------------------------------- |
+| [Quality Gate](../workflows/quality/plan-quality-gate.md) | the budget is not extended because the next attempt looks close   |
+| [Plan Execution](../workflows/plan/plan-execution.md)     | a failure that predates the work is an explanation, not exemption |

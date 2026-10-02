@@ -1,17 +1,17 @@
 ---
 name: multi-plans-execution
 description: >-
-  Runs several gate-passed plans in one scheduled pass: a dependency graph, bounded parallelism with a resource-conflict
-  guard, quarantine of failing plans, and cross-plan knowledge capture.
+  Runs several gate-reviewed plans in one scheduled pass: a dependency graph, bounded parallelism with a
+  resource-conflict guard, quarantine of failing plans, and cross-plan knowledge capture.
 when_to_use: >-
-  Use when two or more gate-passed plans should run together in one scheduled pass instead of one after another.
+  Use when two or more gate-reviewed plans should run together in one scheduled pass instead of one after another.
 ---
 
 # Multi-Plans Execution
 
 ## Entry
 
-Two or more plans are named, each with a current, permitting quality-gate verdict from an explicitly directed run.
+Two or more plans are named, each with a current quality-gate verdict from an explicitly directed run.
 
 - `plans` (`string`, required): plan identifiers, or a lifecycle selector (`all-in-progress`, `all-backlog`, `all`) with
   optional exclusions.
@@ -22,8 +22,9 @@ Two or more plans are named, each with a current, permitting quality-gate verdic
 
 1. **Resolve and freeze the scope.** Resolve the selector once, echo the set, and never re-expand it mid-run. An
    exclusion matching no member is an error.
-2. **Refuse unvetted plans before any side effect.** A member without a current permitting verdict stops the whole run;
-   never run a subset around it. Then move queued members into `plans/in-progress/`.
+2. **Record each member's verdict before any side effect.** Verdicts are advisory: `FAIL` and `BLOCKED` stop nothing. A
+   member without one stops the whole run; never run a subset around it. Then move queued members into
+   `plans/in-progress/`.
 3. **Parse each checklist into nodes.** Every action checkbox is one node carrying its plan, phase, executor label, and
    resource set. Within a plan, nodes stay sequential unless the plan marks steps independent.
 4. **Compute resource sets conservatively:** the paths, projects, repositories, and checkout each node touches. An
@@ -46,7 +47,7 @@ Two or more plans are named, each with a current, permitting quality-gate verdic
     schedule report. A theme shared by two or more plans, or about the run itself, reaches one durable owner or is
     discarded with a reason, per
     [Knowledge Capture and Archival](../../conventions/structure/plans/008-knowledge-capture-and-archival.md). A
-    single-plan theme was already routed and is not filed twice.
+    single-plan theme was already routed, never twice.
 
 ## Exit
 
@@ -56,7 +57,7 @@ scratch location per [Temporary Files](../../conventions/structure/temporary-fil
 parallelism reached, quarantines with reasons, pre-existing failures fixed, and theme routing.
 
 Partial outcome: at least one plan was quarantined or stopped; the summary names each with its reason. The run fails
-when no schedule can be built: a declared cycle, a missing plan, or an unvetted member.
+when no schedule can be built: a declared cycle, a missing plan, or a member with no verdict.
 
 ## Example Usage
 
@@ -68,7 +69,7 @@ Run multi-plans-execution with plans "all-in-progress" except "legacy-cleanup", 
 ## Related Workflows
 
 - [Execution](plan-execution.md) runs every node and owns each plan's rules.
-- [Quality Gate](plan-quality-gate.md) produces the verdicts step 2 requires.
+- [Quality Gate](../quality/plan-quality-gate.md) produces the verdicts step 2 records.
 - [Execution Check](plan-execution-check.md) judges each plan before it is archived.
 
 ## Adopter Decision: The Parallelism Ceiling

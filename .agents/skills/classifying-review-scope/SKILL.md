@@ -62,7 +62,7 @@ a finding described a superseded head is not a dismissal, and the claim is judge
 The brief carries the tier and route, and every discipline selected or skipped with the reason for each. It also names
 this pass's probe class and whether that class has run before on this change, so a new question is checkable rather than
 asserted, as
-[Credit and Convergence](../../../repo-governance/workflows/quality/pr-review-cycle/003-credit-and-convergence.md)
+[Clean Audits and the Ceiling](../../../repo-governance/workflows/quality/pr-review-quality-gate/003-clean-audits-and-the-ceiling.md)
 requires. An unrecorded choice cannot be audited, and a choice nobody can audit will quietly drift toward cheaper.
 
 For what the selected reviewers then produce, see [Producing Review Findings](../producing-review-findings/SKILL.md).

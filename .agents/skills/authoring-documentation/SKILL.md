@@ -70,7 +70,7 @@ seen the first one.
 
 Update a page in the same change as the behaviour it describes;
 [Documentation First](../../../repo-governance/principles/documentation-first.md) argues why.
-[Docs Propagation](../../../repo-governance/workflows/maintenance/docs-propagation.md) owns the sequence.
+[Docs Propagation](../../../repo-governance/workflows/quality/docs-propagation.md) owns the sequence.
 
 ## Before Publishing
 

@@ -62,8 +62,8 @@ Run harness-parity-verification for every declared harness at the current revisi
 
 ## Related Workflows
 
-- [Harness Upstream Drift Review](harness-upstream-drift-review.md) runs this first, then looks for what no repository
-  check can see: a harness changing its own conventions.
+- [Harness Quality Gate](harness-quality-gate.md) judges what no repository check can see: a harness changing its own
+  conventions.
 
 ## Verification and Repair Are Separate Runs
 

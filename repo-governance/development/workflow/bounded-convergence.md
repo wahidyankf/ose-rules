@@ -28,20 +28,21 @@ Not everything that looks repetitive is. A fixed sequence of three named steps i
 once, each item exactly once, is an iteration with a known bound. The distinguishing question is whether there is a path
 back to something already done, decided by a result.
 
+## Quality Gates Follow Their Own Contract
+
+A quality gate, a workflow that checks, repairs, and checks again, follows the
+[Quality Gate Contract](quality-gate-contract.md) instead of the loop register and ceiling scorecard. The register and
+scorecard govern every other repeated operation: retries, polls, worklists, and repair loops outside a gate.
+
 ## Defaults for Iterative Gates
 
-A gate that checks, repairs, and checks again often lets a caller set its strictness and its ceiling. A caller who sets
-neither still gets a run, so what that run does is declared by the gate, not left to each caller.
+The catalog decides a gate's defaults once, in the contract, so they cannot drift from gate to gate:
 
-| Input or signal   | Rule                                                                                                                         |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| strictness level  | a gate that accepts one defaults to the least strict level that still blocks every real defect, never to informational notes |
-| iteration ceiling | a gate that accepts one states the shared default in its own definition                                                      |
-| early warning     | a gate that raises one as the ceiling nears raises it while enough cycles remain for a hard but converging run to finish     |
+| Input or signal  | Rule                                                                                         |
+| ---------------- | -------------------------------------------------------------------------------------------- |
+| strictness level | `mode`, default `normal`: the least strict level that still blocks every real defect         |
+| cycle ceiling    | `max-cycles`, 1 to 3, default 3; a repository or caller may lower it, never raise it above 3 |
+| early warning    | none; a gate declares no warning cycle, and nothing adds a cycle as the ceiling nears        |
 
-A gate whose flow is finite by construction declares that one flow and exposes no ceiling input and no warning; it never
-invents a loop in order to bound it. The level names, the default ceiling, and the warning cycle are adopter decisions,
-set once and shared by every gate exposing that input, so defaults cannot drift from gate to gate.
-
-The early warning is a recorded notice. It does not pause the run, ask anyone, or add cycles, and reaching the ceiling
-still resolves as [Resolving at the Ceiling](bounded-convergence/002-ceiling-scorecard.md) describes.
+A judging workflow whose flow is finite by construction is a review, not a gate. It declares that one flow, exposes no
+ceiling input, and never invents a loop in order to bound it.

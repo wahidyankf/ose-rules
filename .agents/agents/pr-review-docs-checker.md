@@ -84,11 +84,12 @@ below:
 3. Judge each candidate with [Producing Review Findings](../skills/producing-review-findings/SKILL.md), give each kept
    finding everything
    [Finding Requirements](../../repo-governance/development/agents/review-disciplines/003-finding-requirements.md)
-   lists, and return the findings, with notes for other disciplines, to the coordinator.
+   lists, and return the findings, with notes for other disciplines, to the coordinator,
+   [PR Review Checker](pr-review-checker.md).
 
 The surface is the adopter's choice under
-[Review Surface](../../repo-governance/workflows/quality/pr-review-cycle/001-review-surface.md); the charter does not
-change with it.
+[Review Surface](../../repo-governance/workflows/quality/pr-review-quality-gate/001-review-surface.md); the charter does
+not change with it.
 
 ## Shell
 
