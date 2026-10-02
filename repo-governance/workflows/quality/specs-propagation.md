@@ -39,9 +39,17 @@ The [Specs Quality Gate](specs-quality-gate.md) hands over a frozen ledger, or a
 
 ### Sequence
 
-1. **Sort each row** by the groups under "What a Repair May Touch" in the `validating-specification-structure` skill: a
-   repair it marks safe is applied; one it marks as needing a person is `needs-decision`; a matter it leaves alone is
-   `not-applicable`, recorded as outside what a repair may change.
+1. **Sort each row** into one of three groups, which "What a Repair May Touch" in the
+   `validating-specification-structure` skill details where the executor loads it:
+   - **safe after re-checking**, applied: an index regenerated, a file renamed to the naming rule, a relative path or a
+     view listing corrected;
+   - **needs a person**, `needs-decision`: a missing user story, shared preconditions reconciled across a folder, a
+     cross-folder contradiction, or a renamed actor;
+   - **left alone**, `not-applicable` as outside what a repair may change: what a scenario says or requires,
+     implementation alignment, or a legitimate difference between perspectives.
+
+   A row that fits no group is `needs-decision`, never guessed.
+
 2. **Apply only what the rule settles.** An index is regenerated from what its folder holds, using the structure check's
    output where one is adopted. A rename goes through version control's move, so history follows the file, and a
    relative path is corrected from the target's real location.

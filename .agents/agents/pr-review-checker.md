@@ -39,7 +39,9 @@ the raw findings.
 ## Inputs
 
 - the brief from [PR Review Scout](pr-review-scout.md): pin, tier, route, specialist set, probe class, settled outcomes,
-  and delegated checks, used as given and never re-derived;
+  and delegated checks, used as given and never re-derived; where the adopter recorded no scout under
+  [Review Surface](../../repo-governance/workflows/quality/pr-review-quality-gate/001-review-surface.md), the checker
+  prepares that brief first, by the scout's rules, and then uses it as given;
 - the raw findings, and notes for other disciplines, from each selected specialist;
 - the `angle` and `prior-findings` a caller passes to [PR Review](../../repo-governance/workflows/quality/pr-review.md).
 

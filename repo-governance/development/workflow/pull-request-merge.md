@@ -1,8 +1,7 @@
 ---
 description: >-
-  Sets the preconditions every pull-request merge needs, namely exact-head gates, a current branch, closed
-  conversations, surface gates, and no unapproved bypass, and records the landing method and merge authority as adopter
-  decisions.
+  Sets every pull-request merge's preconditions (exact-head gates, a current branch, closed conversations, surface
+  gates, no unapproved bypass) and records the landing method and merge authority as adopter decisions.
 when_to_use: >-
   Use before merging a pull request, when a gate fails close to merge, or when deciding whether readiness or an earlier
   approval permits a merge.
@@ -10,8 +9,8 @@ when_to_use: >-
 
 # Pull Request Merge
 
-A merge changes the trunk for everyone. Its safety can be checked mechanically, so it rests on preconditions evaluated
-at the moment of merge, not on how finished the work feels.
+A merge changes the trunk for everyone. Its safety is mechanically checkable, so it rests on preconditions evaluated at
+the moment of merge, not on how finished the work feels.
 
 This standard implements [Evidence Over Assertion](../../principles/evidence-over-assertion.md),
 [Fail Closed](../../principles/fail-closed.md), and
@@ -19,19 +18,18 @@ This standard implements [Evidence Over Assertion](../../principles/evidence-ove
 
 ## Preconditions
 
-Every one holds at the moment of merge:
+Each holds at merge time:
 
 1. **Exact-head gates.** Each required check is green for the pull request's current head commit against its current
-   base. A run for an earlier head or another base, or one superseded by a later push, is stale evidence and authorizes
-   nothing; see [Quality Gate Results](../quality/manual-verification/001-quality-gate-results.md).
-2. **A current branch.** The branch contains the latest target, brought forward as
-   [Integration Hygiene](integration-hygiene.md) directs, and the hosting service reports no conflict. A conflict inside
-   a generated file is resolved in the source the generator reads, then regenerated and checked for drift, never edited
-   by hand.
-3. **Closed conversations.** Every review conversation is resolved or dismissed by the user. Review itself may be
-   optional; the conversations a review opens still bind.
-4. **Surface gates.** Each deterministic check the changed reachable behaviour requires, whether a running interface, an
-   endpoint, or another boundary, must have a passing terminal result. A surface quality gate's verdict is advisory, per
+   base. A run for an earlier head or another base, or superseded by a later push, is stale and authorizes nothing; see
+   [Quality Gate Results](../quality/manual-verification/001-quality-gate-results.md).
+2. **A current branch.** The branch contains the latest target, brought forward per
+   [Integration Hygiene](integration-hygiene.md), and the hosting service reports no conflict. A conflict in a generated
+   file is resolved in the generator's source, then regenerated and checked for drift, never hand-edited.
+3. **Closed conversations.** Every review conversation is resolved or dismissed by the user. Review may be optional; the
+   conversations it opens still bind.
+4. **Surface gates.** Each deterministic check the changed reachable behaviour requires, whether a running interface,
+   endpoint, or other boundary, must have a passing terminal result. A surface quality gate's verdict is advisory, per
    the [Quality Gate Contract](quality-gate-contract.md), so it need not be a pass: it is recorded for the exact head,
    and each open blocking row of a `FAIL` or `BLOCKED` verdict has an owner. Where no reachable behaviour changed, the
    merge record says so.
@@ -40,8 +38,8 @@ Every one holds at the moment of merge:
    handling and follows [No Secrets in Tracked Files](../../conventions/security/no-secrets-in-tracked-files.md); no
    green check, closed conversation, or earlier clean screen permits merging it.
 
-Preconditions are evaluated per merge. Meeting them for one pull request says nothing about the next. Before merging,
-present each precondition's status and the evidence behind it.
+Preconditions are evaluated per merge; meeting them once says nothing about the next pull request. Before merging,
+present each precondition's status and its evidence.
 
 The repository records its landing method. A rebase keeps the branch's [thematic commits](thematic-commits.md), a squash
 collapses them, and a merge commit is unavailable where [Integration Path](integration-path.md) keeps history linear.
@@ -49,29 +47,29 @@ collapses them, and a merge commit is unavailable where [Integration Path](integ
 ## Landing Identity
 
 A rebase or squash landing must prove that the landed tree equals the reviewed pull-request head tree. Reconciliation
-records both tree identifiers and refuses cleanup when either is absent or they differ. Commit identifiers cannot prove
-this for rewritten history. The post-merge integration record covers the rule by failing on a missing or unequal tree.
+records both tree identifiers and refuses cleanup when either is absent or they differ; commit identifiers cannot prove
+this for rewritten history. The post-merge integration record fails on a missing or unequal tree.
 
 ## No Bypass Without Named Permission
 
 Never merge over a failing or pending required check, an unresolved conversation, or branch protection, and never use an
-administrative override. A user may waive one named gate for one named merge. That waiver covers nothing else, reaches
+administrative override. A user may waive one named gate for one named merge; that waiver covers nothing else, reaches
 no later merge, and never covers the outbound-safety screen.
 
-When a gate fails, report which one and why, fix the cause, rerun it, and then evaluate every precondition again.
+When a gate fails, report which and why, fix the cause, rerun it, then re-evaluate every precondition.
 
 ## Draft Until Done
 
-Open each pull request as a draft and iterate while it stays one. Mark it ready once the work meets its done definition.
+Open each pull request as a draft and iterate while it stays one; mark it ready once the work meets its done definition.
 Readiness says the work is finished; it satisfies no precondition and authorizes no merge. Where marking it ready
-triggers the checks again, the run that follows is the one that counts.
+retriggers the checks, the following run counts.
 
 ## Adopter Decision: Merge Authority
 
-| Authority         | The merge happens                                                                    | Trade-off                                                                                                       |
-| ----------------- | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------- |
-| preconditions     | an agent merges once all preconditions hold, unless a plan step names a human gate   | fast and consistent, but any gap in the gates becomes a gap in what merges, so test depth carries weight        |
-| explicit approval | a person approves each merge after the preconditions hold, for that one pull request | a human backstop for what the gates miss, but merges wait, and approval can become a signature without evidence |
+| Authority         | The merge happens                                                                    | Trade-off                                                                                               |
+| ----------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------- |
+| preconditions     | an agent merges once all preconditions hold, unless a plan step names a human gate   | fast and consistent, but any gate gap becomes a merge gap, so test depth carries weight                 |
+| explicit approval | a person approves each merge after the preconditions hold, for that one pull request | a human backstop for gate misses, but merges wait, and approval can become a signature without evidence |
 
-The repository records its choice. Either way the preconditions are the same and only the actor differs, and the commits
-and pushes that built the branch remain under [Commit Authorization](commit-authorization.md).
+The repository records its choice. Either way the preconditions are the same and only the actor differs; the commits and
+pushes that built the branch remain under [Commit Authorization](commit-authorization.md).

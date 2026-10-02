@@ -46,7 +46,6 @@ Throughout these modules, a **thread** is the adopter's recorded review record f
 for a pull request, or an entry in a findings record for a local commit range.
 
 Out of scope: the definitions behind each severity level, which the adopter's severity scale owns, and the ceiling on
-the review-and-repair loop, which is declared under [Bounded Convergence](../workflow/bounded-convergence.md). One
-example ceiling an adopter may declare: aim to resolve in cycles 1 to 3, allow cycles 4 and 5 only with the remaining
-defect family named, then stop for human direction. Whether the split pays off is measured by the adopter against its
-own review history.
+the review-and-repair loop, which the [Quality Gate Contract](../workflow/quality-gate-contract.md) fixes at three
+cycles with no mid-run wait for a person. Whether the split pays off is measured by the adopter against its own review
+history.

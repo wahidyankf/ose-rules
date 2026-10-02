@@ -9,8 +9,8 @@ when_to_use: >-
 
 # Automated Quality Gates
 
-A quality rule a contributor has to remember is enforced on the days they remember it. Every mechanical check therefore
-runs by itself, at the earliest moment that can see the problem, and it blocks.
+A quality rule a contributor must remember is enforced only on the days they remember it, so every mechanical check runs
+by itself, at the earliest moment that can see the problem, and blocks.
 
 This standard implements [Automation Over Manual](../../../principles/automation-over-manual.md) and
 [Fail Closed](../../../principles/fail-closed.md). What a surface is, and which gates may change files, is owned by
@@ -44,8 +44,7 @@ A repository with no `ci` surface records one option:
 ## Staged, Not the Whole Tree
 
 A formatter or file-level check before a commit inspects what is being committed. Formatting the entire tree on every
-commit is slow enough to resent, and it rewrites and stages files the author never touched, so the commit carries
-changes nobody reviewed.
+commit is slow enough to resent, and rewrites and stages untouched files, so the commit carries changes nobody reviewed.
 
 A formatter that rewrites a staged file restages it, so the commit holds the formatted version rather than needing a
 follow-up fix.
@@ -57,15 +56,15 @@ check that genuinely cannot be scoped, because it reads links or invariants span
 whole tree; naming each such exception and its reason is good practice, since an unexplained whole-tree check is where
 gate time quietly grows.
 
-A gate slow enough to be worked around protects nothing. Keeping the local gates fast is what keeps them run.
+A gate slow enough to be worked around protects nothing; keeping local gates fast keeps them run.
 
 ## The Pipeline Fails the Build
 
 Where a repository has continuous integration, it runs the complete blocking set and a violation fails the run. It is
 the one control a contributor cannot skip locally, so it is a superset of the hooks, never a subset.
 
-A step written so it cannot fail, with its exit status discarded or its tool told to succeed regardless, is not a gate.
-It reports green over exactly the state it exists to catch.
+A step written so it cannot fail, its exit status discarded or its tool told to succeed regardless, is not a gate: it
+reports green over exactly the state it exists to catch.
 
 ## Hooks Travel With the Repository
 

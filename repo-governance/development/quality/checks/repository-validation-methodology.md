@@ -9,9 +9,9 @@ when_to_use: >-
 
 # Repository Validation Methodology
 
-A validator that matches the wrong text is worse than none. It flags correct content until people learn to ignore it, or
-misses the violation it exists to catch, and either way it looks like a working check. The mistakes behind this recur,
-so every check follows one documented method.
+A validator matching the wrong text is worse than none: it flags correct content until people ignore it, or misses the
+violation it exists to catch, while looking like a working check. These mistakes recur, so every check follows one
+documented method.
 
 This standard implements [Automation Over Manual](../../../principles/automation-over-manual.md),
 [Explicit Over Implicit](../../../principles/explicit-over-implicit.md),
@@ -24,18 +24,17 @@ fixes how a check reads what it inspects.
 
 ## Scope Before Matching
 
-A rule about frontmatter is checked against frontmatter alone: extract the region from the opening delimiter to the
-first closing one, then match inside it. Never flag the document body. A Markdown heading begins with `#` just as a YAML
-comment does, so a whole-file search for comments reports every heading.
+A frontmatter rule is checked against frontmatter alone: extract the region from the opening delimiter to the first
+closing one, then match inside it. Never flag the document body. A Markdown heading begins with `#` like a YAML comment,
+so a whole-file comment search reports every heading.
 
 The extraction technique, whether a line-oriented extractor or a parser, is the adopter's; the scoping is the rule.
 
 ## Anchor and Escape Every Pattern
 
-- **Anchor field matches** to the start of a line and the key's colon, as `^description:`. An unanchored search also
-  matches a value that merely mentions the key.
-- **Match case exactly.** YAML keys are case-sensitive, so a case-insensitive search reports a key a parser would never
-  find.
+- **Anchor field matches** to line start and the key's colon, as `^description:`. An unanchored search also matches a
+  value merely mentioning the key.
+- **Match case exactly.** YAML keys are case-sensitive; a case-insensitive search reports keys a parser never finds.
 - **Escape metacharacters** in any name interpolated into a pattern: `. * [ ] ^ $ \ + ? { } | ( )`. Unescaped, the dot
   in `some.field` also matches `someXfield`. Where a tool offers literal matching, use it for the name and apply the
   anchor separately, since literal mode treats `^` as an ordinary character too.
@@ -43,18 +42,17 @@ The extraction technique, whether a line-oriented extractor or a parser, is the 
 
 ## Resolve From the Checked File
 
-A relative link resolves from the directory of the file that contains it, never from the directory the validator runs
-in; otherwise its answer depends on where it started.
+A relative link resolves from its containing file's directory, never the validator's working directory; otherwise the
+answer depends on where it started.
 
-Test that the resolved target is a file rather than any existing path, so a link to a directory is caught. Normalize
-equivalent spellings, such as `./guide.md` and `guide.md`, before comparing, and handle absolute paths by their own
-declared rule.
+Test that the resolved target is a file, not any existing path, so a link to a directory is caught. Normalize equivalent
+spellings, such as `./guide.md` and `guide.md`, before comparing, and handle absolute paths by their own declared rule.
 
 ## Decide Every Edge Case
 
 A missing input file is an error the check reports, never a clean result.
 
-Each check records its decision for every case below, because an undecided case is decided differently by every author:
+Each check records its decision for every case below, since every author decides an undecided case differently:
 
 | Case                                     | Default decision                                                          |
 | ---------------------------------------- | ------------------------------------------------------------------------- |

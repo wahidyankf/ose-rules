@@ -9,8 +9,8 @@ when_to_use: >-
 
 # C# Standards
 
-This standard is canonical for C# on .NET. It holds the choices C# and the SDK leave open, and a C# programming skill
-defers here for each rule it applies.
+This standard is canonical for C# on .NET, holding the choices C# and the SDK leave open; a C# skill defers here per
+rule.
 
 It implements [Automation Over Manual](../../../principles/automation-over-manual.md),
 [Explicit Over Implicit](../../../principles/explicit-over-implicit.md),
@@ -25,59 +25,58 @@ and [Reproducibility](../../../principles/reproducibility.md).
 - **Nullable reference types:** `<Nullable>enable</Nullable>`.
 - **Analyzers:** the built-in .NET analyzers at a recommended analysis level, with `EnforceCodeStyleInBuild`, plus one
   further analyzer set the adopter records in the same file.
-- **Warnings:** `<TreatWarningsAsErrors>true</TreatWarningsAsErrors>` in every build configuration, as
-  [Lint Strictness](../checks/lint-strictness.md) requires. A warning enforced only in release builds passes every local
-  run.
+- **Warnings:** `<TreatWarningsAsErrors>true</TreatWarningsAsErrors>` in every build configuration, per
+  [Lint Strictness](../checks/lint-strictness.md); a warning enforced only in release builds passes every local run.
 - **Formatting:** `dotnet format --verify-no-changes`, reading a committed `.editorconfig`.
 
-A `#pragma warning disable`, a null-forgiving `!`, and `null!` are waivers: each sits beside a comment saying why it is
-safe. A property that must be set is `required` or assigned in the constructor.
+A `#pragma warning disable`, a null-forgiving `!`, and `null!` are waivers, each beside a comment saying why it is safe.
+A property that must be set is `required` or assigned in the constructor.
 
 ## Runtime Line
 
-A new project targets the current .NET long-term-support release. An existing project stays on a supported
-long-term-support release and upgrades before its support ends. A short-term-support release is limited to experiments
-and internal tooling, since a production service on one upgrades on the shorter cycle or runs unpatched. The adopter
-records the release numbers in its SDK version file.
+A new project targets the current .NET long-term-support release; an existing one stays on a supported long-term-support
+release and upgrades before support ends. A short-term-support release is limited to experiments and internal tooling,
+since a production service on one upgrades on the shorter cycle or runs unpatched. The adopter records release numbers
+in its SDK version file.
 
 ## Build Defaults
 
-- Projects use the SDK-style format only, with implicit usings enabled and any project-wide global usings in one file.
-- NuGet Central Package Management is on: `Directory.Packages.props` declares each version once, and project files
-  reference packages without one, so two projects cannot drift apart. The pin form follows
+- Projects are SDK-style only, with implicit usings enabled and any project-wide global usings in one file.
+- NuGet Central Package Management is on: `Directory.Packages.props` declares each version once and project files
+  reference packages without one, so projects cannot drift apart. The pin form follows
   [Dependency Bump Policy](../../workflow/dependency-bump-policy.md).
-- Restore, build, test, and publish run through the `dotnet` command line, the same for contributors and the pipeline.
+- Restore, build, test, and publish run through the `dotnet` command line, alike for contributors and pipeline.
 
 ## Language Defaults
 
-- Data without identity, such as a request, a result, or an event, is a `record`, and exposed collections are read-only
+- Data without identity, such as a request, result, or event, is a `record`; exposed collections are read-only
   interfaces.
 - Namespaces are file-scoped and follow the folder path.
 - A monetary amount is `decimal`, never `float` or `double`, whose binary fractions round. Domain and application code
-  declares no `object` or `dynamic`, and reads the time through an injected time provider, so a test controls the clock.
+  declares no `object` or `dynamic` and reads time through an injected time provider, so a test controls the clock.
 
 ## Asynchronous Code
 
 - Nothing blocks on `.Result`, `.Wait()`, or `.GetAwaiter().GetResult()`, which can deadlock, and only an event handler
   is `async void`.
-- An asynchronous method's name ends in `Async` and it returns `Task` or `Task<T>`; `ValueTask` is kept to a hot path
+- An asynchronous method's name ends in `Async` and it returns `Task` or `Task<T>`; `ValueTask` is only for a hot path
   where the method often completes synchronously.
-- Library and infrastructure code awaits with `ConfigureAwait(false)`, because it cannot know its caller's
-  synchronization context.
+- Library and infrastructure code awaits with `ConfigureAwait(false)`, since it cannot know its caller's synchronization
+  context.
 - A public asynchronous method accepts a `CancellationToken` and passes it to every input or output call, so work stops
-  when its caller gives up. A cancellation exception is caught only at the outermost boundary.
+  when its caller gives up; a cancellation exception is caught only at the outermost boundary.
 
 ## Failures
 
 - An expected business failure is returned as a result value by default. A broken domain rule inside an aggregate may
-  throw a domain exception instead; any other exception signals a broken invariant or an infrastructure fault.
-- Every exception type the application defines derives from one base type carrying a stable error code, so a handler
-  maps codes rather than messages.
-- Entry points guard their arguments with the built-in throw helpers, and input passes schema validation before any
-  business logic runs.
-- A catch block rethrows, translates, or handles, never discards. A failure becomes a transport response once, as
-  [Errors Cross Once](../architecture/hexagonal-architecture/001-layers-and-dependency-rule.md) requires, and an HTTP
-  error response uses the standard problem-details shape.
+  throw a domain exception instead; any other exception signals a broken invariant or infrastructure fault.
+- Every application-defined exception type derives from one base type carrying a stable error code, so handlers map
+  codes, not messages.
+- Entry points guard arguments with the built-in throw helpers; input passes schema validation before business logic
+  runs.
+- A catch block rethrows, translates, or handles, never discards. A failure becomes a transport response once, per
+  [Errors Cross Once](../architecture/hexagonal-architecture/001-layers-and-dependency-rule.md); an HTTP error response
+  uses the standard problem-details shape.
 
 ## Modules
 
@@ -85,6 +84,5 @@ records the release numbers in its SDK version file.
 
 ## Enforcement
 
-The compiler, the analyzers, and the formatter enforce the gates in the adopter's own build, hooks, and pipeline, and an
-architecture test holds the layer rule the module states. Review applies the language, asynchronous, and failure
-defaults.
+The compiler, analyzers, and formatter enforce the gates in the adopter's build, hooks, and pipeline; an architecture
+test holds the module's layer rule. Review applies the language, asynchronous, and failure defaults.

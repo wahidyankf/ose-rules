@@ -9,8 +9,8 @@ when_to_use: >-
 
 # Software Quality Enforcement
 
-A rule is only as strong as whatever makes it hold. Naming that for every rule stops a repository from believing in a
-guarantee nothing enforces.
+A rule is only as strong as what makes it hold; naming that for every rule stops a repository trusting a guarantee
+nothing enforces.
 
 This standard implements [Evidence Over Assertion](../../../principles/evidence-over-assertion.md),
 [Fail Closed](../../../principles/fail-closed.md),
@@ -21,21 +21,21 @@ This standard implements [Evidence Over Assertion](../../../principles/evidence-
 
 ## Every Rule Names Its Class
 
-| Class               | Means                                                                       |
-| ------------------- | --------------------------------------------------------------------------- |
-| required gate       | an automated command that must pass before applicable work is complete      |
-| commit gate         | runs automatically and blocks a commit when it fails                        |
-| push gate           | runs automatically and blocks a push when it fails                          |
-| scheduled detection | finds regressions on a cadence, and never blocks a push that came before it |
-| required evidence   | a blocking review by a person or an agent, with no automation behind it     |
-| runtime guard       | fails closed before unsafe test, deployment, or other work starts           |
+| Class               | Means                                                                  |
+| ------------------- | ---------------------------------------------------------------------- |
+| required gate       | an automated command that must pass before applicable work is complete |
+| commit gate         | runs automatically and blocks a commit when it fails                   |
+| push gate           | runs automatically and blocks a push when it fails                     |
+| scheduled detection | finds regressions on a cadence, never blocking an earlier push         |
+| required evidence   | a blocking review by a person or agent, without automation             |
+| runtime guard       | fails closed before unsafe test, deployment, or other work starts      |
 
-The repository keeps one enforcement map, naming for each maintained outcome its owning rule and every class and route
-that enforces it.
+The repository keeps one enforcement map, naming for each maintained outcome its owning rule and every enforcing class
+and route.
 
-Each entry names its route truthfully. A rule held only by review is required evidence, never a gate that does not
-exist, and an invariant claimed with no route at all is an intention. Missing automation never weakens a rule; it only
-changes which class carries it.
+Each entry names its route truthfully. A rule held only by review is required evidence, never a nonexistent gate, and an
+invariant with no route is an intention. Missing automation never weakens a rule; it only changes which class carries
+it.
 
 Hooks, pipelines, and schedules implement the map and never replace it. Project READMEs record the commands each route
 resolves to.
@@ -43,21 +43,21 @@ resolves to.
 ## Applying the Map
 
 An entry applies when a change can alter its outcome, boundary, artifact, or mechanism. Before completion, run the
-narrowest target of every applicable entry and record the evidence. Scheduled detection never replaces that local proof;
-it reports after the change lands.
+narrowest target of every applicable entry and record the evidence. Scheduled detection, reporting after the change
+lands, never replaces that local proof.
 
 Automation proves a final state, not the order that produced it, so an ordering rule such as
 [Test-Driven Development](../testing/test-driven-development.md) is required evidence even where a gate checks its
 result.
 
-Applicable entries, their results, and evidence still owed survive compaction and handoff under
-[Governance Continuity](../../../principles/governance-continuity.md), and a resumed reader reloads the map first.
+Applicable entries, results, and evidence still owed survive compaction and handoff under
+[Governance Continuity](../../../principles/governance-continuity.md); a resumed reader reloads the map first.
 
 ## No Superficial Satisfaction
 
 Never make a check pass by weakening it. Beyond the suppressions that
 [Root Cause Orientation](../../../principles/root-cause-orientation.md) and
-[Preexisting Error Resolution](../evidence/preexisting-error-resolution.md) already rule out, each of these is the same
+[Preexisting Error Resolution](../evidence/preexisting-error-resolution.md) already rule out, each of these is that
 move:
 
 - lowering a coverage floor, or widening an exclusion, until the number clears;
@@ -67,24 +67,24 @@ move:
 
 Each leaves the repository reporting a guarantee it no longer has.
 
-When the check itself is wrong, change it deliberately, in its own commit with the reason stated, never inside the
-change it inconvenienced. Suppressing one finding follows the waiver rule in [Lint Strictness](lint-strictness.md).
+When the check itself is wrong, change it deliberately in its own commit, stating why, never inside the change it
+inconvenienced. Suppressing one finding follows the waiver rule in [Lint Strictness](lint-strictness.md).
 
 ## Nothing Inspected Is Not a Pass
 
-A check that inspected zero files, cases, or scenarios has looked at nothing, whatever its exit status. Every check
-reports how much it inspected, and a count that drops without an explained cause is a finding of its own.
+A check that inspected zero files, cases, or scenarios looked at nothing, whatever its exit status. Every check reports
+how much it inspected, and an unexplained drop in that count is itself a finding.
 
-A skipped or cancelled required job reports nothing, so an aggregate check that merge protection relies on treats a
-skipped or cancelled dependency as a failure.
+A skipped or cancelled required job reports nothing, so an aggregate check merge protection relies on treats a skipped
+or cancelled dependency as failed.
 
 Say what a green result proves and no more. A static check that resolves bindings is not a suite that ran them, and a
-scanner that matched no pattern has not shown that a value is safe to publish. Name which check produced the green.
+scanner that matched no pattern has not shown a value safe to publish. Name which check produced the green.
 
 ## Reporting Completion
 
-A change is complete when every gate it requires has passed, with its output kept; started or expected to pass does not
-count. A failed gate is reported with its output and a skipped step with its reason. A claim that omits a skipped step
-is worse than an incomplete one, because it stops anyone from looking.
+A change is complete when every required gate has passed, its output kept; started or expected to pass does not count.
+Report a failed gate with its output and a skipped step with its reason. A claim omitting a skipped step is worse than
+an incomplete one, because it stops anyone looking.
 
 An adopter enforces the map in its own hooks, pipeline, and review checklist.

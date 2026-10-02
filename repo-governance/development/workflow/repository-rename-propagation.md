@@ -10,23 +10,22 @@ when_to_use: >-
 # Repository Rename Propagation
 
 A repository rename is finished when nothing uses the old name any more, not when the hosting service accepts the new
-one. The service usually keeps the old path answering, which makes an unfinished rename look finished.
+one. The service usually keeps the old path answering, making an unfinished rename look finished.
 
 This standard implements [Evidence Over Assertion](../../principles/evidence-over-assertion.md) and
 [Explicit Over Implicit](../../principles/explicit-over-implicit.md).
 
 ## Why Reads Pass and Writes Fail
 
-After a rename, hosting services commonly redirect the old path to the new one. Reads follow it: a clone, a page, or a
-status query succeeds, so a read-based health check reports everything working.
+Hosting services commonly redirect a renamed repository's old path. Reads follow the redirect: a clone, page, or status
+query succeeds, so a read-based health check reports everything working.
 
-An API request that changes something, sent to the old path, can come back as a redirect instead of being applied, and
-clients commonly do not repeat a changing request against the redirect target. The call fails, or the client counts the
-redirect as a result. Reporting a status, creating a release, commenting, dispatching a workflow, and pushing an image
-are the calls that break, and they are rarely watched.
+A changing API request sent to the old path can come back as an unapplied redirect, which clients commonly do not repeat
+against the target; the call fails, or the client counts the redirect as a result. Reporting a status, creating a
+release, commenting, dispatching a workflow, and pushing an image are the calls that break, and they are rarely watched.
 
-A redirect also holds only while nothing else claims the old name. Once another repository takes that name, every stale
-reference reaches the wrong repository.
+A redirect also holds only while nothing else claims the old name. Once another repository takes it, every stale
+reference reaches the wrong one.
 
 ## The Rule
 
@@ -43,23 +42,22 @@ automation.
 | machine-stored configuration             | registered runners and agents, pipeline secrets and variables, and endpoints saved outside any repository |
 
 A registered agent keeps the address it was registered with. Reads through the redirect keep it running, and its first
-write, often its own removal, fails. Register each agent again at rename time, or record its stale endpoint as an open
-item that keeps the rename incomplete.
+write, often its own removal, fails. Re-register each agent at rename time, or record its stale endpoint as an open item
+keeping the rename incomplete.
 
 ## The Sweep
 
 1. **Search every spelling.** Search the repository, hidden files included, and each repository that refers to it, for
    the full address, the owner-and-name pair, the bare name, and any lowercased or registry form. Match the name joined
-   to other words too, and search separately for any shorthand of it.
+   to other words, and search separately for any shorthand.
 2. **Order the hits by what breaks first.** Writes in deployment and pipeline automation, and defaults that feed them,
    come first; then reads and references elsewhere; documentation last.
-3. **Fix in that order,** one surface at a time, naming the old name in each fix's commit message so a history search
-   finds the rename.
-4. **Search each host.** Service-manager definitions, shell profiles, and personal scripts on every machine that runs
-   the automation are outside any repository. Restart every long-running process that read the old name; a changed file
-   does nothing until the process reloads it.
+3. **Fix in that order,** one surface at a time, naming the old name in each fix's commit message for history searches.
+4. **Search each host.** Service-manager definitions, shell profiles, and personal scripts on every machine running the
+   automation lie outside any repository. Restart every long-running process that read the old name; a changed file does
+   nothing until the process reloads it.
 5. **Verify with the write each path performs.** A check proves an operation only when it uses the same kind of request.
-   A clean search and a green read prove nothing alone, because a value can also survive in a secret or a deployed file.
+   A clean search and a green read prove nothing alone: a value can survive in a secret or deployed file.
    [Automation Loop Observability](../quality/delivery/automation-loop-observability.md) keeps the redirect visible in
    logs.
 6. **Search again** for every spelling of the old name. A clean final search is necessary, not sufficient, and a count

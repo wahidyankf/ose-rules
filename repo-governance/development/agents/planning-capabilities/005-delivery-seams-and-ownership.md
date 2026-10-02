@@ -17,21 +17,21 @@ A delivery unit is a transaction. A seam between two of them is valid only when 
 3. **one recoverable transaction** — a rollback that restores a known state on its own; and
 4. **one coherent review surface** — a change a reviewer can hold in their head at once.
 
-A split that fails any of the four is not a seam; it is a partition drawn for convenience, and the first failure will
-cross it.
+A split failing any of the four is not a seam but a partition drawn for convenience, and the first failure will cross
+it.
 
-Two units that must land together are one unit. Splitting them produces a state where half the work is deployed and the
-other half is in review, which is exactly the state neither unit's rollback was designed for.
+Two units that must land together are one unit. Splitting them leaves half the work deployed and half in review, the
+state neither unit's rollback was designed for.
 
-Conversely, a unit nobody can review is too large regardless of how coherent it is internally.
+Conversely, a unit nobody can review is too large, however coherent internally.
 
 ## Foundation Before Content
 
 Where a unit establishes something later units depend on — a safety layer, a gate, a configuration contract — it lands
 first and separately.
 
-Landing them together looks efficient and removes the only opportunity to prove the foundation works on its own. A gate
-introduced alongside the content it is meant to check has never been observed passing or failing for its own reasons.
+Landing them together looks efficient but removes the only chance to prove the foundation works alone: a gate introduced
+with the content it checks has never been seen passing or failing for its own reasons.
 
 ## One Unit, One Integration Change
 
@@ -75,12 +75,11 @@ A plan may coordinate work across several repositories. Coordination is the only
 | a shared deadline | its proof and its gates            |
 |                   | its cleanup                        |
 
-Each repository retains its own instructions, performs its own mutations, produces its own proof, and runs its own
-cleanup. A coordinating plan may say _when_ a repository acts; it never says _how_, and it never acts on that
-repository's behalf under its own rules.
+Each repository keeps its own instructions and performs its own mutations, proof, and cleanup. A coordinating plan may
+say _when_ a repository acts; it never says _how_, and it never acts on that repository's behalf under its own rules.
 
-The reason is ownership, not politeness. A repository's rules exist because of constraints a coordinating plan does not
-know about. A plan that overrides them has substituted its own incomplete model for the one that was actually checked.
+The reason is ownership, not politeness. A repository's rules exist for constraints a coordinating plan does not know; a
+plan overriding them substitutes its own incomplete model for the one actually checked.
 
 Coordination also transfers nothing permanently. A repository that participated in a coordinated change is not
 thereafter governed by the coordinating plan, and nothing propagates to it automatically afterwards.

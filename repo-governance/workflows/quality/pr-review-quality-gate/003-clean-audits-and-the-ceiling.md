@@ -12,7 +12,8 @@ when_to_use: >-
 
 ## A Clean Audit
 
-An audit is clean, and ends the run early as the gate contract's termination table directs, only when all of these hold:
+An audit is clean, and ends the run early with the verdict the gate contract's termination table directs, only when all
+of these hold:
 
 1. [PR Review](../pr-review.md) returned `clean` or `findings` with no open blocking row for the audited head.
 2. The pipeline passed on that exact head.
@@ -45,7 +46,8 @@ contradictory history is reported in the verdict block and never silently reset.
 A run holds at most `max-cycles` cycles, and `max-cycles` is at most 3. From the second audit on, the open blocking
 count must fall strictly, or the run ends `FAIL` with no further cycle. At the ceiling, no further audit runs: the
 writer's repairs are verified row by row against the pipeline on the final head, and the run ends `PASS` or
-`PASS_WITH_FINDINGS` when every blocking row is `resolved`, and `FAIL` otherwise.
+`PASS_WITH_FINDINGS` when every blocking row is `resolved` or `not-applicable`, and `FAIL` otherwise, a deferred row
+included.
 
 No record, authorization, or checkpoint raises the ceiling, and no verdict waives a finding. Another run needs another
 explicit request after new work.

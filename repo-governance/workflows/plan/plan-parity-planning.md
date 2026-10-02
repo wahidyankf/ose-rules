@@ -24,40 +24,39 @@ An objective must hold across two or more repositories in a parity relationship 
 1. **Record the parity identity before any mutation.** One plan identifier, worktree name, and branch name serve every
    repository; one whose route needs neither records `not applicable` and why. Reuse an existing worktree or branch only
    with proof it belongs to this objective; otherwise choose one free common name.
-2. **Survey each repository from its files.** Read the state the objective touches, never from memory. A survey older
-   than the latest change in its repository is run again.
-3. **Build the deviation matrix.** Every difference found is one row: the dimension, each repository's current state,
-   and candidate resolutions: align, deviate deliberately, or drop. Two rows are always present: where each repository
+2. **Survey each repository from its files,** never memory, reading the state the objective touches. Rerun a survey
+   older than its repository's latest change.
+3. **Build the deviation matrix.** Each difference found is one row: the dimension, each repository's current state, and
+   candidate resolutions (align, deviate deliberately, or drop). Two rows are always present: where each repository
    keeps its rationale, and which local constraints, such as access or delivery, bind each side.
-4. **Run the first decision gate.** Every row receives a decision and a justification per
-   [Decision Gates](../../development/agents/planning-capabilities/003-decision-gates.md), and a row needing outside
+4. **Run the first decision gate.** Every row gets a decision and justification per
+   [Decision Gates](../../development/agents/planning-capabilities/003-decision-gates.md); a row needing outside
    evidence is flagged. No plan is authored while a row is undecided.
-5. **Research the flagged rows,** citing authoritative sources. With none flagged, record that research was skipped and
-   why.
-6. **Run the second decision gate** on what research found. A finding that contradicts a decision reopens its row, and
-   authoring waits until every row is decided again.
-7. **Author one plan per repository** through [Planning](plan-planning.md), under the shared identifier. Each plan
-   carries the full matrix with its decisions, links to its sibling plans, an item writing the rationale where the
-   matrix placed it, an item updating any governance the decisions change, and its own knowledge capture. No plan says
-   how a sibling performs its work, per
+5. **Research the flagged rows,** citing authoritative sources; with none flagged, record skipping research and why.
+6. **Run the second decision gate** on the research. A contradicting finding reopens its row; authoring waits until
+   every row is redecided.
+7. **Author one plan per repository** through [Planning](plan-planning.md) under the shared identifier. Each carries the
+   full matrix with decisions, links to its siblings, an item writing the rationale where the matrix placed it, an item
+   updating any governance the decisions change, and its own knowledge capture. No plan says how a sibling performs its
+   work, per
    [Delivery Seams and Ownership](../../development/agents/planning-capabilities/005-delivery-seams-and-ownership.md).
-8. **Gate each plan separately** with the [Quality Gate](../quality/plan-quality-gate.md). One plan's verdict never
+8. **Gate each plan separately** with the [Quality Gate](../quality/plan-quality-gate.md); one plan's verdict never
    stands in for another's.
-9. **Land each plan by its own repository's route** once its actual worktree and branch names match the identity record.
-   Each repository resolves its delivery independently, and its own checks prove only its own side.
+9. **Land each plan by its repository's route** once its actual worktree and branch names match the identity record.
+   Each repository resolves delivery independently; its own checks prove only its side.
 10. **Report the deviation count:** deliberate and silent deviations, silent being zero.
 
 ## Exit
 
-Every repository in the set holds a plan with a terminal quality-gate verdict, and every matrix row carries a decision
-and its justification.
+Every repository holds a plan with a terminal quality-gate verdict; every matrix row carries a decision and
+justification.
 
 Outputs: `plans` (`directory` per repository, `plans/<target-stage>/<identifier>/`), `deviation-matrix` (`table`,
 embedded in each plan), `identity` (`record`: identifier, worktree, and branch per repository), and the deviation count.
 
-Partial outcome: a repository whose plan did not pass keeps its draft and the blocking finding, while the other plans
-stand. A difference found after authoring that no row covers reopens step 3 for every plan. The run fails when a gate is
-abandoned with a row undecided.
+Partial outcome: a repository whose plan failed keeps its draft and blocking finding; the other plans stand. An
+uncovered difference found after authoring reopens step 3 for every plan. The run fails when a gate is abandoned with a
+row undecided.
 
 ## Example Usage
 
@@ -67,22 +66,21 @@ Run plan-parity-planning with objective "align the error codes" and repositories
 
 ## Related Workflows
 
-- [Planning](plan-planning.md) authors each repository's plan.
-- [Execution](plan-execution.md) runs each landed plan inside its own repository.
-- [Multi-Plans Execution](multi-plans-execution.md) schedules the resulting plans together.
+- [Execution](plan-execution.md) runs each landed plan in its repository.
+- [Multi-Plans Execution](multi-plans-execution.md) schedules the plans together.
 
 ## Adopter Decision: Plans Only or Through Delivery
 
-| Option                  | After the plans land                                                                                                                       | Trade-off                                                         |
-| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------- |
-| plans only              | each plan waits for its own Execution run                                                                                                  | every plan can be reviewed before work starts; one more hand-off  |
-| continue into execution | Execution starts once every plan has landed and a decision gate settles order, failure policy, open decisions, and human-step availability | one run from matrix to delivered parity; no separate review pause |
+| Option                  | After the plans land                                                                                                                  | Trade-off                                                     |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| plans only              | each plan waits for its own Execution run                                                                                             | each plan is reviewable before work starts; one more hand-off |
+| continue into execution | Execution starts once every plan lands and a decision gate settles order, failure policy, open decisions, and human-step availability | one run from matrix to delivered parity; no review pause      |
 
 Record the default. Either way, each repository keeps its own delivery route, gates, and cleanup.
 
 ## Why Every Difference Is a Row
 
-Parity drifts through differences nobody chose. Recording each one with a decision makes divergence reviewable, so a
-later reader can tell a deliberate deviation from a lapse. Each run is bounded by its matrix and its two gates. This
-workflow implements [Explicit Over Implicit](../../principles/explicit-over-implicit.md) and
+Parity drifts through differences nobody chose. Recording each with a decision makes divergence reviewable: a later
+reader can tell a deliberate deviation from a lapse. Each run is bounded by its matrix and two gates. This workflow
+implements [Explicit Over Implicit](../../principles/explicit-over-implicit.md) and
 [Evidence Over Assertion](../../principles/evidence-over-assertion.md).

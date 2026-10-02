@@ -8,8 +8,8 @@ when_to_use: >-
 
 # Document Word Budget
 
-Instruction files and governance documents are read whole, by people looking for one rule and by coding-agent harnesses
-that load them into every session and may not read past their own limits. A word ceiling keeps that read affordable.
+Instruction files and governance documents are read whole, by people seeking one rule and by coding-agent harnesses that
+load them every session and may not read past their own limits. A word ceiling keeps that read affordable.
 [Progressive Disclosure](../../principles/progressive-disclosure.md) argues why; this convention fixes the mechanics.
 
 ## What Is Measured
@@ -21,8 +21,8 @@ that load them into every session and may not read past their own limits. A word
 | each harness's agent-definition directory                                          | adopter decides |
 | plans, behaviour specifications, and product documentation                         | adopter decides |
 
-The count covers the entire file, metadata and code included, because any carve-out becomes room for words to grow
-unmeasured; a root file's imports count with it, because a harness loads them together.
+The count covers the entire file, metadata and code included, since any carve-out lets words grow unmeasured; a root
+file's imports count with it, since a harness loads them together.
 
 Repository configuration declares the ceiling and the counting rule, and the gate's verdict is the measurement; a quick
 shell count is only an estimate.
@@ -38,8 +38,8 @@ shell count is only an estimate.
 | excluded trees    | exclude records sized by what they must say, or include them            | exclusion keeps a delivery record whole; inclusion catches a plan grown too large to follow              |
 
 When two surface classes match one file, the later declaration decides, so a narrower class is declared after any
-broader one it overlaps, and reordering the declarations is a change of policy. An excluded tree is outside the gate,
-not outside [Minimal Sufficiency](../../principles/minimal-sufficiency.md).
+broader one it overlaps, and reordering declarations is a policy change. An excluded tree is outside the gate, not
+outside [Minimal Sufficiency](../../principles/minimal-sufficiency.md).
 
 ## Repair by Relocation
 
@@ -51,10 +51,10 @@ These do not close a breach:
 1. **Deleting a rule.** Coverage is lost.
 2. **Compressing, or moving text into another always-loaded file.** Neither lowers what a reader pays, as
    [Progressive Disclosure](../../principles/progressive-disclosure.md#a-budget-is-the-usual-mechanical-form) explains.
-3. **Linking to an incomplete target.** A link replacing a list that lacks cases the inline text covered quietly removes
+3. **Linking to an incomplete target.** A link replacing a list that lacks cases the inline text covered quietly drops
    them. Complete the target first, or state the rule as a pattern instead of a list.
-4. **Evading the gate.** Cutting a file off mid-rule, parking the excess in a file the gate never sees, or renaming an
-   extension so the file drops out of measurement.
+4. **Evading the gate.** Cutting a file off mid-rule, parking the excess where the gate never looks, or renaming an
+   extension to drop the file from measurement.
 
 Rules that protect safety, such as secret handling and branch protection, move last, and only into a target that already
 holds them completely.
@@ -66,8 +66,8 @@ split along reader tasks. Nothing is split merely to use or avoid the budget. An
 ## Changing the Ceiling
 
 A file over its ceiling keeps failing until relocation fixes it; Progressive Disclosure argues why. The ceiling moves
-only in a class-wide recalibration that records evidence the signal is broadly unactionable or that the harness's
-capacity or the repository's policy has changed, states its reasoning, and validates every file in the class.
+only in a class-wide recalibration that records evidence the signal is broadly unactionable or that harness capacity or
+repository policy has changed, states its reasoning, and validates every file in the class.
 
 The adopter enforces the ceiling in its own gate, run in pre-commit or CI wherever its other checks run.
 

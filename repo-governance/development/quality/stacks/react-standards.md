@@ -10,8 +10,7 @@ when_to_use: >-
 
 # React Standards
 
-This standard is canonical for React and holds only the choices React leaves open; a skill for building React interfaces
-defers here.
+Canonical for React, this standard holds only the choices React leaves open; a React interface skill defers here.
 
 It implements [Pure Functions](../../../principles/pure-functions.md),
 [Explicit Over Implicit](../../../principles/explicit-over-implicit.md),
@@ -24,8 +23,8 @@ and [Design Tokens](../user-interfaces/design-tokens.md), and a Next.js applicat
 ## Version
 
 New work targets the current stable major line, pinned as
-[Native-First Toolchain](../../workflow/native-first-toolchain.md) requires, unless the framework it runs on records the
-major, as Next.js Standards does. Crossing a major is a planned change.
+[Native-First Toolchain](../../workflow/native-first-toolchain.md) requires, unless its framework records the major, as
+Next.js Standards does. Crossing a major is a planned change.
 
 ## Components
 
@@ -38,8 +37,8 @@ major, as Next.js Standards does. Crossing a major is a planned change.
 - **Hooks follow the rules of hooks:** called unconditionally at the top of a component or custom hook, named with the
   `use` prefix, and given complete dependency lists. An effect synchronizes with one external system and cleans up what
   it starts.
-- **List keys are stable identifiers,** never positions in a list that can reorder.
-- **Code is grouped by feature.** Each feature holds its components, hooks, and domain functions.
+- **List keys are stable identifiers,** never positions in a reorderable list.
+- **Code is grouped by feature,** each holding its components, hooks, and domain functions.
 - **Logic stays outside components.** Domain rules live in plain functions, per
   [Functional Core, Imperative Shell](../architecture/functional-core-imperative-shell.md). A custom hook adapts them to
   components and maps domain errors to messages a user can act on. Components are the presentation adapter

@@ -11,8 +11,7 @@ when_to_use: >-
 
 [Architecture Specifications](architecture-specifications.md) requires one as-built architecture model per application,
 organized by the levels of the [C4 model](https://c4model.com/), and fixes what that model covers and when it changes.
-This standard fixes how its views are drawn, so that any reader can move between systems and read each view the same
-way.
+This standard fixes how its views are drawn, so any reader reads every system's views the same way.
 
 This standard implements [Reproducibility](../../../principles/reproducibility.md),
 [Explicit Over Implicit](../../../principles/explicit-over-implicit.md), and
@@ -38,14 +37,13 @@ prefer a view generated from the code, which cannot drift from it.
 - **A container** is labelled with its name, its kind and technology, and one line on what it does or stores.
 - **A component** is labelled with its responsibility, its kind, and one line on what it does.
 
-A container without its technology hides the one fact a reader of that view most often needs. A box with only a name
-makes every reader guess what it does, and different readers guess differently.
+A container without its technology hides the fact its readers most often need; a name-only box makes every reader guess,
+each differently.
 
 ## Every Relationship Is Labelled
 
-Every relationship states the action it performs and the protocol or mechanism it uses, such as a request over an
-authenticated HTTP interface, a query over a database connection, or a message on a queue. An unlabelled arrow claims a
-dependency without saying what crosses it.
+Every relationship states the action it performs and the protocol or mechanism it uses, such as an authenticated HTTP
+request, a database query, or a queued message. An unlabelled arrow claims a dependency without saying what crosses it.
 
 ## The Same Kind Looks the Same Everywhere
 
@@ -71,9 +69,8 @@ transitions, following [Finite-State Machines](finite-state-machines.md).
 
 ## Diagrams Are Text
 
-Every view is kept as text in version control, beside the prose that states its claims. A diagram in a binary drawing
-format cannot be diffed, reviewed in a change, or checked mechanically, so it drifts the first time someone forgets to
-redraw it.
+Every view is kept as text in version control, beside the prose that states its claims. A binary drawing cannot be
+diffed, reviewed in a change, or checked mechanically, so it drifts once someone forgets to redraw it.
 
 The diagram form is the adopter's, recorded once under the repository's
 [Diagrams](../../../conventions/writing/diagrams.md) rule, which also fixes accessibility and size limits.

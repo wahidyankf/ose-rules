@@ -1,8 +1,8 @@
 ---
 name: 001-review-surface
 description: >-
-  Fixes the two surfaces a PR review quality gate runs on, a hosted pull request or a local commit range, and maps what
-  each supplies onto the gate's one cycle.
+  Fixes the two surfaces a PR review quality gate runs on, a hosted pull request or a local commit range, maps what each
+  supplies onto the gate's one cycle, and records which review agents an adopter may go without.
 when_to_use: >-
   Use when adopting the PR review quality gate, or when mapping its subject, pass record, answers, and pipeline onto a
   repository.
@@ -41,6 +41,17 @@ On a local commit range, the pass pins the head ref to a commit, its one post be
 that commit, and its read-back becomes reading that file back. A head ref that moved from its pin makes the pass
 `stale`. The reports sit beside the gate's ledger in the scratch location, and earlier reports are the history a later
 run reads for `prior-findings`.
+
+## Agents an Adopter May Go Without
+
+A pass names a scout, a coordinator, and one lens checker per discipline. Only the coordinator, `pr-review-checker`, is
+required. An adopter records two choices beside its surface:
+
+- **No scout.** The coordinator routes its own passes: before fan-out it chooses the tier and specialist set and
+  assembles the brief by the scout's rules, records them, and then uses that brief as given.
+- **Optional lenses.** A lens is required only for a discipline the recorded option of
+  [Discipline Roster](../../../development/agents/review-disciplines/001-discipline-roster.md) adopts. Under the
+  eight-discipline option there is no types lens, and a trivial tier dispatches no lens at all.
 
 ## Why Either Surface Works
 

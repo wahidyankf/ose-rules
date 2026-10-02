@@ -13,7 +13,8 @@ when_to_use: >-
 Read in order. Together these hold the rules the [PR Review Quality Gate](../pr-review-quality-gate.md) entrypoint's
 cycle applies.
 
-- **001 Review Surface** holds the hosted and local surfaces, what each supplies, and why either works.
+- **001 Review Surface** holds the hosted and local surfaces, what each supplies, which review agents an adopter may go
+  without, and why either works.
 - **002 Answering Findings** holds the three answers and their statuses, scope, cause tags, and finding text.
 - **003 Clean Audits and the Ceiling** holds clean audits, moved heads, probe classes, history, the ceiling, and review
   state.

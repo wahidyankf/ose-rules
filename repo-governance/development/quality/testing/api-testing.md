@@ -9,8 +9,8 @@ when_to_use: >-
 
 # API Testing
 
-An API is a promise to callers the author never meets. A change to it is proven twice: by automated checks that pin the
-contract, and by one real request against the origin those callers will use.
+An API is a promise to callers the author never meets. A change to it is proven twice: by automated checks pinning the
+contract, and by one real request against the origin those callers use.
 
 This standard implements [Evidence Over Assertion](../../../principles/evidence-over-assertion.md) and
 [Explicit Over Implicit](../../../principles/explicit-over-implicit.md).
@@ -20,8 +20,8 @@ This standard implements [Evidence Over Assertion](../../../principles/evidence-
 It applies when a change can affect an operation a client outside the process can reach: its method or operation name,
 path, parameters, headers, payload, status, response shape, errors, authorization, or side effects.
 
-A change that affects no such operation records `API impact: none` with its reason and runs no unrelated probe, the same
-disposition [Manual Verification](../manual-verification.md) requires for any layer that does not apply.
+A change affecting no such operation records `API impact: none` with its reason and runs no unrelated probe, as
+[Manual Verification](../manual-verification.md) requires for any inapplicable layer.
 
 ## Each Layer Proves What Only It Can
 
@@ -41,10 +41,10 @@ or variables, response status, response headers, response shape, declared error 
 
 Cover success, invalid input, each expected failure, missing and insufficient authorization where authorization applies,
 and duplicate delivery wherever the operation promises idempotency. Placing each at the narrowest layer that can prove
-it is good practice, leaving the slower layers for what only they can show.
+it is good practice, leaving slower layers for what only they show.
 
 For GraphQL, assert the HTTP status and both the `data` and `errors` members of the body. A response can carry status
-200 and an `errors` array at once, so the status alone never shows that an operation succeeded.
+200 and an `errors` array at once, so status alone never shows success.
 
 Generated schema checks and generated clients catch drift between a declaration and the code. They supplement these
 assertions and never replace them, because a schema can be internally consistent and still wrong.
