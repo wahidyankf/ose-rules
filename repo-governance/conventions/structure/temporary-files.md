@@ -9,9 +9,9 @@ when_to_use: >-
 
 # Temporary Files
 
-Agents and tools write files that are not results: scratch notes, intermediate output, audit reports, the log of a run
-still in progress. Left wherever they happen to land, those files get built, formatted, committed, or mistaken for
-source. This convention gives them a place, a name, and a way of being written.
+Agents and tools write files that are not results: scratch notes, intermediate output, audit reports, an in-progress
+run's log. Left wherever they land, they get built, formatted, committed, or mistaken for source. This convention gives
+them a place, a name, and a way of being written.
 
 ## Designated Directories Only
 
@@ -21,7 +21,7 @@ tree.
 
 A scratch file beside source is picked up by the next build, formatter pass, test discovery, or broad `add`. The
 repository's instructions name its designated directories once, such as `<scratch-dir>/` and `<reports-dir>/`, so no
-agent has to guess.
+agent guesses.
 
 ## Names Never Collide
 
@@ -32,10 +32,10 @@ timestamp:
 <scope>-<yyyy-mm-dd-hh-mm>-<uuid>-<report-type>.md
 ```
 
-Every part stays within [Portable Names](file-naming/001-portable-names.md), and the timestamp precedes the identifier,
-so one scope's reports list in the order they were written. Both values are produced at write time: the identifier by a
-UUID generator, the timestamp by the clock. A placeholder left in the name, an invented identifier, or a rounded time
-collides on the second run and names a report nobody can trace to the run that wrote it.
+Every part stays within [Portable Names](file-naming/001-portable-names.md); the timestamp precedes the identifier, so
+one scope's reports list in writing order. Both are produced at write time: the identifier by a UUID generator, the
+timestamp by the clock. A leftover placeholder, an invented identifier, or a rounded time collides on the second run and
+names a report nobody can trace to its run.
 
 ## Written Progressively
 
@@ -45,15 +45,14 @@ A report exists from the moment the work begins:
 2. Append each finding as soon as it is established.
 3. Set a final status — complete, partial, or failed — when the work ends.
 
-The conversation carries a summary and the path, not the findings themselves. A run that is interrupted, compacted, or
-killed then leaves a file holding everything found so far. A report composed at the end leaves nothing.
+The conversation carries a summary and the path, not the findings. An interrupted, compacted, or killed run then leaves
+a file holding everything found so far; a report composed at the end leaves nothing.
 
 ## Ignored Is Not Excluded
 
 An ignore rule keeps a directory out of commits and out of nothing else. Formatters, linters, link checks, index and
-word-budget checks, and test discovery each walk the tree by their own rules, and each needs its own exclusion for every
-designated directory. Without one, a check fails on scratch nobody meant to keep, or a test runner executes a stale
-copy.
+word-budget checks, and test discovery each walk the tree by their own rules and need their own exclusion for every
+designated directory. Without one, a check fails on unwanted scratch, or a test runner executes a stale copy.
 
 ## Reclaimed Only on Purpose
 
@@ -68,17 +67,16 @@ scratch directory. This convention covers everything else.
 
 ## What an Adopter Decides
 
-| Decision                  | Options                                                                                                                                                                                                                                                                                           | Trade-off                                                                                                                                                                                                                                    |
-| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| how directories split     | by who asked — an artifact a person asked for that is itself the answer goes to the reports directory, and everything an agent makes for itself or another agent goes to scratch, one directory per agent, or per agent group the adopter names — or by artifact type, scratch apart from reports | by requester, one test places even an unanticipated artifact, but a requested audit whose next reader is an agent still lands in scratch; by type, every report sits in one place, but a type list cannot place a new kind of artifact       |
-| report timestamp timezone | UTC, or the repository's declared local zone                                                                                                                                                                                                                                                      | UTC sorts and compares across machines and contributors, and reads awkwardly beside local events; a local zone reads naturally, is named where the repository names its designated directories, and misorders across zones and clock changes |
+| Decision                  | Options                                                                                                                                                                                                                                                                    | Trade-off                                                                                                                                                                                                                        |
+| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| how directories split     | by who asked — an artifact a person asked for that is itself the answer goes to reports; everything an agent makes for itself or another agent goes to scratch, one directory per agent or per adopter-named agent group — or by artifact type, scratch apart from reports | by requester, one test places even an unanticipated artifact, but a requested audit whose next reader is an agent lands in scratch; by type, every report sits in one place, but a type list cannot place a new kind of artifact |
+| report timestamp timezone | UTC, or the repository's declared local zone                                                                                                                                                                                                                               | UTC sorts and compares across machines and contributors but reads awkwardly beside local events; a local zone reads naturally, is named where the designated directories are named, and misorders across zones and clock changes |
 
-An adopter enforces the exclusions in each tool's own configuration, and may add a check that fails when an untracked
-file appears outside the designated directories.
+An adopter enforces the exclusions in each tool's configuration and may add a check failing when an untracked file
+appears outside the designated directories.
 
 ## Principles
 
-This convention implements [Explicit Over Implicit](../../principles/explicit-over-implicit.md), because the places a
-temporary file may go are named rather than guessed, and
-[Governance Continuity](../../principles/governance-continuity.md), because a report written as the work proceeds
-survives the loss of the context that produced it.
+This convention implements [Explicit Over Implicit](../../principles/explicit-over-implicit.md): temporary-file places
+are named, not guessed; and [Governance Continuity](../../principles/governance-continuity.md): a report written as work
+proceeds survives the loss of the context that produced it.

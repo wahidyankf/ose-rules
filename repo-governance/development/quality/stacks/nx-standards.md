@@ -13,7 +13,7 @@ This standard is canonical for Nx as a tooling adapter. It inherits every pack i
 language and framework standards govern its code, and
 [Task Runner Target Standards](../../workflow/task-runner-target-standards.md) owns target names, prerequisites, which
 target kinds are cached, explicit inputs and outputs, real targets only, ordered aggregates, and the runner-plugin
-decision. This standard restates none of that and holds only what Nx itself adds. An Nx tooling skill defers here.
+decision. This standard holds only what Nx itself adds; an Nx tooling skill defers here.
 
 It implements [Explicit Over Implicit](../../../principles/explicit-over-implicit.md),
 [Reproducibility](../../../principles/reproducibility.md), and
@@ -29,16 +29,16 @@ It implements [Explicit Over Implicit](../../../principles/explicit-over-implici
   are held by review or by the adopter's own graph validator, and the adapter records which.
 - A dependency Nx cannot infer, such as one on a generated contract or across languages, is declared in the project
   configuration so the graph, affected selection, and prerequisite order all see it.
-- A dependency cycle between projects is a design defect, removed rather than suppressed.
+- A dependency cycle between projects is a design defect, removed, not suppressed.
 
 ## Affected Runs
 
-- Change-scoped gates select projects with `nx affected`, never with a hand-written project list.
+- Change-scoped gates select projects with `nx affected`, never a hand-written project list.
 - The base is the merge base with the trunk locally, and the last commit whose pipeline succeeded on the trunk in a
   hosted pipeline, with enough history fetched to reach it
   ([affected](https://nx.dev/docs/features/ci-features/affected)). A wrong or shallow base silently skips projects.
-- Affected selection is only as sound as the graph. A change that affects a project Nx did not select is a missing
-  declared dependency or input, fixed in configuration, never worked around by running everything once.
+- Affected selection is only as sound as the graph. A change affecting a project Nx did not select is a missing declared
+  dependency or input, fixed in configuration, never worked around by running everything once.
 
 ## Targets and Caching
 
@@ -46,7 +46,7 @@ It implements [Explicit Over Implicit](../../../principles/explicit-over-implici
   rule requires.
 - Workspace defaults for cache, prerequisites, and inputs live in `targetDefaults`, and shared input sets live in
   `namedInputs`, so one declaration serves every project. A production input set excludes tests and documentation, so
-  editing them does not invalidate a build.
+  editing them never invalidates a build.
 - Inputs include every environment variable and runtime value that changes a result, not only files
   ([caching](https://nx.dev/docs/features/cache-task-results)). A cached pass that a run with `--skip-nx-cache` fails is
   a cache defect, fixed at its missing input.
@@ -61,10 +61,10 @@ migration changes reviewed in the same change.
 
 ## Tests
 
-Nx adds no test layer. Each project's tests follow its own packs and
+Nx adds no test layer; each project's tests follow its own packs and
 [Test Boundaries and Gates](../testing/test-boundaries-and-gates.md). Workspace configuration is declarative and carries
-no numeric coverage, as [Meaningful Coverage](../testing/meaningful-coverage.md) requires. It is verified by the
-adopter's project-configuration validator and by reading the resolved project and graph before a change lands.
+no numeric coverage, per [Meaningful Coverage](../testing/meaningful-coverage.md); the adopter's project-configuration
+validator and a reading of the resolved project and graph verify it before a change lands.
 
 ## Documentation
 
@@ -74,6 +74,6 @@ names its targets and every omitted one with its reason.
 
 ## Enforcement
 
-The module-boundary lint rule and the adopter's project-configuration validator enforce what they can in the adopter's
-own hooks and pipeline. Review applies tags on new projects, undeclared dependencies, cache inputs, the affected base,
-and the version pin.
+The module-boundary lint rule and project-configuration validator enforce what they can in the adopter's hooks and
+pipeline; review applies tags on new projects, undeclared dependencies, cache inputs, the affected base, and the version
+pin.

@@ -20,20 +20,20 @@ change that could alter what a harness reads.
 
 ## Sequence
 
-1. **Record the baseline.** Note the revision, the working-tree status, and the declared harness roster. Uncommitted
-   changes belong to whoever made them; this run reads them and edits none. Any later change to the tree invalidates
-   results taken from this baseline.
+1. **Record the baseline:** the revision, working-tree status, and declared harness roster. Uncommitted changes belong
+   to whoever made them; this run reads them and edits none. Any later tree change invalidates results from this
+   baseline.
 2. **Inventory what each harness reads.** List the canonical instruction body, every canonical agent and skill, each
    harness's adapters, and each harness configuration file. Search the whole tree for instruction files too, so a
-   competing source shows up in the inventory instead of being assumed absent.
+   competing source is inventoried, not assumed absent.
 3. **Confirm each route reaches the one body.** Every harness reads the canonical instruction body directly or through a
    single generated adapter, with no overlay, nested override, or copied body, as
    [Harness Adapters](../../development/agents/harness-adapters.md) requires. Every command and path the instructions
-   quote exists. Equal names or equal counts prove nothing; content, routes, permissions, and restrictions decide.
+   quote exists. Equal names or counts prove nothing; content, routes, permissions, and restrictions decide.
 4. **Run the deterministic check.** Run the repository's parity check with caching disabled. Record the exit status and
    what the check says it reconciled: harness, agent, and skill counts, plus any digest. A check that reconciled zero
    harnesses verified nothing. On failure, read every finding by harness, field, and path, not only the summary line.
-5. **Bound the runtime claims.** An installed harness that starts is an availability observation. It does not show that
+5. **Bound the runtime claims.** An installed harness that starts is an availability observation; it does not show that
    a vendor's discovery, model, plugins, or user-global settings honour the repository contract. Record runtime
    discovery on its own as verified, not assessed, unavailable, or failed.
 6. **Report one verdict** with the commands run, the baseline, the reconciled counts, the runtime scope, and any
@@ -67,7 +67,7 @@ Run harness-parity-verification for every declared harness at the current revisi
 
 ## Verification and Repair Are Separate Runs
 
-A run that edits while it verifies cannot say which state its verdict describes. After `fail`, repair the canonical
+A run that edits while verifying cannot say which state its verdict describes. After `fail`, repair the canonical
 artifact or the generator, never an adapter by hand, and rerun from a fresh baseline. Never weaken the check, drop a
 restriction, or exclude a path to reach `pass`.
 
@@ -78,7 +78,7 @@ not do.
 
 The check covers canonical content and the adapters generated from it. It cannot show that a vendor model follows an
 instruction, that a user-global plugin leaves it intact, or that a harness enforces a restriction it cannot express.
-Step 5 keeps those questions out of `pass`, so a parity verdict never becomes a claim about vendor or local state.
+Step 5 keeps those out of `pass`, so a parity verdict never claims anything about vendor or local state.
 
 ## Principles
 

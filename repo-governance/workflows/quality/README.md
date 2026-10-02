@@ -16,8 +16,8 @@ way each time, and so that its result is a verdict rather than an impression.
 Every `<family>-quality-gate` follows the [Quality Gate Contract](../../development/workflow/quality-gate-contract.md),
 and its `<family>-propagation` sits beside it as the family's sole writer, per
 [Sole-Writer Propagation](../../development/workflow/sole-writer-propagation.md). An adopting repository copies or
-relinks each gate's companions per the contract's
-[Adoption](../../development/workflow/quality-gate-contract.md#adoption) list.
+relinks each gate's companions, and runs its searches, per the contract's
+[Adoption](../../development/workflow/quality-gate-contract/004-adoption.md) module.
 
 ## Directory Map
 

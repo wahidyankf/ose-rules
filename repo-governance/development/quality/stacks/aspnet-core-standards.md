@@ -11,48 +11,45 @@ when_to_use: >-
 # ASP.NET Core Standards
 
 This standard is canonical for ASP.NET Core and holds only the choices the framework leaves open. It inherits the
-standard of the .NET language the project is written in, [C# Standards](csharp-standards.md) or
-[F# Standards](fsharp-standards.md), whose gates, runtime line, build defaults, and failure rules apply unchanged. An
-ASP.NET Core framework skill defers here for each rule it applies, and a functional layer built on the framework, such
-as [Giraffe Standards](giraffe-standards.md), adds its own rules on top.
+project's .NET language standard, [C# Standards](csharp-standards.md) or [F# Standards](fsharp-standards.md), whose
+gates, runtime line, build defaults, and failure rules apply unchanged. An ASP.NET Core skill defers here per rule; a
+functional layer on the framework, such as [Giraffe Standards](giraffe-standards.md), adds its own rules on top.
 
 It implements [Explicit Over Implicit](../../../principles/explicit-over-implicit.md),
 [Fail Closed](../../../principles/fail-closed.md), and [Reproducibility](../../../principles/reproducibility.md).
 
 ## Gates
 
-ASP.NET Core adds no gate of its own; the language standard's gates run over framework code too. The framework's version
-follows the runtime line that standard fixes.
+ASP.NET Core adds no gate; the language standard's gates cover framework code, and the framework version follows the
+runtime line that standard fixes.
 
 ## Type and Boundary Safety
 
-[Type and Boundary Safety](../code/type-and-boundary-safety.md) owns the rule; in ASP.NET Core it maps as follows.
+ASP.NET Core maps [Type and Boundary Safety](../code/type-and-boundary-safety.md) as follows.
 
 - **Options are validated at startup.** Each settings group binds to one
   [options](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options) type, validated by data
-  annotations or a validator class, and registered with validation on start, so an invalid value stops the host rather
-  than failing on first use. Code reads settings through that type, never by string key.
-- **Requests are validated before the handler decides.** Bound request models pass the framework's built-in validation,
-  or the validation library the adopter records, before any business logic runs, and a failure becomes a standard
-  problem-details response.
+  annotations or a validator class and registered with validation on start, so an invalid value stops the host instead
+  of failing on first use. Code reads settings through that type, never by string key.
+- **Requests are validated before the handler decides.** Bound request models pass built-in validation, or the adopter's
+  recorded validation library, before business logic runs; a failure becomes a problem-details response.
 - **Responses are typed.** A minimal API endpoint returns
   [typed results](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis/responses), declaring the
-  union of results it can produce, so the compiler checks each return and the published description stays accurate.
+  union it can produce, so the compiler checks each return and the published description stays accurate.
 
 ## Request Pipeline
 
-These rules follow the framework's
+These follow the framework's
 [best practices](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/best-practices).
 
 - **The request context stays on its request.** The HTTP context is never stored in a field or used from another thread
-  or after the request ends; work handed off copies the values it needs.
+  or after the request ends; handed-off work copies the values it needs.
 - **Service lifetimes are deliberate.** A singleton never holds a scoped service. A background service creates a scope
-  for each unit of work and resolves scoped services inside it.
-- **Outbound HTTP uses the client factory.** Clients come from the framework's client factory, typed per upstream
-  service, never constructed per request, which exhausts sockets, nor held as one static instance, which misses DNS
-  changes.
-- **Middleware order is declared once.** The pipeline is assembled in one composition root, in an order a reader can
-  check against the framework's documented sequence, as
+  per unit of work and resolves scoped services inside it.
+- **Outbound HTTP uses the client factory.** Clients come from the framework's factory, typed per upstream service,
+  never constructed per request (exhausting sockets) nor held as one static instance (missing DNS changes).
+- **Middleware order is declared once.** One composition root assembles the pipeline in an order checkable against the
+  framework's documented sequence, as
   [Composition Roots and Test Adapters](../architecture/hexagonal-architecture/003-composition-and-testing.md) requires.
 - **Endpoints only translate.** An endpoint, controller, or handler binds input, calls one application function, and
   maps its result; it holds no business rule.
@@ -60,26 +57,26 @@ These rules follow the framework's
 ## Tests
 
 Layers follow [Test Boundaries and Gates](../testing/test-boundaries-and-gates.md). Application logic is unit-tested
-without the host. A test that runs the request pipeline starts the application in-process through the framework's
+without the host. A test running the request pipeline starts the application in-process through the framework's
 [integration test host](https://learn.microsoft.com/en-us/aspnet/core/test/integration-tests), lives in its own test
 project, and is an integration test.
 
-- Only outbound adapters are replaced in the test host's service registration; routing, binding, validation,
-  authorization, and serialization run as in production.
+- The test host's service registration replaces only outbound adapters; routing, binding, validation, authorization, and
+  serialization run as in production.
 - A database test runs against the real provider, or an in-memory relational database where the adopter records that
-  choice, never against a non-relational in-memory stand-in, which skips constraints and translation.
-- Each authorization policy gets a test in which a caller lacking it is refused.
+  choice, never a non-relational in-memory stand-in, which skips constraints and translation.
+- Each authorization policy has a test refusing a caller who lacks it.
 
-What coverage measures follows [Meaningful Coverage](../testing/meaningful-coverage.md); the host's startup wiring and
-generated contract code are named exclusions when no test layer can reach them usefully.
+Coverage follows [Meaningful Coverage](../testing/meaningful-coverage.md); host startup wiring and generated contract
+code are named exclusions when no test layer usefully reaches them.
 
 ## Documentation
 
-An HTTP contract follows [OpenAPI Contract First](../architecture/openapi-contract-first.md). A description the
-framework generates from endpoints is checked against the authored contract, never published in its place.
+An HTTP contract follows [OpenAPI Contract First](../architecture/openapi-contract-first.md). A framework-generated
+description is checked against the authored contract, never published in its place.
 
 ## Enforcement
 
-The language standard's compiler, analyzer, and formatter gates enforce in the adopter's own build, hooks, and pipeline,
-and a startup test proves invalid options stop the host. Review applies lifetimes, client creation, context handling,
-and endpoint thinness.
+The language standard's compiler, analyzer, and formatter gates enforce in the adopter's build, hooks, and pipeline; a
+startup test proves invalid options stop the host. Review applies lifetimes, client creation, context handling, and
+endpoint thinness.

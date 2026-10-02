@@ -17,7 +17,7 @@ This is the `rules` family's sole writer, under
 
 ## Scope
 
-Every rule-bearing location that [Rule Definition](../../conventions/writing/rule-definition.md) names, plus the derived
+Every rule-bearing location that [Rule Definition](../../conventions/writing/rule-definition.md) names, plus derived
 surfaces regenerated from them. A handed-over ledger narrows the scope to what its rows require.
 
 ## Executor
@@ -38,7 +38,7 @@ disposition, and the deterministic gates over the changed surfaces exit 0, per
 A rule, as [Rule Definition](../../conventions/writing/rule-definition.md) defines one, is about to be added, changed,
 moved, or removed, or [Rules Grooming](../maintenance/rules-grooming.md) or the
 [Rules Quality Gate](rules-quality-gate.md) hands over findings. Entry is automatic: whoever proposes or detects the
-change starts here, without a separate request. Edits made inside one run start no second one.
+change starts here unasked. Edits made inside one run start no second one.
 
 - `rules` (`string`, required): each rule as stated, with its reason.
 - `findings` (`file`, optional): a handed-over, frozen ledger.
@@ -46,11 +46,11 @@ change starts here, without a separate request. Edits made inside one run start 
 
 ### Sequence
 
-1. **Freeze the inputs:** each rule with its reason, strength, scope, and enforcement, plus the revision and uncommitted
-   paths, kept through compaction. A material change ends the run blocked.
+1. **Freeze the inputs,** kept through compaction: each rule with its reason, strength, scope, and enforcement, plus the
+   revision and uncommitted paths. A material change ends the run blocked.
 2. **Make each rule falsifiable,** one obligation per statement with the observations that show it followed and
    violated, per [Statement and Conflict](rules-propagation/001-statement-and-conflict.md). A rule that stays
-   unfalsifiable halts alone, and the rest of the batch continues.
+   unfalsifiable halts alone; the batch continues.
 3. **Stop where the rules already suffice.** When existing rules carry the meaning in full, record their source and end
    that rule with no change.
 4. **Resolve conflict by level,** per [Governance Layers](../../conventions/structure/governance-layers.md): a lower
@@ -65,9 +65,8 @@ change starts here, without a separate request. Edits made inside one run start 
    Under `dry-run`, steps 6 to 9 record without writing.
 7. **Give each rule one enforcement disposition,** covered, gated, or unenforced by decision, per
    [Enforcement and Verification](rules-propagation/003-enforcement-and-verification.md).
-8. **Verify** by exit codes rather than output, returning a failure to the step that owns it, and repair findings the
-   run caused only while their count strictly decreases, per
-   [Bounded Convergence](../../development/workflow/bounded-convergence.md).
+8. **Verify** by exit codes, not output, returning a failure to its owning step, and repair findings the run caused only
+   while their count strictly decreases, per [Bounded Convergence](../../development/workflow/bounded-convergence.md).
 9. **Hand delivery to the caller, and record obligations beyond this repository.** The run never commits; the work in
    hand delivers through the repository's own route, stating each rule's home, disposition, and relocations. Sibling and
    catalog obligations follow
@@ -75,7 +74,7 @@ change starts here, without a separate request. Edits made inside one run start 
 
 ### Exit
 
-Every rule ends with no change, landed, recorded under `dry-run`, or halted, and nothing is written but unaccounted for.
+Every rule ends with no change, landed, recorded under `dry-run`, or halted; nothing written is unaccounted for.
 
 Outputs: a placement record (`file`, in the repository's scratch location) and `status` (`enum`: `no-change`, `landed`,
 `recorded`, `partial`, `halted`, `blocked`). Partial outcome: some rules landed while others halted, each named with its

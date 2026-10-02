@@ -50,7 +50,7 @@
     {
       "id": "agent/docs-checker",
       "path": ".agents/agents/docs-checker.md",
-      "digest": "82195e70d437d36340c761c5cab2089bfa86e9a9cb53cd894ec48c52c8a1c894"
+      "digest": "f5f9c9991004ceaaa55e79f1f779a15d58838e5e893fa8d3c8f16054ec560cef"
     },
     {
       "id": "agent/docs-file-manager",
@@ -145,7 +145,7 @@
     {
       "id": "agent/pr-review-checker",
       "path": ".agents/agents/pr-review-checker.md",
-      "digest": "501416b0209cb460d96071c7e5f1a3c348bd6ba35f0083107e54954e2c0b05fd"
+      "digest": "e98a1df087f5bf6e903971b980d139c1011d91ccf7bae0cfc44a4d8f38fa32be"
     },
     {
       "id": "agent/pr-review-docs-checker",
@@ -725,7 +725,7 @@
     {
       "id": "instruction",
       "path": "AGENTS.md",
-      "digest": "5f0800d3ae607a6e92043497e2581b171c3569d3b2a98ca028c98de34995ccf3"
+      "digest": "5362b1ced5e14fe3b52cbeeddf31d735502561feaa0401426460b359425ceee3"
     }
   ]
 }

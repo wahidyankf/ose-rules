@@ -10,8 +10,8 @@ when_to_use: >-
 # Web Research Delegation
 
 Agents need facts the repository does not hold: current interface signatures, released versions, specification wording.
-Without a rule, every agent grows its own search loop, floods its caller's context with raw pages, and returns findings
-sourced however its author chose.
+Without a rule, each agent grows its own search loop, floods its caller's context with raw pages, and sources findings
+however its author chose.
 
 ## The Rule
 
@@ -39,8 +39,8 @@ call is permitted.
 | checking whether a URL responds                                   | in context, exception 2 |
 | a repair agent re-validating the one finding it is fixing         | in context, exception 3 |
 
-The threshold is a number because judgement varies by author and cannot be checked by a reviewer. Counting calls is
-crude, and it is the same count for everyone.
+The threshold is a number because judgement varies by author and a reviewer cannot check it. Counting calls is crude,
+but the same for everyone.
 
 ## Why One Agent
 
@@ -55,9 +55,9 @@ agent file.
 
 1. **Single-shot verification of a known URL.** When the authoritative URL is already known, from an audit record, a
    user instruction, or an official registry page, one fetch of it stays in context and does not count toward the
-   threshold. Launching an agent for one call costs more than the call.
+   threshold. An agent launch for one call costs more than the call.
 2. **Reachability checking.** An agent whose job is whether a URL responds and where it redirects fetches that URL
-   directly. Its question is liveness, not content: delegating adds latency and changes no answer.
+   directly. Its question is liveness, not content, so delegating only adds latency.
 3. **Same-context re-validation by a repair agent.** An agent fixing one recorded finding re-checks that finding in the
    context it was reported in, because the check and the fix must agree. When the check grows into research beyond that
    one finding, the repair agent escalates the finding back to the reporting side rather than researching itself.

@@ -9,8 +9,8 @@ when_to_use: >-
 
 # Convention Documents
 
-A convention records a choice and makes it applicable by someone who was not there when it was made. What it must
-contain follows from that reader.
+A convention records a choice so someone absent when it was made can apply it; what it must contain follows from that
+reader.
 
 ## What Every Convention Contains
 
@@ -22,11 +22,10 @@ contain follows from that reader.
 | an example wherever the rule is abstract                            | the example is what a reader copies, and a correct and incorrect pair shows the edge |
 | metadata per [Artifact Metadata](../structure/artifact-metadata.md) | routing and discovery read metadata before the body                                  |
 
-Write "use" and "never", not "consider" or "you might". A convention that only suggests cannot be checked.
+Write "use" and "never", not "consider" or "you might": a convention that only suggests cannot be checked.
 
-Where a convention applies a principle the repository has written down, it links that principle instead of re-arguing
-it. Where it touches a concern another artifact owns, it links the owner rather than restating it, per
-[One Source Per Fact](../../principles/one-source-per-fact.md).
+A convention applying a written principle links it instead of re-arguing it, and one touching a concern another artifact
+owns links the owner rather than restating it, per [One Source Per Fact](../../principles/one-source-per-fact.md).
 
 ## Convention or Something Else
 
@@ -44,7 +43,7 @@ makes sense as a sequence, as recurring judgement, or as a role with its own too
 | merge two conventions         | they overlap by more than 60 percent, they are always consulted together, or readers cannot tell which one to follow                               |
 
 Search the [conventions index](../README.md) before deciding. The expensive mistake is a new convention whose rule
-already exists under another name: the two drift apart, and nothing decides which one a reader should believe.
+already exists under another name: the two drift apart, and nothing decides which a reader should believe.
 
 ## Size
 

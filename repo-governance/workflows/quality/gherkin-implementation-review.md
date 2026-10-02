@@ -77,17 +77,11 @@ binding is fixed; an exemption never repairs it.
 A test that executes the scenario's steps and asserts nothing that could distinguish success from failure is `untested`,
 not `implemented`. So is one whose only assertion is that the code ran without throwing.
 
-The check is mechanical: break the behaviour and see whether the test fails. If it still passes, it was never
-establishing anything.
-
-Recording this as a failure matters more than it appears. Such a test is worse than no test: it occupies the place where
-a real one would go, it is counted in coverage, and it will be trusted by everyone who does not read it.
+The check is mechanical: break the behaviour; a test that still passes established nothing. Such a test is worse than
+none: it occupies a real test's place, counts in coverage, and is trusted by everyone who does not read it.
 
 ## Why This Is a Distinct Review
 
-A test suite proves that the tests pass. It does not prove that the tests correspond to the scenarios someone agreed to,
-and it cannot notice a scenario nobody implemented — an unimplemented scenario has no failing test, because it has no
-test.
-
-That gap only closes by walking the scenarios themselves. One canonical review does this; a repository that has several
-overlapping versions of it has several places for a scenario to be missed.
+A passing suite proves only that its tests pass, not that they match the agreed scenarios, and it cannot notice a
+scenario nobody implemented, which has no test to fail. Only walking the scenarios closes that gap. One canonical review
+does this; several overlapping versions give a scenario several places to be missed.

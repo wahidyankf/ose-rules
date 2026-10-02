@@ -10,8 +10,8 @@ when_to_use: >-
 
 # F# Standards
 
-This standard is canonical for F# on .NET. It holds the choices F# and the SDK leave open, and an F# programming skill
-defers here for each rule it applies.
+This standard is canonical for F# on .NET, holding the choices F# and the SDK leave open; an F# skill defers here per
+rule.
 
 It implements [Explicit Over Implicit](../../../principles/explicit-over-implicit.md),
 [Immutability](../../../principles/immutability.md), [Pure Functions](../../../principles/pure-functions.md), and
@@ -21,29 +21,29 @@ lockfiles follow [Native-First Toolchain](../../workflow/native-first-toolchain.
 
 ## Gates
 
-- **Formatting:** the formatter runs in check mode with committed settings and fails on any unformatted file. Example:
-  Fantomas as a local tool, run with `--check`.
+- **Formatting:** the formatter runs in check mode with committed settings, failing on any unformatted file. Example:
+  Fantomas as a local tool with `--check`.
 - **Warnings:** every project sets `<TreatWarningsAsErrors>true</TreatWarningsAsErrors>`.
 - **Nullable interop:** every project sets `<Nullable>enable</Nullable>`, so a null from a .NET API is reported. This
-  needs a compiler with nullness checking; where the toolchain lacks it, the gate is recorded pending.
+  needs a nullness-checking compiler; where the toolchain lacks it, the gate is recorded pending.
 - **Incomplete matches:** a warning for an unhandled case is fixed by handling the case, never by `#nowarn`.
 
 Each project file declares its target framework, these settings, and its project references. Any other suppression takes
-the narrowest scope and states its reason, as [Lint Strictness](../checks/lint-strictness.md) requires.
+the narrowest scope and states its reason, per [Lint Strictness](../checks/lint-strictness.md).
 
 ## Compile Order Is the Dependency Direction
 
 Every `.fsproj` lists its files explicitly: shared contracts and domain types first, then domain and application logic,
-then adapters after the abstractions they implement, and the entry point last. A file sees only what the files above it
-define, so the compiler checks this order as a dependency rule. A recursive module or an `and` group is a question for
-review. Test projects follow the same order.
+then adapters after the abstractions they implement, and the entry point last. A file sees only what files above it
+define, so the compiler checks this order as a dependency rule. A recursive module or `and` group is a review question.
+Test projects follow the same order.
 
 ## Functional Core
 
 Domain and application decisions are pure functions returning typed values. The filesystem, processes, the clock, and
-the network stay in the shell and reach the core as functions passed in, as
-[Functional Core, Imperative Shell](../architecture/functional-core-imperative-shell.md) requires. Pure functions are
-tested directly, and an invariant every valid input must keep also gets a property-based test.
+the network stay in the shell and reach the core as passed-in functions, per
+[Functional Core, Imperative Shell](../architecture/functional-core-imperative-shell.md). Pure functions are tested
+directly; an invariant every valid input must keep also gets a property-based test.
 
 Domain state uses no classes, inheritance, or `mutable` fields. A `mutable` binding appears only on a measured hot path,
 citing its measurement.
@@ -82,7 +82,7 @@ The adopter records each choice that applies:
 
 ## Enforcement
 
-The formatter check and the compiler settings enforce the gates in the adopter's own build, hooks, and pipeline. Review
-applies compile order, domain shapes, and failure types. Test layers and coverage follow
+The formatter check and compiler settings enforce the gates in the adopter's build, hooks, and pipeline. Review applies
+compile order, domain shapes, and failure types. Test layers and coverage follow
 [Test Boundaries and Gates](../testing/test-boundaries-and-gates.md), and work proceeds under
 [Test-Driven Development](../testing/test-driven-development.md).

@@ -67,21 +67,12 @@ callers it has, chosen from this set:
 ## Adoption
 
 A gate and its propagation link the catalog artifacts they apply. An adopting repository copies each linked artifact it
-lacks, or relinks the link to its own owner, so no link dangles. The companions to copy or relink are:
-
-- **every family:** this contract and its modules, [Sole-Writer Propagation](sole-writer-propagation.md), the
-  `<family>-checker` and `<family>-fixer` agents, and every standard and skill the gate and its propagation link;
-- **`pr-review`:** [PR Review](../../workflows/quality/pr-review.md), which every audit runs, and the agents it
-  dispatches;
-- **`ui-web` and `api-http`:** [Red, Green, Refactor](../../workflows/quality/red-green-refactor.md), which every repair
-  follows;
-- **each `tutorial-*` family:** the `content` family's gate and propagation, which own the shared content rules.
-
-An agent's `skills:` list names catalog skills. An adopting repository maps each entry to its own name for that skill,
-or copies the skill, so no agent loads a skill the repository lacks.
+lacks, or relinks the link to its own owner, so no link dangles, then searches for wording an older gate left behind.
+[Adoption](quality-gate-contract/004-adoption.md) lists the companions, the skill mapping, and the searches.
 
 ## Modules
 
 1. [Inputs, Scoring, and the Deterministic Boundary](quality-gate-contract/001-inputs-scoring-and-boundary.md)
 2. [Sequence and Termination](quality-gate-contract/002-sequence-and-termination.md)
 3. [Verdicts, Ledger, and Relations](quality-gate-contract/003-verdicts-ledger-and-relations.md)
+4. [Adoption](quality-gate-contract/004-adoption.md)

@@ -30,10 +30,11 @@ and gives it exactly one answer:
   - Status: `not-resolved`
 
 A deferral without a filed, linked follow-up is not an answer, and its row stays `open`. A deferred row stays blocking,
-so the verdict reports it; the follow-up is already the owner the caller would assign. A finding rejected in two
-consecutive audits is `needs-decision` and goes to a person. A defect the change itself introduces is fixed, never
-deferred. Each answer follows the repair replies in
-[Finding Requirements](../../../development/agents/review-disciplines/003-finding-requirements.md).
+so the run ends `FAIL` whether it stops early or at the ceiling, per
+[Sequence and Termination](../../../development/workflow/quality-gate-contract/002-sequence-and-termination.md); the
+follow-up is already the owner the caller would assign. A finding rejected in two consecutive audits is `needs-decision`
+and goes to a person. A defect the change itself introduces is fixed, never deferred. Each answer follows the repair
+replies in [Finding Requirements](../../../development/agents/review-disciplines/003-finding-requirements.md).
 
 Before editing, the writer confirms the live head still equals the audited head. When it differs, it changes nothing,
 and the run ends `BLOCKED` (input-changed).

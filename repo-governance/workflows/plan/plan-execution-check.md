@@ -31,7 +31,9 @@ One terminal verdict is recorded. Archival proceeds only on a verdict that permi
 
 ## Archival Is Blocked, Not Warned
 
-An unresolved acceptance criterion, an unproven cleanup, or an unrouted learning blocks archival outright.
+An unresolved acceptance criterion, an unproven cleanup, or an unrouted learning blocks archival outright. This check
+judges finished execution and is not a quality gate, so the advisory verdicts of the
+[Quality Gate Contract](../../development/workflow/quality-gate-contract.md) do not cover it.
 
 This is stricter than it looks, and deliberately so. A plan in `plans/done/` reads as finished — that is the entire
 signal the lifecycle root carries. Filing an unfinished plan does not merely record something inaccurate; it destroys

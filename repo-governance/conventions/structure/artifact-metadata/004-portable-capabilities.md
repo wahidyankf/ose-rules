@@ -53,3 +53,7 @@ list already implies it.
 
 The redundancy is deliberate. A capability list says what was granted; a constraint says what was decided, and the
 second survives someone adding a capability without reading why the first list was short.
+
+No harness adapter translates a constraint: an adapter grants tools from `capabilities` alone, and a granted `shell` can
+write. An agent declaring both `shell` and `read-only` therefore states in its body what its shell may run, and that
+body is what keeps the constraint.

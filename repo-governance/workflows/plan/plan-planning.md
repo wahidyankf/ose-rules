@@ -3,15 +3,14 @@ name: plan-planning
 description: >-
   Authors a complete formal plan from a request or a groomed brief, bounded by two sequential decision gates.
 when_to_use: >-
-  Use when a formal plan is requested, after the material choices have been surfaced but before any plan document
-  exists.
+  Use when a formal plan is requested, after the material choices surface but before any plan document exists.
 ---
 
 # Planning
 
 ## Entry
 
-Someone has asked for a formal plan, or a brief has been promoted by [Ideas Grooming](plan-ideas-grooming.md).
+A formal plan is requested, or a brief is promoted by [Ideas Grooming](plan-ideas-grooming.md).
 
 The request is explicit, as
 [Authorization and Execution Record](../../conventions/structure/plans/010-authorization-and-execution-record.md)
@@ -20,10 +19,10 @@ optional, default the adopter's recorded stage, or `backlog` for a promoted brie
 
 ## Sequence
 
-1. **Inspect before asking.** Read the repository — its instructions, its current state, the surfaces the work touches —
-   so the first gate presents real choices rather than questions the repository already answers.
+1. **Inspect before asking.** Read the repository — its instructions, current state, and the surfaces the work touches —
+   so the first gate presents real choices, not questions the repository already answers.
 2. **Run the pre-write gate.** Every material branch is resolved here, and **no plan document is authored until it
-   completes**. A plan written first and questioned afterwards has already committed to the answers.
+   completes**. A plan written before questioning has already committed to the answers.
 
    The gate also confirms the plan identifier, the target stage unless a caller passed it, the delivery target the
    repository's topology allows per
@@ -33,20 +32,20 @@ optional, default the adopter's recorded stage, or `backlog` for a promoted brie
    what a document describes, which adds a [Docs Propagation](../quality/docs-propagation.md) item to that unit; and
    whether any claim needs outside verification.
 
-3. **Verify unstable facts before authoring.** Check each flagged claim, such as a library version, an interface's
-   behaviour, or a third-party practice, against an authoritative source, and cite it. A finding that changes an answer
-   reopens that branch of the pre-write gate; no plan document is written until it closes again.
+3. **Verify unstable facts before authoring.** Check each flagged claim, such as a library version, interface behaviour,
+   or third-party practice, against an authoritative source, and cite it. A finding that changes an answer reopens that
+   branch of the pre-write gate; no plan document is written until it closes again.
 4. **Author all six documents.** `README.md`, `brd.md`, `prd.md`, one technical shape, `delivery.md`, `learnings.md`. A
    [Bug-Fix Plan](../../conventions/structure/plans/019-bug-fix-plan.md) is not planned through this workflow. The
    document set and its rules are the [Plans Convention](../../conventions/structure/plans.md)'s; this workflow does not
    restate them. They land in `plans/<target-stage>/<identifier>/`.
-5. **Write `delivery.md` last.** It depends on every other document, and writing it first produces a checklist for a
-   plan that does not exist yet.
+5. **Write `delivery.md` last.** It depends on every other document; written first, it checklists a plan not yet
+   existing.
 6. **Check structure before judgement.** Run the checks
    [Structural Validation](../../conventions/structure/plans/006-structural-validation.md) lists and fix what fails, so
-   the gates that follow weigh substance rather than missing headings.
-7. **Run the post-write gate.** A separate gate, on the complete draft, resolving what only became visible once the plan
-   existed. It does not merge into the first gate — see
+   later gates weigh substance, not missing headings.
+7. **Run the post-write gate,** a separate gate on the complete draft resolving what became visible only once the plan
+   existed. It never merges into the first gate — see
    [Decision Gates](../../development/agents/planning-capabilities/003-decision-gates.md).
 8. **Run the [Quality Gate](../quality/plan-quality-gate.md)** and record its verdict.
 9. **Land the plan as the repository authorizes.** Commit and integrate it by the delivery target the first gate
@@ -73,9 +72,6 @@ condition holds.
 
 ## Gate Ordering Is Not Negotiable
 
-The two gates ask different questions at different times. Before authoring, the open questions are about approach,
-scope, and constraint. After a draft, they are about what the draft revealed — a dependency nobody expected, a seam that
-turned out to be in the wrong place.
-
-Running one gate instead of two means asking the second set of questions before the information needed to answer them
-exists.
+The two gates ask different questions at different times. Before authoring, open questions concern approach, scope, and
+constraint; after a draft, what it revealed — an unexpected dependency, a misplaced seam. Running one gate instead of
+two asks the second set before the information to answer it exists.

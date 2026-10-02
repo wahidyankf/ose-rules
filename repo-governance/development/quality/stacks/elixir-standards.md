@@ -1,16 +1,16 @@
 ---
 description: >-
-  Fixes the Elixir baseline: formatter, compiler, test-load, and linter gates with warnings as errors, Dialyzer over
-  declared typespecs, tagged-tuple failures, processes only for a runtime reason, and line-only coverage.
+  Fixes the Elixir baseline: warnings-as-errors format, compile, test-load, and lint gates; Dialyzer over typespecs;
+  tagged-tuple failures; processes only for a runtime reason; line-only coverage.
 when_to_use: >-
-  Use when creating, configuring, or reviewing an Elixir project, or when choosing its static analysis, failure shape,
-  process design, test isolation, or coverage configuration.
+  Use when creating, configuring, or reviewing an Elixir project or choosing its static analysis, failure shape, process
+  design, test isolation, or coverage.
 ---
 
 # Elixir Standards
 
-This standard is canonical for Elixir. It holds the choices Elixir and Mix leave open, and an Elixir programming skill
-defers here for each rule it applies.
+Canonical for Elixir, this settles what Elixir and Mix leave open; an Elixir programming skill defers here for each
+rule.
 
 It implements [Explicit Over Implicit](../../../principles/explicit-over-implicit.md),
 [Immutability](../../../principles/immutability.md), [Pure Functions](../../../principles/pure-functions.md), and
@@ -20,74 +20,71 @@ It implements [Explicit Over Implicit](../../../principles/explicit-over-implici
 
 ## Gates
 
-- **Format:** `mix format --check-formatted`, reading a committed `.formatter.exs`
-  ([docs](https://mix.hexdocs.pm/Mix.Tasks.Format.html)).
-- **Compile:** `mix compile --warnings-as-errors` ([docs](https://mix.hexdocs.pm/Mix.Tasks.Compile.Elixir.html)). The
-  compiler's type checker reports through warnings, so this gate is also the type check.
-- **Test load:** `mix test --warnings-as-errors`, so a warning raised while loading the test suite fails the run
+- **Format:** `mix format --check-formatted`, reading a committed `.formatter.exs`.
+- **Compile:** `mix compile --warnings-as-errors` ([docs](https://mix.hexdocs.pm/Mix.Tasks.Compile.Elixir.html)), also
+  the type check, since the type checker reports through warnings.
+- **Test load:** `mix test --warnings-as-errors`: a warning while loading the suite fails the run
   ([docs](https://mix.hexdocs.pm/Mix.Tasks.Test.html)).
 - **Lint:** one linter at its strictest level, failing per [Lint Strictness](../checks/lint-strictness.md). Example:
-  `mix credo --strict` ([Credo](https://github.com/rrrene/credo)).
-- **Success typing:** Dialyzer over the declared typespecs, with its persistent lookup table cached between runs.
-  Example: dialyxir as a development-only dependency with `:unmatched_returns` and `:error_handling`
-  ([dialyxir](https://github.com/jeremyjh/dialyxir)).
+  `mix credo --strict`.
+- **Success typing:** Dialyzer over the declared typespecs, its persistent lookup table cached between runs. Example:
+  dialyxir as a development-only dependency with `:unmatched_returns` and `:error_handling`.
 
 A suppression, Dialyzer ignore entries included, states its reason where it applies.
 
 ## Type and Boundary Safety
 
-[Type and Boundary Safety](../code/type-and-boundary-safety.md) owns the rule; Elixir maps it as follows.
+Mapping [Type and Boundary Safety](../code/type-and-boundary-safety.md):
 
-- The compiler infers types for every construct and warns on a contradiction, but it does not yet read user-written
-  signatures ([gradual set-theoretic types](https://elixir.hexdocs.pm/gradual-set-theoretic-types.html)). It checks what
-  the code contradicts, never a declared contract.
-- Typespecs are that contract. Every public function of a library, and of each boundary module an application exposes,
-  declares a `@spec`. The compiler does not check typespecs ([typespecs](https://elixir.hexdocs.pm/typespecs.html)), so
-  a spec Dialyzer never analyses is documentation, not evidence.
-- External data is cast and validated once into a known shape where it arrives, and no write goes around that step.
-  Example: an Ecto changeset.
-- External input never becomes an atom: atoms are never collected and the table is finite. Convert against a known set
-  with `String.to_existing_atom/1`, or keep the string.
+- The compiler infers types and warns on contradictions but does not yet read user-written signatures
+  ([gradual types](https://elixir.hexdocs.pm/gradual-set-theoretic-types.html)), so it never checks a declared contract.
+- Typespecs are that contract: every public function of a library, or of an application's boundary module, declares a
+  `@spec`. The compiler ignores typespecs ([typespecs](https://elixir.hexdocs.pm/typespecs.html)), so a spec Dialyzer
+  never analyses is documentation, not evidence.
+- External data is cast and validated once, where it arrives, into a known shape (for example an Ecto changeset); no
+  write bypasses that step.
+- External input never becomes an atom, since atoms are never collected and the table is finite: convert with
+  `String.to_existing_atom/1` against a known set, or keep the string.
 
 ## Failures
 
-A failure a caller can act on returns `{:ok, value}` or `{:error, reason}`, and a `with` chain's `else` matches every
-error shape the chain produces. A defect raises. A function offering both forms follows the library convention: `name`
-returns the tuple and `name!` raises. `rescue` never drives control flow, and inside a supervised process it never hides
-an unexpected failure; the process crashes and its supervisor restarts it from a known state.
+An actionable failure returns `{:ok, value}` or `{:error, reason}`, and a `with` chain's `else` matches every error
+shape it produces; a defect raises. A function offering both forms names the tuple form `name` and the raising form
+`name!`. `rescue` never drives control flow, and in a supervised process never hides an unexpected failure: the process
+crashes and its supervisor restarts it from a known state.
 
-Access and matching are assertive: a required key is read with `map.key` or matched, never with `map[:key]` falling back
-to `nil`, as the [anti-patterns guide](https://elixir.hexdocs.pm/code-anti-patterns.html) describes.
+Access is assertive: read a required key with `map.key` or a match, never `map[:key]` falling back to `nil`
+([anti-patterns](https://elixir.hexdocs.pm/code-anti-patterns.html)).
 
 ## Processes
 
-A process exists for state that changes over time, concurrent work, or failure isolation, never to organise code. A
-GenServer callback stays thin: it passes the message and state to a pure function and returns what that function
-decides, as [Functional Core, Imperative Shell](../architecture/functional-core-imperative-shell.md) requires. Dynamic
-processes are named through a registry with a `:via` tuple, never through generated atoms. A supervisor's restart
-strategy follows how its children depend on one another.
+A process exists for changing state, concurrency, or failure isolation, never to organise code. A GenServer callback
+stays thin, passing message and state to a pure function and returning its decision, per
+[Functional Core, Imperative Shell](../architecture/functional-core-imperative-shell.md). Dynamic processes are named
+through a registry `:via` tuple, never generated atoms. A supervisor's restart strategy follows its children's
+dependencies.
 
 ## Tests
 
-ExUnit is the test framework. Integration tests carry a tag that the test helper excludes from the unit run, keeping the
-layers apart as [Test Boundaries and Gates](../testing/test-boundaries-and-gates.md) requires. A module is `async: true`
-only when it touches no application environment, named process, shared file, or unsandboxed database; each database test
-runs in its own sandboxed transaction. Doctests belong to the unit layer.
+ExUnit is the framework. Integration tests carry a tag the test helper excludes from the unit run, per
+[Test Boundaries and Gates](../testing/test-boundaries-and-gates.md). A module is `async: true` only when it touches no
+application environment, named process, shared file, or unsandboxed database; each database test runs in its own
+sandboxed transaction. Doctests are unit tests.
 
-`mix test --cover` measures lines only, with no branch data. Coverage follows
-[Meaningful Coverage](../testing/meaningful-coverage.md): generated modules are listed under `:ignore_modules` with
-their reason, partitioned runs are merged with `mix test.coverage` before judging, and any floor is recorded under
+`mix test --cover` measures lines only. Under [Meaningful Coverage](../testing/meaningful-coverage.md), generated
+modules go under `:ignore_modules` with their reason, partitioned runs merge with `mix test.coverage` before judging,
+and any floor is recorded under
 [Layers and Adapters](../testing/behaviour-driven-development/002-layers-and-adapters.md).
 
 ## Documentation
 
-Each public module carries `@moduledoc` and each public function `@doc`, and examples are written as doctests so they
-stay true ([writing documentation](https://elixir.hexdocs.pm/writing-documentation.html)). `@doc false` hides an
-implementation detail from the reference but never makes it private. A behaviour change updates these with the code, as
+Each public module carries `@moduledoc` and each public function `@doc`, with examples as doctests so they stay true
+([docs](https://elixir.hexdocs.pm/writing-documentation.html)). `@doc false` hides a detail from the reference but never
+makes it private. A behaviour change updates these with the code, per
 [Specification Maintenance](../evidence/specification-maintenance.md) and
-[Public Contract](../architecture/public-contract.md) require.
+[Public Contract](../architecture/public-contract.md).
 
 ## Enforcement
 
-An adopter runs the format, compile, test-load, lint, and Dialyzer gates in its own hooks and pipeline. Review applies
-the boundary specs, the failure and process rules, test isolation, and the coverage exclusions.
+An adopter runs the five gates in its own hooks and pipeline. Review applies the boundary specs, failure and process
+rules, test isolation, and coverage exclusions.

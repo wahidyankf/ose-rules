@@ -4,20 +4,20 @@ description: >-
   Judges one By Example tutorial's examples, annotations, and progression, with product thresholds from an adapter, in
   at most three bounded cycles, and returns one advisory verdict.
 when_to_use: >-
-  Use when someone explicitly asks for a review of a By Example tutorial, after writing or restructuring one, or before
+  Use when someone explicitly asks to review a By Example tutorial, after writing or restructuring one, or before
   publishing it.
 ---
 
 # Tutorial By Example Quality Gate
 
 This gate follows the [Quality Gate Contract](../../development/workflow/quality-gate-contract.md): a read-only checker,
-a frozen ledger, one separate writer, at most three cycles, and an advisory verdict. This file states only what is
-specific to By Example tutorials, as [Tutorial Types](../../conventions/writing/tutorial-types.md) defines them.
+a frozen ledger, one separate writer, at most three cycles, an advisory verdict. Only what is specific to By Example
+tutorials, per [Tutorial Types](../../conventions/writing/tutorial-types.md), is stated here.
 
 ## Entry
 
-The gate starts only on an explicit request that names it. No workflow calls it. No cycle waits for a person: editorial
-review sits before cycle 1 or after the verdict, per
+It starts only on an explicit request naming it; no workflow calls it. No cycle waits for a person: editorial review
+sits before cycle 1 or after the verdict, per
 [Human Review](../../development/workflow/quality-gate-contract/003-verdicts-ledger-and-relations.md#human-review).
 
 ## Inputs
@@ -28,17 +28,16 @@ review sits before cycle 1 or after the verdict, per
 | `mode`       | enum    | `lax`, `normal`, `strict`, `all`             | `normal` |
 | `max-cycles` | integer | 1, 2, or 3                                   | 3        |
 
-Any other `max-cycles` value, or a missing subject, refuses to start.
+Another `max-cycles` value or a missing subject refuses to start.
 
-Product thresholds come from the adopting repository's adapter at
-`repo-governance/development/quality/gate-adapters/<product>.md`. For this kind it holds the example count band, the
-annotation density band, the diagram count band, the length of each example part, any part it adds, the annotation
-notation, the file layout, and the front matter. Each threshold lives only there. Without an adapter, only the generic
-rules apply.
+Product thresholds come from the adopter's adapter at `repo-governance/development/quality/gate-adapters/<product>.md`:
+here the example count, annotation density, and diagram count bands, each example part's length, any added part, the
+annotation notation, the file layout, and the front matter. Each threshold lives only there; without an adapter, only
+the generic rules apply.
 
 ## Deterministic Boundary
 
-The checker reports none of these properties. The entry and exit checks run their owners instead.
+The checker reports none of these; the entry and exit checks run their owners.
 
 | Property                                     | Owned by                 | This catalog runs |
 | -------------------------------------------- | ------------------------ | ----------------- |
@@ -47,8 +46,8 @@ The checker reports none of these properties. The entry and exit checks run thei
 | Diagram rendering, label length, and palette | the diagram validator    | none              |
 | Example code compiles and runs               | the example test suite   | none              |
 
-The catalog publishes no tutorial, so an adopter fills the last column with its declared gate's tools. A property no
-tool of its own owns leaves the table and becomes judgeable.
+The catalog publishes no tutorial, so an adopter fills the last column with its declared gate's tools; a property with
+no tool of its own leaves the table, becoming judgeable.
 
 ## Cycle
 
@@ -60,26 +59,25 @@ audit asks of each example whether:
 - it carries the parts
   [Cookbook and By Example](../../conventions/writing/tutorial-structure/002-cookbook-and-by-example.md) fixes, plus any
   the adapter adds; a missing part is a finding;
-- it teaches one concept and is self-contained: with every other example removed, it still runs as printed, with every
-  import and helper present;
-- its annotations sit on the code lines, show values, intermediate states, and output, and say what a reader needs;
-- its annotation density, comment lines divided by code lines, measured per example and never across the tutorial, falls
-  within the adapter's band;
-- built-in features come before any dependency, and a dependency states what the built-in approach could not do; and
-- its key takeaway states the lesson rather than summarizing the code, and a comparison gives each approach its own
-  block.
+- it teaches one concept and is self-contained, running as printed with every other example removed and every import and
+  helper present;
+- its annotations sit on code lines, show values, intermediate states, and output, and say what a reader needs;
+- its annotation density (comment lines over code lines), measured per example, never across the tutorial, is within the
+  adapter's band;
+- built-in features precede any dependency, and a dependency states what built-ins could not do; and
+- its key takeaway states the lesson, not a code summary, and a comparison gives each approach its own block.
 
-Across the tutorial, it asks whether examples are numbered in sequence, grouped coherently with core features first in
-each level, rising soundly in complexity, and within the adapter's example and diagram count bands.
+Across the tutorial: are examples numbered in sequence, grouped coherently with core features first per level, rising
+soundly in complexity, and within the adapter's count bands?
 
-Prose, facts, and links belong to the [Content Quality Gate](content-quality-gate.md). Grouping, progression, and
-annotation quality are judgement rows.
+Prose, facts, and links belong to [Content Quality Gate](content-quality-gate.md). Grouping, progression, and annotation
+quality are judgement rows.
 
 ## Termination
 
 The contract's
 [termination table](../../development/workflow/quality-gate-contract/002-sequence-and-termination.md#termination)
-applies unchanged. This gate adds no row.
+applies unchanged, with no added row.
 
 ## Verdict
 
@@ -95,15 +93,15 @@ No verdict stops the caller or authorizes publishing.
 ## Ledger
 
 `local-tmp/quality/tutorial-by-example/<subject-slug>__<YYYYMMDDTHHMMZ>.md`, with the columns and closing verdict block
-in [the contract](../../development/workflow/quality-gate-contract/003-verdicts-ledger-and-relations.md#ledger). Each
+in [the contract](../../development/workflow/quality-gate-contract/003-verdicts-ledger-and-relations.md#ledger); each
 row names its example. It is never committed.
 
 ## Example Usage
 
 ```text
-Run tutorial-by-example-quality-gate on the tutorial folder learn/golang/by-example.
+Run tutorial-by-example-quality-gate on learn/golang/by-example.
 ```
 
 ## Related Workflows
 
-- [Tutorial Primer Quality Gate](tutorial-primer-quality-gate.md) reuses these per-example rules in a scoped primer.
+- [Tutorial Primer Quality Gate](tutorial-primer-quality-gate.md) reuses these per-example rules.

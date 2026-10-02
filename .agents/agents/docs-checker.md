@@ -58,9 +58,12 @@ runs.
 
 ## Shell and Network
 
-`shell` lists paths, reads version history at the checked revision, and runs a documented command only in a form that
-changes nothing, such as its help or version query. `network` reads authoritative sources and, under the combined
-validator, fetches an address only to see whether it responds, exception 2 of
+This body, not a harness, keeps `read-only`: no adapter translates a constraint, and a granted `shell` can write. So, as
+the [Quality Gate Contract](../../repo-governance/development/workflow/quality-gate-contract.md) requires of every
+checker, its shell never writes, moves, or deletes a file or changes repository state. `shell` lists paths, reads
+version history at the checked revision, and runs a documented command only in a form that changes nothing, such as its
+help or version query. `network` reads authoritative sources and, under the combined validator, fetches an address only
+to see whether it responds, exception 2 of
 [Web Research Delegation](../../repo-governance/development/agents/web-research-delegation.md). When confirming one
 claim needs two or more searches or three or more page fetches, the checker returns that research need to its caller,
 per that standard, and the claim stays Unverified meanwhile. A host that refuses automated reading leaves a claim

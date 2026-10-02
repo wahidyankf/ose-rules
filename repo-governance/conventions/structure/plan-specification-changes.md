@@ -8,9 +8,8 @@ when_to_use: >-
 
 # Plan Specification Changes
 
-A plan that changes what a system does states, before implementation starts, exactly which specifications change and
-how. Specification work discovered mid-execution is done in a hurry, by whoever notices, and usually only for the files
-that broke.
+A plan that changes what a system does states, before implementation, exactly which specifications change and how.
+Specification work discovered mid-execution is rushed, done by whoever notices, and usually only for files that broke.
 
 This convention adds to the [Plans Convention](plans.md). It applies when a plan changes observable behaviour, a command
 or configuration surface, an exit code, an interface, architecture, or an executable specification.
@@ -23,12 +22,12 @@ planned path also appears in the plan's [File Impact](plans/013-file-impact.md) 
 
 ## What Becomes a Durable Contract
 
-Acceptance criteria in `prd.md` accept the plan. They are not an instruction to copy every scenario into the
+Acceptance criteria in `prd.md` accept the plan; they are not an instruction to copy every scenario into the
 repository's specifications.
 
 Before listing files, state which outcomes become durable specifications and which stay plan-only. Each plan-only
-outcome records why, and names the `delivery.md` item that verifies it. Each durable outcome names its target
-specification. A plan that adds no durable scenario says so rather than leaving the question open.
+outcome records why and names the verifying `delivery.md` item. Each durable outcome names its target specification. A
+plan adding no durable scenario says so rather than leaving it open.
 
 ## The Delta, File by File
 
@@ -58,12 +57,12 @@ For each scenario file, state:
   scenario and why; and
 - the command that proves the changed corpus and, for a user-facing change, the focused journey that proves it running.
 
-For each architecture file, name each changed view, element, relationship, data store, or constraint, and give the
-reason. A planned diagram follows the repository's [Diagrams](../writing/diagrams.md) rule.
+For each architecture file, name each changed view, element, relationship, data store, or constraint, with its reason. A
+planned diagram follows the repository's [Diagrams](../writing/diagrams.md) rule.
 
 ## Binding Boundaries: an Adopter Decision
 
-A plan cannot state bindings until the repository has said where scenarios bind.
+A plan cannot state bindings until the repository says where scenarios bind.
 
 | Option                  | Requires                                                                                               | Trade-off                                                                       |
 | ----------------------- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------- |
@@ -74,23 +73,23 @@ A plan cannot state bindings until the repository has said where scenarios bind.
 
 Where the repository declares a public contract — a command, flag, exit code, configuration key, or interface a consumer
 depends on — a plan that would change one says it is proposing a release decision, in those words. Adding to a contract
-and changing one cost a consumer differently, and the plan states which it does.
+and changing one cost a consumer differently; the plan states which it does.
 
 ## Proposed Now, As-Built Later
 
-The proposal stays in the plan. The repository's specifications remain the as-built description, and they are updated
-during execution, once the implemented result is settled.
+The proposal stays in the plan. The repository's specifications remain the as-built description, updated during
+execution once the implemented result is settled.
 
 The implementation phase that changes the behaviour carries an `[AI]` item naming the canonical specification path and
 the affected elements. Its outcome is synchronized as-built content, and its proof is the repository's specification
 gates.
 
-Never defer every specification update to one documentation item at the end. That is how a model and the code it claims
-to describe come apart.
+Never defer every specification update to one documentation item at the end; that is how a model and the code it
+describes come apart.
 
 ## Principles
 
-This convention implements [One Source Per Fact](../../principles/one-source-per-fact.md), because the specifications
-stay the single as-built description while the proposal lives in the plan, and
-[Explicit Over Implicit](../../principles/explicit-over-implicit.md), because every specification delta is stated file
-by file before implementation.
+This convention implements [One Source Per Fact](../../principles/one-source-per-fact.md), since the specifications stay
+the single as-built description while the proposal lives in the plan, and
+[Explicit Over Implicit](../../principles/explicit-over-implicit.md), since every delta is stated file by file before
+implementation.

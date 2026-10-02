@@ -16,10 +16,10 @@ a pass applied to a finished one.
 
 An inaccessible artifact is not a nearly finished accessible one. The choice that excluded someone — meaning carried by
 colour, a diagram with no description, a layout whose structure exists only visually — is usually load-bearing by the
-time anyone notices, and undoing it means redoing the work built on top of it.
+time anyone notices, and undoing it means redoing the work built on it.
 
-That is why the requirement attaches to the first draft. Applied at the end, it competes with a deadline and loses.
-Applied at the start, it is one more constraint shaping the design, and it costs almost nothing.
+So the requirement attaches to the first draft: applied at the end, it competes with a deadline and loses; at the start,
+it is one more design constraint, costing almost nothing.
 
 ## What It Requires
 
@@ -57,18 +57,17 @@ A redundant cue works the same way. Colour may reinforce a label, a shape, or a 
 
 ## The Benefit Is Wider Than the Obligation
 
-The same properties serve readers with no disability at all. A text alternative is what a search indexes and what an
-agent reads. Real structure is what a table of contents is generated from. A described diagram survives the renderer
-that failed to draw it.
+The same properties serve readers with no disability. A text alternative is what a search indexes and what an agent
+reads. Real structure is what a table of contents is generated from. A described diagram survives the renderer that
+failed to draw it.
 
-That argument persuades people the first one does not, but it is not the reason. An artifact that some of its intended
-readers cannot use is defective even if nobody else would benefit from the fix.
+That argument persuades some, but it is not the reason: an artifact some intended readers cannot use is defective even
+if nobody else benefits from the fix.
 
 ## What Stays Out of the Principle
 
-A specific palette, a diagram tool, a simulator, a testing service, or a single-top-heading rule is a choice, and it
-belongs to a convention a repository writes for itself. This principle fixes what must be true, not how a repository
-gets there.
+A specific palette, a diagram tool, a simulator, a testing service, or a single-top-heading rule is a choice for a
+convention a repository writes for itself. This principle fixes what must be true, not how a repository gets there.
 
-The mechanical parts — heading levels, missing alternatives, the contrast of declared colours — are enforced by an
-adopter in its own gate, where a reviewer's tired eye cannot skip them.
+An adopter enforces the mechanical parts (heading levels, missing alternatives, declared colours' contrast) in its own
+gate, where a tired reviewer cannot skip them.
