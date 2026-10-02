@@ -58,8 +58,8 @@ asserted. Each item carries its executor label, as the [Delivery Contract](004-d
 - **[Authorization](010-authorization-and-execution-record.md):** it needs no separate request when written under an
   adopter's recorded [Upstream Tool Defects](../../../development/workflow/upstream-tool-defects.md) standard, or when
   the owner asks. That standing request also directs its plan quality gate, its execution, and its release: once the
-  plan lands, run the gate on it, execute on a passing verdict, and release the fix once its tests pass, without a
-  further prompt.
+  plan lands, run the gate on it, execute once its verdict is recorded and every open blocking row has an owner, and
+  release the fix once its tests pass, without a further prompt.
 
 Every other plan rule holds: slug rules, one root, executor labels, no time estimates, the execution record, knowledge
 capture, and archival.
