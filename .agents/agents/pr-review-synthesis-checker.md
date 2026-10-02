@@ -70,7 +70,7 @@ like any others. On a plan-only change, that pass follows the order in
 ## Publishing on Each Surface
 
 The adopter records the surface under
-[Review Surface](../../repo-governance/workflows/quality/pr-review-cycle/001-review-surface.md).
+[Review Surface](../../repo-governance/workflows/quality/pr-review-quality-gate/001-review-surface.md).
 
 - **Hosted pull request.** `shell` posts the review and reads it back through the forge's interface.
 - **Local commit range.** `repository-write` creates the pass's findings report and nothing else. The report opens
@@ -96,4 +96,5 @@ missing, because a review built from part of the fan-out reads as complete.
 
 It never re-derives the tier or the specialist set, runs a delegated check, re-raises a finding a person dismissed or a
 reasoned rejection settled, raises a severity because specialists agree, or searches the public web. It does not answer
-or resolve findings, which [PR Review Fixer](pr-review-fixer.md) owns, or decide whether a review cycle continues.
+or resolve findings, which [PR Review Fixer](pr-review-fixer.md) owns, or decide whether a PR review gate runs another
+cycle.

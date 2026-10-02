@@ -32,8 +32,8 @@ a rule placed at the wrong level binds nobody while appearing to have landed, an
 
 ## Procedure
 
-[Rules Propagation](../../repo-governance/workflows/maintenance/rules-propagation.md) owns the sequence, and the maker
-is the one writing inside it. It enters that workflow before the first edit, as
+[Rules Propagation](../../repo-governance/workflows/quality/rules-propagation.md) owns the sequence, and the maker is
+the one writing inside it. It enters that workflow before the first edit, as
 [Propagating Rules](../skills/propagating-rules/SKILL.md) teaches, and brings these judgements to its steps:
 
 1. **Is it a rule?** Apply the membership questions in

@@ -17,7 +17,7 @@ equivalent local procedure recorded as a deviation.
 | backlog grooming | [`plan-backlog-grooming`](../../../workflows/plan/plan-backlog-grooming.md)        |
 | plan creation    | [`plan-planning`](../../../workflows/plan/plan-planning.md)                        |
 | plan execution   | [`plan-execution`](../../../workflows/plan/plan-execution.md)                      |
-| quality review   | [`plan-quality-gate`](../../../workflows/plan/plan-quality-gate.md)                |
+| quality review   | [`plan-quality-gate`](../../../workflows/quality/plan-quality-gate.md)             |
 | execution review | [`plan-execution-check`](../../../workflows/plan/plan-execution-check.md)          |
 | cleanup          | [`dev-artifact-clean-up`](../../../workflows/maintenance/dev-artifact-clean-up.md) |
 

@@ -41,8 +41,8 @@ An objective must hold across two or more repositories in a parity relationship 
    matrix placed it, an item updating any governance the decisions change, and its own knowledge capture. No plan says
    how a sibling performs its work, per
    [Delivery Seams and Ownership](../../development/agents/planning-capabilities/005-delivery-seams-and-ownership.md).
-8. **Gate each plan separately** with the [Quality Gate](plan-quality-gate.md). One plan's verdict never stands in for
-   another's.
+8. **Gate each plan separately** with the [Quality Gate](../quality/plan-quality-gate.md). One plan's verdict never
+   stands in for another's.
 9. **Land each plan by its own repository's route** once its actual worktree and branch names match the identity record.
    Each repository resolves its delivery independently, and its own checks prove only its own side.
 10. **Report the deviation count:** deliberate and silent deviations, silent being zero.

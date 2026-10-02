@@ -5,7 +5,7 @@ description: >-
   and viewport layout against the adopted interface standards, and returns rated findings without modifying anything.
 when_to_use: >-
   Use for a static audit of named React components or pages, before merging an interface change, or as the component
-  tester of a live surface quality gate run for a user interface.
+  tester inside a UI web quality gate audit.
 tier: execution
 capabilities:
   - repository-read
@@ -71,13 +71,12 @@ observed, and its criticality. The checker returns findings to its caller with h
 zero read is never a clean result. Accepted false positives the caller supplies are noted and left out of the count.
 Predicates the caller marks as delegated keep their evidence and are never re-run.
 
-## Inside a Live Surface Gate
+## Inside the UI Web Quality Gate
 
-For a `user-interface` surface in
-[Live Surface Quality Gate](../../repo-governance/workflows/quality/live-surface-quality-gate.md), the discovery role
-audits every dimension once. The verification role reproduces only the supplied original findings against the current
-source and smoke-tests the components the fixes touched. It returns which findings are resolved, which remain, and any
-regression, and never repeats discovery or asks for another pass.
+In each full audit of [UI Web Quality Gate](../../repo-governance/workflows/quality/ui-web-quality-gate.md), it audits
+every dimension. When the writer verifies a ledger row, it reproduces only that row's finding against the current source
+and smoke-tests the components the repair touched. It returns whether the row is resolved and any regression, and never
+widens to unrelated components or asks for another cycle.
 
 ## Shell
 

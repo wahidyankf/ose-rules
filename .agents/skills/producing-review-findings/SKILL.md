@@ -68,4 +68,4 @@ rejection saying only that a finding described a superseded head is not settled:
 head, and raise it if it still holds.
 
 How findings are answered afterwards belongs to
-[Answering Findings](../../../repo-governance/workflows/quality/pr-review-cycle/002-answering-findings.md).
+[Answering Findings](../../../repo-governance/workflows/quality/pr-review-quality-gate/002-answering-findings.md).

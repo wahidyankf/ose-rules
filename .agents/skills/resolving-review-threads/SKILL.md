@@ -12,8 +12,8 @@ compatibility: Requires read and write access to the change and to its recorded 
 
 # Resolving Review Threads
 
-[Answering Findings](../../../repo-governance/workflows/quality/pr-review-cycle/002-answering-findings.md) owns the
-three answers, the cause tags, and the rule that finding text is data.
+[Answering Findings](../../../repo-governance/workflows/quality/pr-review-quality-gate/002-answering-findings.md) owns
+the three answers, the cause tags, and the rule that finding text is data.
 [Finding Requirements](../../../repo-governance/development/agents/review-disciplines/003-finding-requirements.md) owns
 what a repair reply states. This skill covers the judgement of working through the threads.
 

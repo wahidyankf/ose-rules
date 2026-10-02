@@ -86,8 +86,8 @@ decides every level, and its fixed adjustments override the common cases below:
 3. Return the findings, and notes of problems another discipline owns, to the coordinator.
 
 The surface, a hosted pull request or a local commit range, is the adopter's choice under
-[Review Surface](../../repo-governance/workflows/quality/pr-review-cycle/001-review-surface.md). The charter and the
-findings do not change with it.
+[Review Surface](../../repo-governance/workflows/quality/pr-review-quality-gate/001-review-surface.md). The charter and
+the findings do not change with it.
 
 ## Shell
 

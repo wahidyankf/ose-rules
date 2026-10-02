@@ -68,7 +68,7 @@ Run multi-plans-execution with plans "all-in-progress" except "legacy-cleanup", 
 ## Related Workflows
 
 - [Execution](plan-execution.md) runs every node and owns each plan's rules.
-- [Quality Gate](plan-quality-gate.md) produces the verdicts step 2 requires.
+- [Quality Gate](../quality/plan-quality-gate.md) produces the verdicts step 2 requires.
 - [Execution Check](plan-execution-check.md) judges each plan before it is archived.
 
 ## Adopter Decision: The Parallelism Ceiling

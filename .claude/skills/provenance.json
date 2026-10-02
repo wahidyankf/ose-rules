@@ -10,7 +10,7 @@
     {
       "id": "agent/api-exploratory-tester",
       "path": ".agents/agents/api-exploratory-tester.md",
-      "digest": "fc3485260faab0ac68ae51b87cee842e14eadba61f9e0c002f0fa281723acede"
+      "digest": "532e76b95ab12c2ef2030512706545c0dfefa0d2ea3d33139c73a5922d3115b6"
     },
     {
       "id": "agent/bugs-solver",
@@ -75,12 +75,12 @@
     {
       "id": "agent/harness-compatibility-checker",
       "path": ".agents/agents/harness-compatibility-checker.md",
-      "digest": "33dd4ee79ea693d8a70f38dfccaaf6d9c4b9e6d64274c9d8d894db54fd948780"
+      "digest": "ff30ddf319cc2f602e582cee48ff41e0083fe6400040721fe0d5f1c10be82cd5"
     },
     {
       "id": "agent/harness-compatibility-fixer",
       "path": ".agents/agents/harness-compatibility-fixer.md",
-      "digest": "e9c33e62ca3e50e4906fa3560dc866260ea38f5f7616d1f2406e7ae4f95636e9"
+      "digest": "e90f806eaecdeb55729108053d4297f6464cb35e26e5906ef2ab61bd57c15b8e"
     },
     {
       "id": "agent/pdf-to-md-checker",
@@ -115,67 +115,67 @@
     {
       "id": "agent/pr-review-architecture-checker",
       "path": ".agents/agents/pr-review-architecture-checker.md",
-      "digest": "7e52d4a24360ecb9f526d0610f06487dcd5d1c402c3bda56504ccf3113722482"
+      "digest": "cdcea23900fab55cfa0de83652434fdef368d16f5a7a10d32b788e682e173741"
     },
     {
       "id": "agent/pr-review-docs-checker",
       "path": ".agents/agents/pr-review-docs-checker.md",
-      "digest": "0cae0eb0630f7d1fe88ff5961e7b908f504c3290b85d735f6c810a672017b667"
+      "digest": "939d4a5be03dec0f3ea3db34ed8750f4c05e3c490f26fa5901116e01ad94633a"
     },
     {
       "id": "agent/pr-review-fixer",
       "path": ".agents/agents/pr-review-fixer.md",
-      "digest": "46cbe7b456dc36eb617e482910408afc6287ce0ff86bebdb1b09cfd756e6aefe"
+      "digest": "9d59f535acbc3796a252189c962f2fbb2e7cdfaf7073df4e6e3c6f4910387bef"
     },
     {
       "id": "agent/pr-review-governance-checker",
       "path": ".agents/agents/pr-review-governance-checker.md",
-      "digest": "440973086ba2eec8c14d5872c2700eecae5a678ec1884b123857459ddba26b23"
+      "digest": "596dd7b17e9508a9e0e0b91a5ad6f954f35c9483b5516509af6e143711ce6fde"
     },
     {
       "id": "agent/pr-review-instruction-checker",
       "path": ".agents/agents/pr-review-instruction-checker.md",
-      "digest": "c5a45952153ad487bed1274260949ebae92965ce2213a60825b4f3ef67db4fb3"
+      "digest": "fdd8d25ee878d8a16065fcf64020c1496f2a36915de9ec5411146938258c29bb"
     },
     {
       "id": "agent/pr-review-integrity-checker",
       "path": ".agents/agents/pr-review-integrity-checker.md",
-      "digest": "883b93b16f8660209d8a285d5c3704bba9bb6c84b91b555eb43b05a7bc31eca2"
+      "digest": "4cb2b63480789c1a8575975f7005e4e77d2632502a4952e3be3857abf0980c77"
     },
     {
       "id": "agent/pr-review-logic-checker",
       "path": ".agents/agents/pr-review-logic-checker.md",
-      "digest": "6ff7e55ed69921871ce57de57aa9060796be416673260d43e07477216640c9fb"
+      "digest": "e3fd80a736d21e8573f5314b8df9a8dd7dcd879197f74bad111b07535bb74953"
     },
     {
       "id": "agent/pr-review-performance-checker",
       "path": ".agents/agents/pr-review-performance-checker.md",
-      "digest": "04b513229956d020154cbc45ef4a40164e4f9d8033219918b069a066d638f843"
+      "digest": "895dc0f95f920688a48378c4128fa41ee2e6f53d0a0ee569073a6a37af1d4668"
     },
     {
       "id": "agent/pr-review-scout",
       "path": ".agents/agents/pr-review-scout.md",
-      "digest": "b158ab8eb8d4d122a4f6473fdbe7e9f2b907ab27611f6d5178a7cd2d49081ce0"
+      "digest": "6dd0d9232d8be4383e832703bf0861c701731b52728f6aeacd426d0f8022bf02"
     },
     {
       "id": "agent/pr-review-security-checker",
       "path": ".agents/agents/pr-review-security-checker.md",
-      "digest": "770abc3ee01b06c5a26c2b250ee583fa873faaf365beaaffe75eac5ea74a05f6"
+      "digest": "36838e4f532aad114c22ed98507535a7948c50ee420a4ad47102df13afe54bc1"
     },
     {
       "id": "agent/pr-review-synthesis-checker",
       "path": ".agents/agents/pr-review-synthesis-checker.md",
-      "digest": "b3b9eebc6ec6414389050988f2e21b92f57c6355724de333e4babffe2e8b84fb"
+      "digest": "ef9c2765a882b35467fa8fad8ea799a43de5a513f95b3a6b8742b4fb8164b210"
     },
     {
       "id": "agent/pr-review-types-checker",
       "path": ".agents/agents/pr-review-types-checker.md",
-      "digest": "a409de79f40ddf1302c8209da510625556fc5cfc6650fbbdc2d2a3c8c24426d0"
+      "digest": "f1360cabc04d69a7ea65e30d740efc4493a828933f01673333a68bfa78c3927c"
     },
     {
       "id": "agent/readme-checker",
       "path": ".agents/agents/readme-checker.md",
-      "digest": "5a4b6e2b59a4287c38bd2df44495824ea98177ba37f150c1beeb29c75ebfa3d8"
+      "digest": "166498a9efc6108408ac1f3ffd86c88530652706bab7a16e0be4557f8ae66ba3"
     },
     {
       "id": "agent/readme-fixer",
@@ -185,7 +185,7 @@
     {
       "id": "agent/readme-maker",
       "path": ".agents/agents/readme-maker.md",
-      "digest": "c27124c4c353bda03f3449452b9639fb35a374dc87797c6afcd6d365fa13333d"
+      "digest": "8dd9158d3d98d66ba1b57313c1a075d56a03d3ae76087b41a28f2d62c86c614c"
     },
     {
       "id": "agent/repo-explorer",
@@ -195,17 +195,17 @@
     {
       "id": "agent/repo-rules-checker",
       "path": ".agents/agents/repo-rules-checker.md",
-      "digest": "10bba488187d1f2f8cde0ff627bb5cefdc906545694e64414b4c2472c7211176"
+      "digest": "a0f6015f030ce4a7be51cbc2942988e56909dd2ea1139b207b3301fb556cf3c9"
     },
     {
       "id": "agent/repo-rules-fixer",
       "path": ".agents/agents/repo-rules-fixer.md",
-      "digest": "ed1f3bd116403d49bb0e43ed30db41613c827f5a129d7122b68fcb26798d5912"
+      "digest": "a429579155e7d4ee3f32e31e74ca9d17a47f1d963c29fbfd0343e1a8d57e1640"
     },
     {
       "id": "agent/repo-rules-maker",
       "path": ".agents/agents/repo-rules-maker.md",
-      "digest": "b953699ca54cc3fe7f55129b47be768d2495a5ce5c4a5bbac7e981abd0abf6b1"
+      "digest": "741df84d197de38cf6fe98a3db3650955b6896e210ef422ed02c40420980e48b"
     },
     {
       "id": "agent/repo-setup-manager",
@@ -255,17 +255,17 @@
     {
       "id": "agent/swe-code-maker",
       "path": ".agents/agents/swe-code-maker.md",
-      "digest": "47ac877ebbec4aaab9322fa73cfaf60bbb407ce46fc3540b1fb10d41497f2b30"
+      "digest": "4f4969d908fd8b17da31afb45525045da294b3564f09662b70ba78376a893691"
     },
     {
       "id": "agent/swe-ui-checker",
       "path": ".agents/agents/swe-ui-checker.md",
-      "digest": "838f52c02edfb6428ccf314d2b3b0f3c66dc5674352a1b7711918ca2fab3c532"
+      "digest": "a4ba2a63c6512c4e4bf3dcce8465751cb866c49a5a1310005b97e8055bd038fe"
     },
     {
       "id": "agent/swe-ui-fixer",
       "path": ".agents/agents/swe-ui-fixer.md",
-      "digest": "25c9fb4effdc4365cded38f7b6953dd1f6745a932edcd43d1c887c44d89017ae"
+      "digest": "b55f634bfa2192ca0b7b3c2342caed726880937f50a38641e3e97cd141d377e6"
     },
     {
       "id": "agent/swe-ui-maker",
@@ -315,7 +315,7 @@
     {
       "id": "skill/applying-maker-checker-fixer",
       "path": ".agents/skills/applying-maker-checker-fixer/SKILL.md",
-      "digest": "e1478cbde3643c0741f171b8d80ee49c065b796ba499ee96392f0d9814c31934"
+      "digest": "daa9b5f9c80bbd3e837be83efb46ea1d05ccfb637c8146712b9b6dc7e1b9e343"
     },
     {
       "id": "skill/assess-alignment",
@@ -335,7 +335,7 @@
     {
       "id": "skill/authoring-documentation",
       "path": ".agents/skills/authoring-documentation/SKILL.md",
-      "digest": "ff713cfacbccc90d82245e8ac33ce6f8457eee9936814d50bc3f083bf11ca0f3"
+      "digest": "899dc2098c96b5a49d4647cca646baa1fa2ed555dee38ca7625eb68480b379cf"
     },
     {
       "id": "skill/building-command-line-interfaces",
@@ -345,12 +345,12 @@
     {
       "id": "skill/checking-harness-compatibility",
       "path": ".agents/skills/checking-harness-compatibility/SKILL.md",
-      "digest": "c672007274064f7c92703b7b5df6e013fe0744dc5a0059d76b303083bedc8704"
+      "digest": "bed29cea9d8815fab8861f19490a5c1e71f5de0b5cf065349d5ea214217e02e9"
     },
     {
       "id": "skill/classifying-review-scope",
       "path": ".agents/skills/classifying-review-scope/SKILL.md",
-      "digest": "3c0445bf41faef0829cb89d83457c9aeee158044976bca2273196313f8489296"
+      "digest": "e16b23d4f0f03c61c5616facf6c87ecc00ed20cc82dc9b4b288c27daec3c495d"
     },
     {
       "id": "skill/converting-pdf-to-markdown",
@@ -445,7 +445,7 @@
     {
       "id": "skill/generating-validation-reports",
       "path": ".agents/skills/generating-validation-reports/SKILL.md",
-      "digest": "238da78a9d9cfbfaff0c2d49d95b6b7907c9c7fe995a4fabab412c6624b939d2"
+      "digest": "34b6df56927d07e35afd83bdccc3260903bcea1bc986e603d8a0e17966c87de3"
     },
     {
       "id": "skill/grill-me",
@@ -470,7 +470,7 @@
     {
       "id": "skill/plan-creating-project-plans",
       "path": ".agents/skills/plan-creating-project-plans/SKILL.md",
-      "digest": "a47ab2581b889cbcfbae7eb0f0958c40f4791086780d7b04b08c9fda3b3f2e7a"
+      "digest": "59ddb1aa74b1d000d3c4c8936f60be059e655f05e73aa765e9373cedababc70c"
     },
     {
       "id": "skill/plan-grooming-idea-briefs",
@@ -500,7 +500,7 @@
     {
       "id": "skill/producing-review-findings",
       "path": ".agents/skills/producing-review-findings/SKILL.md",
-      "digest": "553d88ee29d16ce04ffb949b8e6e1161c7efa0d716c8d1486b65dd2d37681ad9"
+      "digest": "cdafc44be8065d5af63459397f61f93554940ac24a6f741dbd268ccbdd05b230"
     },
     {
       "id": "skill/programming-clojure",
@@ -575,12 +575,12 @@
     {
       "id": "skill/propagating-rules",
       "path": ".agents/skills/propagating-rules/SKILL.md",
-      "digest": "7e50a2c2c89949243f36b694fb28645bbab1b57549a206561cc0e5cde5882766"
+      "digest": "324e285c6375ddd0a8f2df5c206da7ccd90d04e95c733ccfbb9272223ca0cfe7"
     },
     {
       "id": "skill/resolving-review-threads",
       "path": ".agents/skills/resolving-review-threads/SKILL.md",
-      "digest": "49c6adb91e183c1cd5934ff5cb5ba81df8a7fac4fbe17be6e9883f7348993bd1"
+      "digest": "502f9759ac995c34d3214f7291fc510b7fef75e5ba6358d3e717f69695f076e8"
     },
     {
       "id": "skill/scaffolding-specifications",
@@ -620,7 +620,7 @@
     {
       "id": "skill/validating-governance-rules",
       "path": ".agents/skills/validating-governance-rules/SKILL.md",
-      "digest": "86abdf26a7573744268ce5dee2b16cbd96da34ffc5607ec00a8b73bde5e0d513"
+      "digest": "9d638fd32c833f797df7a2a934d8043ec1ecd6a8f3f190db16a9729a940a15ec"
     },
     {
       "id": "skill/validating-links",
@@ -645,12 +645,12 @@
     {
       "id": "skill/writing-readme-files",
       "path": ".agents/skills/writing-readme-files/SKILL.md",
-      "digest": "68d966dc201ded0ced92c079165c585031163665c6575d5282861ea7a169db52"
+      "digest": "b6527fd44fab9b3682edfb7de2718f742f8f31cda77b8f1ae9b206e1c6784484"
     },
     {
       "id": "instruction",
       "path": "AGENTS.md",
-      "digest": "dbaf3350574ccc28ac133e2724aad8f4e1b3d9c7b5776531a6ecf6d3d201b188"
+      "digest": "5f0800d3ae607a6e92043497e2581b171c3569d3b2a98ca028c98de34995ccf3"
     }
   ]
 }

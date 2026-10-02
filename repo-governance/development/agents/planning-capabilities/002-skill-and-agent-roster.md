@@ -28,7 +28,7 @@ when_to_use: >-
 | `plan-fixer`             | executing `plan-propagation`: repairing only the rows of a frozen ledger |
 | `plan-execution-checker` | auditing finished execution before archival                              |
 
-The maker authors and the fixer repairs. When the [Quality Gate](../../../workflows/plan/plan-quality-gate.md) hands
+The maker authors and the fixer repairs. When the [Quality Gate](../../../workflows/quality/plan-quality-gate.md) hands
 over blocking findings, `plan-fixer` runs `plan-propagation` under
 [Sole-Writer Propagation](../../workflow/sole-writer-propagation.md): it re-validates each row, repairs only what the
 row requires, and never starts another audit. Keeping the writer apart from the maker and the checker keeps each audit

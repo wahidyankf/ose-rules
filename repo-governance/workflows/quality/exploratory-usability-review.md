@@ -69,7 +69,7 @@ state, category, and result, never a private value.
 
 One pass over the declared tasks. Findings may be repaired within the quality gate's budget and the pass re-run once
 against the **same** tasks. That budget belongs to the gate the adopter runs on the surface, such as
-[Live Surface Quality Gate](live-surface-quality-gate.md).
+[UI Web Quality Gate](ui-web-quality-gate.md) or [API HTTP Quality Gate](api-http-quality-gate.md).
 
 Not re-run against new tasks until it comes back clean — that converges on a clean report rather than on a usable
 interface, and the two are easy to confuse from the outside.

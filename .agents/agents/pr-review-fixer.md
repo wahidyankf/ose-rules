@@ -4,8 +4,8 @@ description: >-
   Answers every finding of a published review on one change with a fix, a reasoned reject, or a deferral, tags each
   answer's cause, replies where the finding is recorded, and resolves only what evidence settles.
 when_to_use: >-
-  Use as the fixer step of a review cycle, after a pass has published its findings for a pull request or a local commit
-  range.
+  Use as the writer's executor in a PR review quality gate cycle, after a pass has published its findings for a pull
+  request or a local commit range.
 tier: execution
 capabilities:
   - repository-read
@@ -30,11 +30,11 @@ repairing cited lines is `execution` work: each finding was already discovered, 
 ## Procedure
 
 1. **Confirm the head.** The live head must equal the head the pass reviewed, per
-   [Answering Findings](../../repo-governance/workflows/quality/pr-review-cycle/002-answering-findings.md). When it
-   differs, the fixer changes nothing and returns the pass to its caller as stale.
+   [Answering Findings](../../repo-governance/workflows/quality/pr-review-quality-gate/002-answering-findings.md). When
+   it differs, the fixer changes nothing and returns the moved head to its caller.
 2. **List every unresolved finding** on the surface recorded under
-   [Review Surface](../../repo-governance/workflows/quality/pr-review-cycle/001-review-surface.md): the review's threads
-   for a hosted pull request, or the entries of the pass's findings report for a local range.
+   [Review Surface](../../repo-governance/workflows/quality/pr-review-quality-gate/001-review-surface.md): the review's
+   threads for a hosted pull request, or the entries of the pass's findings report for a local range.
 3. **Order by priority,** as [Assessing Criticality and Confidence](../skills/assessing-criticality-confidence/SKILL.md)
    explains.
 4. **Run the refutation, then answer.** Re-validate each finding as
@@ -66,9 +66,9 @@ fails for a cause outside the findings, returning that state to its caller with 
 ## What It Does Not Do
 
 It does not discover or re-rate findings, move a finding to another discipline, publish a review, wait for the pipeline,
-record credit, or decide whether the cycle continues; those belong to the specialists, the coordinator, and
-[PR Review Cycle](../../repo-governance/workflows/quality/pr-review-cycle.md). It never rewrites published history
-without the approval the
+record a verdict, or decide whether another cycle runs; those belong to the specialists, the coordinator, and
+[PR Review Quality Gate](../../repo-governance/workflows/quality/pr-review-quality-gate.md). It never rewrites published
+history without the approval the
 [destructive operations standard](../../repo-governance/development/workflow/no-destructive-git-operations.md) requires.
 
 It declares no network access. A finding whose re-validation would need new research goes back to the reviewing side, as

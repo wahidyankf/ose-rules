@@ -2,7 +2,7 @@
 name: rules-propagation
 description: >-
   Writes a rule being added, changed, moved, or removed as one bounded transaction: a falsifiable statement, a conflict
-  scan, one canonical home, an enforcement disposition, and verification.
+  scan, one canonical home, an enforcement disposition, and verification; the sole writer for the rules family.
 when_to_use: >-
   Use automatically before any rule is added, changed, moved, or removed, or when rules grooming or a rules quality gate
   hands over findings.
@@ -10,18 +10,42 @@ when_to_use: >-
 
 # Rules Propagation
 
-## Entry
+## Contract
+
+This is the `rules` family's sole writer, under
+[Sole-Writer Propagation](../../development/workflow/sole-writer-propagation.md).
+
+## Scope
+
+Every rule-bearing location that [Rule Definition](../../conventions/writing/rule-definition.md) names, plus the derived
+surfaces regenerated from them. A handed-over ledger narrows the scope to what its rows require.
+
+## Executor
+
+`rules-fixer`, loading the `propagating-rules` skill.
+
+## Row Verification
+
+A row closes when its rule sits in one canonical home, its conflicts are resolved by level, it carries one enforcement
+disposition, and the deterministic gates over the changed surfaces exit 0, per
+[Enforcement and Verification](rules-propagation/003-enforcement-and-verification.md). Each ledger row ends `resolved`,
+`not-resolved`, `not-applicable`, or `needs-decision`, with evidence.
+
+## Family Rules
+
+### Entry
 
 A rule, as [Rule Definition](../../conventions/writing/rule-definition.md) defines one, is about to be added, changed,
-moved, or removed, or [Rules Grooming](rules-grooming.md) or the [Rules Quality Gate](rules-quality-gate.md) hands over
-findings. Entry is automatic: an agent or person who proposes or detects the change starts here as part of the work in
-hand, without a separate request. Edits made inside one run start no second one.
+moved, or removed, or [Rules Grooming](../maintenance/rules-grooming.md) or the
+[Rules Quality Gate](rules-quality-gate.md) hands over findings. Entry is automatic: an agent or person who proposes or
+detects the change starts here as part of the work in hand, without a separate request. Edits made inside one run start
+no second one.
 
 - `rules` (`string`, required): each rule as stated, with its reason.
-- `findings` (`file`, optional): a handed-over finding ledger.
+- `findings` (`file`, optional): a handed-over, frozen ledger.
 - `dry-run` (`boolean`, optional, default `false`): record placements without writing.
 
-## Sequence
+### Sequence
 
 1. **Freeze the inputs:** each rule with its reason, strength, scope, and enforcement, plus the revision and uncommitted
    paths, kept through compaction. A material change ends the run blocked.
@@ -45,21 +69,21 @@ hand, without a separate request. Edits made inside one run start no second one.
 8. **Verify** by exit codes rather than output, returning a failure to the step that owns it, and repair findings the
    run caused only while their count strictly decreases, per
    [Bounded Convergence](../../development/workflow/bounded-convergence.md).
-9. **Deliver, and record obligations beyond this repository.** Commit only with explicit authority, through the
-   repository's own route, stating each rule's home, disposition, and relocations. A rule portable across a declared
-   parity boundary records its sibling obligation per
+9. **Hand delivery to the caller, and record obligations beyond this repository.** The run never commits; the work in
+   hand delivers through the repository's own route, stating each rule's home, disposition, and relocations. A rule
+   portable across a declared parity boundary records its sibling obligation per
    [Related Repositories](../../conventions/structure/related-repositories.md), or records none with why. A repository
    adopting from a shared catalog proposes a rule that holds beyond itself to that catalog, through the catalog's own
    delivery, published only after the catalog's outbound-safety screen passes.
 
-## Exit
+### Exit
 
 Every rule ends with no change, landed, recorded under `dry-run`, or halted, and nothing is written but unaccounted for.
 
 Outputs: a placement record (`file`, in the scratch location per
 [Temporary Files](../../conventions/structure/temporary-files.md)) and `status` (`enum`: `no-change`, `landed`,
 `recorded`, `partial`, `halted`, `blocked`). Partial outcome: some rules landed while others halted, each named with its
-blocker. A pass alone authorizes no commit or push, and a rerun on unchanged inputs changes nothing.
+blocker. A rerun on unchanged inputs changes nothing.
 
 ## Example Usage
 
@@ -69,7 +93,7 @@ Run rules-propagation with rules "Every script that deletes files offers a dry r
 
 ## Related Workflows
 
-- [Rules Grooming](rules-grooming.md) hands over reductions.
+- [Rules Grooming](../maintenance/rules-grooming.md) hands over reductions.
 - [Rules Quality Gate](rules-quality-gate.md) hands over findings.
 
 ## Modules
@@ -77,19 +101,3 @@ Run rules-propagation with rules "Every script that deletes files offers a dry r
 1. [Statement and Conflict](rules-propagation/001-statement-and-conflict.md)
 2. [Placement](rules-propagation/002-placement.md)
 3. [Enforcement and Verification](rules-propagation/003-enforcement-and-verification.md)
-
-## Adopter Decision: How Entry Becomes Automatic
-
-- **Root instruction file:** a route before any rule edit; it needs no tooling but relies on being read.
-- **Commit-time notice:** names this workflow whenever a staged path carries rules, reaching every editor; it reports
-  without blocking, since a hook cannot judge semantic decisions.
-- **Editor pre-edit trigger:** the same notice earlier, in one harness; a convenience that can be switched off.
-
-Record the routes taken and the delivery route. Every trigger reads one recorded list of rule-bearing paths.
-
-## One Writer
-
-Grooming and the quality gate find; only propagation writes, so placement, conflict, and enforcement are decided in one
-place. This workflow implements [One Source Per Fact](../../principles/one-source-per-fact.md),
-[Minimal Sufficiency](../../principles/minimal-sufficiency.md), and
-[Governance Continuity](../../principles/governance-continuity.md).

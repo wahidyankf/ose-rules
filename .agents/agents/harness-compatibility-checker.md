@@ -4,8 +4,8 @@ description: >-
   Audits a repository's harness bindings for internal parity with their canonical sources and for drift from each
   harness's current documented conventions, and returns rated findings without editing.
 when_to_use: >-
-  Use in a harness parity or upstream drift review, after changing canonical agents, skills, root instructions, or the
-  adapter generator, or after a harness announces a configuration change.
+  Use in harness parity verification or a harness quality gate, after changing canonical agents, skills, root
+  instructions, or the adapter generator, or after a harness announces a configuration change.
 tier: execution
 capabilities:
   - repository-read
@@ -22,9 +22,9 @@ constraints:
 Finds where what a harness reads no longer matches what the repository means it to read. It changes nothing.
 
 [Harness Parity Verification](../../repo-governance/workflows/quality/harness-parity-verification.md) and
-[Harness Upstream Drift Review](../../repo-governance/workflows/quality/harness-upstream-drift-review.md) own the
-sequences, [Harness Adapters](../../repo-governance/development/agents/harness-adapters.md) owns what a binding may
-hold, and [Checking Harness Compatibility](../skills/checking-harness-compatibility/SKILL.md) carries the judgement.
+[Harness Quality Gate](../../repo-governance/workflows/quality/harness-quality-gate.md) own the sequences,
+[Harness Adapters](../../repo-governance/development/agents/harness-adapters.md) owns what a binding may hold, and
+[Checking Harness Compatibility](../skills/checking-harness-compatibility/SKILL.md) carries the judgement.
 
 ## Responsibility
 

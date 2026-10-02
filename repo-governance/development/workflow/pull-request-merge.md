@@ -30,8 +30,10 @@ Every one holds at the moment of merge:
    by hand.
 3. **Closed conversations.** Every review conversation is resolved or dismissed by the user. Review itself may be
    optional; the conversations a review opens still bind.
-4. **Surface gates.** Each gate the changed reachable behaviour requires, whether a running interface, an endpoint, or
-   another boundary, has a passing terminal result. Where no reachable behaviour changed, the merge record says so.
+4. **Surface gates.** Each deterministic check the changed reachable behaviour requires, whether a running interface, an
+   endpoint, or another boundary, has a passing terminal result. A surface quality gate is advisory, per the
+   [Quality Gate Contract](quality-gate-contract.md): its verdict is recorded for the exact head, and each open blocking
+   row of a `FAIL` or `BLOCKED` verdict has an owner. Where no reachable behaviour changed, the merge record says so.
 5. **Outbound safety.** The exact head passed an outbound leak screen, which in a public repository is
    [Public Outbound Safety](../../conventions/security/public-outbound-safety.md). A suspected secret halts merge
    handling and follows [No Secrets in Tracked Files](../../conventions/security/no-secrets-in-tracked-files.md); no

@@ -38,14 +38,14 @@ relocation per [Document Word Budget](../../conventions/structure/document-word-
    approved as a batch, scaffolding against its listed sentences; each retirement is approved alone, with its evidence;
    an entry-point document needs approval naming it. Silence is not approval. Record each rejection and deferral with
    its reason, and keep deferrals for the next run.
-5. **Hand each approved group to [Rules Propagation](rules-propagation.md) once,** in ranked order, with its surfaces,
-   home, and evidence. A propagation blocker is recorded against its item and the run continues. An item is never
-   restated more loosely to get it accepted.
+5. **Hand each approved group to [Rules Propagation](../quality/rules-propagation.md) once,** in ranked order, with its
+   surfaces, home, and evidence. A propagation blocker is recorded against its item and the run continues. An item is
+   never restated more loosely to get it accepted.
 6. **Prove preservation.** Inventory again and compare, leaving index entries and routing clauses out of both sides. The
    run passes only when every missing obligation was an approved retirement, none changed its audience, condition,
    qualifier, or exception, and each survivor stays reachable from a surface that binds its audience.
-7. **Request an effective verdict** from the [Rules Quality Gate](rules-quality-gate.md) where the adopter chose one,
-   then log the run, with its size change and each item's disposition.
+7. **Request an effective verdict** from the [Rules Quality Gate](../quality/rules-quality-gate.md) where the adopter
+   chose one, then log the run, with its size change and each item's disposition.
 
 ## Exit
 
@@ -65,8 +65,8 @@ Run rules-grooming with scope "repo-governance/development/" and dry-run true.
 
 ## Related Workflows
 
-- [Rules Propagation](rules-propagation.md) writes every approved reduction.
-- [Rules Quality Gate](rules-quality-gate.md) can judge the state a run leaves.
+- [Rules Propagation](../quality/rules-propagation.md) writes every approved reduction.
+- [Rules Quality Gate](../quality/rules-quality-gate.md) can judge the state a run leaves.
 
 ## Never a Reduction
 

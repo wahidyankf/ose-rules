@@ -1,8 +1,8 @@
 ---
 name: 003-enforcement-and-verification
 description: >-
-  Gives every propagated rule one enforcement disposition proven in both directions, and verifies a propagation run
-  before delivery, routing each failure back to the step that owns it.
+  Gives every propagated rule one enforcement disposition proven in both directions, verifies a propagation run before
+  delivery, routing each failure back to the step that owns it, and records how entry becomes automatic.
 when_to_use: >-
   Use during Rules Propagation when deciding how a rule is enforced, or when verifying a run before it is delivered.
 ---
@@ -48,3 +48,12 @@ silence:
 - raising a ceiling, or adding an exemption, so a placement fits;
 - dropping or loosening any obligation, audience, scope, exception, or condition to satisfy a word count;
 - calling a finding pre-existing, or this run's, without evidence of when it began.
+
+## Adopter Decision: How Entry Becomes Automatic
+
+- **Root instruction file:** a route before any rule edit; it needs no tooling but relies on being read.
+- **Commit-time notice:** names this workflow whenever a staged path carries rules, reaching every editor; it reports
+  without blocking, since a hook cannot judge semantic decisions.
+- **Editor pre-edit trigger:** the same notice earlier, in one harness; a convenience that can be switched off.
+
+Record the routes taken and the delivery route. Every trigger reads one recorded list of rule-bearing paths.

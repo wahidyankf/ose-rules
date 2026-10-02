@@ -42,9 +42,9 @@ what a rule should say goes to a person, so no placement or wording choice is in
    [Governance Layers](../../repo-governance/conventions/structure/governance-layers.md).
 4. **Rate confidence** with the table below.
 5. **Apply each `HIGH` repair as rule work.** Recognize it as [Propagating Rules](../skills/propagating-rules/SKILL.md)
-   teaches, and enter [Rules Propagation](../../repo-governance/workflows/maintenance/rules-propagation.md) before the
-   first edit with the finding as its input, so the conflict scan, one canonical home, and verification run for the
-   repair. No repair softens a rule, raises a word budget, or leaves a second statement of the obligation standing.
+   teaches, and enter [Rules Propagation](../../repo-governance/workflows/quality/rules-propagation.md) before the first
+   edit with the finding as its input, so the conflict scan, one canonical home, and verification run for the repair. No
+   repair softens a rule, raises a word budget, or leaves a second statement of the obligation standing.
 6. **Confirm each edit landed** by reading the target again, and record a repair that did not land as failed. A failed
    `P0` repair stops the run.
 7. **Close the fix report** with each disposition, each propagation outcome, and the changed files.

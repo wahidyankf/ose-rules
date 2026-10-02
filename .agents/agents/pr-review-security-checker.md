@@ -74,8 +74,8 @@ adversarial verification when it falls in high-risk scope, until a reproduction 
    coordinator.
 
 The surface is the adopter's choice under
-[Review Surface](../../repo-governance/workflows/quality/pr-review-cycle/001-review-surface.md); the charter does not
-change with it.
+[Review Surface](../../repo-governance/workflows/quality/pr-review-quality-gate/001-review-surface.md); the charter does
+not change with it.
 
 ## Shell
 

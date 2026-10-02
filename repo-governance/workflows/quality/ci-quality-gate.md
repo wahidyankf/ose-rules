@@ -1,8 +1,8 @@
 ---
 name: ci-quality-gate
 description: >-
-  Validates every project's pipeline definitions and gate wiring against the adopted pipeline standards, and repairs
-  non-compliance in bounded check-fix cycles until two consecutive validations find nothing at the chosen threshold.
+  Judges a repository's pipeline definitions and local hook wiring against the adopted pipeline standards in at most
+  three bounded cycles, and returns one advisory verdict.
 when_to_use: >-
   Use after adding a project or changing pipeline infrastructure, before a major release, or as a periodic compliance
   check of a repository's hooks and hosted pipeline.
@@ -10,66 +10,87 @@ when_to_use: >-
 
 # CI Quality Gate
 
+This gate follows the [Quality Gate Contract](../../development/workflow/quality-gate-contract.md): a read-only checker,
+a frozen ledger, one separate writer, at most three cycles, and an advisory verdict. This file states only what is
+specific to pipelines.
+
 ## Entry
 
-The repository has pipeline definitions or local gate hooks to validate, and a checker and a fixer that know the adopted
-pipeline standards: [Automated Quality Gates](../../development/quality/checks/automated-quality-gates.md),
-[CI Post-Push Verification](../../development/workflow/ci-post-push-verification.md),
-[CI Storage Budget](../../development/quality/delivery/ci-storage-budget.md), and
-[CI Workflow File Naming](../../conventions/structure/ci-workflow-file-naming.md) where its platform applies.
+The gate starts only on an explicit request that names it. No workflow calls it.
 
-- `scope` (`string`, optional, default `all`): every project, or one named project.
-- `mode` (optional `enum`, default `strict`): the lowest criticality counted. `lax` counts only `CRITICAL`, `normal`
-  adds `HIGH`, `strict` adds `MEDIUM`, and `all` counts every level, per
-  [Criticality Levels](../../development/quality/evidence/finding-criticality-and-confidence/001-criticality-levels.md).
-- `max-iterations` (`number`, optional, default `7`): the ceiling on check-fix cycles.
+## Inputs
 
-## Sequence
+| Input        | Type    | Values                               | Default  |
+| ------------ | ------- | ------------------------------------ | -------- |
+| `subject`    | string  | `all` projects, or one named project | required |
+| `mode`       | enum    | `lax`, `normal`, `strict`, `all`     | `normal` |
+| `max-cycles` | integer | 1, 2, or 3                           | 3        |
 
-1. **Separate delegated checks.** List the exact predicates a hook or the hosted pipeline already owns, with their
-   evidence for the current revision. The checker and fixer audit how those checks are declared and wired, never rerun
-   or imitate them. When that evidence is missing or stale, the check stays `pending`, and this gate does not run it
-   locally to fill the gap.
-2. **Validate.** The checker audits `scope` against the adopted standards and writes a report of findings, each rated
-   for criticality. A checker that cannot finish ends the run `fail`.
-3. **Count at the threshold.** Count the findings `mode` admits. Zero counts as one clean validation and goes to step 5;
-   a nonzero count resets the clean count to zero and goes to step 4.
-4. **Fix.** The fixer repairs findings from the latest report, re-confirming each before editing. Evidence for a
-   delegated check whose scope intersects an edited file becomes `pending`. A fixer that errors on one finding logs it
-   and continues; a fixer that cannot start ends the run `fail`.
-5. **Re-validate.** Run the checker again and count at the threshold. Two consecutive clean validations end the run
-   `pass`. A single clean one repeats this step without fixing. A nonzero count returns to step 4 while cycles remain,
-   and ends the run `partial` at `max-iterations`.
+The subject is the hosted pipeline definitions and the local hook wiring that run the repository's gates. A repository
+without a remote has only its hooks, and they are the whole subject. Any other `max-cycles` value, or a missing subject,
+refuses to start.
 
-A count that has not fallen by the fifth cycle is recorded as a convergence warning and reported, because it usually
-means a non-deterministic check or a scope that grows while it is being fixed.
+## Deterministic Boundary
 
-## Exit
+The checker reports none of these properties. The entry and exit checks run their owners instead.
 
-`final-status` (`enum`: `pass`, `partial`, `fail`) records two consecutive clean validations, findings remaining at the
-ceiling, or a checker or fixer that could not run. The run also leaves `iterations-completed` (`number`), the final
-report (`file`), and `lifecycle-status` (`enum`: `verified`, `pending`, `not-applicable`) for the delegated checks, kept
-separate from `final-status` so a pending pipeline result never reads as a pass.
+| Property                                    | Owned by                        | This catalog runs                  |
+| ------------------------------------------- | ------------------------------- | ---------------------------------- |
+| What each declared check proves             | that check, run by hook or host | every `repo-config.yml` gate entry |
+| A hook runs the declared registry, in order | the gate runner                 | `rhino gate run --surface <hook>`  |
+| Markdown formatting                         | the formatter and linter        | `prettier`, `markdownlint-cli2`    |
+
+The checker audits how checks are declared and wired, and never reruns or imitates them. Evidence that a delegated check
+passed on the current revision is consumed as it stands; missing or stale evidence stays `pending` and is not a finding.
+An adopting repository replaces the last column with the tools its declared gate runs.
+
+## Cycle
+
+Each cycle is one full audit by `ci-checker`, loading the `applying-ci-standards` skill, and one repair by
+`ci-propagation`, run by `ci-fixer`, per
+[Sequence and Termination](../../development/workflow/quality-gate-contract/002-sequence-and-termination.md). The audit
+judges the subject against the adopted standards:
+
+- [Automated Quality Gates](../../development/quality/checks/automated-quality-gates.md): each check sits on the
+  earliest surface able to see its problem;
+- [CI Post-Push Verification](../../development/workflow/ci-post-push-verification.md): work stays open until the
+  pipeline passes on the pushed commit, or the local replacement gate does where there is no remote;
+- [CI Storage Budget](../../development/quality/delivery/ci-storage-budget.md): retention, caches, and stored output
+  stay within a recorded budget; and
+- [CI Workflow File Naming](../../conventions/structure/ci-workflow-file-naming.md), where its platform applies.
+
+A repair that touches a delegated check's scope marks that check's evidence `pending` until it runs again.
+
+## Termination
+
+The contract's
+[termination table](../../development/workflow/quality-gate-contract/002-sequence-and-termination.md#termination)
+applies unchanged. This gate adds no row.
+
+## Verdict
+
+| Verdict              | The caller                                                                          |
+| -------------------- | ----------------------------------------------------------------------------------- |
+| `PASS`               | records the verdict and continues                                                   |
+| `PASS_WITH_FINDINGS` | records the verdict and the open non-blocking rows, and continues                   |
+| `FAIL`               | gives each open blocking row an owner (idea brief, plan item, or issue), continues  |
+| `BLOCKED`            | records the cause (tooling, input-changed, or unavailable), then acts as for `FAIL` |
+
+No verdict stops the caller, and a pending delegated check never reads as a pass.
+
+## Ledger
+
+`local-tmp/quality/ci/<subject-slug>__<YYYYMMDDTHHMMZ>.md`, with the columns and closing verdict block in
+[the contract](../../development/workflow/quality-gate-contract/003-verdicts-ledger-and-relations.md#ledger). The ledger
+also records each delegated check as `verified`, `pending`, or `not-applicable`. It is never committed.
 
 ## Example Usage
 
 ```text
-Run ci-quality-gate with scope all and mode strict after adding the billing service.
+Run ci-quality-gate on subject all with mode strict after adding the billing service.
 ```
 
 ## Related Workflows
 
-- [PR Review](pr-review.md) reads a whole change; this gate checks pipeline conformance only.
-- [Plan Quality Gate](../plan/plan-quality-gate.md) is the bounded gate for plans rather than pipelines.
-
-## Why Two Clean Validations
-
-One clean validation after a fix can reflect a checker that skipped what the fix touched. A second run over the same
-scope, with nothing fixed in between, shows the result is stable. The iteration ceiling and the recorded progress
-measure keep the loop bounded, per [Bounded Convergence](../../development/workflow/bounded-convergence.md), and each
-run returns one result per
-[Quality Gate Results](../../development/quality/manual-verification/001-quality-gate-results.md).
-
-This workflow implements [Automation Over Manual](../../principles/automation-over-manual.md),
-[Explicit Over Implicit](../../principles/explicit-over-implicit.md), and
-[Simplicity Over Complexity](../../principles/simplicity-over-complexity.md).
+- [PR Review Quality Gate](pr-review-quality-gate.md) judges a whole change; this gate judges pipeline wiring only.
+- [Plan Quality Gate](plan-quality-gate.md) is the gate for plans rather than pipelines.

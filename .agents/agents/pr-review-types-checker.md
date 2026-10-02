@@ -94,8 +94,8 @@ the common cases below:
    [PR Review Synthesis Checker](pr-review-synthesis-checker.md).
 
 The surface is the adopter's choice under
-[Review Surface](../../repo-governance/workflows/quality/pr-review-cycle/001-review-surface.md); the charter does not
-change with it.
+[Review Surface](../../repo-governance/workflows/quality/pr-review-quality-gate/001-review-surface.md); the charter does
+not change with it.
 
 ## Shell
 

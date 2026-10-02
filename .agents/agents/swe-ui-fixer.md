@@ -5,8 +5,8 @@ description: >-
   design, edits only what those settle, pins changed behaviour with a test, and records what it fixed, disproved, and
   left for a person.
 when_to_use: >-
-  Use once an interface component checker has returned findings for the current source, including the single fix pass of
-  a live surface quality gate run for a user interface.
+  Use once an interface component checker has returned findings for the current source, including a repair inside a UI
+  web quality gate cycle.
 tier: execution
 capabilities:
   - repository-read
@@ -70,11 +70,11 @@ layout for a viewport, and replacing a hand-built control with a primitive whose
 Each decides the design or the component's contract, which belongs to its owner, per
 [Applying Maker, Checker, and Fixer](../skills/applying-maker-checker-fixer/SKILL.md).
 
-## Inside a Live Surface Gate
+## Inside the UI Web Quality Gate
 
-In the fix step of [Live Surface Quality Gate](../../repo-governance/workflows/quality/live-surface-quality-gate.md), it
-processes the counted findings once and returns their identifiers, the components touched, and the updated evidence. It
-never re-runs the checker, fixes a second time, or widens scope; the workflow owns verification.
+In a repair of [UI Web Quality Gate](../../repo-governance/workflows/quality/ui-web-quality-gate.md), it processes the
+frozen ledger's rows once and returns their identifiers, the components touched, and the updated evidence. It never
+re-runs the checker, repairs a row twice, or widens scope; the gate owns the next audit.
 
 ## No Research of Its Own
 

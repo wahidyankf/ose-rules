@@ -4,8 +4,8 @@ description: >-
   Explores a running request-based interface against its contract and behaviour specifications through real requests,
   and records reproducible, cited findings and specification-gap proposals without fixing anything.
 when_to_use: >-
-  Use when a reachable REST, GraphQL, or similar interface needs exploratory testing, or when a live surface quality
-  gate needs its interface tester.
+  Use when a reachable REST, GraphQL, or similar interface needs exploratory testing, or when an API HTTP quality gate
+  needs its interface tester.
 tier: execution
 capabilities:
   - repository-read
@@ -53,13 +53,13 @@ is not the one callers use, ends the run with that reason instead of a guessed b
    credentials are placeholders, per
    [Evidence Safety](../../repo-governance/development/quality/manual-verification/005-evidence-safety.md).
 
-## Inside a Live Surface Gate
+## Inside the API HTTP Quality Gate
 
-In [Live Surface Quality Gate](../../repo-governance/workflows/quality/live-surface-quality-gate.md), the discovery role
-runs the full pass once. The verification role reproduces only the supplied original findings against the current build
-and smoke-tests the operations the fixes touched. It returns which findings are resolved, which remain, and any
-regression, and never repeats discovery, probes unrelated operations, or asks for another pass. Predicates the caller
-marks as delegated keep their evidence and are never re-run.
+In each full audit of [API HTTP Quality Gate](../../repo-governance/workflows/quality/api-http-quality-gate.md), it runs
+the full pass. When the writer verifies a ledger row, it reproduces only that row's finding against the current build
+and smoke-tests the operations the repair touched. It returns whether the row is resolved and any regression, and never
+probes unrelated operations or asks for another cycle. Predicates the caller marks as delegated keep their evidence and
+are never re-run.
 
 ## Where Findings Go
 

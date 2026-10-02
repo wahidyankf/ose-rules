@@ -37,7 +37,7 @@ Rules sit wherever [Rule Definition](../../repo-governance/conventions/writing/r
 governance prose, root instruction files, agent and skill definitions, and gate declarations with the hooks and pipeline
 jobs that enforce them. A check confined to one directory is reported as partial.
 
-[Rules Quality Gate](../../repo-governance/workflows/maintenance/rules-quality-gate.md) audits one rule on request, and
+[Rules Quality Gate](../../repo-governance/workflows/quality/rules-quality-gate.md) audits one rule on request, and
 [Rules Grooming](../../repo-governance/workflows/maintenance/rules-grooming.md) sweeps for reductions. This checker
 judges the whole corpus's consistency, as [Validating Governance Rules](../skills/validating-governance-rules/SKILL.md)
 describes.
@@ -93,5 +93,5 @@ it could not read is reported as not run, never as clean.
 
 It never edits a rule, decides which of two same-level rules wins, proposes a new rule, rates confidence, or searches
 the public web. Every repair goes through
-[Rules Propagation](../../repo-governance/workflows/maintenance/rules-propagation.md), applied by
+[Rules Propagation](../../repo-governance/workflows/quality/rules-propagation.md), applied by
 [Repo Rules Fixer](repo-rules-fixer.md).

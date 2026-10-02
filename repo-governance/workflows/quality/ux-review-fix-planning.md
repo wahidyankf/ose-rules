@@ -50,8 +50,8 @@ The working tree is clean, and the user-facing surface is running and reachable.
    and [Bounded Convergence](../../development/workflow/bounded-convergence.md); record any gap still open with its
    reason.
 9. **Author the plan.** Run [Planning](../plan/plan-planning.md) for `plans/backlog/<plan-identifier>/` or
-   `merge-target`, briefed with the report and module 002's content. Its [Quality Gate](../plan/plan-quality-gate.md)
-   verdict is never re-run; residual findings go to the person before hand-back.
+   `merge-target`, briefed with the report and module 002's content. Its [Quality Gate](plan-quality-gate.md) verdict is
+   never re-run; residual findings go to the person before hand-back.
 10. **Hand back.** Record only the plan's paths through the repository's delivery mode, and report `plan-path`, counts
     per pass, and `final-status`. The plan is a snapshot of the surface as tested; a material change before execution
     calls for a fresh run under `merge`.
@@ -75,7 +75,7 @@ Run ux-review-fix-planning with origin <preview-address>, routes "/pricing, /che
 ## Related Workflows
 
 - [Exploratory and Usability Review](exploratory-usability-review.md) runs the first two passes.
-- [Planning](../plan/plan-planning.md) and its [Quality Gate](../plan/plan-quality-gate.md) author and gate the plan.
+- [Planning](../plan/plan-planning.md) and its [Quality Gate](plan-quality-gate.md) author and gate the plan.
 - [Execution](../plan/plan-execution.md) applies the fixes after review.
 
 ## Modules
