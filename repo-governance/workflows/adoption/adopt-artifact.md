@@ -39,12 +39,15 @@ the option and its trade-off, and must stop there.
 
    ```text
    OSE-Rules-Source: <artifact-path>
-   OSE-Rules-Source: <second-artifact-path>
+   OSE-Rules-Source: <copied-directory>/
+   OSE-Rules-Source:
+    <long-artifact-path>
    OSE-Rules-Commit: <full-commit-sha>
    ```
 
-   `OSE-Rules-Source` repeats once per artifact. `OSE-Rules-Commit` appears exactly once. No catalog version trailer is
-   recorded.
+   `OSE-Rules-Source` repeats once per artifact, or once per directory the commit copies from. A value too long for the
+   adopting repository's commit-line limit continues on the next line, indented by one space, as Git trailer folding
+   allows. `OSE-Rules-Commit` appears exactly once, with the full SHA unfolded. No catalog version trailer is recorded.
 
 ## Exit
 

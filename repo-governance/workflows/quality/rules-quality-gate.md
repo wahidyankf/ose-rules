@@ -15,9 +15,9 @@ specific to rules.
 
 ## Entry
 
-The gate starts only on an explicit request that names it, or from [Rules Grooming](../maintenance/rules-grooming.md),
-where the adopter chose that call, on the state a grooming run produced. A rule change, a review request, or a
-propagation run never starts it alone.
+The gate starts only on an explicit request that names it, or from [Rules Grooming](../maintenance/rules-grooming.md) on
+the state a grooming run produced. An adopting repository lists only the callers it has, chosen from this set. A rule
+change, review request, or propagation run never starts it alone.
 
 ## Inputs
 

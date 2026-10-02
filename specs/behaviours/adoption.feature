@@ -75,11 +75,20 @@ Feature: Alignment assessment and artifact adoption
     And it reports why resolution failed
 
   Scenario: Provenance is recorded in the adopting commit
-    Given adopt-artifact has applied three named artifacts from a resolved full commit SHA
+    Given adopt-artifact has applied three named artifacts from three directories at a resolved full commit SHA
     When the adopting commit is created
     Then it carries three OSE-Rules-Source trailers
     And exactly one OSE-Rules-Commit trailer holding a full commit SHA
     And it carries no OSE-Rules-Version trailer
+
+  Scenario: Provenance fits a commit-line limit
+    Given adopt-artifact has applied several artifacts from one catalog directory
+    And the adopting repository limits commit body lines to a length shorter than one artifact path
+    When the adopting commit is created
+    Then one OSE-Rules-Source trailer names that directory
+    And a trailer value too long for the limit continues on an indented next line
+    And Git's trailer parsing reads each value whole
+    And the OSE-Rules-Commit trailer still holds the full commit SHA
 
   Scenario: A stronger local requirement survives adoption
     Given the target repository's local rule is stricter than the artifact being adopted

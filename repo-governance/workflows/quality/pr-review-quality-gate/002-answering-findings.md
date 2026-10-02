@@ -16,11 +16,18 @@ The writer re-validates each blocking row against the current head, per
 [Confidence and Re-Validation](../../../development/quality/evidence/finding-criticality-and-confidence/002-confidence-and-revalidation.md),
 and gives it exactly one answer:
 
-| Answer          | Admissible when                                                          | Leaves                                    | Status           |
-| --------------- | ------------------------------------------------------------------------ | ----------------------------------------- | ---------------- |
-| fix             | the finding holds and its remedy serves the change's stated problem      | a commit on the head, cited in the answer | `resolved`       |
-| reasoned reject | re-validation disproves the finding, or its rule does not apply here     | the evidence and the deciding boundary    | `not-applicable` |
-| deferral        | the finding holds, but its remedy is work the change never set out to do | a filed follow-up, linked from the answer | `not-resolved`   |
+- **fix**
+  - Admissible when: the finding holds and its remedy serves the change's stated problem
+  - Leaves: a commit on the head, cited in the answer
+  - Status: `resolved`
+- **reasoned reject**
+  - Admissible when: re-validation disproves the finding, or its rule does not apply here
+  - Leaves: the evidence and the deciding boundary
+  - Status: `not-applicable`
+- **deferral**
+  - Admissible when: the finding holds, but its remedy is work the change never set out to do
+  - Leaves: a filed follow-up, linked from the answer
+  - Status: `not-resolved`
 
 A deferral without a filed, linked follow-up is not an answer, and its row stays `open`. A deferred row stays blocking,
 so the verdict reports it; the follow-up is already the owner the caller would assign. A finding rejected in two

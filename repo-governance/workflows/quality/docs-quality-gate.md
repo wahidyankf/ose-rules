@@ -16,7 +16,8 @@ specific to documents.
 ## Entry
 
 The gate starts only on an explicit request that names it, or from [Release Cut](../maintenance/release-cut.md), which
-runs it with subject `all` before publishing. A change or a propagation run never starts it alone.
+runs it with subject `all` before publishing. An adopting repository lists only the callers it has, chosen from this
+set. A change or a propagation run never starts it alone.
 
 ## Inputs
 
