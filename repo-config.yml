@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/wahidyankf/rhino/v0.8.0/schemas/repo-config/v2.schema.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/wahidyankf/rhino/v0.9.0/schemas/repo-config/v2.schema.json
 # Portable catalog policy. Product implementation belongs to Rhino; each adopter owns its selected policy values.
 
 schema: rhino/repo-config/v2
@@ -217,6 +217,58 @@ policies:
           fail: 750
         - glob: "repo-governance/**/*.md"
           fail: 750
+    quality-gates:
+      root: repo-governance/workflows
+      agents: .agents/agents
+      groups:
+        - adoption
+        - maintenance
+        - plan
+        - quality
+      gate-group: quality
+      gate-headings:
+        - Entry
+        - Inputs
+        - Deterministic Boundary
+        - Cycle
+        - Termination
+        - Verdict
+        - Ledger
+      verdict-heading: Verdict
+      verdicts:
+        - PASS
+        - PASS_WITH_FINDINGS
+        - FAIL
+        - BLOCKED
+      retired-inputs:
+        - max-iterations
+        - min-iterations
+        - max-audits
+      propagation-headings:
+        - Contract
+        - Scope
+        - Executor
+        - Row Verification
+        - Family Rules
+      defaults:
+        mode: normal
+        max-cycles: 3
+      gates:
+        - family: plan
+        - family: rules
+        - family: docs
+        - family: specs
+        - family: ci
+        - family: harness
+        - family: pr-review
+        - family: ui-web
+        - family: api-http
+        - family: content
+        - family: pdf-to-md
+        - family: tutorial-by-example
+        - family: tutorial-in-the-field
+        - family: tutorial-primer
+        - family: tutorial-annotated-concept
 
 gates:
   composition:
@@ -342,6 +394,18 @@ gates:
         args:
           - literal: governance
           - literal: word-budget
+          - literal: validate
+      run-on:
+        pre-commit: {}
+        pull-request: {}
+        main: {}
+    - id: quality-gates
+      type: check
+      command:
+        executable: ./rhino
+        args:
+          - literal: governance
+          - literal: quality-gates
           - literal: validate
       run-on:
         pre-commit: {}
