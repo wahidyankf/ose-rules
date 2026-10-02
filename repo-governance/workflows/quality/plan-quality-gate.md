@@ -22,6 +22,8 @@ The gate starts only on an explicit request that names it, or from one of these 
 - [Parity Planning](../plan/plan-parity-planning.md), once per plan in the parity set; and
 - [UX Review Fix Planning](ux-review-fix-planning.md), on the plan it authors.
 
+An adopting repository lists only the callers it has, chosen from this set.
+
 Creating, editing, or executing a plan never starts it alone. Each run serves one named checkpoint: before execution, or
 after a material change.
 

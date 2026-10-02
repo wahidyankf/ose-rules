@@ -2,7 +2,8 @@
 name: 003-enforcement-and-verification
 description: >-
   Gives every propagated rule one enforcement disposition proven in both directions, verifies a propagation run before
-  delivery, routing each failure back to the step that owns it, and records how entry becomes automatic.
+  delivery, routing each failure back to the step that owns it, records obligations beyond the repository, and records
+  how entry becomes automatic.
 when_to_use: >-
   Use during Rules Propagation when deciding how a rule is enforced, or when verifying a run before it is delivered.
 ---
@@ -48,6 +49,13 @@ silence:
 - raising a ceiling, or adding an exemption, so a placement fits;
 - dropping or loosening any obligation, audience, scope, exception, or condition to satisfy a word count;
 - calling a finding pre-existing, or this run's, without evidence of when it began.
+
+## Beyond This Repository
+
+A rule portable across a declared parity boundary records its sibling obligation per
+[Related Repositories](../../../conventions/structure/related-repositories.md), or records none with why. A repository
+adopting from a shared catalog proposes a rule that holds beyond itself to that catalog, through the catalog's own
+delivery, published only after the catalog's outbound-safety screen passes.
 
 ## Adopter Decision: How Entry Becomes Automatic
 

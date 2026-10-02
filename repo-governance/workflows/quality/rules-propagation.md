@@ -37,9 +37,8 @@ disposition, and the deterministic gates over the changed surfaces exit 0, per
 
 A rule, as [Rule Definition](../../conventions/writing/rule-definition.md) defines one, is about to be added, changed,
 moved, or removed, or [Rules Grooming](../maintenance/rules-grooming.md) or the
-[Rules Quality Gate](rules-quality-gate.md) hands over findings. Entry is automatic: an agent or person who proposes or
-detects the change starts here as part of the work in hand, without a separate request. Edits made inside one run start
-no second one.
+[Rules Quality Gate](rules-quality-gate.md) hands over findings. Entry is automatic: whoever proposes or detects the
+change starts here, without a separate request. Edits made inside one run start no second one.
 
 - `rules` (`string`, required): each rule as stated, with its reason.
 - `findings` (`file`, optional): a handed-over, frozen ledger.
@@ -70,18 +69,15 @@ no second one.
    run caused only while their count strictly decreases, per
    [Bounded Convergence](../../development/workflow/bounded-convergence.md).
 9. **Hand delivery to the caller, and record obligations beyond this repository.** The run never commits; the work in
-   hand delivers through the repository's own route, stating each rule's home, disposition, and relocations. A rule
-   portable across a declared parity boundary records its sibling obligation per
-   [Related Repositories](../../conventions/structure/related-repositories.md), or records none with why. A repository
-   adopting from a shared catalog proposes a rule that holds beyond itself to that catalog, through the catalog's own
-   delivery, published only after the catalog's outbound-safety screen passes.
+   hand delivers through the repository's own route, stating each rule's home, disposition, and relocations. Sibling and
+   catalog obligations follow
+   [Enforcement and Verification](rules-propagation/003-enforcement-and-verification.md#beyond-this-repository).
 
 ### Exit
 
 Every rule ends with no change, landed, recorded under `dry-run`, or halted, and nothing is written but unaccounted for.
 
-Outputs: a placement record (`file`, in the scratch location per
-[Temporary Files](../../conventions/structure/temporary-files.md)) and `status` (`enum`: `no-change`, `landed`,
+Outputs: a placement record (`file`, in the repository's scratch location) and `status` (`enum`: `no-change`, `landed`,
 `recorded`, `partial`, `halted`, `blocked`). Partial outcome: some rules landed while others halted, each named with its
 blocker. A rerun on unchanged inputs changes nothing.
 

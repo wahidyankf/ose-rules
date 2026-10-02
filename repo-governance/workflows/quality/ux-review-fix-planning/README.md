@@ -12,10 +12,8 @@ when_to_use: >-
 Read in order. Together these hold the rules the [UX Review Fix Planning](../ux-review-fix-planning.md) entrypoint's
 sequence applies.
 
-| Module                                                    | Holds                                                                     |
-| --------------------------------------------------------- | ------------------------------------------------------------------------- |
-| [001 Design-Fidelity Pass](001-design-fidelity-pass.md)   | ground truth, coverage, what a design finding records, and what it leaves |
-| [002 Findings and the Plan](002-findings-and-the-plan.md) | the report's parts, merge-mode identifiers, and what the fix plan carries |
+- **001 Design-Fidelity Pass** holds ground truth, coverage, what a design finding records, and what it leaves.
+- **002 Findings and the Plan** holds the report's parts, merge-mode identifiers, and what the fix plan carries.
 
 ## Directory Map
 

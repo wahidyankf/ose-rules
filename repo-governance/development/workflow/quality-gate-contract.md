@@ -54,7 +54,8 @@ contract changes in one place.
 
 A gate starts only on an explicit request that names it, or from a workflow listed under its `## Entry` heading. It
 never starts because another workflow implies it, and a caller joins that list only when the caller's own text already
-names the gate. The catalog's listed callers are:
+names the gate. The catalog's listed callers are below; each adopting repository lists in a gate's `## Entry` only the
+callers it has, chosen from this set:
 
 | Gate                 | Listed callers                                                    |
 | -------------------- | ----------------------------------------------------------------- |
@@ -62,6 +63,22 @@ names the gate. The catalog's listed callers are:
 | `docs-quality-gate`  | `release-cut`                                                     |
 | `rules-quality-gate` | `rules-grooming`, where the adopter chose that call               |
 | every other gate     | none; explicit request only                                       |
+
+## Adoption
+
+A gate and its propagation link the catalog artifacts they apply. An adopting repository copies each linked artifact it
+lacks, or relinks the link to its own owner, so no link dangles. The companions to copy or relink are:
+
+- **every family:** this contract and its modules, [Sole-Writer Propagation](sole-writer-propagation.md), the
+  `<family>-checker` and `<family>-fixer` agents, and every standard and skill the gate and its propagation link;
+- **`pr-review`:** [PR Review](../../workflows/quality/pr-review.md), which every audit runs, and the agents it
+  dispatches;
+- **`ui-web` and `api-http`:** [Red, Green, Refactor](../../workflows/quality/red-green-refactor.md), which every repair
+  follows;
+- **each `tutorial-*` family:** the `content` family's gate and propagation, which own the shared content rules.
+
+An agent's `skills:` list names catalog skills. An adopting repository maps each entry to its own name for that skill,
+or copies the skill, so no agent loads a skill the repository lacks.
 
 ## Modules
 
