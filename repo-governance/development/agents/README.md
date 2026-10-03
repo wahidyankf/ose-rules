@@ -33,6 +33,7 @@ holds for how an agent works: how it plans, delegates, asks, tracks, and reviews
   results
 - [Subagent Orchestration Modules](subagent-orchestration/README.md) — concurrency, stuck detection and recovery, and
   result handling
+- [SWE Delegation](swe-delegation.md) — dispatching coding work to the fitting swe agent, and the three exceptions
 - [Task Tracking](task-tracking.md) — the task list kept before and during every task
 - [Task Tracking Modules](task-tracking/README.md) — list lifecycle, direction and continuity, and bindings
 - [Deployment Platform Agent Capability](vercel-mcp-capability.md) — probing a deployment platform's agent integration
