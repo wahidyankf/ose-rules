@@ -90,4 +90,4 @@ allows no repair. Invoked again after a repair lands, it re-runs the gates that 
 It never repairs a defect, edits a tracked file, skips or mutes a hook or gate, per
 [Hook Verification](../../repo-governance/development/workflow/hook-verification.md), implements plan work, writes
 tests, reads secret-bearing files, commits, pushes, or opens a review. Its caller repairs a blocking defect in its own
-commit, for example through [Bugs Solver](bugs-solver.md).
+commit, for example through [SWE Debugger](swe-debugger.md).
