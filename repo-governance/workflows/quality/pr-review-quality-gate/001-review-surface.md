@@ -44,8 +44,9 @@ run reads for `prior-findings`.
 
 ## Agents an Adopter May Go Without
 
-A pass names a scout, a coordinator, and one lens checker per discipline. Only the coordinator, `pr-review-checker`, is
-required. An adopter records two choices beside its surface:
+A pass names a scout, a coordinator, and one lens per discipline: a lens checker, or for architecture `swe-architect` in
+its Lens mode. Only the coordinator, `pr-review-checker`, is required. An adopter records two choices beside its
+surface:
 
 - **No scout.** The coordinator routes its own passes: before fan-out it chooses the tier and specialist set and
   assembles the brief by the scout's rules, records them, and then uses that brief as given.
