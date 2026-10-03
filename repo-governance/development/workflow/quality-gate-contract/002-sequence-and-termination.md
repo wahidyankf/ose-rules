@@ -25,11 +25,11 @@ entry tooling run ---- red ----> root-cause pre-step (<= 3 attempts, outside the
 k = 1
         |
         v
-full audit by <family>-checker  -- no open blocking row --> verdict per step 5
+full audit by the checker  -- no open blocking row --> verdict per step 5
         |
    blocking rows
         v
-freeze ledger L_k ---> <family>-propagation (run by <family>-fixer)
+freeze ledger L_k ---> <family>-propagation (run by the fixer)
         |                   repairs only L_k rows, verifies each row
         v
 blocking count did not fall since the previous audit? ---- yes ---> FAIL (no progress)

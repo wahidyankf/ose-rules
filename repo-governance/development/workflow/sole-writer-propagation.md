@@ -1,7 +1,7 @@
 ---
 description: >-
-  Gives each quality-gate family exactly one writer, `<family>-propagation`, run by `<family>-fixer`, and sets the eight
-  rules that keep its repairs confined to a frozen ledger, idempotent, and non-recursive.
+  Gives each quality-gate family exactly one writer, `<family>-propagation`, run by its repairer agent, and sets the
+  eight rules that keep its repairs confined to a frozen ledger, idempotent, and non-recursive.
 when_to_use: >-
   Use when writing or adopting a `<family>-propagation` workflow, when a gate hands over a frozen ledger, or when
   deciding whether a repair may touch something its finding did not name.
@@ -9,10 +9,10 @@ when_to_use: >-
 
 # Sole-Writer Propagation
 
-Each quality-gate family has exactly one writer: the workflow `<family>-propagation`, executed by the agent
-`<family>-fixer`. The gate and its checker judge and never write, per the
-[Quality Gate Contract](quality-gate-contract.md). This document holds the rules every writer shares; each family file
-states only what differs.
+Each quality-gate family has exactly one writer: the workflow `<family>-propagation`, executed by the family's repairer
+agent, `<family>-fixer` unless the repository's gate entry declares another. The gate and its checker judge and never
+write, per the [Quality Gate Contract](quality-gate-contract.md). This document holds the rules every writer shares;
+each family file states only what differs.
 
 This standard implements [One Source Per Fact](../../principles/one-source-per-fact.md) and
 [Minimal Sufficiency](../../principles/minimal-sufficiency.md).
@@ -62,7 +62,7 @@ propagations enforces their presence.
 | --------------------- | -------------------------------------------------------------------- |
 | `## Contract`         | One line linking this shared propagation contract                    |
 | `## Scope`            | The paths this writer may edit for the family                        |
-| `## Executor`         | `<family>-fixer`, plus any family skill it loads                     |
+| `## Executor`         | The repairer agent, plus any family skill it loads                   |
 | `## Row Verification` | How a row is proven closed for this family                           |
 | `## Family Rules`     | Rules only this family needs, such as a rule-change idempotency gate |
 
@@ -70,8 +70,9 @@ The family file never restates a shared rule; it may narrow one, such as shrinki
 
 ## Executor Naming
 
-In every family the writer is `<family>-propagation` and its executor `<family>-fixer`. A maker authors; a fixer repairs
-only ledger rows. One agent never holds both roles in the same gate run.
+In every family the writer is `<family>-propagation`, and its executor is the repairer agent: `<family>-fixer`, or the
+agent the repository's gate entry declares. A maker authors; a fixer repairs only ledger rows. One agent never holds
+both roles in the same gate run.
 
 ## Existing Writers Keep Their Rules
 
