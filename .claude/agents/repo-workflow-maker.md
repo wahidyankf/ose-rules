@@ -1,6 +1,8 @@
 ---
 description: |-
   Writes or substantially revises one workflow document to the workflow pattern: an observable entry with typed inputs, declared steps that name only existing agents and workflows, bounded repetition, and a stated exit.
+effort: xhigh
+model: sonnet
 name: repo-workflow-maker
 tools: |-
   Read, Glob, Grep, Write, Edit

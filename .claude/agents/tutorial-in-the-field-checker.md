@@ -1,6 +1,8 @@
 ---
 description: |-
   Audits one in-the-field guide set's scenario, built-in-first order, and production code against the in-the-field guide rules, with every product threshold read from the adopting repository's adapter, and returns criticality-rated findings without modifying anything.
+effort: xhigh
+model: sonnet
 name: tutorial-in-the-field-checker
 tools: |-
   Read, Glob, Grep, Bash

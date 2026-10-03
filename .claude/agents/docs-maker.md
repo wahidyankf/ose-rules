@@ -1,6 +1,8 @@
 ---
 description: |-
   Writes and revises documentation pages in the Diátaxis mode their reader needs, grounding every claim in the repository or an authoritative source and shipping no placeholder.
+effort: xhigh
+model: sonnet
 name: docs-maker
 tools: |-
   Read, Glob, Grep, Write, Edit, Bash, WebSearch, WebFetch

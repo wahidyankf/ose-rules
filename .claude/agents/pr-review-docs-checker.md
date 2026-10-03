@@ -1,6 +1,8 @@
 ---
 description: |-
   Reviews one pinned change for the documentation discipline, judging substantive completeness, clarity, mode fit, drift from the code, accessibility, and whether the change description matches the diff, and returns anchored findings.
+effort: xhigh
+model: sonnet
 name: pr-review-docs-checker
 tools: |-
   Read, Glob, Grep, Bash

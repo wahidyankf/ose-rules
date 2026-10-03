@@ -1,6 +1,8 @@
 ---
 description: |-
   Re-validates each PDF conversion finding against the source and the current Markdown, restores confirmed gaps from the source, and records false positives and uncertain repairs.
+effort: xhigh
+model: sonnet
 name: pdf-to-md-fixer
 tools: |-
   Read, Glob, Grep, Write, Edit, Bash

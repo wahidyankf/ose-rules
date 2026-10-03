@@ -1,6 +1,8 @@
 ---
 description: |-
   Reviews one pinned change for the type-soundness discipline, finding escape hatches that let code compile while defeating the type system, and returns anchored findings to the review coordinator, the pr-review checker.
+effort: xhigh
+model: sonnet
 name: pr-review-types-checker
 tools: |-
   Read, Glob, Grep, Bash

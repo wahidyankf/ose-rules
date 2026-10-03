@@ -1,6 +1,8 @@
 ---
 description: |-
   Re-validates each tutorial review finding against the current file, applies only objective findings with one correct repair, and records false positives and judgement calls for others.
+effort: xhigh
+model: sonnet
 name: docs-tutorial-fixer
 tools: |-
   Read, Glob, Grep, Write, Edit, Bash

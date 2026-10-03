@@ -1,6 +1,8 @@
 ---
 description: |-
   Audits one primer's stated scope, capstone, and examples against the primer rules, with every product threshold read from the adopting repository's adapter, and returns criticality-rated findings without modifying anything.
+effort: xhigh
+model: sonnet
 name: tutorial-primer-checker
 tools: |-
   Read, Glob, Grep, Bash

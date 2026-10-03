@@ -8,26 +8,6 @@
       "digest": "320ebd797a6925ab8aaa84e1e3fb80211cb89ce98c5b90246ee059cd5a538d29"
     },
     {
-      "id": "agent/api-exploratory-tester",
-      "path": ".agents/agents/api-exploratory-tester.md",
-      "digest": "532e76b95ab12c2ef2030512706545c0dfefa0d2ea3d33139c73a5922d3115b6"
-    },
-    {
-      "id": "agent/api-http-checker",
-      "path": ".agents/agents/api-http-checker.md",
-      "digest": "684ac2b48b59608f6d1fd3e36d61d6b76060cd060223f69bb9b47035783e7047"
-    },
-    {
-      "id": "agent/api-http-fixer",
-      "path": ".agents/agents/api-http-fixer.md",
-      "digest": "f0180dff2a43799e284a01c8359a4187ac9ec6c16170a1538e9f8a75c91597cc"
-    },
-    {
-      "id": "agent/bugs-solver",
-      "path": ".agents/agents/bugs-solver.md",
-      "digest": "d27db9301f98a537dc3a0d0d960af53257535d23b9ff07375dd923572475f041"
-    },
-    {
       "id": "agent/ci-checker",
       "path": ".agents/agents/ci-checker.md",
       "digest": "47d481ae8954fc29743babb206144dbcfbc61e865eeb71fcdd5fdba7cbf14054"
@@ -88,11 +68,6 @@
       "digest": "540ea2d069f05b4860a87a64c948e036085a55c192babb865de7f3350d2d86ee"
     },
     {
-      "id": "agent/gherkin-implementation-reviewer",
-      "path": ".agents/agents/gherkin-implementation-reviewer.md",
-      "digest": "a3d71ca6c3fd585dcbf2be757f2b9222279493ac97bae0907a4872e9355522ba"
-    },
-    {
       "id": "agent/harness-checker",
       "path": ".agents/agents/harness-checker.md",
       "digest": "aa09dee4253f985ca9c45cde00a350cbe4fe93c6a87e9abf863ee7067c3ce233"
@@ -120,7 +95,7 @@
     {
       "id": "agent/plan-checker",
       "path": ".agents/agents/plan-checker.md",
-      "digest": "d24d47747e0fdfa39cb6003d27ac3e8a596580ac9b4b55b7a59af424aab554fa"
+      "digest": "e91cbf7d0bc049005ac264135854fccea6e6a0c3bbacaf0e8cf8a8a9e50da188"
     },
     {
       "id": "agent/plan-execution-checker",
@@ -136,11 +111,6 @@
       "id": "agent/plan-maker",
       "path": ".agents/agents/plan-maker.md",
       "digest": "96c5276a8e2a7b62995bb02e3e9f98d21f0efa8f075acacd9b4c9623583a37e7"
-    },
-    {
-      "id": "agent/pr-review-architecture-checker",
-      "path": ".agents/agents/pr-review-architecture-checker.md",
-      "digest": "c0b8650dce0572f222574791ea0710a93ae2737910eaa2b60723df6d1c85f2e6"
     },
     {
       "id": "agent/pr-review-checker",
@@ -225,7 +195,7 @@
     {
       "id": "agent/repo-setup-manager",
       "path": ".agents/agents/repo-setup-manager.md",
-      "digest": "b8584db63261d8a928f9328dd9f2aa9ef6218b1ccf8f72ed97430ab7455753df"
+      "digest": "4428f42cd2f5f0221c5f5e192b3ddde58fef969550dca1facbd56b1eaaa8e818"
     },
     {
       "id": "agent/repo-workflow-checker",
@@ -255,7 +225,7 @@
     {
       "id": "agent/specs-checker",
       "path": ".agents/agents/specs-checker.md",
-      "digest": "043d00af1837b5ec5f0a5c08c3895cb1d338271db4950cee16fde320d48a4eb9"
+      "digest": "b994ce43fc0b1ea1f53a4fa8d4c60de61f85c3626f6ca75b403067c6324bdd7f"
     },
     {
       "id": "agent/specs-fixer",
@@ -268,34 +238,54 @@
       "digest": "e515e54a1210969d5ee52464ecb44d78d9399fce28365b91a52be3e820ac7ef0"
     },
     {
-      "id": "agent/swe-code-checker",
-      "path": ".agents/agents/swe-code-checker.md",
-      "digest": "e833dec58ebf923e17f68a612042c3f30dc57e7f2cec22e37c9e39ea1cfa224c"
+      "id": "agent/swe-api-tester",
+      "path": ".agents/agents/swe-api-tester.md",
+      "digest": "1b67c2b55a6ced4208af08083036c5ac5ae0b29b58ca67bbc91d72becbf94869"
     },
     {
-      "id": "agent/swe-code-fixer",
-      "path": ".agents/agents/swe-code-fixer.md",
-      "digest": "3e54656826f4c278051d35fc0ac753e40bf912df86806d1021c23c96533f7f2e"
+      "id": "agent/swe-architect",
+      "path": ".agents/agents/swe-architect.md",
+      "digest": "d239ef6d874f3257560a89d92964755ab3ae3e3e594d18a9e83cc66e4d10b98b"
     },
     {
-      "id": "agent/swe-code-maker",
-      "path": ".agents/agents/swe-code-maker.md",
-      "digest": "4f4969d908fd8b17da31afb45525045da294b3564f09662b70ba78376a893691"
+      "id": "agent/swe-debugger",
+      "path": ".agents/agents/swe-debugger.md",
+      "digest": "52ad4be1e55ce6160e321d7fce9b22055f9aff1fb9b9c003745156f8371cd80c"
     },
     {
-      "id": "agent/swe-ui-checker",
-      "path": ".agents/agents/swe-ui-checker.md",
-      "digest": "a4ba2a63c6512c4e4bf3dcce8465751cb866c49a5a1310005b97e8055bd038fe"
+      "id": "agent/swe-developer",
+      "path": ".agents/agents/swe-developer.md",
+      "digest": "e906022a19ed0899493d084006184dc6c22241613009f8b540c30a7c8141246d"
     },
     {
-      "id": "agent/swe-ui-fixer",
-      "path": ".agents/agents/swe-ui-fixer.md",
-      "digest": "b55f634bfa2192ca0b7b3c2342caed726880937f50a38641e3e97cd141d377e6"
+      "id": "agent/swe-infra-tester",
+      "path": ".agents/agents/swe-infra-tester.md",
+      "digest": "6577f54ffd274e637f03d3c8df2851a9ce7f673b2d54a4f4661e60457517e736"
     },
     {
-      "id": "agent/swe-ui-maker",
-      "path": ".agents/agents/swe-ui-maker.md",
-      "digest": "cd5b09416eaeb05a8905e421289a594bc4608d2b1d22d72eb353dc9fa2f41b45"
+      "id": "agent/swe-orchestrator",
+      "path": ".agents/agents/swe-orchestrator.md",
+      "digest": "bb11927fa431449c5f97972ce9ba34b8274c6a47dc81a07226973e41af7a0c27"
+    },
+    {
+      "id": "agent/swe-releaser",
+      "path": ".agents/agents/swe-releaser.md",
+      "digest": "ba84c93fff469b76c3a30ff926a443cd77553655d7e406cc748b39d19eb68e7f"
+    },
+    {
+      "id": "agent/swe-reviewer",
+      "path": ".agents/agents/swe-reviewer.md",
+      "digest": "6443fd072c826ce3499ae26576227c80b562c5ad41598ca85730f86f6bee0356"
+    },
+    {
+      "id": "agent/swe-usability-tester",
+      "path": ".agents/agents/swe-usability-tester.md",
+      "digest": "552c8f551333c40e13636c87b63604a1cda205e80fb4581b6984ab12f04b6bfd"
+    },
+    {
+      "id": "agent/swe-web-tester",
+      "path": ".agents/agents/swe-web-tester.md",
+      "digest": "8d2d44e85ef17cac6763c738d1a0e8ba5d1edaed556a3581b580b8f8dfb08271"
     },
     {
       "id": "agent/tutorial-annotated-concept-checker",
@@ -338,34 +328,9 @@
       "digest": "4ffaef19ecd794b11bc1de65adb0c0c0d3c93d1b981e59067e6f590d291a4757"
     },
     {
-      "id": "agent/ui-web-checker",
-      "path": ".agents/agents/ui-web-checker.md",
-      "digest": "c21ce122bbde8bb8aaa89039bd579c9ce4ceff6ae69cbaaa1b9c02c1878e4997"
-    },
-    {
-      "id": "agent/ui-web-fixer",
-      "path": ".agents/agents/ui-web-fixer.md",
-      "digest": "351186eb233d26ec86351a4251cca33b23b763e145f31354d82d9247549f7580"
-    },
-    {
-      "id": "agent/web-design-tester",
-      "path": ".agents/agents/web-design-tester.md",
-      "digest": "0b308f28369f11fc965225291822b3099461d51f3a1df131eef7f86c9768cf78"
-    },
-    {
-      "id": "agent/web-exploratory-tester",
-      "path": ".agents/agents/web-exploratory-tester.md",
-      "digest": "fa7d07bd1e43278d3c428ebccd6c2443dd7893e147fefc327dafb2b583c216cc"
-    },
-    {
       "id": "agent/web-researcher",
       "path": ".agents/agents/web-researcher.md",
       "digest": "97aaf61d151a55d45ecf0fbbc7e8b23126d495209485050e919b0ae6f7f87b1d"
-    },
-    {
-      "id": "agent/web-usability-tester",
-      "path": ".agents/agents/web-usability-tester.md",
-      "digest": "d8e6c0aa88cc2bbac12fb156b5d2f9dd94fbfe34d025ee6462e7887d1caa66ed"
     },
     {
       "id": "skill/adopt-artifact",
@@ -390,7 +355,7 @@
     {
       "id": "skill/applying-maker-checker-fixer",
       "path": ".agents/skills/applying-maker-checker-fixer/SKILL.md",
-      "digest": "699bb06a60b84a717d88969497cd02dad60106ddbc57659004a906570437cfda"
+      "digest": "fcd312caf0cb9f5b6f9d3b3335e5248141f464f0a701bab4758e3aa9ede0e4d8"
     },
     {
       "id": "skill/assess-alignment",
@@ -478,6 +443,11 @@
       "digest": "f18b130ab5d704473c8d28d938e506dc6486a52113beda7b76f39de33c300c41"
     },
     {
+      "id": "skill/evolving-database-schemas",
+      "path": ".agents/skills/evolving-database-schemas/SKILL.md",
+      "digest": "4d907bdac0c9e0e2cee74e77a556989b7c9836ab4b70ca994e91700626795d44"
+    },
+    {
       "id": "skill/exploratory-testing",
       "path": ".agents/skills/exploratory-testing/SKILL.md",
       "digest": "9483a8d6a2e7d35fc23f71fb7f81ce2562e291d4ceddf6096ae54d8c73c40229"
@@ -543,6 +513,11 @@
       "digest": "7baea0bce7fe30e452d3063939e5dad94f44001418eb5d6ab975df5064ac31fd"
     },
     {
+      "id": "skill/modeling-threats",
+      "path": ".agents/skills/modeling-threats/SKILL.md",
+      "digest": "0d07a2d6017e45b05cab9ea6cbcacee95901f06806b72ac03e8a57983f83cbea"
+    },
+    {
       "id": "skill/plan-creating-project-plans",
       "path": ".agents/skills/plan-creating-project-plans/SKILL.md",
       "digest": "59ddb1aa74b1d000d3c4c8936f60be059e655f05e73aa765e9373cedababc70c"
@@ -555,7 +530,7 @@
     {
       "id": "skill/plan-validating-quality",
       "path": ".agents/skills/plan-validating-quality/SKILL.md",
-      "digest": "9a30cd24cfc11be0842fe218f5a6aa8d7e15fc129e219eca3b44f8be6d035513"
+      "digest": "71dce047415d5b3a6b17eb7cff22d625fa981452b0ad38cd2f930938ffcdbaf1"
     },
     {
       "id": "skill/plan-verifying-execution",
@@ -725,7 +700,7 @@
     {
       "id": "instruction",
       "path": "AGENTS.md",
-      "digest": "5362b1ced5e14fe3b52cbeeddf31d735502561feaa0401426460b359425ceee3"
+      "digest": "99b5fd338daaf0b590b276df8a886c7243148f591ee0d137bd7d69a061198845"
     }
   ]
 }

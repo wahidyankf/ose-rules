@@ -1,6 +1,8 @@
 ---
 description: |-
   Drafts one canonical agent definition from a decided role, checks its name and metadata, regenerates the harness adapters from it, and adds its annotated index entry.
+effort: xhigh
+model: sonnet
 name: agent-maker
 tools: |-
   Read, Glob, Grep, Write, Edit, Bash
