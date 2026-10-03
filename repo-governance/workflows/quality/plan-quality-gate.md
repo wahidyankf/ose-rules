@@ -65,8 +65,10 @@ reads the frozen plan and asks whether:
 2. `delivery.md` is executable by someone who was not present, in dependency order, per
    [Plans](../../conventions/structure/plans.md);
 3. the technical shape matches the work, and each of the six documents answers its own question;
-4. for a bug-fix plan, the root cause carries checkable evidence and the solution cites references; and
-5. every decision the plan relies on is recorded, so an executor invents no policy.
+4. for a bug-fix plan, the root cause carries checkable evidence and the solution cites references;
+5. every decision the plan relies on is recorded, so an executor invents no policy; and
+6. every checklist item carries a **Deterministic proof** and is **Execution-tier executable**, per
+   [Delivery Contract](../../conventions/structure/plans/004-delivery-contract.md); a breach of either is `HIGH`.
 
 Wording preference and speculative cases are not findings, per
 [Minimal Sufficiency](../../principles/minimal-sufficiency.md). `plan-maker` authors plans; `plan-fixer` only repairs

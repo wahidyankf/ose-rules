@@ -20,6 +20,16 @@ The single most useful question about a draft: could a competent person who miss
 Read `delivery.md` as that person. Where do you have to guess? Which path is named only by description? Which command is
 implied rather than written? Each guess is a defect, and each one will be resolved differently by whoever hits it.
 
+## Deterministic and Executable Items
+
+Two delivery rules in [Delivery Contract](../../../repo-governance/conventions/structure/plans/004-delivery-contract.md)
+are checked item by item, and a breach of either is rated `HIGH`:
+
+- **Deterministic proof.** Ask what command, run by anyone, would pass or fail the item. "Holds on read", "looks right",
+  and "satisfy review" name no such command.
+- **Execution-tier executable.** Ask whether an `execution`-tier agent could carry the item out from the plan's own
+  documents. A step that needs a conversation, another repository's unstated context, or a policy choice fails.
+
 ## Testable Acceptance Criteria
 
 For each criterion, ask what it would look like if false. A criterion with no failing case cannot be verified, and it

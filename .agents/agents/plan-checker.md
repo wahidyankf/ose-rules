@@ -44,6 +44,12 @@ repairing it.
 Each finding names the document, the location, what is wrong, and what would resolve it. "The PRD is weak" is not a
 finding — it is a feeling, and the maker cannot act on it except by guessing.
 
+## Two Delivery Rules Rate `HIGH`
+
+A checklist item whose proof is not a **Deterministic proof**, or that is not **Execution-tier executable**, as
+[Delivery Contract](../../repo-governance/conventions/structure/plans/004-delivery-contract.md) defines both, is a
+`HIGH` finding naming the item and the missing check or the context it would need.
+
 ## Distinguish Blocking From Not
 
 Criticality decides which rows block under the gate's `mode`; the rest are recorded, not repaired. Rating every finding
