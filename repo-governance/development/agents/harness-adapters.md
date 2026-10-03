@@ -36,12 +36,15 @@ replaced by a broader permission. Where a harness cannot express a restriction, 
 
 Failing loudly here matters because the silent alternatives both grant more than was declared.
 
-## Omission Is a Valid Mapping
+## Empty Is a Valid Mapping
 
-An absent tier mapping means the renderer emits no model or effort, and the harness applies its own inheritance.
+A tier declared with an empty mapping, or a profile that maps no tier, means the renderer pins no model or effort, and
+the harness applies its own inheritance. A profile may name the fields an empty tier renders where its harness inherits
+only on an explicit value. A tier left undeclared in a profile that maps tiers is refused, per
+[Portable Tiers](../../conventions/structure/artifact-metadata/003-portable-tiers.md).
 
-That is the designed default rather than a gap. Emitting a default the repository did not choose replaces the harness's
-current behaviour with a guess frozen at generation time.
+An empty mapping is a designed choice rather than a gap. Emitting a default the repository did not choose replaces the
+harness's current behaviour with a guess frozen at generation time.
 
 ## Generation and Validation Are Separate
 
