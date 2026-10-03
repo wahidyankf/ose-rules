@@ -25,12 +25,14 @@ This standard implements [Explicit Over Implicit](../../principles/explicit-over
 | Role    | Who                                                 | May edit files                    |
 | ------- | --------------------------------------------------- | --------------------------------- |
 | Gate    | The workflow `<family>-quality-gate`                | No                                |
-| Checker | The agent `<family>-checker`                        | No                                |
+| Checker | The judge agent, by default `<family>-checker`      | No                                |
 | Writer  | The workflow `<family>-propagation`                 | Yes, only rows of a frozen ledger |
-| Fixer   | The agent `<family>-fixer`, which runs the writer   | Yes, as the writer's executor     |
+| Fixer   | The repairer agent, by default `<family>-fixer`     | Yes, as the writer's executor     |
 | Caller  | A person, or a workflow named in the gate's `Entry` | Records the verdict               |
 
-Judging and writing never share a role. A checker that repaired its own findings would audit its own work next cycle.
+Where a repository declares its gates, an entry may name a family's judge and repairer agents in place of those
+defaults. Judging and writing never share a role. A checker that repaired its own findings would audit its own work next
+cycle.
 
 ## Required Sections
 

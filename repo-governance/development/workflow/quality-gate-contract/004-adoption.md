@@ -15,8 +15,8 @@ A gate and its propagation link the catalog artifacts they apply. An adopting re
 lacks, or relinks the link to its own owner, so no link dangles. The companions to copy or relink are:
 
 - **every family:** this contract and its modules, [Sole-Writer Propagation](../sole-writer-propagation.md), the
-  `<family>-checker` and `<family>-fixer` agents, and every standard and skill the gate, its propagation, and those
-  agents link;
+  family's judge and repairer agents, by default `<family>-checker` and `<family>-fixer`, and every standard and skill
+  the gate, its propagation, and those agents link;
 - **`pr-review`:** [PR Review](../../../workflows/quality/pr-review.md), which every audit runs, the agents it
   dispatches, and every [Review Disciplines](../../agents/review-disciplines.md) module those agents link;
 - **`ui-web` and `api-http`:** [Red, Green, Refactor](../../../workflows/quality/red-green-refactor.md), which every

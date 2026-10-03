@@ -25,8 +25,8 @@ owns the scales. This skill covers the judgement each role needs inside that loo
 | checker | does the content meet the rules it is held to               | edits what it judges          |
 | fixer   | which confirmed findings are safe to apply without a person | creates content from scratch  |
 
-A checker rates criticality only. The fixer, as `<family>-fixer`, executes `<family>-propagation`, the family's one
-writer, and rates confidence as it re-validates each row.
+A checker rates criticality only. The fixer, `<family>-fixer` or the repairer a gate entry declares, executes
+`<family>-propagation`, the family's one writer, and rates confidence as it re-validates each row.
 
 A request to create or substantially reshape content is a maker's job. A report of rule violations is a fixer's. A
 finding that needs taste, restructuring, or context nobody recorded is neither: it goes to the maker or a person, and a
