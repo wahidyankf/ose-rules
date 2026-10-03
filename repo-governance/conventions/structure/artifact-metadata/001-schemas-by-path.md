@@ -7,14 +7,17 @@ when_to_use: >-
 
 # Schemas by Path
 
-| Family     | Path                                | Keys, in order                                                                                          |
-| ---------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| governance | `repo-governance/**/*.md`           | `description`, `when_to_use`                                                                            |
-| workflow   | `repo-governance/workflows/**/*.md` | `name`, `description`, `when_to_use`                                                                    |
-| skill      | `.agents/skills/<name>/SKILL.md`    | `name`, `description`, `when_to_use`, optional `compatibility`                                          |
-| agent      | `.agents/agents/<name>.md`          | `name`, `description`, `when_to_use`, `tier`, `capabilities`, optional `skills`, optional `constraints` |
+| Family     | Path                                | Keys, in order                                                                                                                 |
+| ---------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| governance | `repo-governance/**/*.md`           | `description`, `when_to_use`                                                                                                   |
+| workflow   | `repo-governance/workflows/**/*.md` | `name`, `description`, `when_to_use`                                                                                           |
+| skill      | `.agents/skills/<name>/SKILL.md`    | `name`, `description`, `when_to_use`, optional `compatibility`                                                                 |
+| agent      | `.agents/agents/<name>.md`          | `name`, `description`, `when_to_use`, `tier`, `capabilities`, optional `skills`, optional `constraints`, optional `dispatches` |
 
 Workflows are governance documents whose path selects the more specific schema.
+
+`dispatches` lists, by name, the only agents an agent declaring `subagent` may spawn. An adapter whose harness has a
+spawn allowlist renders it there; where the harness has none, the agent's body states the same restriction.
 
 ## Why Governance Documents Have No `name`
 
