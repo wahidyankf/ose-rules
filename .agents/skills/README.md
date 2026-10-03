@@ -44,6 +44,8 @@ is the one harness that needs a generated route.
 - [developing-agents](developing-agents/SKILL.md) — drafting a canonical agent definition
 - [developing-applications](developing-applications/SKILL.md) — placing layers, errors, logs, and input checks
 - [developing-frontend-ui](developing-frontend-ui/SKILL.md) — building interface components test-first
+- [evolving-database-schemas](evolving-database-schemas/SKILL.md) — changing a stored schema by expand, migrate, verify,
+  and contract
 - [exploratory-testing](exploratory-testing/SKILL.md) — charters and tours against a running surface
 - [framework-aspnet-core](framework-aspnet-core/SKILL.md) — ASP.NET Core work on the .NET language skill
 - [framework-gin](framework-gin/SKILL.md) — Gin services on the Go skill
@@ -59,6 +61,7 @@ is the one harness that needs a generated route.
 - [infrastructure-terraform](infrastructure-terraform/SKILL.md) — Terraform modules verified by native tests and plan
   review
 - [managing-file-operations](managing-file-operations/SKILL.md) — renaming, moving, and deleting documents safely
+- [modeling-threats](modeling-threats/SKILL.md) — naming a design's assets, trust boundaries, entry points, and threats
 - [plan-creating-project-plans](plan-creating-project-plans/SKILL.md) — authoring a formal plan's six documents
 - [plan-grooming-idea-briefs](plan-grooming-idea-briefs/SKILL.md) — promoting, keeping, or retiring an idea brief
 - [plan-validating-quality](plan-validating-quality/SKILL.md) — judging whether a plan draft is executable
