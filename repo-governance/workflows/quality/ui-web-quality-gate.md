@@ -33,7 +33,7 @@ refuses to start.
 
 ## Deterministic Boundary
 
-The checker reports none of these properties. The entry and exit checks run their owners instead.
+The judge reports none of these properties. The entry and exit checks run their owners instead.
 
 | Property                                     | Owned by                            | This catalog runs |
 | -------------------------------------------- | ----------------------------------- | ----------------- |
@@ -47,10 +47,10 @@ gate runs. A property no tool of its own owns leaves the table and becomes judge
 
 ## Cycle
 
-Each cycle is one full audit by `ui-web-checker` and one repair by [UI Web Propagation](ui-web-propagation.md), run by
-`ui-web-fixer`, per
-[Sequence and Termination](../../development/workflow/quality-gate-contract/002-sequence-and-termination.md). The
-checker may delegate reading to the repository's interface testers and judges, through the interface's components and
+Each cycle is one full audit by the judge, `swe-web-tester` under its `spec` charter, and one repair by
+[UI Web Propagation](ui-web-propagation.md), run by `swe-developer` in its Apply Findings mode, per
+[Sequence and Termination](../../development/workflow/quality-gate-contract/002-sequence-and-termination.md). The judge
+may read findings other passes recorded on the same build, and judges, through the interface's components and
 interactions:
 
 - behaviour against the specification's scenarios, including empty, error, and loading states;

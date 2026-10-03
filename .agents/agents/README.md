@@ -17,10 +17,6 @@ adapter is generated from it and is never edited in place.
 ## Directory Map
 
 - [agent-maker](agent-maker.md) — drafting a new canonical agent and its adapters
-- [api-exploratory-tester](api-exploratory-tester.md) — exploring a live API against its contract
-- [api-http-checker](api-http-checker.md) — judging a running HTTP interface with real requests against its contract
-- [api-http-fixer](api-http-fixer.md) — repairing an HTTP service test-first from a frozen ledger
-- [bugs-solver](bugs-solver.md) — repairing failing type checks, lint, and tests at the cause
 - [ci-checker](ci-checker.md) — auditing test targets, hooks, and pipeline wiring
 - [ci-fixer](ci-fixer.md) — applying re-validated gate wiring findings
 - [content-checker](content-checker.md) — judging published pages for writing, facts, links, and adapter rules
@@ -33,7 +29,6 @@ adapter is generated from it and is never edited in place.
 - [docs-tutorial-checker](docs-tutorial-checker.md) — reviewing tutorials for type, sections, examples, and checkpoints
 - [docs-tutorial-fixer](docs-tutorial-fixer.md) — applying re-validated tutorial review findings
 - [docs-tutorial-maker](docs-tutorial-maker.md) — writing one tutorial of a declared type
-- [gherkin-implementation-reviewer](gherkin-implementation-reviewer.md) — tracing what each scenario binding asserts
 - [harness-checker](harness-checker.md) — auditing bindings for upstream drift and parity
 - [harness-fixer](harness-fixer.md) — repairing binding drift at its canonical source through Harness Propagation
 - [pdf-to-md-checker](pdf-to-md-checker.md) — judging a PDF conversion's fidelity against its source
@@ -43,8 +38,6 @@ adapter is generated from it and is never edited in place.
 - [plan-execution-checker](plan-execution-checker.md) — auditing finished plan execution before archival
 - [plan-fixer](plan-fixer.md) — repairing the rows of a frozen plan ledger through Plan Propagation
 - [plan-maker](plan-maker.md) — authoring a formal plan through both decision gates
-- [pr-review-architecture-checker](pr-review-architecture-checker.md) — reviewing a change's new tradeoffs, boundaries,
-  and dependencies
 - [pr-review-checker](pr-review-checker.md) — coordinating one review pass and publishing its single consolidated review
 - [pr-review-docs-checker](pr-review-docs-checker.md) — reviewing a change's documentation for completeness, clarity,
   and drift
@@ -78,12 +71,21 @@ adapter is generated from it and is never edited in place.
 - [specs-checker](specs-checker.md) — auditing listed specification folders for structure and consistency
 - [specs-fixer](specs-fixer.md) — applying re-validated specification structure findings
 - [specs-maker](specs-maker.md) — creating a specification corpus or its missing parts at a named path
-- [swe-code-checker](swe-code-checker.md) — auditing project code against adopted standards and test-first evidence
-- [swe-code-fixer](swe-code-fixer.md) — applying re-validated code findings, test-first where a fix needs a test
-- [swe-code-maker](swe-code-maker.md) — building behaviour test-first under the adopted and stack standards
-- [swe-ui-checker](swe-ui-checker.md) — auditing React component source for tokens, accessibility, and primitives
-- [swe-ui-fixer](swe-ui-fixer.md) — applying re-validated interface component findings
-- [swe-ui-maker](swe-ui-maker.md) — building React components test-first from an approved design
+- [swe-api-tester](swe-api-tester.md) — judging a running request-based interface by contract or exploratory charter
+- [swe-architect](swe-architect.md) — designing boundaries before a build, reviewing it after, and the architecture
+  review lens
+- [swe-debugger](swe-debugger.md) — repairing failing type checks, lint, and tests at the cause
+- [swe-developer](swe-developer.md) — building behaviour test-first and applying re-validated findings
+- [swe-infra-tester](swe-infra-tester.md) — judging applied infrastructure through plans, check modes, and read-only
+  probes
+- [swe-orchestrator](swe-orchestrator.md) — decomposing a deterministic goal and dispatching the swe family until its
+  checks pass
+- [swe-releaser](swe-releaser.md) — cutting releases, deploying artifacts, and repinning tools through documented
+  workflows
+- [swe-reviewer](swe-reviewer.md) — auditing code, component source, and scenario bindings against adopted standards
+- [swe-usability-tester](swe-usability-tester.md) — judging first use of a live web interface or command-line tool
+  without its specifications
+- [swe-web-tester](swe-web-tester.md) — judging a live web interface by spec, design, or exploratory charter
 - [tutorial-annotated-concept-checker](tutorial-annotated-concept-checker.md) — judging an annotated-concept tutorial's
   mode and worked examples
 - [tutorial-annotated-concept-fixer](tutorial-annotated-concept-fixer.md) — repairing what each worked example itself
@@ -96,9 +98,27 @@ adapter is generated from it and is never edited in place.
 - [tutorial-in-the-field-fixer](tutorial-in-the-field-fixer.md) — repairing what each in-the-field step itself settles
 - [tutorial-primer-checker](tutorial-primer-checker.md) — judging a primer's scope, capstone, and examples
 - [tutorial-primer-fixer](tutorial-primer-fixer.md) — repairing a primer's examples within its stated scope
-- [ui-web-checker](ui-web-checker.md) — judging a running web interface against its specification, design, and first use
-- [ui-web-fixer](ui-web-fixer.md) — repairing a web interface test-first from a frozen ledger
-- [web-design-tester](web-design-tester.md) — judging a live render against cited design ground truth
-- [web-exploratory-tester](web-exploratory-tester.md) — exploring a live web interface against its specifications
 - [web-researcher](web-researcher.md) — answering outside questions with cited, labelled public sources
-- [web-usability-tester](web-usability-tester.md) — judging first use of a live web interface without its specifications
+
+## Old-to-New Map
+
+Each agent the swe family replaced, and where its work went. A reader holding an old name finds its replacement here.
+
+| Replaced agent                    | New agent              | Mode or charter   |
+| --------------------------------- | ---------------------- | ----------------- |
+| `swe-code-maker`                  | `swe-developer`        | build             |
+| `swe-ui-maker`                    | `swe-developer`        | build (UI skills) |
+| `swe-code-fixer`, `swe-ui-fixer`  | `swe-developer`        | apply findings    |
+| `ui-web-fixer`, `api-http-fixer`  | `swe-developer`        | apply findings    |
+| `bugs-solver`                     | `swe-debugger`         | —                 |
+| `swe-code-checker`                | `swe-reviewer`         | code              |
+| `swe-ui-checker`                  | `swe-reviewer`         | interface         |
+| `gherkin-implementation-reviewer` | `swe-reviewer`         | scenario trace    |
+| `ui-web-checker`                  | `swe-web-tester`       | spec              |
+| `web-design-tester`               | `swe-web-tester`       | design            |
+| `web-exploratory-tester`          | `swe-web-tester`       | exploratory       |
+| `web-usability-tester`            | `swe-usability-tester` | —                 |
+| `api-http-checker`                | `swe-api-tester`       | contract          |
+| `api-exploratory-tester`          | `swe-api-tester`       | exploratory       |
+| `pr-review-architecture-checker`  | `swe-architect`        | lens              |
+| `apps-*-deployer` (per app)       | `swe-releaser`         | deploy            |
