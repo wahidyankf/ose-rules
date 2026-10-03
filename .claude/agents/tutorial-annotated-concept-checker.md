@@ -1,6 +1,8 @@
 ---
 description: |-
   Audits one annotated-concept tutorial's mode, worked examples, and diagrams against the annotated-concept tutorial rules, with every product threshold read from the adopting repository's adapter, and returns criticality-rated findings without modifying anything.
+effort: xhigh
+model: sonnet
 name: tutorial-annotated-concept-checker
 tools: |-
   Read, Glob, Grep, Bash

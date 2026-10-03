@@ -1,6 +1,8 @@
 ---
 description: |-
   Reviews one pinned change for the instruction currency discipline, finding toolchain, dependency-manager, environment, or pipeline changes the agent instruction files no longer describe, and filler that adds no rule.
+effort: xhigh
+model: sonnet
 name: pr-review-instruction-checker
 tools: |-
   Read, Glob, Grep, Bash

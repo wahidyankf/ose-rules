@@ -1,6 +1,8 @@
 ---
 description: |-
   Writes or reworks one tutorial of a single declared type, with the required sections in order, every example run as printed, and checkpoints a learner can confirm.
+effort: xhigh
+model: sonnet
 name: docs-tutorial-maker
 tools: |-
   Read, Glob, Grep, Write, Edit, Bash

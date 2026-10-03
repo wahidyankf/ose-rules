@@ -1,6 +1,8 @@
 ---
 description: |-
   Audits published content pages for clear writing, accessible structure, true facts, working links, and the product rules its adapter states, and returns criticality-rated findings with their sources, without modifying anything.
+effort: xhigh
+model: sonnet
 name: content-checker
 tools: |-
   Read, Glob, Grep, Bash, WebSearch, WebFetch

@@ -1,6 +1,8 @@
 ---
 description: |-
   Executes Tutorial By Example Propagation on a frozen tutorial-by-example ledger, repairing only what each example itself settles, with every threshold read from the adopting repository's adapter, and leaving authoring and pedagogy to the author.
+effort: xhigh
+model: sonnet
 name: tutorial-by-example-fixer
 tools: |-
   Read, Glob, Grep, Write, Edit, Bash

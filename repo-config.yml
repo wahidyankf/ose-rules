@@ -21,6 +21,7 @@ harness:
       grants: capabilities
       denials: denies
       constraints: constraints
+      dispatches: dispatches
     skills:
       name: name
       description: description
@@ -68,6 +69,11 @@ harness:
         tier-fields:
           model: model
           effort: effort
+        dispatches:
+          field: tools
+          format: "Agent({names})"
+        empty-tier:
+          model: inherit
         translations:
           - when: always
             field: tools
@@ -107,9 +113,14 @@ harness:
           name: name
           description: description
       tiers:
-        plan:
-          model: opus
-          effort: high
+        ultra: {}
+        plan: {}
+        execution:
+          model: sonnet
+          effort: xhigh
+        fast:
+          model: haiku
+          effort: xhigh
     - id: codex
       supports:
         capabilities:
@@ -134,9 +145,22 @@ harness:
         identity:
           name: name
           description: description
-        absent:
-          - model
-          - effort
+        tier-fields:
+          model: model
+          effort: model_reasoning_effort
+      tiers:
+        ultra: {}
+        plan: {}
+        execution: {}
+        fast:
+          model-resolve:
+            command:
+              - codex
+              - debug
+              - models
+            pattern: gpt-*-luna
+            fallback: gpt-6-luna
+          effort: xhigh
     - id: opencode
       supports:
         capabilities:
@@ -162,6 +186,9 @@ harness:
           description: description
         fixed:
           mode: subagent
+        dispatches:
+          field: permission.task
+          format: allow-map
         translations:
           - when: always
             field: permission
@@ -262,7 +289,11 @@ policies:
         - family: harness
         - family: pr-review
         - family: ui-web
+          judge: swe-web-tester
+          repairer: swe-developer
         - family: api-http
+          judge: swe-api-tester
+          repairer: swe-developer
         - family: content
         - family: pdf-to-md
         - family: tutorial-by-example

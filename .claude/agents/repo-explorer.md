@@ -1,6 +1,8 @@
 ---
 description: |-
   Locates code, tests, documentation, and governance rules in a repository and answers with cited file and line evidence, without editing, running commands, or delegating.
+effort: xhigh
+model: haiku
 name: repo-explorer
 tools: |-
   Read, Glob, Grep

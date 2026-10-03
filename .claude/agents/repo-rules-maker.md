@@ -1,8 +1,7 @@
 ---
 description: |-
   Authors a new or changed governance rule at the level whose question it answers, as a falsifiable statement with its reason, principle trace, and enforcement, writing it inside a Rules Propagation run.
-effort: high
-model: opus
+model: inherit
 name: repo-rules-maker
 tools: |-
   Read, Glob, Grep, Write, Edit, Bash

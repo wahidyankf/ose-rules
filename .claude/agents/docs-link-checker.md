@@ -1,6 +1,8 @@
 ---
 description: |-
   Checks that internal links and anchors in documentation resolve and that external addresses respond, under the link form and result memory the repository recorded, and returns rated findings.
+effort: xhigh
+model: sonnet
 name: docs-link-checker
 tools: |-
   Read, Glob, Grep, Bash, WebSearch, WebFetch

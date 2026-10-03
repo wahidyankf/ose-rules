@@ -1,6 +1,8 @@
 ---
 description: |-
   Executes Tutorial In the Field Propagation on a frozen tutorial-in-the-field ledger, repairing only what each guide itself settles, with every threshold read from the adopting repository's adapter, and leaving authoring and pedagogy to the author.
+effort: xhigh
+model: sonnet
 name: tutorial-in-the-field-fixer
 tools: |-
   Read, Glob, Grep, Write, Edit, Bash

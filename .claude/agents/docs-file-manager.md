@@ -1,6 +1,8 @@
 ---
 description: |-
   Renames, moves, and deletes documents and directories after mapping every reference to them, repairs those references and the affected indexes, and proves nothing was left broken.
+effort: xhigh
+model: sonnet
 name: docs-file-manager
 tools: |-
   Read, Glob, Grep, Write, Edit, Bash

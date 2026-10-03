@@ -1,6 +1,8 @@
 ---
 description: |-
   Reviews tutorials for one declared type, required sections in order, runnable examples with real output, progressive complexity, and checkpoints, and returns rated findings without editing anything.
+effort: xhigh
+model: sonnet
 name: docs-tutorial-checker
 tools: |-
   Read, Glob, Grep, Bash

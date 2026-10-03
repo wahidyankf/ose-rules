@@ -1,5 +1,7 @@
 ---
 description: Compares a converted Markdown file with its source PDF across seven fidelity dimensions and returns rated findings without editing either file.
+effort: xhigh
+model: sonnet
 name: pdf-to-md-checker
 tools: |-
   Read, Glob, Grep, Bash

@@ -1,6 +1,8 @@
 ---
 description: |-
   Audits one By Example tutorial's examples, annotations, and progression against the By Example tutorial rules, with every product threshold read from the adopting repository's adapter, and returns criticality-rated findings without modifying anything.
+effort: xhigh
+model: sonnet
 name: tutorial-by-example-checker
 tools: |-
   Read, Glob, Grep, Bash
