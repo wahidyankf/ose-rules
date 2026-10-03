@@ -29,8 +29,9 @@ change type qualifies, prose, governance, and plans included.
 3. **Route by risk.** One scouting step picks a depth, trivial, lite, or full, per
    [Cost and Noise Controls](../../development/agents/review-disciplines/004-cost-and-noise-controls.md), the specialist
    reviewers that depth needs from the
-   [Discipline Roster](../../development/agents/review-disciplines/001-discipline-roster.md), and one shared brief.
-   Routing sets how deep the review goes, never whether it happens.
+   [Discipline Roster](../../development/agents/review-disciplines/001-discipline-roster.md), and one shared brief. The
+   architecture specialist is `swe-architect` in its Lens mode. Routing sets how deep the review goes, never whether it
+   happens.
 4. **Carry delegated work unchanged.** Predicates in `delegated-checks` and their evidence pass through untouched; an
    empty list suppresses nothing, and pending evidence is neither a finding nor a reason to wait. A leak screen stays
    with [PR Leak Review](pr-leak-review.md), and broad reviewers do not repeat it.
