@@ -38,9 +38,10 @@ breaking them.
 Hand work to a delegated agent when it would otherwise flood the working context: reading across many files, answering
 independent questions in parallel, or a subtask large enough to need its own plan.
 
-Only a top-level session, or an agent declaring `subagent` while running top-level, hands work over. A delegated agent
-that needs further delegation returns the need to its caller, for the reason [Capability Forms](capability-forms.md)
-gives.
+Only a top-level session, or an agent declaring `subagent` while running top-level, hands work over. One exception: an
+agent that declares `dispatches` may, as a delegate, hand work to exactly those agents where the harness lets a
+delegated agent spawn agents; where it cannot, that agent runs as the main thread. Any other delegated agent that needs
+further delegation returns the need to its caller, for the reason [Capability Forms](capability-forms.md) gives.
 
 - **One concern per delegate.** A delegate given two questions answers the easier one well.
 - **Findings, not transcripts.** The delegate returns conclusions and the evidence for them, not everything it read

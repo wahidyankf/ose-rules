@@ -69,6 +69,7 @@ delegation step inside a skill gives every agent that loads it an ability its ow
 
 Where a concern needs delegation, the sequence belongs to a workflow or to the session running it, and the delegating
 step to an agent that declares `subagent`. The skill teaches how to do the delegated work well. A delegated agent that
-finds work needing further delegation returns it to its caller.
+finds work needing further delegation returns it to its caller, unless it declares `dispatches` and the harness lets it
+spawn those agents, per [Agent Workflow Orchestration](agent-workflow-orchestration.md).
 
 Review enforces this: delegation is phrased too many ways for a text pattern to catch reliably.

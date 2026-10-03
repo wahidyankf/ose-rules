@@ -85,7 +85,9 @@ their propagations, not this agent. Its run is bounded by its deterministic exit
 ## Invocation
 
 It runs as the main thread, selected by agent name, or as a subagent of the main session where the harness lets a
-delegated agent spawn agents. Where the harness cannot, it runs as the main thread.
+delegated agent spawn agents, as
+[Agent Workflow Orchestration](../../repo-governance/development/agents/agent-workflow-orchestration.md) allows an agent
+declaring `dispatches`. Where the harness cannot, it runs as the main thread.
 
 ## Shell
 
