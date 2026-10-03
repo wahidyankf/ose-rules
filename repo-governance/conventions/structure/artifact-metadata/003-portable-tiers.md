@@ -19,8 +19,8 @@ Every canonical agent declares exactly one `tier`:
 
 ## The Tier Is Not a Quality Ranking
 
-`fast` is not a worse agent. It is an agent whose work is narrow, and giving it a heavier tier makes every invocation
-slower and more expensive without making any answer better.
+`fast` is not a worse agent but a narrow one, and a heavier tier makes every invocation slower and costlier without
+improving any answer.
 
 ## Select From Normal Use, Not the Hardest Case
 
@@ -33,12 +33,13 @@ Ask what this agent does on a typical day.
 
 A tier names a workload. It never names a model, a provider, a context size, or a price band.
 
-Model names change, and they change independently in each harness. Metadata that names one is wrong the next time the
-provider ships, in every repository that copied it, with nothing to signal the drift.
+Model names change independently in each harness, so metadata naming one goes stale, in every copy, with nothing to
+signal the drift.
 
-Where a repository does want to map tiers to concrete models, that mapping lives in its own configuration — keyed by
-harness and then by tier — and never in the agent. An omitted mapping is the designed default: the harness applies its
-own inheritance, which is what a harness is for.
+Where a repository maps tiers to concrete models, that mapping lives in its own configuration — keyed by harness and
+then by tier — and never in the agent. A profile may declare a tier with an empty mapping. An empty mapping pins
+nothing, so the harness applies its own default model and effort. Declaring a tier empty is a deliberate choice; in a
+profile that maps tiers, leaving a tier undeclared is an error.
 
 ## Match the Tier to the Workload's Complexity
 
@@ -79,7 +80,6 @@ workload at the declared tier, that statement is itself the justification.
 
 An omitted tier fails. It never means `plan`, and it never means whatever the calling session uses.
 
-Some repositories let an agent omit its level and treat the omission as a deliberate choice of the top working tier.
-That is rejected here: an omission cannot be told apart from an oversight, so review approves both. Inheritance belongs
-one step later — the tier is always declared, and only the model a harness runs for it is inherited when no mapping
-exists.
+Treating an omitted tier as a deliberate choice of the top working tier is rejected: an omission cannot be told apart
+from an oversight, so review approves both. Inheritance belongs one step later — the tier is always declared, and only
+the model a harness runs for it is inherited, through an empty mapping or a profile that maps no tier.
