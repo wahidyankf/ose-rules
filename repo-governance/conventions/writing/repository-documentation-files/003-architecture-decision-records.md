@@ -27,13 +27,13 @@ The test: would a capable newcomer, finding this choice in the code, reasonably 
 ## Structure
 
 ```markdown
-# NNNN. Short Title
+# NNN. Short Title
 
 Date: YYYY-MM-DD
 
 ## Status
 
-Proposed | Accepted | Rejected | Deprecated | Superseded by NNNN
+Proposed | Accepted | Rejected | Deprecated | Superseded by NNN
 
 ## Context
 
@@ -58,9 +58,11 @@ was made — content, not maintenance metadata.
 
 ## Storage
 
-Records live in `docs/adr/`, named `NNNN-short-title.md` — a four-digit sequence number and a kebab-case title — with a
-`README.md` index listing every record and its status. A decision scoped to one component lives in that component's own
-`docs/adr/`, in the same form.
+Records live where the repository's `ADR location` decision places them, by default `docs/explanation/decisions/`, named
+`NNN-<slug>.md` — a three-digit sequence number and a kebab-case slug — with a `README.md` index listing every record
+and its status. The decision is recorded once in the repository adapter, and
+[SWE Architect](../../../../.agents/agents/swe-architect.md) writes there. A decision scoped to one component lives in
+the same relative location inside that component, in the same form.
 
 Numbers are never reused. A number is how later records cite a decision, and a reused one makes an old citation point at
 the wrong decision.
@@ -69,12 +71,12 @@ the wrong decision.
 
 Once a record is accepted, its context, decision, and consequences are never edited. Only its status line changes:
 
-| From     | To                   | When                                          |
-| -------- | -------------------- | --------------------------------------------- |
-| Proposed | Accepted             | the decision is approved                      |
-| Proposed | Rejected             | the proposal is declined                      |
-| Accepted | `Superseded by NNNN` | a newer record replaces it                    |
-| Accepted | Deprecated           | it no longer applies, and nothing replaces it |
+| From     | To                  | When                                          |
+| -------- | ------------------- | --------------------------------------------- |
+| Proposed | Accepted            | the decision is approved                      |
+| Proposed | Rejected            | the proposal is declined                      |
+| Accepted | `Superseded by NNN` | a newer record replaces it                    |
+| Accepted | Deprecated          | it no longer applies, and nothing replaces it |
 
 Repairing a link whose target has moved, as [Internal Links](../internal-links.md) requires, is mechanical repair: it is
 permitted inside an accepted record and is not a substantive edit.
@@ -86,7 +88,7 @@ reasoning is what a later team most needs when it is tempted to swing back.
 
 1. Write a new record with status `Proposed`, whose context names the record it would supersede.
 2. On approval, set the new record to `Accepted`.
-3. Set the old record's status to `Superseded by NNNN`, and change nothing else in it.
+3. Set the old record's status to `Superseded by NNN`, and change nothing else in it.
 4. Update the index.
 
 ## Review

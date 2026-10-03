@@ -21,7 +21,9 @@ audience already looks.
 | `SECURITY.md`        | root                              | how do I report a vulnerability     |
 | `LICENSE`            | root                              | may I use this                      |
 | `CHANGELOG.md`       | root, once releases are versioned | what changed in each release        |
-| decision records     | `docs/adr/`                       | why is it built this way            |
+| decision records     | `docs/explanation/decisions/`     | why is it built this way            |
+
+Decision records sit where the adopter's `ADR location` decision places them; the path above is its default.
 
 What a README contains, and how it reads, is owned entirely by [README Quality](readme-quality.md). This convention
 requires only that a root README exists.
