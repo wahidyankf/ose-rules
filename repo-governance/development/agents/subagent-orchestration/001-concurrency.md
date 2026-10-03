@@ -37,6 +37,10 @@ orchestrator is the `+1`: it does not consume a slot, and it stays active while 
 independent work is waiting, the next unit launches immediately, because N limits the instantaneous count rather than
 the batch total.
 
+The count covers every delegated agent alive in the session, foreground or background, at any depth: an agent that a
+delegated agent spawns takes a slot of its own. It binds in every harness whose session can spawn delegated agents,
+whatever that harness calls them. Work beyond N waits until a running unit returns; it is never launched over the cap.
+
 The cap bounds token burn and per-minute rate limits. Each concurrent unit spends independently against the same quota,
 and overshooting produces retries that cascade until the batch runs slower than it would have serially. A shared machine
 limits it too, since other agents and people draw on the same capacity.

@@ -30,13 +30,21 @@ task list or a todo list; the obligation is identical under either name.
 ## Plans
 
 Inside plan-mediated work, the plan's delivery checklist is the authoritative progress record, updated in the same
-change as the work it describes. The live list tracks in-session state during that execution. Both stay in sync, and
-neither exempts the other.
+change as the work it describes. Everything the execution does is recorded there, so a session that breaks off resumes
+from the checklist alone. The live list tracks in-session state during that execution. Both stay in sync, and neither
+exempts the other.
 
 It is also the only written one. A scratch or report directory holds what an execution needs and then discards —
 scripts, assets, logs, intermediate data, the touched-path ledger — and never a copy of the checklist, its ticks, or its
-status. Two written records drift apart, and nothing decides which one was true. Outside plan-mediated work there is no
-checklist, and a scratch file may carry working notes that have to survive a context boundary.
+status. Two written records drift apart, and nothing decides which one was true.
+
+## Outside a Plan
+
+Outside plan-mediated work there is no checklist, so a scratch file is the written progress record. Open it in a
+[designated scratch directory](../../../conventions/structure/temporary-files.md) before the task's first action, record
+the goal, every active rule decision, and each item with its status, and update it as items resolve. A session that
+breaks off resumes from it. It stays until the whole task has ended, delivery and cleanup in every repository included,
+and is then removed under [Dev Artifact Clean-Up](../../../workflows/maintenance/dev-artifact-clean-up.md).
 
 ## What Does Not Satisfy This
 
