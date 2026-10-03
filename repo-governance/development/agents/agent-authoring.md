@@ -38,7 +38,8 @@ vocabulary; the role selects.
 Each is a starting point, not an entitlement; every capability beyond it needs a reason stated in the body.
 
 An agent declaring `subagent` orchestrates only while top-level; as a delegate it hands further delegation back to its
-caller, for the reason [Capability Forms](capability-forms.md) gives under Skills Never Delegate.
+caller, for the reason [Capability Forms](capability-forms.md) gives under Skills Never Delegate. The exception is an
+agent declaring `dispatches`, as [Agent Workflow Orchestration](agent-workflow-orchestration.md) sets out.
 
 ### Adopter Decision: How a Checker Reports
 
