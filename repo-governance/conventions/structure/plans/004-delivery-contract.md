@@ -16,9 +16,9 @@ through.
 A checklist item represents exactly one independently verifiable action, and it names:
 
 - the **paths** it touches;
-- the **command** that performs or proves it, where one exists;
+- the **command** that performs it, where one exists;
 - its **executor** label;
-- the **proof** that shows it is done; and
+- the **proof** that shows it is done, under the rules below; and
 - the **acceptance criteria** it satisfies, by stable identifier.
 
 "Independently verifiable" is the test. If finishing an item leaves no observable difference — no file, no output, no
@@ -27,6 +27,19 @@ in the wrong place.
 
 Items are granular. An item that takes a long session is hiding several items, and hiding them means the first failure
 inside it has no checkbox to fail against.
+
+## Deterministic and Executable
+
+**Deterministic proof.** Every checklist item's proof is a deterministic check: a command with its expected exit status
+or output, or a file whose presence or content a command tests. "Holds on read", "looks right", and "satisfy review" are
+not proofs.
+
+**Execution-tier executable.** An agent at the `execution` tier can carry out every item from the plan's own documents,
+without consulting other context or making a policy choice. An item labelled `[HUMAN]` for one of the four reasons below
+is the only exception.
+
+A plan item is a goal an executor works toward, and only a check that passes or fails the same way for everyone can say
+the goal is met.
 
 ## Executor Labels and AI-First Ownership
 
