@@ -115,7 +115,7 @@
     {
       "id": "agent/pr-review-checker",
       "path": ".agents/agents/pr-review-checker.md",
-      "digest": "e98a1df087f5bf6e903971b980d139c1011d91ccf7bae0cfc44a4d8f38fa32be"
+      "digest": "cd7b0879a70d4518dc5462954e987ddb5389f35fb438f85dadfb1d721b9439e5"
     },
     {
       "id": "agent/pr-review-docs-checker",
@@ -245,7 +245,7 @@
     {
       "id": "agent/swe-architect",
       "path": ".agents/agents/swe-architect.md",
-      "digest": "d239ef6d874f3257560a89d92964755ab3ae3e3e594d18a9e83cc66e4d10b98b"
+      "digest": "1f657d551175a6daefb0df5f39bf4419ea68e16fd3362cfd5ee6f1ea0f26cc23"
     },
     {
       "id": "agent/swe-debugger",
@@ -255,7 +255,7 @@
     {
       "id": "agent/swe-developer",
       "path": ".agents/agents/swe-developer.md",
-      "digest": "e906022a19ed0899493d084006184dc6c22241613009f8b540c30a7c8141246d"
+      "digest": "992889fe44275832be413041baca6227557d19cea97c1a4761bc8b97080c9f66"
     },
     {
       "id": "agent/swe-infra-tester",
@@ -275,7 +275,7 @@
     {
       "id": "agent/swe-reviewer",
       "path": ".agents/agents/swe-reviewer.md",
-      "digest": "6443fd072c826ce3499ae26576227c80b562c5ad41598ca85730f86f6bee0356"
+      "digest": "1d1a6c1acc4f58f9b0850ceefdfce8408efab2abf194a2e1ea1c5c07c8f80ca1"
     },
     {
       "id": "agent/swe-usability-tester",
@@ -285,7 +285,7 @@
     {
       "id": "agent/swe-web-tester",
       "path": ".agents/agents/swe-web-tester.md",
-      "digest": "8d2d44e85ef17cac6763c738d1a0e8ba5d1edaed556a3581b580b8f8dfb08271"
+      "digest": "43b8685b6044c7d58ff4c5ef0e0a9f62d351c129f3cccab9fba6707a3f582d6e"
     },
     {
       "id": "agent/tutorial-annotated-concept-checker",
@@ -355,7 +355,7 @@
     {
       "id": "skill/applying-maker-checker-fixer",
       "path": ".agents/skills/applying-maker-checker-fixer/SKILL.md",
-      "digest": "fcd312caf0cb9f5b6f9d3b3335e5248141f464f0a701bab4758e3aa9ede0e4d8"
+      "digest": "c18f4468b223c320994112e10e488720bdd65575776e8e5e7a36586120193102"
     },
     {
       "id": "skill/assess-alignment",
@@ -520,7 +520,7 @@
     {
       "id": "skill/plan-creating-project-plans",
       "path": ".agents/skills/plan-creating-project-plans/SKILL.md",
-      "digest": "59ddb1aa74b1d000d3c4c8936f60be059e655f05e73aa765e9373cedababc70c"
+      "digest": "a8b0a71a6a28fc89e35766136ca1ddfc915a748dbfbe86e23aa9225de571b859"
     },
     {
       "id": "skill/plan-grooming-idea-briefs",

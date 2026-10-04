@@ -10,9 +10,8 @@ when_to_use: >-
 
 Agent definitions in their canonical, harness-neutral form. One Markdown file per agent.
 
-An agent here declares what it needs and what it must not do in this repository's own vocabulary, and a harness adapter
-translates that declaration into whatever the harness understands. The canonical file is the one a human edits; an
-adapter is generated from it and is never edited in place.
+Each declares what it needs and must not do in this repository's vocabulary; a harness adapter translates that. A human
+edits the canonical file, and an adapter is generated from it, never edited in place.
 
 ## Directory Map
 
@@ -39,8 +38,7 @@ adapter is generated from it and is never edited in place.
 - [plan-fixer](plan-fixer.md) — repairing the rows of a frozen plan ledger through Plan Propagation
 - [plan-maker](plan-maker.md) — authoring a formal plan through both decision gates
 - [pr-review-checker](pr-review-checker.md) — coordinating one review pass and publishing its single consolidated review
-- [pr-review-docs-checker](pr-review-docs-checker.md) — reviewing a change's documentation for completeness, clarity,
-  and drift
+- [pr-review-docs-checker](pr-review-docs-checker.md) — reviewing a change's documentation for completeness and drift
 - [pr-review-fixer](pr-review-fixer.md) — answering every finding a published review raised on the change
 - [pr-review-governance-checker](pr-review-governance-checker.md) — checking a change against the rules its repository
   documents
@@ -50,8 +48,7 @@ adapter is generated from it and is never edited in place.
   regression tests
 - [pr-review-logic-checker](pr-review-logic-checker.md) — judging a change's behaviour against domain intent and
   acceptance criteria
-- [pr-review-performance-checker](pr-review-performance-checker.md) — finding a change's regressions and cost growth on
-  exercised paths
+- [pr-review-performance-checker](pr-review-performance-checker.md) — finding a change's regressions and cost growth
 - [pr-review-scout](pr-review-scout.md) — classifying a review pass and assembling its shared brief
 - [pr-review-security-checker](pr-review-security-checker.md) — finding secrets, injection, and unsafe operations in a
   change
@@ -61,8 +58,7 @@ adapter is generated from it and is never edited in place.
 - [readme-maker](readme-maker.md) — writing or restructuring READMEs as navigation documents
 - [repo-explorer](repo-explorer.md) — locating repository evidence with cited files and lines
 - [repo-rules-maker](repo-rules-maker.md) — authoring a rule at its level inside Rules Propagation
-- [repo-setup-manager](repo-setup-manager.md) — proving a checkout's bootstrap, toolchain, and gate baseline before plan
-  work
+- [repo-setup-manager](repo-setup-manager.md) — proving a checkout's bootstrap, toolchain, and gate baseline
 - [repo-workflow-checker](repo-workflow-checker.md) — auditing workflow documents against the workflow pattern
 - [repo-workflow-fixer](repo-workflow-fixer.md) — applying re-validated workflow document findings
 - [repo-workflow-maker](repo-workflow-maker.md) — writing one workflow document to the workflow pattern
@@ -71,7 +67,7 @@ adapter is generated from it and is never edited in place.
 - [specs-checker](specs-checker.md) — auditing listed specification folders for structure and consistency
 - [specs-fixer](specs-fixer.md) — applying re-validated specification structure findings
 - [specs-maker](specs-maker.md) — creating a specification corpus or its missing parts at a named path
-- [swe-api-tester](swe-api-tester.md) — judging a running request-based interface by contract or exploratory charter
+- [swe-api-tester](swe-api-tester.md) — judging a running request-based interface by contract or exploration
 - [swe-architect](swe-architect.md) — designing boundaries before a build, reviewing it after, and the architecture
   review lens
 - [swe-debugger](swe-debugger.md) — repairing failing type checks, lint, and tests at the cause
@@ -83,18 +79,16 @@ adapter is generated from it and is never edited in place.
 - [swe-releaser](swe-releaser.md) — cutting releases, deploying artifacts, and repinning tools through documented
   workflows
 - [swe-reviewer](swe-reviewer.md) — auditing code, component source, and scenario bindings against adopted standards
-- [swe-usability-tester](swe-usability-tester.md) — judging first use of a live web interface or command-line tool
-  without its specifications
+- [swe-usability-tester](swe-usability-tester.md) — judging first use of a live interface or tool without its
+  specifications
 - [swe-web-tester](swe-web-tester.md) — judging a live web interface by spec, design, or exploratory charter
-- [tutorial-annotated-concept-checker](tutorial-annotated-concept-checker.md) — judging an annotated-concept tutorial's
-  mode and worked examples
+- [tutorial-annotated-concept-checker](tutorial-annotated-concept-checker.md) — judging an annotated-concept tutorial
 - [tutorial-annotated-concept-fixer](tutorial-annotated-concept-fixer.md) — repairing what each worked example itself
   settles
 - [tutorial-by-example-checker](tutorial-by-example-checker.md) — judging a By Example tutorial's examples against the
   kind's rules
 - [tutorial-by-example-fixer](tutorial-by-example-fixer.md) — repairing what each By Example example itself settles
-- [tutorial-in-the-field-checker](tutorial-in-the-field-checker.md) — judging an in-the-field guide for scenario,
-  built-in-first, and production code
+- [tutorial-in-the-field-checker](tutorial-in-the-field-checker.md) — judging an in-the-field guide's scenario and code
 - [tutorial-in-the-field-fixer](tutorial-in-the-field-fixer.md) — repairing what each in-the-field step itself settles
 - [tutorial-primer-checker](tutorial-primer-checker.md) — judging a primer's scope, capstone, and examples
 - [tutorial-primer-fixer](tutorial-primer-fixer.md) — repairing a primer's examples within its stated scope
@@ -102,7 +96,7 @@ adapter is generated from it and is never edited in place.
 
 ## Old-to-New Map
 
-Each agent the swe family replaced, and where its work went. A reader holding an old name finds its replacement here.
+Each agent the swe family replaced, and where its work went.
 
 | Replaced agent                    | New agent              | Mode or charter   |
 | --------------------------------- | ---------------------- | ----------------- |

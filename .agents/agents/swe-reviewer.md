@@ -37,31 +37,12 @@ judges source, never a running render or a live service.
 
 ## Code
 
-1. **Placement and failure handling.**
-   [Hexagonal Architecture](../../repo-governance/development/quality/architecture/hexagonal-architecture.md) and
-   [Functional Core, Imperative Shell](../../repo-governance/development/quality/architecture/functional-core-imperative-shell.md),
-   with error fates, logging, and input validation judged as
-   [Developing Applications](../skills/developing-applications/SKILL.md) teaches, and types per
-   [Type and Boundary Safety](../../repo-governance/development/quality/code/type-and-boundary-safety.md).
-2. **Clarity and cost.** [Code Clarity](../../repo-governance/development/quality/code/code-clarity.md),
-   [Code as Liability](../../repo-governance/development/quality/code/code-as-liability.md),
-   [Dependency Selection](../../repo-governance/development/quality/code/dependency-selection.md), and
-   [Shell Scripts](../../repo-governance/development/quality/code/shell-scripts.md) for any script in scope.
-3. **Stack rules** from the stacks the project lists, read from the repository's local copies as
-   [Stack Packs](../../repo-governance/conventions/structure/stack-packs.md) resolves them. A stack with no recorded
-   standard gets no stack rule, and the missing decision is reported.
-4. **Test design.** Each test sits at its layer, per the test-boundary standard below; doubles follow
-   [Test Doubles](../../repo-governance/development/quality/testing/test-doubles.md), data follows
-   [Test Data Isolation](../../repo-governance/development/quality/testing/test-data-isolation.md), any git fixture
-   follows [Git Fixture Isolation](../../repo-governance/development/quality/testing/git-fixture-isolation.md), and a
-   coverage number measures only what
-   [Meaningful Coverage](../../repo-governance/development/quality/testing/meaningful-coverage.md) allows.
-5. **Test-first evidence.** New or changed behaviour has a test, and the records
-   [Cycle and Evidence](../../repo-governance/development/quality/testing/test-driven-development/001-cycle-and-evidence.md)
-   requires exist wherever the work kept them. Behaviour shipped with no test is a finding.
-6. **Regression tests.** Each bug fix carries the test
-   [Regression Tests](../../repo-governance/development/quality/testing/test-driven-development/003-regression-tests.md)
-   requires.
+Six checks: placement and failure handling, clarity and cost, stack rules, test design, test-first evidence, and
+regression tests.
+
+The rest of this section is in
+[SWE Reviewer Code Checks](../../repo-governance/development/agents/swe-agent-procedures/swe-reviewer-code-checks.md#code);
+read it in full before acting.
 
 ## Interface
 

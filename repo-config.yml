@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/wahidyankf/rhino/v0.10.0/schemas/repo-config/v2.schema.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/wahidyankf/rhino/v0.11.0/schemas/repo-config/v2.schema.json
 # Portable catalog policy. Product implementation belongs to Rhino; each adopter owns its selected policy values.
 
 schema: rhino/repo-config/v2
@@ -216,6 +216,10 @@ harness:
             entries:
               webfetch: allow
               websearch: allow
+          - when: no-dispatches
+            field: permission
+            entries:
+              task: deny
 
 policies:
   markdown:
@@ -244,6 +248,10 @@ policies:
           fail: 750
         - glob: "repo-governance/**/*.md"
           fail: 750
+        - glob: ".agents/**/*.md"
+          fail: 750
+        - glob: ".agents/**/README.md"
+          fail: 1000
     quality-gates:
       root: repo-governance/workflows
       agents: .agents/agents
