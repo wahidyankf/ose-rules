@@ -36,6 +36,9 @@ replaced by a broader permission. Where a harness cannot express a restriction, 
 
 Failing loudly here matters because the silent alternatives both grant more than was declared.
 
+An agent's `dispatches` list is the only subagent grant. A profile never translates a capability into an unscoped spawn
+permission, and where a harness can deny spawning, an agent without the list is denied it.
+
 ## Empty Is a Valid Mapping
 
 A tier declared with an empty mapping, or a profile that maps no tier, means the renderer pins no model or effort, and

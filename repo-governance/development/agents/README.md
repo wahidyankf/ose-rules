@@ -23,6 +23,8 @@ holds for how an agent works: how it plans, delegates, asks, tracks, and reviews
 - [Harness Adapters Modules](harness-adapters/README.md) — the one instruction body, vendor notes, and harness
   configuration and discovery
 - [Last-Resort Questions](last-resort-questions.md) — when an agent may ask the user, and how little it asks
+- [PR Review Agent Procedures](pr-review-agent-procedures/README.md) — the procedure moved out of the pr-review-checker
+  definition to fit its word budget
 - [Planning Capabilities](planning-capabilities.md) — the planning roster a repository exposes and its uniform contract
 - [Planning Capabilities Modules](planning-capabilities/README.md) — rosters, decision gates, executor authority,
   delivery seams, verification, and review
@@ -33,6 +35,8 @@ holds for how an agent works: how it plans, delegates, asks, tracks, and reviews
   results
 - [Subagent Orchestration Modules](subagent-orchestration/README.md) — concurrency, stuck detection and recovery, and
   result handling
+- [SWE Agent Procedures](swe-agent-procedures/README.md) — the procedure sections moved out of four swe-* agent
+  definitions to fit their word budget
 - [SWE Delegation](swe-delegation.md) — dispatching coding work to the fitting swe agent, and the three exceptions
 - [Task Tracking](task-tracking.md) — the task list kept before and during every task
 - [Task Tracking Modules](task-tracking/README.md) — list lifecycle, direction and continuity, and bindings
