@@ -72,5 +72,5 @@ continuing.
 
 ## Landing the Plan First
 
-The plan lands on the owning repository's trunk alone, through its route, before any fix is committed. A parallel
-finder's duplicate check then sees it, and the fix follows in its own change.
+The plan lands on the owning repository's trunk alone, through its route, before any fix lands. A parallel finder's
+duplicate check then sees it, and the fix follows in its own change.

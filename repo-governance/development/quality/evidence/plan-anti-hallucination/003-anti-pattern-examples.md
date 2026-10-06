@@ -18,7 +18,7 @@ like and the check that exposes it.
 | Anti-pattern                         | Looks like                                                         | Check that catches it                                        |
 | ------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------ |
 | a version stated from memory         | "upgrade from version 4", when the manifest pins 5                 | read the manifest or lock file                               |
-| a path that ought to exist           | "update `<config-directory>/settings.json`", which was never there | list the directory at the current commit                     |
+| a path that ought to exist           | "update `<config-directory>/settings.json`", which was never there | list the directory at the current revision                   |
 | a command target that is assumed     | "run the `lint:strict` target"                                     | read the target definitions or the tool's listing            |
 | a function or method name that fits  | "call `validateAll()`" where the real function has another name    | find the definition in the source                            |
 | a numeric target with no baseline    | "cut build time by 40 percent"                                     | measure a baseline first, or state it as a reasoned decision |

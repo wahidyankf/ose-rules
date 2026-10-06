@@ -56,7 +56,8 @@ The [Plan Quality Gate](plan-quality-gate.md) hands over a frozen ledger, or an 
 
 Outputs: `status` (`enum`: `no-change`, `landed`, `partial`, `input-changed`) and the ledger, each row with its status
 and evidence. Partial outcome: some rows resolved, others `needs-decision` or `not-resolved`, each named. The caller
-commits the repairs. A rerun on unchanged inputs changes nothing.
+[lands](../../conventions/structure/plans/009-portability.md#what-landed-means) the repairs. A rerun on unchanged inputs
+changes nothing.
 
 ## Example Usage
 

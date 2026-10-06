@@ -27,7 +27,7 @@ missing, unmatched, or complete, in a plan or anywhere else.
 
 ## Verify, Cite, or Refuse
 
-Every factual claim ends in one of two states: verified against the repository at the current commit or against an
+Every factual claim ends in one of two states: verified against the repository at the current revision or against an
 external source cited in plain text, or left out. No third state exists. A factual claim that nobody checked is exactly
 what this standard forbids, and no inline confidence label such as `[Repo-grounded]` or `[Unverified]` stands in for the
 check: confirming each claim is the plan checker's job.

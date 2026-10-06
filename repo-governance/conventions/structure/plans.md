@@ -53,5 +53,5 @@ convention without restating it.
 ## What This Convention Does Not Decide
 
 It does not decide what a repository should plan, how large a plan should be, or which delivery mode — pull request,
-direct commit, local-only commit — a repository uses. Those are the adopting repository's to choose, and the plan system
-is designed to survive any of them.
+direct [landing](plans/009-portability.md#what-landed-means), local-only landing — a repository uses. Those are the
+adopting repository's to choose, and the plan system is designed to survive any of them.

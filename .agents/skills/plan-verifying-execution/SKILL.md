@@ -34,8 +34,8 @@ screenshot filed as proof of a behaviour it does not show. These pass a glance a
 
 ## Gates Must Have Actually Run
 
-A declared gate that never ran is not a passing gate. Check for the evidence record — command, commit, timestamp, result
-— rather than for the absence of complaints.
+A declared gate that never ran is not a passing gate. Check for the evidence record — command, revision, timestamp,
+result — rather than for the absence of complaints.
 
 A gate that returned findings and was then repaired is fine, and is a different thing from a gate nobody invoked.
 

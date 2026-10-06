@@ -1,6 +1,6 @@
 ---
 description: >-
-  Requires internal references in a plan to be checked against the current commit and external facts to carry a plain
+  Requires internal references in a plan to be checked against the current revision and external facts to carry a plain
   citation, forbids inline confidence labels, and fixes the order of refusal when a claim cannot be verified.
 when_to_use: >-
   Use when a plan cites a path, command, flag, test, agent, skill, number, or external behaviour, or when a claim cannot
@@ -15,7 +15,7 @@ an outside fact came from, and refusal covers the claims that cannot be establis
 ## Ground Every Internal Reference
 
 Before a plan names anything inside the repository, whether a file, directory, command target, flag, function, test,
-agent, or skill, verify that it exists at the current commit. When verification fails, take one of three paths:
+agent, or skill, verify that it exists at the current revision. When verification fails, take one of three paths:
 
 1. find the correct reference and use it;
 2. mark the reference as new, with a delivery item that creates it; or
@@ -61,7 +61,7 @@ says more and is partly invented.
 
 | Claim                    | Verification                                                         |
 | ------------------------ | -------------------------------------------------------------------- |
-| file or directory path   | list or read it at the current commit                                |
+| file or directory path   | list or read it at the current revision                              |
 | command target or script | read the file that defines it, or the tool's own listing of targets  |
 | command-line flag        | read the help output of the installed version                        |
 | function, method, or API | find its definition in the source                                    |

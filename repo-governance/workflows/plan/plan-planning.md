@@ -48,9 +48,9 @@ optional, default the adopter's recorded stage, or `backlog` for a promoted brie
    existed. It never merges into the first gate — see
    [Decision Gates](../../development/agents/planning-capabilities/003-decision-gates.md).
 8. **Run the [Quality Gate](../quality/plan-quality-gate.md)** and record its verdict.
-9. **Land the plan as the repository authorizes.** Commit and integrate it by the delivery target the first gate
-   confirmed, where the repository's rules permit, then release the checkout it was written in per
-   [Dev Artifact Clean-Up](../maintenance/dev-artifact-clean-up.md).
+9. **[Land](../../conventions/structure/plans/009-portability.md#what-landed-means) the plan as the repository
+   authorizes,** by the delivery target the first gate confirmed, where the repository's rules permit, then release the
+   checkout it was written in per [Dev Artifact Clean-Up](../maintenance/dev-artifact-clean-up.md).
 
 ## Exit
 

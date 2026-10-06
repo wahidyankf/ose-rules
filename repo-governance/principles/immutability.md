@@ -59,7 +59,7 @@ mutates is not a licence to spread its style past the boundary where it is calle
 | Applied in                                                                                              | As                                                              |
 | ------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
 | [Surfaces and Mutation](../conventions/structure/repository-configuration/003-surfaces-and-mutation.md) | a check leaves the working tree unchanged                       |
-| [Quality Gate](../workflows/quality/plan-quality-gate.md)                                               | the draft is frozen at a named commit for the gate's duration   |
+| [Quality Gate](../workflows/quality/plan-quality-gate.md)                                               | the draft is frozen at a named revision for the gate's duration |
 | [Harness Adapters](../development/agents/harness-adapters.md)                                           | an adapter is regenerated from its source, never edited by hand |
 
 ## Examples Are Not the Rule

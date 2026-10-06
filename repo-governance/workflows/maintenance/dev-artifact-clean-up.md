@@ -13,8 +13,8 @@ when_to_use: >-
 
 A task, plan, or investigation has finished and produced artifacts useful during the work but not part of its result.
 
-Finished means landed on the default branch or deliberately abandoned: never between units sharing a worktree, and never
-as a periodic sweep.
+Finished means [landed](../../conventions/structure/plans/009-portability.md#what-landed-means) or deliberately
+abandoned: never between units sharing a worktree, and never as a periodic sweep.
 
 - `integration` (`enum`: `pull-request`, `local-main`; required): the adopter's integration path. `pull-request`
   isolates each task, reviews its head, and leaves worktrees and branches step 3 guards; `local-main` leaves only files

@@ -21,12 +21,13 @@ This standard implements [Simplicity Over Complexity](../../principles/simplicit
 | Route                               | Work lands as                                                                         | Fits                                                               | Trade-off                                                                                                                |
 | ----------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
 | short-lived branch via pull request | a task branch in a worktree, merged under [Pull Request Merge](pull-request-merge.md) | a protected trunk, several contributors, gates that must run first | a review buffer and hosted gates, at the cost of branch and worktree overhead                                            |
-| direct to trunk                     | commits on local `main`, pushed to the trunk                                          | a single owner, or no service able to protect the trunk            | the least ceremony and no buffer: local gates and [CI Post-Push Verification](ci-post-push-verification.md) carry it all |
+| direct to trunk                     | changes on local `main`, pushed to the trunk where a remote exists                    | a single owner, or no service able to protect the trunk            | the least ceremony and no buffer: local gates and [CI Post-Push Verification](ci-post-push-verification.md) carry it all |
 
 The repository records its route, and nothing else selects one: not where the work runs, not the size of a change, not a
-wish to skip review. Under the direct route no task branch, worktree, or pull request serves as a second path; a
-temporary branch a tool creates for another purpose is removed when that purpose ends. A repository with no remote
-follows the direct route locally.
+wish to skip review. What counts as landed follows
+[What Landed Means](../../conventions/structure/plans/009-portability.md#what-landed-means). Under the direct route no
+task branch, worktree, or pull request serves as a second path; a temporary branch a tool creates for another purpose is
+removed when that purpose ends. A repository with no remote follows the direct route locally.
 
 Long-lived environment branches tracking what is deployed are not development branches: nothing is developed on them,
 and changes flow only from the trunk to them.

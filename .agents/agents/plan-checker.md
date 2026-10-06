@@ -21,7 +21,7 @@ Audits a frozen plan draft and reports. It changes nothing.
 
 ## Responsibility
 
-1. Record the commit it is auditing. A moving draft cannot be audited.
+1. Record the revision it is auditing, with any uncommitted paths. A moving draft cannot be audited.
 2. Run structural validation, and report its diagnostics verbatim rather than re-deriving them.
 3. Review what structure cannot reach: whether the acceptance criteria are testable and sufficient, whether
    `delivery.md` is executable by someone who was not present, whether the technical shape matches the work, and whether

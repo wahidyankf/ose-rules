@@ -95,7 +95,7 @@
     {
       "id": "agent/plan-checker",
       "path": ".agents/agents/plan-checker.md",
-      "digest": "e91cbf7d0bc049005ac264135854fccea6e6a0c3bbacaf0e8cf8a8a9e50da188"
+      "digest": "1e0a7cf2997e27667090feaf11ad52557aaa329e280efe7277cc19137549da07"
     },
     {
       "id": "agent/plan-execution-checker",
@@ -535,7 +535,7 @@
     {
       "id": "skill/plan-verifying-execution",
       "path": ".agents/skills/plan-verifying-execution/SKILL.md",
-      "digest": "1bf36e33d8a8e7e6eee592a91c66ab86d57273652c394e5469e59206fe85604a"
+      "digest": "f35e9fe57441bc03556a0dc47996c2db1c5d3cc5d58f65bf9f21a7ecb3e019de"
     },
     {
       "id": "skill/plan-writing-gherkin-criteria",
@@ -545,7 +545,7 @@
     {
       "id": "skill/practicing-trunk-based-development",
       "path": ".agents/skills/practicing-trunk-based-development/SKILL.md",
-      "digest": "3a11bb60dbbf0f0a9e9dc41c3314356605b6f939ea44f0c019af25caaadf0f6f"
+      "digest": "a7b5ac2271ddefde932c747282707488dc73e0d3964fefa61ee9de3f05b1bc5b"
     },
     {
       "id": "skill/producing-review-findings",
@@ -655,7 +655,7 @@
     {
       "id": "skill/understanding-shared-vocabulary",
       "path": ".agents/skills/understanding-shared-vocabulary/SKILL.md",
-      "digest": "f6b7e10b7bd302bf5e2da8e46eef948f90a7e8ff0dc5e923f231a163eb8fa6df"
+      "digest": "e34e6c72a59f96285d28db83387a5903e5232eaf1427eb462944eb52ebe5a4eb"
     },
     {
       "id": "skill/usability-heuristic-evaluation",
