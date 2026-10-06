@@ -31,7 +31,7 @@ This standard implements [Explicit Over Implicit](../../principles/explicit-over
 Read-only work needs no entry. A delegated agent returns its own ledger with its result, and the delegating agent merges
 it explicitly, never assuming the delegate stayed within its request.
 
-A file a generator rewrites because of this task's change is on the ledger and lands in the same commit as its source.
+A file a generator rewrites because of this task's change is on the ledger and lands in the same change as its source.
 Generated output is regenerated, never edited by hand; [Harness Adapters](../agents/harness-adapters.md) applies this to
 one kind.
 

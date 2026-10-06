@@ -56,7 +56,7 @@ was removed, even while every binding resolves.
 
 ## Complete Means Every Companion Artifact
 
-A behaviour change is complete only when, in the same commit or pull request, each related artifact agrees with it:
+A behaviour change is complete only when, in the same change, each related artifact agrees with it:
 
 - its behaviour specifications;
 - the contracts its owner serves, with generated code regenerated, never hand-edited, per

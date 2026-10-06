@@ -63,8 +63,8 @@ work.
 ## Left for a Person
 
 A finding that would need a floor lowered, an exemption granted, a suite rewritten, or a choice among valid designs is
-rated `MEDIUM` and left with its evidence. Lowering a floor or widening an exclusion is a deliberate gate change in its
-own commit, per
+rated `MEDIUM` and left with its evidence. Lowering a floor or widening an exclusion is a deliberate gate change landing
+as its own change, per
 [Software Quality Enforcement](../../repo-governance/development/quality/checks/software-quality-enforcement.md), and
 never a repair. Adding a stub because a checker expects a target is never a repair either.
 

@@ -18,10 +18,10 @@ This skill covers the judgement both sequences call on.
 
 ## Two Questions, Kept Apart
 
-| Question                                                   | Answered by                    | Evidence                          |
-| ---------------------------------------------------------- | ------------------------------ | --------------------------------- |
-| do the committed bindings agree with the canonical source? | a deterministic check, offline | regenerated output and its diff   |
-| do the committed conventions still match the harness?      | reading current upstream docs  | a cited, dated authoritative page |
+| Question                                                      | Answered by                    | Evidence                          |
+| ------------------------------------------------------------- | ------------------------------ | --------------------------------- |
+| do the repository's bindings agree with the canonical source? | a deterministic check, offline | regenerated output and its diff   |
+| do the repository's conventions still match the harness?      | reading current upstream docs  | a cited, dated authoritative page |
 
 Neither answers the other. A clean parity check says nothing about a harness that renamed its configuration file, and
 upstream research cannot explain a stale adapter. Settle parity first, because drift measured against bindings that

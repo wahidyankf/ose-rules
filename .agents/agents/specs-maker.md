@@ -2,7 +2,7 @@
 name: specs-maker
 description: >-
   Creates a specification corpus, or its missing index, architecture document, or first behaviour files, at an
-  explicitly named path, sized to the owner's real surfaces and true from its first commit.
+  explicitly named path, sized to the owner's real surfaces and true from the moment it lands.
 when_to_use: >-
   Use when a new application or library needs a specification corpus, or an existing owner lacks an index or its first
   behaviour files, rather than when an existing corpus needs checking or repair.

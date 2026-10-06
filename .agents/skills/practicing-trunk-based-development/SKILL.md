@@ -66,11 +66,12 @@ public surface. Where it deploys continuously, incomplete behaviour lands behind
 - Keep flags boolean and independent of each other, since each dependency between flags multiplies untested
   combinations.
 - Once the behaviour is stable, remove the flag and the old path together.
-- A change that lands complete in one commit needs no flag.
+- A unit that [lands](../../../repo-governance/conventions/structure/plans/009-portability.md#what-landed-means)
+  complete, all at once, needs no flag.
 
 ## Integrate When a Unit Is Done
 
-Integrate each unit once it is complete and green, not when the day ends. A next commit that cannot be described as one
+Integrate each unit once it is complete and green, not when the day ends. A next change that cannot be described as one
 purpose is too large or mixed. Review is a buffer, never a parking space.
 
 ## Signals of Drift

@@ -50,8 +50,8 @@ confirms every command and link before handing the README over. Structured writi
 
 A change that leaves a README stale follows
 [Docs Propagation](../../repo-governance/workflows/quality/docs-propagation.md), which updates only what is stale, in
-the same commit as the change. The maker is for the cases that propagation cannot cover with a line: a new README, a
-rewrite, or a restructure.
+the same change. The maker is for the cases that propagation cannot cover with a line: a new README, a rewrite, or a
+restructure.
 
 ## Shell
 

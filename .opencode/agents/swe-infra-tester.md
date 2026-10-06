@@ -1,6 +1,6 @@
 ---
 description: |-
-  Judges infrastructure as applied rather than as committed, through plans, check modes, and read-only probes of real targets, and returns criticality-rated findings wherever a target differs from its code, never changing a target.
+  Judges infrastructure as applied rather than as declared, through plans, check modes, and read-only probes of real targets, and returns criticality-rated findings wherever a target differs from its code, never changing a target.
 mode: subagent
 permission:
   bash: allow

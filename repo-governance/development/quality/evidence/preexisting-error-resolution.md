@@ -1,6 +1,6 @@
 ---
 description: >-
-  Requires a gate that was already failing before a change to be triaged, root-caused, fixed in its own commit, and
+  Requires a gate that was already failing before a change to be triaged, root-caused, fixed as its own change, and
   verified before the blocked work continues, and never skipped, disabled, or bypassed.
 when_to_use: >-
   Use when a quality gate or pipeline check fails for a reason the current change did not introduce.
@@ -27,11 +27,11 @@ When a preexisting failure blocks a gate:
 
 1. **Triage** whether it is a defect at all, then **investigate** its cause, as the first module describes.
 2. **Fix the cause** with the smallest correct change.
-3. **Commit the fix on its own**, separate from the work it blocked, with a message saying it resolves a preexisting
-   failure.
+3. **Land the fix on its own**, separate from the work it blocked: its own commit where the repository commits, with a
+   message saying it resolves a preexisting failure.
 4. **Verify** by re-running the affected gates, and resume the original work only once they pass.
 
-A fix too large for one commit becomes a plan, and that plan's execution starts before the blocked work resumes. A plan
+A fix too large for one change becomes a plan, and that plan's execution starts before the blocked work resumes. A plan
 left waiting is a noted defect with more paperwork.
 
 A defect found along the way that blocks no gate follows the disposition an adopter records under
@@ -53,16 +53,17 @@ Each of these turns the gate green and leaves the defect in place:
 
 The general forms of suppression are listed in [Root Cause Orientation](../../../principles/root-cause-orientation.md).
 
-## Its Own Commit, Whatever Its Size
+## Its Own Change, Whatever Its Size
 
-A preexisting fix lands in **its own commit, whatever its size**.
+A preexisting fix [lands](../../../conventions/structure/plans/009-portability.md#what-landed-means) in **its own
+change, whatever its size**: a separate commit where the repository commits.
 
-A separate commit keeps the fix visible in history instead of buried in unrelated work, lets it be reverted without
-reverting that work, keeps its message accurate, and lets a reviewer judge it on its merits. Those benefits hold for a
-one-line fix as much as for a large one.
+A separate change keeps the fix visible instead of buried in unrelated work, lets it be reverted without reverting that
+work, keeps its description accurate, and lets a reviewer judge it on its merits. Those benefits hold for a one-line fix
+as much as for a large one.
 
-Letting a small fix ride inside the current change would save a commit, at the cost of every benefit above and of a size
-threshold someone has to judge each time.
+Letting a small fix ride inside the current change would save a landing, at the cost of every benefit above and of a
+size threshold someone has to judge each time.
 
 ## Scope
 

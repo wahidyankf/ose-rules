@@ -15,7 +15,7 @@
     {
       "id": "agent/ci-fixer",
       "path": ".agents/agents/ci-fixer.md",
-      "digest": "dac2c941474f9f9bb758d3f9449ff713e33559cac23b6e8839d1f76354d0843b"
+      "digest": "d7e92d306c36b8d8a2677e26505e10d048907808c51c4d2cd333e0c1d899959e"
     },
     {
       "id": "agent/content-checker",
@@ -70,7 +70,7 @@
     {
       "id": "agent/harness-checker",
       "path": ".agents/agents/harness-checker.md",
-      "digest": "aa09dee4253f985ca9c45cde00a350cbe4fe93c6a87e9abf863ee7067c3ce233"
+      "digest": "c343b25a2eb22e707ccd3d1fc43c4b4a0f14ba0f1efa431bd096ae047842cbb8"
     },
     {
       "id": "agent/harness-fixer",
@@ -180,7 +180,7 @@
     {
       "id": "agent/readme-maker",
       "path": ".agents/agents/readme-maker.md",
-      "digest": "8dd9158d3d98d66ba1b57313c1a075d56a03d3ae76087b41a28f2d62c86c614c"
+      "digest": "4131615d986a6faec7842c2e3da541de594494a5ae94da72dbe480cbc14e0cad"
     },
     {
       "id": "agent/repo-explorer",
@@ -195,7 +195,7 @@
     {
       "id": "agent/repo-setup-manager",
       "path": ".agents/agents/repo-setup-manager.md",
-      "digest": "4428f42cd2f5f0221c5f5e192b3ddde58fef969550dca1facbd56b1eaaa8e818"
+      "digest": "0531e2c4c48997a3f122b71eaa2e6a084a3ffc141dea99a4d0f3025d9fbca849"
     },
     {
       "id": "agent/repo-workflow-checker",
@@ -235,7 +235,7 @@
     {
       "id": "agent/specs-maker",
       "path": ".agents/agents/specs-maker.md",
-      "digest": "e515e54a1210969d5ee52464ecb44d78d9399fce28365b91a52be3e820ac7ef0"
+      "digest": "ad63ddd76f81350aab70484a51a14724e0d21aaa9e43162b584da215e51a613d"
     },
     {
       "id": "agent/swe-api-tester",
@@ -250,7 +250,7 @@
     {
       "id": "agent/swe-debugger",
       "path": ".agents/agents/swe-debugger.md",
-      "digest": "52ad4be1e55ce6160e321d7fce9b22055f9aff1fb9b9c003745156f8371cd80c"
+      "digest": "c2df733333cf8052a631f5baf06cff4e92159f02af08b61de606c226decbbb8b"
     },
     {
       "id": "agent/swe-developer",
@@ -260,7 +260,7 @@
     {
       "id": "agent/swe-infra-tester",
       "path": ".agents/agents/swe-infra-tester.md",
-      "digest": "6577f54ffd274e637f03d3c8df2851a9ce7f673b2d54a4f4661e60457517e736"
+      "digest": "1dbd5421df52d4788ef7e8bc35197e42889c6f72e39e66443f127c2742b20965"
     },
     {
       "id": "agent/swe-orchestrator",
@@ -340,7 +340,7 @@
     {
       "id": "skill/applying-ci-standards",
       "path": ".agents/skills/applying-ci-standards/SKILL.md",
-      "digest": "92b62ccf958786ade50d2ebbb589fe6a5683d96027e101c68507abe6a76f8f72"
+      "digest": "c02e690e84cf20b1478790ca0a17429ef420f320bf3e5030239eb410b92f71a5"
     },
     {
       "id": "skill/applying-content-quality",
@@ -385,7 +385,7 @@
     {
       "id": "skill/checking-harness-compatibility",
       "path": ".agents/skills/checking-harness-compatibility/SKILL.md",
-      "digest": "bed29cea9d8815fab8861f19490a5c1e71f5de0b5cf065349d5ea214217e02e9"
+      "digest": "d911b0fdec1cfe91dbf25ab9a5e785380fd5a8eda540f89afe4588fa6f2db6bf"
     },
     {
       "id": "skill/classifying-review-scope",
@@ -520,7 +520,7 @@
     {
       "id": "skill/plan-creating-project-plans",
       "path": ".agents/skills/plan-creating-project-plans/SKILL.md",
-      "digest": "a8b0a71a6a28fc89e35766136ca1ddfc915a748dbfbe86e23aa9225de571b859"
+      "digest": "4ccc86d4016142ea7a44032211252a6092b9ed6266efd9a401f2b106ef11f8f5"
     },
     {
       "id": "skill/plan-grooming-idea-briefs",
@@ -545,7 +545,7 @@
     {
       "id": "skill/practicing-trunk-based-development",
       "path": ".agents/skills/practicing-trunk-based-development/SKILL.md",
-      "digest": "a7b5ac2271ddefde932c747282707488dc73e0d3964fefa61ee9de3f05b1bc5b"
+      "digest": "a84facd86f412e2b87123c49d45fd432a902b4105e98eb61ea77e5cea4776cc0"
     },
     {
       "id": "skill/producing-review-findings",

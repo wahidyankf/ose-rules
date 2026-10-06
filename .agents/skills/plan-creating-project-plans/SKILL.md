@@ -67,8 +67,9 @@ validator, or hook accepts changes a rule. Each such change adds the
 it, as concrete items per repository and action. One item reading "propagate the rules" can never be ticked honestly.
 
 A delivery unit that changes what a README, documentation page, or specification describes also carries a
-[Docs Propagation](../../../repo-governance/workflows/quality/docs-propagation.md) item, landing in the same commit as
-the change.
+[Docs Propagation](../../../repo-governance/workflows/quality/docs-propagation.md) item,
+[landing](../../../repo-governance/conventions/structure/plans/009-portability.md#what-landed-means) together with that
+change.
 
 ## Interface Plans Widen Before They Narrow
 

@@ -24,7 +24,7 @@ whether the configuration moved with the files.
 ## 9. The Checklist Stays in Step
 
 Each checklist item is ticked as it lands, as [Plan Execution](../../../../workflows/plan/plan-execution.md) requires.
-Where an executor also keeps a separate as-built log, the log and the boxes are reconciled in the same commit and never
+Where an executor also keeps a separate as-built log, the log and the boxes are reconciled in the same change and never
 left divergent. A phase whose work is done but whose boxes are not reads as unfinished, and costs a reconciliation pass
 nobody planned.
 
