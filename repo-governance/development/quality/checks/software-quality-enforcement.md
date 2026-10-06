@@ -67,8 +67,9 @@ move:
 
 Each leaves the repository reporting a guarantee it no longer has.
 
-When the check itself is wrong, change it deliberately in its own commit, stating why, never inside the change it
-inconvenienced. Suppressing one finding follows the waiver rule in [Lint Strictness](lint-strictness.md).
+When the check itself is wrong, change it deliberately as its own change, a separate commit where the repository
+commits, stating why, never inside the change it inconvenienced. Suppressing one finding follows the waiver rule in
+[Lint Strictness](lint-strictness.md).
 
 ## Nothing Inspected Is Not a Pass
 

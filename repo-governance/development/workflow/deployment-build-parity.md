@@ -28,8 +28,8 @@ declares build prerequisites, or whose server output bundles only traced files. 
   prerequisites itself, and needs no copied list.
 - **Otherwise the platform build runs the whole chain,** every prerequisite in dependency order, then the framework
   build.
-- **Both change in one commit.** A change that adds, removes, or reorders a prerequisite updates a copied platform build
-  command in the same commit. A removed prerequisite leaves the command too, so no stale step keeps running.
+- **Both change together.** A change that adds, removes, or reorders a prerequisite updates a copied platform build
+  command in the same change. A removed prerequisite leaves the command too, so no stale step keeps running.
 - **Paths start where the platform starts.** The platform runs its command from the root directory its project settings
   name, often the application directory rather than the repository root. Confirm that setting before writing a script
   path into the command.

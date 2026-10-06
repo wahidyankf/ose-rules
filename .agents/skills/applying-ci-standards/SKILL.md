@@ -56,7 +56,7 @@ Where the adopter records a coverage floor, accept an exclusion from it only whe
 - a named integration or end-to-end target and scenario exercises that code.
 
 Code that mixes a boundary with a decision is split, so the decision stays under the floor. A broad pattern, or boundary
-code with no higher-layer proof, is coverage gaming. Lowering a floor is a gate change made in its own commit.
+code with no higher-layer proof, is coverage gaming. Lowering a floor is a gate change made as its own change.
 
 ## Weigh an Exemption Reason
 

@@ -33,7 +33,7 @@ Finds where what a harness reads no longer matches what the repository means it 
    field, and path. Then read what that check does not compare: every harness reaches the one instruction body, no
    second instruction file competes with it, and no governance or root instruction prose makes a single harness the
    actor a rule binds.
-3. **Upstream second.** Compare the cited research its caller supplies, one result per harness, with the committed
+3. **Upstream second.** Compare the cited research its caller supplies, one result per harness, with the repository's
    adapters, harness configuration, and any reference record of that harness's conventions.
 4. Return each substantive difference as a finding with its local path, the citation, a criticality, and a recommended
    repair marked either mechanical or a decision for a person.
@@ -71,8 +71,8 @@ conflict. Confidence is rated later by whoever applies the finding.
 
 ## Workload and Tier
 
-Its core loop compares one committed binding fact at a time with a deterministic result or a cited upstream fact, under
-the skill's fixed categories of substantive drift, which
+Its core loop compares one binding fact at a time with a deterministic result or a cited upstream fact, under the
+skill's fixed categories of substantive drift, which
 [Portable Tiers](../../repo-governance/conventions/structure/artifact-metadata/003-portable-tiers.md) places at
 `execution`. A fixer re-validates every finding before anything changes.
 

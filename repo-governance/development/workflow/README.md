@@ -30,7 +30,7 @@ standards sit alongside them.
 - [Dependency Bump Policy](dependency-bump-policy.md) — exact pins, the long-term-support, soak, and waiver paths,
   vulnerability clearance, and the written cutoff
 - [Deployment Build Parity](deployment-build-parity.md) — a hosting build that runs every declared build prerequisite,
-  traced output includes, and one-commit changes
+  traced output includes, and prerequisite and build command changing together
 - [Deployment Promotion](deployment-promotion.md) — per-project pointer branches, who may move them, build gating,
   confirming the build, and domain cutover
 - [File-Touch Discipline](file-touch-discipline.md) — the touched-path ledger, carrying it through context loss,

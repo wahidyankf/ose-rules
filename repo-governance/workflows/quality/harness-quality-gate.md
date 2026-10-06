@@ -1,8 +1,8 @@
 ---
 name: harness-quality-gate
 description: >-
-  Judges committed harness bindings against each harness's current upstream documentation through delegated research, in
-  at most three bounded cycles, and returns one advisory verdict on upstream drift.
+  Judges a repository's harness bindings against each harness's current upstream documentation through delegated
+  research, in at most three bounded cycles, and returns one advisory verdict on upstream drift.
 when_to_use: >-
   Use on the adopter's review cadence, after a supported harness announces a release that changes configuration, or when
   adding a harness.
@@ -12,8 +12,8 @@ when_to_use: >-
 
 This gate follows the [Quality Gate Contract](../../development/workflow/quality-gate-contract.md): a read-only checker,
 a frozen ledger, one separate writer, at most three cycles, and an advisory verdict. It judges upstream drift only:
-whether the committed bindings still match what each harness documents today. Whether the bindings agree with their own
-canonical source is parity, which [Harness Parity Verification](harness-parity-verification.md) and the adapter
+whether the repository's bindings still match what each harness documents today. Whether the bindings agree with their
+own canonical source is parity, which [Harness Parity Verification](harness-parity-verification.md) and the adapter
 validator own.
 
 ## Entry
@@ -29,9 +29,9 @@ supported harness.
 | `mode`       | enum    | `lax`, `normal`, `strict`, `all`         | `normal` |
 | `max-cycles` | integer | 1, 2, or 3                               | 3        |
 
-The frozen subject records the revision and, per harness, the committed files that bind it: adapters, harness
-configuration, and any reference record kept of that harness's conventions. Any other `max-cycles` value, or a missing
-subject, refuses to start.
+The frozen subject records the revision and, per harness, the files that bind it as they stand in the repository:
+adapters, harness configuration, and any reference record kept of that harness's conventions. Any other `max-cycles`
+value, or a missing subject, refuses to start.
 
 ## Deterministic Boundary
 
@@ -57,7 +57,7 @@ handed over as [Web Research Delegation](../../development/agents/web-research-d
 returns file locations, metadata keys, model identifier format, permission schema, and breaking changes, citing each
 fact's authoritative source and retrieval date. Disagreeing sources come back as a conflict, not a choice.
 
-The checker compares the research with the reference record and the committed bindings. Each difference is a finding
+The checker compares the research with the reference record and the repository's bindings. Each difference is a finding
 with its local path and upstream citation.
 
 How the writer repairs drift in the canonical sources, regenerates the adapters, and leaves decisions to people is in

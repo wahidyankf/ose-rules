@@ -14,8 +14,8 @@ what turns a fix into a guarantee.
 
 ## The Rule
 
-When a bug or regression is discovered, its fix lands with a test that reproduces the defect, in the same commit or the
-same proposed change as the fix. That test:
+When a bug or regression is discovered, its fix lands with a test that reproduces the defect, in the same change as the
+fix. That test:
 
 1. fails on the code as it stood before the fix, for the reason the defect gives;
 2. passes on the fixed code; and

@@ -55,7 +55,7 @@ crosses it on the repository's behalf.
 
 ## Lock It and Check It
 
-Lock the version through the ecosystem's normal mechanism, and commit the lockfile in the same change as the manifest. A
+Lock the version through the ecosystem's normal mechanism, and land the lockfile in the same change as the manifest. A
 lockfile updated on its own is a diff nobody can review.
 
 The dependency then passes the repository's existing advisory, licence, and duplicate-source checks. One that cannot
@@ -68,7 +68,7 @@ or overriding the resolved version.
 ## Removal
 
 Removing a dependency needs no justification beyond the change passing, and it is preferred. It lands with the code that
-stopped needing it, and the lockfile moves in the same commit.
+stopped needing it, and the lockfile moves in the same change.
 
 When the conditions above stop holding, reassess replacement the next time the dependency is materially changed or
 causes a concrete problem. A dependency that is merely old is not a reason for churn.

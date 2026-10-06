@@ -40,8 +40,8 @@ places prose cannot check. It is not a device reserved for one subsystem.
 
 ## Working With Generated Files
 
-- A generated dependent changes in the same commit as its source. A tree where the two disagree is a published
-  inconsistency, even if the next commit repairs it.
+- A generated dependent changes in the same change as its source. A tree where the two disagree is a published
+  inconsistency, even if the next change repairs it.
 - A merge conflict in a generated file is resolved in its source, and the dependent is then regenerated. Resolving the
   conflict in the output is editing a generated file by hand.
 

@@ -71,7 +71,7 @@ options.
 ## What It Does Not Do
 
 It does not add features, refactor beyond the repair, reconfigure a check to quiet it, judge the code beyond the failing
-commands, or commit; the caller commits, keeping a preexisting fix in its own commit. New behaviour belongs to
-[SWE Developer](swe-developer.md), and a standards audit to [SWE Reviewer](swe-reviewer.md). A defect outside the
+commands, or commit; the caller delivers the repair, keeping a preexisting fix as its own change. New behaviour belongs
+to [SWE Developer](swe-developer.md), and a standards audit to [SWE Reviewer](swe-reviewer.md). A defect outside the
 failing commands' scope is reported under the disposition Root Cause Orientation has the adopter record, not folded into
 the repair.

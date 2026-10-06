@@ -46,8 +46,9 @@ The [CI Quality Gate](ci-quality-gate.md) hands over a frozen ledger, or an expl
    slow suite out of a hook into the scheduled full run, or adding a missing example environment file.
 3. **Never weaken a check.** Lowering a floor, widening an exclusion, skipping a step, letting a step continue on error,
    or adding a stub because a check expects a target is never a repair. Such a row, and one that needs an exemption, a
-   rewritten suite, or a choice among valid designs, is `needs-decision`; a deliberate gate change lands in its own
-   commit, per [Software Quality Enforcement](../../development/quality/checks/software-quality-enforcement.md).
+   rewritten suite, or a choice among valid designs, is `needs-decision`; a deliberate gate change lands as its own
+   change, a separate commit where the repository commits, per
+   [Software Quality Enforcement](../../development/quality/checks/software-quality-enforcement.md).
 4. **Mark delegated evidence `pending`** where a check's scope intersects an edited file, then verify each row.
 
 The writer never pushes to confirm a hosted pipeline; the caller does that when it delivers the repairs.

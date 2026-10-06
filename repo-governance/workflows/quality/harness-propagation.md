@@ -26,9 +26,9 @@ conventions, and the adapters the generator regenerates from them. A generated a
 
 ## Row Verification
 
-A row closes when the committed binding now agrees with the row's cited upstream fact, the adapters were regenerated
-with the repository's generator, and the repository's parity check and Markdown gates exit 0. Each ledger row ends
-`resolved`, `not-resolved`, `not-applicable`, or `needs-decision`, with evidence.
+A row closes when the binding as it now stands in the repository agrees with the row's cited upstream fact, the adapters
+were regenerated with the repository's generator, and the repository's parity check and Markdown gates exit 0. Each
+ledger row ends `resolved`, `not-resolved`, `not-applicable`, or `needs-decision`, with evidence.
 
 ## Family Rules
 
