@@ -2,7 +2,8 @@
 name: understanding-shared-vocabulary
 description: >-
   Carries the operative meaning of the terms scope decisions turn on, such as rule, governance tree, delivery unit,
-  surface, and adapter, to agents that do not read the root instructions, each linked to the document that owns it.
+  landed, surface, and adapter, to agents that do not read the root instructions, each linked to the document that owns
+  it.
 when_to_use: >-
   Use before deciding what a rule covers, which tree a file belongs in, or whether two pieces of work are one delivery
   unit or two.
@@ -40,6 +41,10 @@ rule and differ on one word in it.
   transaction that ships on its own, cut at a valid seam. A phase is smaller, and mapping one change to one phase is the
   common error. See
   [Delivery Seams and Ownership](../../../repo-governance/development/agents/planning-capabilities/005-delivery-seams-and-ownership.md).
+- **Landed.** A change has landed when it has reached the repository's integration target in the form the repository
+  records: merged through a pull request, committed on the trunk, or present on the trunk's working copy, committed or
+  not. The repository records that definition once, and catalog text assumes no commit beyond what landing requires. See
+  [What Landed Means](../../../repo-governance/conventions/structure/plans/009-portability.md#what-landed-means).
 - **Surface.** The moment a gate runs, such as before a commit or on hosted checks. See
   [Surfaces and Mutation](../../../repo-governance/conventions/structure/repository-configuration/003-surfaces-and-mutation.md).
 - **Canonical artifact, adapter, and binding.** The canonical artifact is the one file a person edits; an adapter is

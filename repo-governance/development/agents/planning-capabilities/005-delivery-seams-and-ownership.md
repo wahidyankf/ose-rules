@@ -36,8 +36,9 @@ with the content it checks has never been seen passing or failing for its own re
 ## One Unit, One Integration Change
 
 A unit reaches the integration branch as one reviewable change, in the delivery mode the adopter records under
-[Portability](../../../conventions/structure/plans/009-portability.md): a pull request from one branch, a direct commit,
-or a local-only commit. Its description justifies the seam and the resulting integration state.
+[Portability](../../../conventions/structure/plans/009-portability.md): a pull request from one branch, a direct
+[landing](../../../conventions/structure/plans/009-portability.md#what-landed-means), or a local-only landing. Its
+description justifies the seam and the resulting integration state.
 
 Changes follow unit boundaries, never phases. The last change-producing phase always ends a unit; a setup phase with
 nothing reviewable never ends one alone, and joins the next. Independent units deliver as separate changes in any order;

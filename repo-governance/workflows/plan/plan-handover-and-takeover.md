@@ -37,10 +37,11 @@ probe, anomaly, and cleanup candidate as its own task per [Task Tracking](../../
 8. **Probe each candidate, persisting every hit to the takeover report:** linked worktrees, local and remote branches,
    pull requests in any state, the plan folder's trunk location, and each found copy's ticks and uncommitted state.
    Judge nothing stale.
-9. **Classify each repository into one bucket:** nothing found; delivered (archived on trunk, every found pull request
-   merged; report the invocation as possibly stale); live (partial ticks, nothing contradicting); or anomaly. Evidence
-   fitting no bucket or two, or self-contradicting (a worktree without its branch, a pushed branch with neither worktree
-   nor pull request, two worktrees for one plan), is an anomaly: stop and escalate with it.
+9. **Classify each repository into one bucket:** nothing found; delivered (archived and
+   [landed](../../conventions/structure/plans/009-portability.md#what-landed-means), every found pull request merged;
+   report the invocation as possibly stale); live (partial ticks, nothing contradicting); or anomaly. Evidence fitting
+   no bucket or two, or self-contradicting (a worktree without its branch, a pushed branch with neither worktree nor
+   pull request, two worktrees for one plan), is an anomaly: stop and escalate with it.
 10. **Adopt live work.** Enter its worktree or create one from its branch, never trunk; sync as Execution does.
     Uncommitted changes await the user's direction, never stashed or discarded; a rebase conflict is aborted and
     reported. Every changed path is unattributed until branch history rebuilds the touched-file record. Reuse an

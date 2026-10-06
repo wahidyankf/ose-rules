@@ -28,8 +28,8 @@ skill selects none of them:
 | Mode                                                         | Gains                                                | Costs                                                                             |
 | ------------------------------------------------------------ | ---------------------------------------------------- | --------------------------------------------------------------------------------- |
 | a short-lived branch in a worktree, merged by a pull request | review and hosted gates before the trunk moves       | branch, worktree, and cleanup overhead for every unit, and time waiting on review |
-| commits pushed directly to a shared trunk                    | the least ceremony and the fastest integration       | no buffer: local gates and post-push verification carry everything                |
-| commits on a local trunk with no remote                      | nothing leaves the machine, and no network is needed | no hosted evidence and no second copy                                             |
+| changes landing directly on a shared trunk                   | the least ceremony and the fastest integration       | no buffer: local gates and post-push verification carry everything                |
+| changes landing on a local trunk with no remote              | nothing leaves the machine, and no network is needed | no hosted evidence and no second copy                                             |
 
 Integration Path records the first two as its routes and runs the third as the direct route locally. Record the mode.
 Everything below holds under each, with differences stated where they matter.

@@ -56,7 +56,9 @@ its rows.
 ### Exit
 
 Outputs: `status` (`enum`: `no-change`, `landed`, `partial`, `input-changed`) and the ledger, each row with its status,
-evidence, and changed sections. The caller commits the repairs. A rerun on unchanged inputs changes nothing.
+evidence, and changed sections. The caller
+[lands](../../conventions/structure/plans/009-portability.md#what-landed-means) the repairs. A rerun on unchanged inputs
+changes nothing.
 
 ## Example Usage
 

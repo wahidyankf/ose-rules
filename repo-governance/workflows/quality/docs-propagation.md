@@ -4,7 +4,7 @@ description: >-
   Carries one change into every human-facing document it affects in one bounded pass, correcting stale facts and
   removing obsolete ones; the docs family's sole writer.
 when_to_use: >-
-  Use automatically before committing a change altering what a document describes, when adding, moving, or deleting a
+  Use automatically before landing a change altering what a document describes, when adding, moving, or deleting a
   document, or on Docs Quality Gate findings.
 ---
 
@@ -35,10 +35,11 @@ exercised, and the repository's checks exit 0. Each ledger row ends `resolved`, 
 
 ### Entry
 
-A change about to be committed alters what a document's reader relies on, a document is added, moved, or deleted, or the
-[Docs Quality Gate](docs-quality-gate.md) hands over findings. Entry is automatic: whoever makes the change starts here,
-unasked. Edits inside one run start no second. Formatting, links, indexes, and word budgets stay with the repository's
-checks; this workflow runs them and adds none.
+A change about to [land](../../conventions/structure/plans/009-portability.md#what-landed-means) alters what a
+document's reader relies on, a document is added, moved, or deleted, or the [Docs Quality Gate](docs-quality-gate.md)
+hands over findings. Entry is automatic: whoever makes the change starts here, unasked. Edits inside one run start no
+second. Formatting, links, indexes, and word budgets stay with the repository's checks; this workflow runs them and adds
+none.
 
 - `change` (`string`, required): the revision range or working-tree change.
 - `findings` (`file`, optional): a handed-over, frozen ledger.
@@ -70,7 +71,7 @@ checks; this workflow runs them and adds none.
 9. **Verify once** with the repository's existing checks, repairing only failures this run caused, and only while their
    count strictly decreases, per [Bounded Convergence](../../development/workflow/bounded-convergence.md).
 10. **Hand delivery to the caller.** The run never commits; repairs land with the change they explain, a handed-over
-    ledger's as their own commit.
+    ledger's as their own change.
 
 ### Exit
 

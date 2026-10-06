@@ -36,9 +36,10 @@ resolve the item and re-run the review — never to archive with a note explaini
 
 ## Why Review and Archival Are Separate Steps
 
-Archival is mechanical: move the folder, update the references, run the checks, commit. It is the kind of step that gets
-done quickly and without much thought, which is exactly why the thinking has to happen before it and be recorded as a
-verdict.
+Archival is mechanical: move the folder, update the references, run the checks,
+[land](../../../conventions/structure/plans/009-portability.md#what-landed-means) the move. It is the kind of step that
+gets done quickly and without much thought, which is exactly why the thinking has to happen before it and be recorded as
+a verdict.
 
 Merging the two would make the judgement a side effect of the move. In practice that means the judgement is skipped, and
 the plan is filed because filing was the task.

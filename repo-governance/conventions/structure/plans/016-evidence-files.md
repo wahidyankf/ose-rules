@@ -8,15 +8,15 @@ when_to_use: >-
 
 # Evidence Files
 
-[Evidence and Quality](007-evidence-and-quality.md) makes evidence a file with a command, commit, time, result, and
+[Evidence and Quality](007-evidence-and-quality.md) makes evidence a file with a command, revision, time, result, and
 sanitized findings, and
 [Evidence Safety and Accessibility](../../../development/quality/manual-verification/005-evidence-safety.md) fixes what
 it may contain. This module fixes where a plan's evidence lives and how a checklist item points at it.
 
 ## The Plan Owns Its Evidence
 
-File-based evidence lives in an `evidence/` folder inside the plan root, `plans/<stage>/<slug>/evidence/`. It is
-committed, and it moves with the plan through every lifecycle move, including archival into `done/`.
+File-based evidence lives in an `evidence/` folder inside the plan root, `plans/<stage>/<slug>/evidence/`. It lands with
+the plan, and it moves with the plan through every lifecycle move, including archival into `done/`.
 
 `evidence/` holds artifacts, not plan documents. It is not one of the [Required Documents](002-required-documents.md),
 which permits it beside them, and it is not a technical-shape companion.
@@ -40,11 +40,11 @@ The checklist item always carries the reference. A file in `evidence/` that no i
 and an item saying "verified manually" with neither an inline record nor a reference is not evidenced at all.
 
 Orientation captures nobody cites, scratch scripts used to produce captures, and draft findings are not evidence and are
-not committed.
+not kept in the repository.
 
 ```markdown
 - [x] [AI] Verify the export page at every declared viewport — acceptance: AC-4
-  > Evidence (YYYY-MM-DD, `<commit>`): mobile capture `evidence/phase-3-export-page-mobile.png` — the download button
+  > Evidence (YYYY-MM-DD, `<revision>`): mobile capture `evidence/phase-3-export-page-mobile.png` — the download button
   > stays above the fold; tablet and desktop captures alongside.
 ```
 

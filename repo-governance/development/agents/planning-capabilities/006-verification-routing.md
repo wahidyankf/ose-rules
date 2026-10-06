@@ -40,7 +40,7 @@ behaviour-changing item names its layer.
 
 ## Evidence Is Recorded, Not Asserted
 
-Each routed item produces evidence: the command, the commit, when it ran, the result, and any findings, sanitized.
+Each routed item produces evidence: the command, the revision, when it ran, the result, and any findings, sanitized.
 
 Evidence is itself accessible. A screenshot with no description records nothing to anyone who cannot see it, including
 every automated check and every future reader working from a terminal.

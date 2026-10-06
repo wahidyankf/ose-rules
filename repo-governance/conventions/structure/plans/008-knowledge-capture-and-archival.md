@@ -78,7 +78,7 @@ Archival is one transaction, in this order:
 2. move the plan folder to `plans/done/YYYY-MM-DD__<slug>`, using the completion date;
 3. update every lifecycle index and every live reference to the old path;
 4. run the repository's complete validation from the archived state; and
-5. commit the move.
+5. [land](009-portability.md#what-landed-means) the move.
 
 Step 3 is the one most often missed and the one most worth doing. A reference to `plans/in-progress/<slug>` that
 survives archival points at nothing, and the reader who follows it concludes the plan was deleted rather than finished.

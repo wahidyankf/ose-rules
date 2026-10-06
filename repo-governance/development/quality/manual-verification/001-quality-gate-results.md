@@ -27,8 +27,9 @@ decided.
 
 ## The Snapshot Is Frozen
 
-A gate that re-reads a changing draft is measuring a moving target and cannot state what it verified. Record the commit;
-that commit is what the result is about.
+A gate that re-reads a changing draft is measuring a moving target and cannot state what it verified. Record the
+revision with any uncommitted paths, and its commit identifier when one exists; that revision is what the result is
+about.
 
 ## Bounded Repair
 

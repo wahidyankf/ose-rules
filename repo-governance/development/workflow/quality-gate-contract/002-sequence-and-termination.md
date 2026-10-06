@@ -14,7 +14,7 @@ One cycle is one full audit followed by one repair. Every arrow back to an earli
 `k`.
 
 ```text
-freeze subject (commit + scope)
+freeze subject (revision + scope)
         |
         v
 entry tooling run ---- red ----> root-cause pre-step (<= 3 attempts, outside the cycle budget)
@@ -43,8 +43,9 @@ k = max-cycles? --- no ---> k = k + 1, back to the full audit
 exit tooling run + per-row verification ---> PASS / PASS_WITH_FINDINGS (blocking rows closed) or FAIL
 ```
 
-1. **Freeze the subject.** Record the commit and the exact scope. A subject changed during the run by anything other
-   than this run's own writer ends it `BLOCKED` (input-changed), and the ledger is kept.
+1. **Freeze the subject.** Record the revision with any uncommitted paths, its commit identifier when one exists, and
+   the exact scope. A subject changed during the run by anything other than this run's own writer ends it `BLOCKED`
+   (input-changed), and the ledger is kept.
 2. **Run the entry check.** Green continues. Red starts the root-cause pre-step in
    [Inputs, Scoring, and the Deterministic Boundary](001-inputs-scoring-and-boundary.md).
 3. **Audit.** The checker audits the whole frozen scope in its current state, rates each finding's criticality, and

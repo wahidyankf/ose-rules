@@ -42,7 +42,8 @@ bug-fix plan, an adopted Upstream Tool Defects standard is that direction. A que
    [Phase Boundaries and Delivery Choices](../../conventions/structure/plans/011-phase-boundaries-and-delivery-choices.md),
    run each gate check as written against the phase's combined state, and repair a failure inside the phase before its
    delivery or the next phase starts.
-8. **Land each delivery unit** by the route Integration Path records; a unit is complete once it reaches the trunk.
+8. **Land each delivery unit** by the route Integration Path records; a unit is complete once it has
+   [landed](../../conventions/structure/plans/009-portability.md#what-landed-means).
 9. **Fix what fails, including what was already failing.** A check red before the plan started is, by shipping time, red
    because of this plan's work. Pre-existing explains; it never exempts.
 10. **Route discoveries to `learnings.md`**, or a bug-fix plan's Learnings section, as they happen, not from memory.

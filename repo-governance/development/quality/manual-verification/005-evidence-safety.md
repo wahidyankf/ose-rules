@@ -14,13 +14,13 @@ A repository file or an immutable hosted result — not a claim in prose and not
 
 Each record names:
 
-| Field     | Holds                                         |
-| --------- | --------------------------------------------- |
-| commit    | the exact revision that was tested            |
-| procedure | the command run, or the manual steps followed |
-| time      | when it ran                                   |
-| result    | the terminal outcome                          |
-| artifact  | where the sanitized output is stored          |
+| Field     | Holds                                                                                       |
+| --------- | ------------------------------------------------------------------------------------------- |
+| revision  | the exact revision tested, any uncommitted paths, and its commit identifier when one exists |
+| procedure | the command run, or the manual steps followed                                               |
+| time      | when it ran                                                                                 |
+| result    | the terminal outcome                                                                        |
+| artifact  | where the sanitized output is stored                                                        |
 
 "Tested and works" names none of these and can be neither audited nor reproduced.
 

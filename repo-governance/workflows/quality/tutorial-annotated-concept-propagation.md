@@ -54,8 +54,9 @@ an explicit request names its rows.
 ### Exit
 
 Outputs: `status` (`enum`: `no-change`, `landed`, `partial`, `input-changed`) and the ledger, each row with its status
-and evidence. A person reviews the `needs-decision` rows after the verdict, never inside a cycle. The caller commits the
-repairs. A rerun on unchanged inputs changes nothing.
+and evidence. A person reviews the `needs-decision` rows after the verdict, never inside a cycle. The caller
+[lands](../../conventions/structure/plans/009-portability.md#what-landed-means) the repairs. A rerun on unchanged inputs
+changes nothing.
 
 ## Example Usage
 

@@ -1,6 +1,6 @@
 ---
 description: |-
-  Carries the operative meaning of the terms scope decisions turn on, such as rule, governance tree, delivery unit, surface, and adapter, to agents that do not read the root instructions, each linked to the document that owns it.
+  Carries the operative meaning of the terms scope decisions turn on, such as rule, governance tree, delivery unit, landed, surface, and adapter, to agents that do not read the root instructions, each linked to the document that owns it.
 name: understanding-shared-vocabulary
 ---
 

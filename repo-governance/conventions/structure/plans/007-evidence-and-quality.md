@@ -37,7 +37,7 @@ decided rather than retried. Extending the budget because the next attempt feels
 Evidence is a file, not a claim in conversation. Each record carries:
 
 - the exact command that was run;
-- the commit it was run against;
+- the revision it was run against, with any uncommitted paths and its commit identifier when one exists;
 - when it ran;
 - the result; and
 - the findings, sanitized.
