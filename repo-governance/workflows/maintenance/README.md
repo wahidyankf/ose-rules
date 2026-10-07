@@ -20,6 +20,7 @@ rules and documents sit in [`quality/`](../quality/README.md), beside the gates 
 ## Directory Map
 
 - [Dev Artifact Clean-Up](dev-artifact-clean-up.md)
+- [Dev Artifact Clean-Up Modules](dev-artifact-clean-up/README.md)
 - [Dependency Bump Planning](dependency-bump-planning.md)
 - [Release Cut](release-cut.md)
 - [Rules Grooming](rules-grooming.md)

@@ -50,9 +50,12 @@ abandoned: never between units sharing a worktree, and never as a periodic sweep
    is uncommitted, unpushed, or running, and its pull request merged at the local tip or was deliberately abandoned;
    otherwise retain it with the reason. Remove from outside the directory, and never force a worktree removal or stash
    to empty one, since a clone's worktrees share one stash stack. A plain branch delete refuses after a rebase or squash
-   merge; force it only when the merged head equals the local tip, or every commit is patch-equivalent to one on the
-   remote default branch. Delete the remote branch only if merging did not. A branch the Git host protects against
-   deletion is protected on purpose: retain it; never lift that protection.
+   merge. After a pruning fetch, force it only for a task branch no worktree holds that **landed**, its pull request
+   merged with its head equal to the tip or `git cherry origin/main <branch>` printing only `-` lines, or is **stale**,
+   its tip over 72 hours old with no open pull request. When that cherry prints a `+` line, preserve a stale tip first:
+   keep its remote branch if that holds the tip, else `git bundle create <path> origin/main..<branch>` under ignored
+   scratch, recording the path. Delete a remote branch by exact ref only if merging did not, and a stale one only after
+   that. A branch the Git host protects against deletion is protected on purpose: retain it; never lift that protection.
 4. **Preserve unrelated work.** A dirty file this task did not create is not cleanup's business: cleanup removes what
    the task made, never restoring a working copy to some imagined clean state.
 5. **Prove absence.** Re-list the paths to confirm they are gone and the working tree holds only what it should. An
@@ -79,10 +82,4 @@ Run dev-artifact-clean-up with integration pull-request and outcome pass.
 
 - [Execution](../plan/plan-execution.md) produces most of what this removes.
 - [Release Cut](release-cut.md) leaves build scratch for it.
-
-## Deletion Is Not Reversible in the Way People Assume
-
-Version control restores only what was committed; scratch artifacts are uncommitted, so deleting one is permanent.
-
-Hence `unknown` routes to investigation, not removal: keeping an unrecognized file costs a stale file; deleting the one
-irreproducible thing costs the work itself.
+- [Irreversible Deletion](dev-artifact-clean-up/001-irreversible-deletion.md) says why `unknown` is never removed.
