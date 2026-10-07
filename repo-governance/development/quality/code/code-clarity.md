@@ -38,10 +38,11 @@ Choose the name a caller would search for, then keep it. An exported name belong
 
 ## Comment Intent, Not Syntax
 
-Executable source, tests, and scripts carry the comments a reader needs to reconstruct the reasoning. Comment:
+Executable source, tests, and scripts carry brief comments a reader needs to reconstruct the reasoning. Explain why the
+code is needed or shaped this way, not what the code already shows. Comment:
 
 - the intent and boundary of a module, function, or test, where its name alone does not state them;
-- the main stages of a non-trivial flow, and the data transformations between them;
+- why a non-trivial flow separates or orders its stages and data transformations;
 - invariants, safety and correctness checks, lifecycle boundaries, and failure behaviour;
 - why a dependency is injected, substituted, cached, or deliberately avoided;
 - a decision whose alternative looks equally reasonable, and an ordering that matters for a reason the code cannot show;

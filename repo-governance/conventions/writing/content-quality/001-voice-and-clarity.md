@@ -22,7 +22,8 @@ Instructions use the imperative: "Run the formatter", not "The formatter should 
 
 Professional and plain. Respectful and inclusive, with no slang, no marketing, and none of the stiffness that makes a
 reader translate — "it is incumbent upon the operator to" says "the operator must". Assume a capable reader who lacks
-context, and supply the context.
+context, and supply the context. Use clear, simple, natural English that readers who learned English later can
+understand.
 
 Once a technical term is chosen, use it consistently. A synonym introduced for variety reads as a second concept.
 
@@ -32,6 +33,7 @@ Once a technical term is chosen, use it consistently. A synonym introduced for v
 - **One idea per paragraph, and short paragraphs.** Lead with the point. A dense block gets skipped rather than read.
 - **No filler.** "Basically", "actually", "simply", "just", "of course", and "it should be noted that" add length and no
   meaning. "Simply" and "just" also tell a struggling reader that the difficulty is their fault.
+- **Brief work notes.** Record why a code choice was needed, not a narration of what the code already shows.
 - **Define an acronym at its first use**, unless no intended reader could fail to know it.
 - **Show a concrete example** when a rule is abstract. A realistic example teaches more than a placeholder named after
   nothing.
