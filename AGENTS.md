@@ -15,10 +15,11 @@ Everything here is copied elsewhere, so an artifact meaningful only in its origi
 This repository is one of the seven `ose-projects` repositories, a navigation label only: not an organization, parent,
 parity group, or shared release; members version, gate, and release independently. Upstream consumption: pinned
 [hippo](https://github.com/wahidyankf/hippo) and [rhino](https://github.com/wahidyankf/rhino) releases, and FERRET from
-[ose-public](https://github.com/wahidyankf/ose-public). Knowledge sharing: those three, the private sibling (unnamed and
-unlinked here), [beaver-nest](https://github.com/wahidyankf/beaver-nest), and
-[py-typekit](https://github.com/wahidyankf/py-typekit) adopt from this catalog by explicit copy; none is a parity
-sibling. The [catalogue](README.md#related-repositories) describes each; catalog artifacts name none.
+[ose-public](https://github.com/wahidyankf/ose-public). Knowledge sharing: those three, the private sibling
+[ose-private](https://github.com/wahidyankf/ose-private) (Private),
+[beaver-nest](https://github.com/wahidyankf/beaver-nest), and [py-typekit](https://github.com/wahidyankf/py-typekit)
+adopt from this catalog by explicit copy; none is a parity sibling. The [catalogue](README.md#related-repositories)
+describes each; catalog artifacts name none.
 
 ## Publishing Rules
 

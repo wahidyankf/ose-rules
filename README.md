@@ -85,9 +85,10 @@ catalogue is specific to this repository and is never copied with a catalog arti
 - [`ose-public`](https://github.com/wahidyankf/ose-public) — public, MIT. Owns the OSE product platform and publishes
   FERRET releases. Upstream consumption of FERRET through `./ferret`; it also adopts artifacts from here (knowledge
   sharing). Start there to work on OSE or FERRET.
-- The private sibling — private, proprietary, and deliberately neither named nor linked from this public repository.
-  Owns authorized OSE operations and infrastructure. Knowledge sharing: it adopts artifacts from here by explicit copy.
-  Start there only as an authorized maintainer, through its private onboarding.
+- [`ose-private`](https://github.com/wahidyankf/ose-private) — private, proprietary; the private sibling. Its name and
+  link are public by the maintainer's 2026-10-07 decision; its contents are not. Owns authorized OSE operations and
+  infrastructure. Knowledge sharing: it adopts artifacts from here by explicit copy. Start there only as an authorized
+  maintainer, through its private onboarding.
 - [`rhino`](https://github.com/wahidyankf/rhino) — public, MIT. Owns repository-hygiene validation: its source,
   specifications, and releases. Upstream consumption through `./rhino`; it also adopts artifacts from here (knowledge
   sharing). Start there to change RHINO itself rather than its use here.
