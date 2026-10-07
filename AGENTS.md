@@ -10,6 +10,16 @@ replies, and [Content Quality](repo-governance/conventions/writing/content-quali
 
 Everything here is copied elsewhere, so an artifact meaningful only in its original home is not publishable.
 
+## Related Repositories
+
+This repository is one of the seven `ose-projects` repositories, a navigation label only: not an organization, parent,
+parity group, or shared release; members version, gate, and release independently. Upstream consumption: pinned
+[hippo](https://github.com/wahidyankf/hippo) and [rhino](https://github.com/wahidyankf/rhino) releases, and FERRET from
+[ose-public](https://github.com/wahidyankf/ose-public). Knowledge sharing: those three, the private sibling (unnamed and
+unlinked here), [beaver-nest](https://github.com/wahidyankf/beaver-nest), and
+[py-typekit](https://github.com/wahidyankf/py-typekit) adopt from this catalog by explicit copy; none is a parity
+sibling. The [catalogue](README.md#related-repositories) describes each; catalog artifacts name none.
+
 ## Publishing Rules
 
 - **Write portably.** No artifact names a specific repository, person, machine, host, directory, or organization. State
@@ -45,17 +55,8 @@ meaning.
 
 ## Layout
 
-| Path               | Holds                                                         |
-| ------------------ | ------------------------------------------------------------- |
-| `repo-governance/` | principles, conventions, development standards, workflows     |
-| `.agents/agents/`  | canonical agent definitions                                   |
-| `.agents/skills/`  | canonical skills, one directory each with a `SKILL.md`        |
-| `specs/`           | behaviour specifications and the shared plan-structure corpus |
-| `scripts/`         | the repository's own gates                                    |
-
-Roots are direct: nothing under them is generated or nested inside a package or app directory.
-`./rhino harness adapters generate` writes every harness adapter _from_ these roots, and
-`./rhino harness adapters validate` checks disk against the declared profiles.
+[README.md](README.md#layout) maps the roots. They are direct, and `./rhino harness adapters generate` writes every
+adapter _from_ them.
 
 `specs/fixtures/` is byte-identical across implementations and verified by digest, so it is excluded from formatting and
 linting, which would break the digest another repository checks.
