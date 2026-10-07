@@ -8,3 +8,7 @@ worktrees/
 
 # Local scratch for a task in flight; never committed, never published.
 local-tmp/
+
+# Command Code personal project state
+/.commandcode/settings.local.json
+/.commandcode/taste/
