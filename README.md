@@ -43,9 +43,12 @@ Every file under those roots is authored and read directly. None of them is gene
 them is nested inside a package, workspace, or app directory. A harness-specific adapter, where a harness needs one, is
 generated _from_ these roots and never becomes the thing an editor edits.
 
-`./rhino harness adapters generate` writes every adapter this repository ships, reading the canon and the three declared
+`./rhino harness adapters generate` writes every adapter this repository ships, reading the canon and the four declared
 profiles in `repo-config.yml`. `./rhino harness adapters validate` decides whether what is on disk matches that model;
-the generated output is never edited directly.
+the generated output is never edited directly. Command Code has 65 generated native leaf adapters with static parity
+verified; native runtime discovery and enforcement remain unverified. It reads root `AGENTS.md` and `.agents/skills/`
+natively, without a shim or skill copies. Generation and validation commands were not exercised in the earlier
+documentation pass; repository generation and static validation have since passed with RHINO v0.12.0.
 
 ## Harness Capture
 
