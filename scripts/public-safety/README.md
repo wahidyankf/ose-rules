@@ -143,6 +143,7 @@ bash scripts/public-safety/tests/run.sh 080        # one case by name fragment
 | `130-hook-environment-isolation`         | a suite started from a Git hook leaves the hook's own repository untouched     |
 | `140-cidr-network-prefix`                | a CIDR network prefix passes; host forms in every private range still block    |
 | `150-hostname-trailing-underscore`       | an underscore continues a hostname token; real hostnames still block           |
+| `160-range-history`                      | each commit in a range is screened; a value added then deleted still blocks    |
 
 Every probe value is assembled at run time from fragments, so no string this repository's own gate would flag exists in
 any test file — a test that hardcoded one would block the commit that added it. `assert_absent` reports only a length on
