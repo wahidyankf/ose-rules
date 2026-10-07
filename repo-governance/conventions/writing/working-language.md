@@ -17,8 +17,9 @@ Governance and contributor instructions, documentation, plans, specifications, s
 docstrings, commit messages, pull-request titles and bodies, test names and descriptions, configuration labels, log and
 error messages, and the output of the repository's own tools.
 
-It covers artifacts, not people. Contributors may talk to each other, and to an agent, in any language, and an agent
-answers in the language it was addressed in. Only what lands in the repository is bound.
+Contributors may converse in any language; agents answer in the language addressed. An English agent reply uses clear,
+simple, natural words readers who learned English later can understand. Authored artifacts use the repository's working
+language.
 
 The line falls there because the audiences differ. A conversation has participants who chose its language. A committed
 file has every future reader — maintainers years later, contributors who joined since, every agent that loads it as

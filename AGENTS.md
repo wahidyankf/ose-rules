@@ -3,6 +3,9 @@
 A portable catalog of governance, planning, agent, and skill artifacts adopted one at a time by explicit request. See
 [README.md](README.md) for the adoption model.
 
+Follow [Working Language](repo-governance/conventions/writing/working-language.md) for authored text and English
+replies, and [Content Quality](repo-governance/conventions/writing/content-quality.md) for documents, including plans.
+
 ## What This Repository Is For
 
 Everything here is copied elsewhere, so an artifact meaningful only in its original home is not publishable.
