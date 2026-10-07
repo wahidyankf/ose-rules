@@ -26,19 +26,19 @@ Ask what the command destroys and who made it, not whether it appears below.
 
 ## Common Cases
 
-| Operation                                                             | Destroys                                            | Use instead                                                                    |
-| --------------------------------------------------------------------- | --------------------------------------------------- | ------------------------------------------------------------------------------ |
-| `git push --force`                                                    | remote commits absent locally                       | `--force-with-lease=<ref>:<expected-sha>` plus `--force-if-includes`, approved |
-| `git push --force-with-lease` without an expected value               | the same, once a background fetch refreshed the ref | the explicit `<ref>:<expected-sha>` form                                       |
-| rebasing or amending pushed commits                                   | history others built on                             | `git revert`                                                                   |
-| a whole-history rewriting tool                                        | every ref, for everyone                             | a scoped revert, coordinated out of band                                       |
-| `git reset --hard`, `git checkout -f`, `git switch --discard-changes` | uncommitted changes                                 | commit first, or `git stash push -- <path>` and keep the entry                 |
-| `git checkout -- <path>` or `git restore <path>` over edits           | the unstaged edits at those paths                   | commit or stash first                                                          |
-| `git clean -fd` or `git clean -fdx`                                   | untracked and ignored files                         | `git clean -n` to preview, then delete named paths                             |
-| `git stash drop`, `git stash clear`                                   | stash entries, which then become prunable           | leave the entries                                                              |
-| `git branch -D`, `git update-ref -d`                                  | a branch, skipping the merged check                 | `git branch -d`                                                                |
-| expiring the reflog and pruning at once                               | the recovery path itself                            | let automatic maintenance run                                                  |
-| `git worktree remove --force`, deleting a worktree folder             | a working tree and everything uncommitted in it     | plain `git worktree remove`, or `git worktree repair` after a move             |
+| Operation                                                             | Destroys                                            | Use instead                                                                                         |
+| --------------------------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `git push --force`                                                    | remote commits absent locally                       | `--force-with-lease=<ref>:<expected-sha>` plus `--force-if-includes`, approved                      |
+| `git push --force-with-lease` without an expected value               | the same, once a background fetch refreshed the ref | the explicit `<ref>:<expected-sha>` form                                                            |
+| rebasing or amending pushed commits                                   | history others built on                             | `git revert`                                                                                        |
+| a whole-history rewriting tool                                        | every ref, for everyone                             | a scoped revert, coordinated out of band                                                            |
+| `git reset --hard`, `git checkout -f`, `git switch --discard-changes` | uncommitted changes                                 | commit first, or `git stash push -- <path>` and keep the entry                                      |
+| `git checkout -- <path>` or `git restore <path>` over edits           | the unstaged edits at those paths                   | commit or stash first                                                                               |
+| `git clean -fd` or `git clean -fdx`                                   | untracked and ignored files                         | `git clean -n` to preview, then delete named paths                                                  |
+| `git stash drop`, `git stash clear`                                   | stash entries, which then become prunable           | leave the entries                                                                                   |
+| `git branch -D`, `git update-ref -d`                                  | a branch, skipping the merged check                 | `git branch -d`; a task branch per [clean-up](../../workflows/maintenance/dev-artifact-clean-up.md) |
+| expiring the reflog and pruning at once                               | the recovery path itself                            | let automatic maintenance run                                                                       |
+| `git worktree remove --force`, deleting a worktree folder             | a working tree and everything uncommitted in it     | plain `git worktree remove`, or `git worktree repair` after a move                                  |
 
 ## Asking for Approval
 
