@@ -9,7 +9,14 @@
   "globs": ["**/*.md"],
   // `specs/fixtures/**` is deliberately excluded: the corpus encodes malformed plans on
   // purpose, and its bytes are verified by digest in more than one repository.
-  "ignores": ["node_modules/**", "**/node_modules/**", "worktrees/**", "specs/fixtures/**"],
+  "ignores": [
+    "node_modules/**",
+    "**/node_modules/**",
+    "worktrees/**",
+    "specs/fixtures/**",
+    // Command Code personal learning data
+    ".commandcode/taste/**",
+  ],
 
   "config": {
     // Structural
