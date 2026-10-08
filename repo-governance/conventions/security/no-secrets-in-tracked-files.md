@@ -68,3 +68,12 @@ removing the value afterwards is cleanup, and rewriting history never substitute
 
 State plainly what cannot be undone. External clones, forks, and caches are beyond reach, and rotation is what made them
 harmless.
+
+## Agent Tool Access
+
+Agent tools must not directly read, write, or edit `.env*` files, except `.env.example`. Paths under `secrets/` and
+`credentials/` are also protected. The repository owns these restrictions.
+[`.agents/agent-policy.json`](../../../.agents/agent-policy.json) declares the path patterns for
+`scripts/agent-policy-hook.sh`; the tracked `.serena/project.yml` excludes the same paths from semantic indexing. Claude
+Code, OpenCode, and Command Code native bindings enforce their own physical checkout; neutral routing covers
+cross-repository operations. Compute-admission exemptions do not waive these restrictions.
