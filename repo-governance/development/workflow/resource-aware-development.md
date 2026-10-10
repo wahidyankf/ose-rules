@@ -79,3 +79,7 @@ A hook held back by a deferral has not failed; see [Hook Verification](hook-veri
 
 Tests confirm one guard and declared class per compute entry, required pinned capabilities, and no blind retry of a
 protocol mismatch or of a receipt-less shed.
+
+## Modules
+
+- [Nx cache eviction](resource-aware-development/001-external-nx-cache-eviction.md)
