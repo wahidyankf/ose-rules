@@ -42,8 +42,9 @@ and any scenario that specifies the behaviour was added or updated first per
    behaviour, in small steps, running the named affected-boundary selection after each, and record the last passing run.
    A test turning red here marks a defect the refactor introduced.
 7. **Repeat from step 3** for the next increment.
-8. **Run full regression at phase and pre-pull-request boundaries** per the focused-run rule, including the mandatory
-   fast gate with coverage and applicable separate integration/end-to-end suites.
+8. **Run full regression at phase and pre-pull-request boundaries** per the focused-run rule: the mandatory fast gate
+   with coverage over the whole suite except full end-to-end, plus only the affected end-to-end flow, never the full
+   end-to-end suite.
 9. **Close the item on evidence.** Every increment carries its red, green, and refactor records in `evidence`. "Tests
    pass" or "tested locally" without the command and its output closes nothing.
 

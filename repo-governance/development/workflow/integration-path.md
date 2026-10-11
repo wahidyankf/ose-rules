@@ -36,9 +36,10 @@ and changes flow only from the trunk to them.
 
 - **One task, one short-lived branch.** Merge it the day it is created where possible; two days is the ceiling, and past
   it rebase or abandon the branch.
-- **Sync by rebase.** Before starting and before resuming, fetch and rebase onto the latest trunk. Never auto-stash,
-  discard, or auto-resolve: an unclean tree or a conflict halts the work and goes to its owner. When the sync brings
-  commits in, complete [Integration Diff Review](integration-diff-review.md).
+- **Sync by rebase.** Before starting plan execution or creating a new worktree, sync the execution checkout from the
+  latest `origin/main`; before resuming, fetch and rebase onto the latest trunk the same way. A stale base causes
+  rework. Never auto-stash, discard, or auto-resolve: an unclean tree or a conflict halts the work and goes to its
+  owner. When the sync brings commits in, complete [Integration Diff Review](integration-diff-review.md).
 - **Linear history.** Never merge the trunk into a task branch.
 - **One worktree per task, reused.** A plan or task provisions at most one worktree and reuses it for every delivery
   unit it yields at `{repository location}/worktrees/<task>`. Units land in turn: land one, sync, branch the next in the
