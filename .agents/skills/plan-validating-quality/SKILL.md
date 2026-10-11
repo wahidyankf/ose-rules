@@ -30,6 +30,13 @@ are checked item by item, and a breach of either is rated `HIGH`:
 - **Execution-tier executable.** Ask whether an `execution`-tier agent could carry the item out from the plan's own
   documents. A step that needs a conversation, another repository's unstated context, or a policy choice fails.
 
+## Focused Test-First Proof
+
+Validate item selections, executed identities/counts, affected-boundary refactor checks, and separate full
+phase/pre-pull-request regression against
+[Focused Runs and Regression Gates](../../../repo-governance/development/quality/testing/test-driven-development/001-cycle-and-evidence.md#focused-runs-and-regression-gates).
+A whole-suite run per increment, invalid execution proof, or missing mandatory boundary gate is `HIGH`.
+
 ## Testable Acceptance Criteria
 
 For each criterion, ask what it would look like if false. A criterion with no failing case cannot be verified, and it

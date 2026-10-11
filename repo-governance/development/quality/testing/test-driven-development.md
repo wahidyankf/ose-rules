@@ -42,7 +42,11 @@ first.
 1. **Red.** Write one test for the next small behaviour, run it, and confirm it fails for its stated reason: the
    behaviour does not exist yet.
 2. **Green.** Make the smallest production change that passes it while the surrounding tests stay green.
-3. **Refactor.** Improve the design with every test still green, adding no behaviour.
+3. **Refactor.** Improve the design with the focused boundary selection green and no known failing checks, adding no
+   behaviour.
+
+Case selection, executed-case evidence, and phase/pre-pull-request full regression follow
+[Focused Runs and Regression Gates](test-driven-development/001-cycle-and-evidence.md#focused-runs-and-regression-gates).
 
 Repeat for the next behaviour. Where behaviour is specified as scenarios, the scenario is added or updated before the
 red, as [Behaviour-Driven Development](behaviour-driven-development.md) requires. A refactor that changes no behaviour

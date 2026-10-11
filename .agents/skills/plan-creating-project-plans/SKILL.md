@@ -84,6 +84,9 @@ it must serve first, since a layout that only works wide cannot be the selected 
 
 Items shipping executable behaviour follow the test-first grammar recorded under
 [Phase Boundaries and Delivery Choices](../../../repo-governance/conventions/structure/plans/011-phase-boundaries-and-delivery-choices.md).
+Use
+[Focused Runs and Regression Gates](../../../repo-governance/development/quality/testing/test-driven-development/001-cycle-and-evidence.md#focused-runs-and-regression-gates)
+to name the minimal runner selection, positive executed-case evidence, and separate full phase/pre-pull-request gates.
 Under the split cycle, red, green, and refactor are separate items naming test path, command, and expected result,
 repeated per behaviour. Under either choice the item names the test before the production path, as
 [Test-Driven Development](../../../repo-governance/development/quality/testing/test-driven-development.md) requires.
