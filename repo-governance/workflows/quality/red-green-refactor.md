@@ -19,7 +19,9 @@ and any scenario that specifies the behaviour was added or updated first per
 [Behaviour-Driven Development](../../development/quality/testing/behaviour-driven-development.md).
 
 - `behaviours` (`string`, required): the increments, each one observable behaviour, simplest first.
-- `target` (`string`, required): the narrowest test target that can demonstrate them.
+- `target` (`string`, required): the verified runner command selecting the named case or minimal meaningful cases.
+  Selection, executed-case evidence, and phase/pre-pull-request gates follow
+  [Focused Runs and Regression Gates](../../development/quality/testing/test-driven-development/001-cycle-and-evidence.md#focused-runs-and-regression-gates).
 - `evidence` (`string`, optional, default the change's delivery record): where each run is recorded.
 
 ## Sequence
@@ -29,26 +31,26 @@ and any scenario that specifies the behaviour was added or updated first per
 2. **Read the tests that cover the code** before changing it, per
    [Cycle and Evidence](../../development/quality/testing/test-driven-development/001-cycle-and-evidence.md).
 3. **Red: write one test and watch it fail.** Run `target` and confirm the new test fails on an assertion about the
-   missing behaviour while every previously passing test still passes. A compile error, missing binding, wrong fixture,
-   or broken harness is repaired first and never counts as red. Record the test path, command, failure message, and why
-   it was meant to fail.
+   missing behaviour while the selected existing boundary cases pass and no other checks are known to fail. A compile
+   error, missing binding, wrong fixture, or broken harness is repaired first and never counts as red. Record the test
+   path, command, failure message, and why it was meant to fail.
 4. **Red for a script, gate, or new harness: mutate.** Remove the fix or break the behaviour, run the check, record its
    failure, and restore. A check that stays green under the mutation does not cover the change.
 5. **Green: make the smallest honest change.** Change only what the failing test demands, with no hard-coded result and
    no path that skips the logic under test. Run the same target and record the new test and its neighbours passing.
-6. **Refactor with every test green.** Improve names, structure, and duplication without adding behaviour, in small
-   steps, running `target` after each, and record the last passing run. A test turning red here marks a defect the
-   refactor introduced.
+6. **Refactor with the affected boundary selection green.** Improve names, structure, and duplication without adding
+   behaviour, in small steps, running the named affected-boundary selection after each, and record the last passing run.
+   A test turning red here marks a defect the refactor introduced.
 7. **Repeat from step 3** for the next increment.
-8. **Run the fast gate** from
-   [Test Boundaries and Gates](../../development/quality/testing/test-boundaries-and-gates.md) after the final cycle.
+8. **Run full regression at phase and pre-pull-request boundaries** per the focused-run rule, including the mandatory
+   fast gate with coverage and applicable separate integration/end-to-end suites.
 9. **Close the item on evidence.** Every increment carries its red, green, and refactor records in `evidence`. "Tests
    pass" or "tested locally" without the command and its output closes nothing.
 
 ## Exit
 
 Every increment has a recorded red that failed for its stated reason, a green run, and a refactor-green run, and the
-fast gate passed.
+required boundary gates passed, with executed identities and positive counts in each filtered run.
 
 Outputs: `cycle-records` (`table` in `evidence`: one row per increment with test path, command, expected red reason,
 observed red, green, and refactor-green) and the fast-gate run (`record`, command and exit status).

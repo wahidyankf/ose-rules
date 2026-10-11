@@ -17,9 +17,10 @@ behaviour they describe change together.
 
 ## A Red Shows the Behaviour Is Missing
 
-A red counts only when the new test fails on an assertion about the missing behaviour while every previously passing
-test still passes. A compile error, a missing import or binding, a wrong fixture, or broken configuration or
-infrastructure produces not a red but a broken test, and nothing built on it says anything about the change.
+A red counts only when the new test fails on an assertion about the missing behaviour while selected previously passing
+boundary cases still pass and no other checks are known to fail. A compile error, a missing import or binding, a wrong
+fixture, or broken configuration or infrastructure produces not a red but a broken test, and nothing built on it says
+anything about the change.
 
 A new test that passes before the code exists checks nothing. Repair the test until it fails for its stated reason, and
 never move to green from a vacuous pass.
@@ -48,11 +49,16 @@ red: input missing its separator fails -> green -> refactor
 red: well-formed input is accepted    -> green -> refactor
 ```
 
-After the final cycle, run the fast gate from [Test Boundaries and Gates](../test-boundaries-and-gates.md) to catch
-regressions elsewhere. A deliberately failing test is evidence in progress during red, never a finished state.
+Run full regression at the phase and pre-pull-request boundaries defined below. A deliberately failing test is evidence
+in progress during red, never a finished state.
 
 A behaviour checked by hand follows the same order: write the expected observations, observe them fail, change the code,
 and repeat the whole check. Automate it once that is cheap.
+
+## Focused Runs and Regression Gates
+
+[Focused Runs and Regression Gates](001-cycle-and-evidence/001-focused-runs-and-regression-gates.md) owns cycle
+selection, executed-case proof, and full phase/pre-pull-request regression.
 
 ## A New Harness Needs Its Own Red
 

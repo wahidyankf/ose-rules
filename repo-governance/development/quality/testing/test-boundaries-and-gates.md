@@ -49,9 +49,10 @@ commands, because a copied command drifts from the original.
 ## The Fast Gate
 
 The fast gate runs type check, lint, unit with coverage, and static behaviour coverage, in that order, so the cheapest
-failure to read comes first. It runs before a push over what the change affects, and after the last cycle of
-[Test-Driven Development](test-driven-development.md). A dedicated end-to-end project's fast gate holds only its type
-check, lint, and static behaviour coverage.
+failure to read comes first. It runs before a push over what the change affects, and at the phase/pre-pull-request
+boundaries owned by
+[Focused Runs and Regression Gates](test-driven-development/001-cycle-and-evidence.md#focused-runs-and-regression-gates).
+A dedicated end-to-end project's fast gate holds only its type check, lint, and static behaviour coverage.
 
 It never runs an integration or end-to-end suite. Those run where
 [Compliance and Reporting](behaviour-driven-development/004-compliance-and-reporting.md) places them, with integration

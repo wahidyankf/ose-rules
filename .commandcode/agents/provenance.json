@@ -515,7 +515,7 @@
     {
       "id": "skill/plan-creating-project-plans",
       "path": ".agents/skills/plan-creating-project-plans/SKILL.md",
-      "digest": "4ccc86d4016142ea7a44032211252a6092b9ed6266efd9a401f2b106ef11f8f5"
+      "digest": "37b2b2dd7e89ffb73ac3c0925177f00c40fc74a4511cd4a199c627c9f1c07dee"
     },
     {
       "id": "skill/plan-grooming-idea-briefs",
@@ -525,7 +525,7 @@
     {
       "id": "skill/plan-validating-quality",
       "path": ".agents/skills/plan-validating-quality/SKILL.md",
-      "digest": "71dce047415d5b3a6b17eb7cff22d625fa981452b0ad38cd2f930938ffcdbaf1"
+      "digest": "67ed175448cec413fbd5b80cd789312ecffe7d7476022dcb662cf9662513f471"
     },
     {
       "id": "skill/plan-verifying-execution",
