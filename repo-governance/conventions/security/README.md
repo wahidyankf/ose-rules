@@ -17,6 +17,7 @@ read real values; and what leaves the repository, which no later deletion recall
 | [No Machine-Specific Values](no-machine-specific-values.md)       | keeping one machine's paths, names, and addresses out of commits                 |
 | [Environment Variable Contract](environment-variable-contract.md) | the committed key template, key naming, validation, and the secret census        |
 | [Agent Environment-File Access](agent-env-file-access.md)         | which real environment files an agent never reads, writes, or edits by any route |
+| [Private-Key and Secret Access](private-key-and-secret-access.md) | agent reads of private keys anywhere, who runs key access, and session records   |
 | [Public Outbound Safety](public-outbound-safety.md)               | what must be screened before anything is published                               |
 
 ## Directory Map
@@ -25,4 +26,5 @@ read real values; and what leaves the repository, which no later deletion recall
 - [No Machine-Specific Values](no-machine-specific-values.md)
 - [Environment Variable Contract](environment-variable-contract.md)
 - [Agent Environment-File Access](agent-env-file-access.md)
+- [Private-Key and Secret Access](private-key-and-secret-access.md)
 - [Public Outbound Safety](public-outbound-safety.md)

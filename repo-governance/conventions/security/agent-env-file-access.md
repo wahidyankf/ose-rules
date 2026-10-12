@@ -60,9 +60,9 @@ The carve-out is a deliberate trust boundary: a tracked command was reviewed, an
 it. A script an agent writes to reach a restricted file had no review, so it counts as direct access. Closing that route
 mechanically would take a sandbox that also blocks legitimate commands, so this convention holds it instead.
 
-Before treating a step as blocked, check whether a tracked command already provides the value it depends on, and use
-that command. If nothing does, the agent stops, explains what is blocked and why, and hands that step to a person who
-can run it.
+Before treating a step as blocked, use a tracked command that already provides the value. If none does, the agent stops,
+explains what is blocked and why, and hands the step to a person who can run it, per
+[Private-Key and Secret Access](private-key-and-secret-access.md).
 
 ## Enforcement Is Layered and Admits Its Gaps
 
