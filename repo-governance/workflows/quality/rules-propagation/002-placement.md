@@ -44,9 +44,14 @@ rule nobody finds.
 Ceilings are fixed, per [Document Word Budget](../../../conventions/structure/document-word-budget.md): no raise,
 exemption, or ignore entry pays for a placement.
 
-When an admitted rule finds no room, rank the file's current entries by the same necessity test and relocate the
-weakest, never the oldest or the last. A weak entry points to a fuller statement elsewhere, describes rather than binds,
-or has an owning document a reader would try first.
+When an admitted rule finds no room, disclose progressively first: keep the entrypoint (the obligations with their
+reason) where its audience looks, and move scope, boundaries, observations, or disposition into numbered modules under a
+sibling directory named after the entrypoint, indexed like any other document. Shortening a rule is allowed and often
+good, but it runs one direction only: a tighter sentence that keeps the whole obligation, audience, scope, exception,
+and condition. When the placement must add meaning the surface cannot hold, do not compress the meaning to fit —
+disclose it. Only a subject that cannot split falls back to relocation: rank the file's current entries by the same
+necessity test and relocate the weakest, never the oldest or the last. A weak entry points to a fuller statement
+elsewhere, describes rather than binds, or has an owning document a reader would try first.
 
 Relocation moves the substance to its owner and leaves at most a link. Deleting an entry outright is allowed only when
 it was already superseded, and it is then recorded as a supersession. Compressing an entry in place counts only when the
