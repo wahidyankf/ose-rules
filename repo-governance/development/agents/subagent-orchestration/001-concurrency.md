@@ -19,6 +19,11 @@ constraint. Compute cost alone is not a dependency.
 
 ## Map Dependencies Before Dispatch
 
+Before the first dispatch in a session, the orchestrator reads this cap and records N: tool history shows the read
+preceding the first spawn, and any spawn preceding the read violates this clause. The orchestrator never changes N on
+its own judgement; only a plan or the user declares another value. Disposition: unenforced by decision; review checks
+the tool history.
+
 The dependency graph is known before anything is dispatched. Planned work takes it from what the
 [Delivery Contract](../../../conventions/structure/plans/004-delivery-contract.md) defines, delivery units and phases in
 dependency order; unplanned work maps it before its first dispatch. Two units are independent only when neither reads
