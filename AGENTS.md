@@ -38,6 +38,9 @@ All file content, names, commits, branches, pull-request text, and published log
 blocks without allowlists or bypasses. Replace unsafe examples with semantic placeholders, or drop those that would lose
 meaning.
 
+See [Agent Environment-File Access](repo-governance/conventions/security/agent-env-file-access.md) for the portable
+secret-wrapper pattern.
+
 ## Authoring Rules
 
 - Every governed document declares `description` and `when_to_use` in frontmatter; skills and agents declare more, per
