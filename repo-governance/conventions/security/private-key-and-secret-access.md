@@ -13,7 +13,7 @@ working directory, placed by the agent on the operator clipboard; the operator r
 with the success word the step names. Nothing secret reaches the harness session. Sessions lock before any pause.
 Agent-assisted delivery needs a proper pipeline. A leak review is a real read of every commit at the pinned head.
 
-Reason: regtech `[HUMAN]` removes value exposure from the session, and proper pipelines earn faster delivery.
+Reason: human-only steps keep values out of the session, and proper pipelines earn faster delivery.
 
 ## Obligations
 

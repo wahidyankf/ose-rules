@@ -64,17 +64,21 @@ Before treating a step as blocked, use a tracked command that already provides t
 explains what is blocked and why, and hands the step to a person who can run it, per
 [Private-Key and Secret Access](private-key-and-secret-access.md).
 
-## Enforcement Is Layered and Admits Its Gaps
+## Wrapper and Matrix
 
-| Layer                   | Stops                                                             |
-| ----------------------- | ----------------------------------------------------------------- |
-| harness permission deny | agent file tools on restricted paths                              |
-| pre-tool hook           | the same, plus shell commands that name a restricted file         |
-| staged-file guard       | a real file reaching a commit, from any actor                     |
-| this convention         | what the layers above cannot see, such as an agent-written script |
+Each secret-bearing surface gains one tracked wrapper as its only secret-touching surface, with a closed executor-split
+matrix: agent-runnable reads keep values out of output, human-only moves stay operator-terminal-only, and consumed
+output to only its consumer stays allowed while any print to transcript stays refused.
 
-A guard matching command text is best-effort, and documented as such: it cannot recognize a filename assembled from
-innocent pieces.
+## Census, Tiers, and Adoption
 
-A new agent harness is supported only once equivalent enforcement exists for it, including pre-tool enforcement. A
-harness that cannot provide it is recorded as unenforced rather than assumed covered.
+Each surface gains a census row recording location never value; unlisted stays reported as unlisted. Tiers stay
+canonical versus non-canonical with one template per consumer and tier-free keys; no tier filename is universal.
+Adoption: a member gaining a new secret-bearing surface gains its census row, wrapper/matrix, tier-vocab note, and
+harness entry-point routing in the same delivery unit
+([observations](agent-env-file-access/002-wrapper-census-tiers-adoption.md)).
+
+## Enforcement Layers
+
+Enforcement stays layered; [enforcement layers](agent-env-file-access/001-enforcement-layers.md) hold the table and its
+gaps.
