@@ -1,8 +1,7 @@
 ---
 description: >-
-  Agents never open private-key contents anywhere; each secret step is one clipboard command with its directory, run by
-  the user in their own terminal and answered with one word; nothing secret reaches the harness session; sessions lock
-  before any pause; agent delivery follows proper pipelines; leak reviews are real reads.
+  Agents never open private-key contents anywhere; each secret step is one clipboard command the user runs and answers
+  with one word; nothing secret reaches the harness session; delivery follows proper pipelines.
 when_to_use: >-
   Use when an agent might touch secrets, when handing a secret step to a person, or when operating a leak review.
 ---
