@@ -18,10 +18,12 @@ This standard implements [Simplicity Over Complexity](../../principles/simplicit
 
 ## Adopter Decision: The Route
 
-| Route                               | Work lands as                                                                         | Fits                                                               | Trade-off                                                                                                                |
-| ----------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
-| short-lived branch via pull request | a task branch in a worktree, merged under [Pull Request Merge](pull-request-merge.md) | a protected trunk, several contributors, gates that must run first | a review buffer and hosted gates, at the cost of branch and worktree overhead                                            |
-| direct to trunk                     | changes on local `main`, pushed to the trunk where a remote exists                    | a single owner, or no service able to protect the trunk            | the least ceremony and no buffer: local gates and [CI Post-Push Verification](ci-post-push-verification.md) carry it all |
+- **Short-lived branch via pull request.** A task branch in a worktree lands under
+  [Pull Request Merge](pull-request-merge.md). It fits a protected trunk, several contributors, and gates that must run
+  first. It adds a review buffer and hosted gates at the cost of branch and worktree overhead.
+- **Direct to trunk.** Changes land on local `main`, pushed where a remote exists. It fits a single owner or a service
+  unable to protect the trunk. It has the least ceremony and no review buffer: local gates and
+  [CI Post-Push Verification](ci-post-push-verification.md) carry the checks.
 
 The repository records its route, and nothing else selects one: not where the work runs, not the size of a change, not a
 wish to skip review. What counts as landed follows
@@ -38,8 +40,9 @@ and changes flow only from the trunk to them.
   it rebase or abandon the branch.
 - **Sync by rebase.** Before starting plan execution or creating a new worktree, sync the execution checkout from the
   latest `origin/main`; before resuming, fetch and rebase onto the latest trunk the same way. A stale base causes
-  rework. Never auto-stash, discard, or auto-resolve: an unclean tree or a conflict halts the work and goes to its
-  owner. When the sync brings commits in, complete [Integration Diff Review](integration-diff-review.md).
+  rework. Never auto-stash, discard, or blindly auto-resolve. An unclean tree halts sync; conflicts follow the
+  [owned task sync contract](no-destructive-git-operations/001-authorized-task-branch-sync.md). Review incoming commits
+  under [Integration Diff Review](integration-diff-review.md).
 - **Linear history.** Never merge the trunk into a task branch.
 - **One worktree per task, reused.** A plan or task provisions at most one worktree and reuses it for every delivery
   unit it yields at `{repository location}/worktrees/<task>`. Units land in turn: land one, sync, branch the next in the

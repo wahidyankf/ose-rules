@@ -1,7 +1,7 @@
 ---
 description: >-
-  Requires explicit authorization before staging, committing, or pushing, makes each grant single-use and scoped to what
-  it names, and keeps it apart from every other permission.
+  Requires authorization before staging, committing, or pushing, keeps it scoped to the named task, and distinguishes
+  ongoing delivery authority from a single action grant.
 when_to_use: >-
   Use before staging, committing, or pushing, or when deciding whether an instruction or an approved plan permits
   recording history.
@@ -10,7 +10,7 @@ when_to_use: >-
 # Commit Authorization
 
 Deciding what to change and recording it in history are separate decisions. An agent may make, verify, and describe a
-change freely. Staging it, committing it, and pushing it each wait for permission.
+change freely. Staging, committing, and pushing require authority covering those actions.
 
 This standard implements [Explicit Over Implicit](../../principles/explicit-over-implicit.md) and
 [Immutability](../../principles/immutability.md): a recorded commit is a value other people may already hold, so it is
@@ -25,17 +25,21 @@ Stage, commit, or push only when one of these holds:
 
 With neither, prepare the change, verify it, report what remains uncommitted, and ask when the action is needed.
 
-## A Grant Is Single-Use
+## Scope and Duration
 
-An authorization covers the action it names, once, and is spent by it.
+A grant naming one action covers that action once. A grant to deliver a task covers the staging, thematic commits,
+synchronization, publication, and landing needed for that same scoped outcome until the task is finished. Do not request
+permission again for those routine steps;
+[authorized task sync](no-destructive-git-operations/001-authorized-task-branch-sync.md) owns the safeguards for rebase
+and lease pushes.
 
 - Permission to commit one change set does not cover the next change, however small or soon.
 - A change set authorized as a whole may be recorded as several [thematic commits](thematic-commits.md). Dividing it is
   how the authorized action is carried out, not a further decision to commit.
-- Nothing carries over from a finished task into later work, or from an earlier session into this one.
+- Nothing carries over from a finished task into later work. Resuming the same unfinished task retains its recorded
+  authorization; verify its scope and current state.
 
-The strict reading is deliberate. A standing permission turns every later change into one nobody approved, and the user
-learns of it from the history.
+Task authority covers its named outcome, never unrelated changes or later tasks.
 
 ## What Does Not Grant It
 
@@ -52,19 +56,19 @@ Keep to the stated scope, meaning the files, theme, branch, and target it names,
 | "commit these changes"      | one commit action, no push            |
 | "push the existing commits" | that push, no new commit              |
 | "commit and push"           | both, within the current task's scope |
-| "finish this" or "fix it"   | neither                               |
+| "deliver this to main"      | task delivery within its named scope  |
+| "finish this" or "fix it"   | neither, absent existing authority    |
 
 ## Separate Permissions
 
-| Action                                   | Governed by                                                                                                                                 |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| choosing where a change goes             | [Integration Path](integration-path.md), which picks a route and grants none                                                                |
-| merging a pull request                   | [Pull Request Merge](pull-request-merge.md)                                                                                                 |
-| rewriting or discarding history          | [No Destructive Git Operations](no-destructive-git-operations.md)                                                                           |
-| bypassing a hook or publishing a release | [Hook Verification](hook-verification.md) for a hook and the adopter's own rule for a release; a commit or push grant never includes either |
+- Choosing where a change goes follows [Integration Path](integration-path.md), which picks a route and grants none.
+- Merging a pull request follows [Pull Request Merge](pull-request-merge.md).
+- Rewriting or discarding history follows [No Destructive Git Operations](no-destructive-git-operations.md).
+- Bypassing a hook follows [Hook Verification](hook-verification.md); publishing a release follows the adopter's rule. A
+  commit or push grant includes neither.
 
 ## Why the Cost Is Asymmetric
 
 A commit not yet made costs one question. A pushed commit reaches other clones within minutes and cannot be withdrawn;
-see [Public Outbound Safety](../../conventions/security/public-outbound-safety.md). The rule accepts the small cost on
-every change to avoid the large one on any.
+see [Public Outbound Safety](../../conventions/security/public-outbound-safety.md). The rule requires a real
+authorization decision while allowing an already authorized task to finish.

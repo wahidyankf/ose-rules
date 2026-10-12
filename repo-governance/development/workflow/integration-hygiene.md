@@ -26,7 +26,9 @@ caught in minutes, after other people may already have pulled it.
 Before pushing, bring the branch current with the latest trunk: fetch, then rebase the local commits onto it. Replaying
 unshared commits keeps history linear, keeps a bisect meaningful, and lets conflicts be resolved one commit at a time.
 
-A rebase rewrites the commits it replays, so it is only for commits nobody else holds. Merge instead in these cases:
+For an authorized task-owned branch, follow the bounded
+[task sync contract](no-destructive-git-operations/001-authorized-task-branch-sync.md). Outside that contract, rebase
+only commits nobody else holds; merge instead in these cases:
 
 | Situation                                          | Why merge is the safer choice                        |
 | -------------------------------------------------- | ---------------------------------------------------- |
@@ -37,8 +39,7 @@ A rebase rewrites the commits it replays, so it is only for commits nobody else 
 | the outcome is uncertain                           | a merge rewrites nothing and can be revisited        |
 
 Where [Integration Path](integration-path.md) forbids merging the trunk into a task branch, that rule wins: rebase, and
-treat the rewrite of an already shared branch as an operation needing approval under
-[No Destructive Git Operations](no-destructive-git-operations.md).
+apply [No Destructive Git Operations](no-destructive-git-operations.md) to a rewrite outside the task sync contract.
 
 A rebase that goes wrong is abandoned with `git rebase --abort`, a merge with `git merge --abort`; each returns to the
 state before it started. When commits arrived, complete [Integration Diff Review](integration-diff-review.md) before
