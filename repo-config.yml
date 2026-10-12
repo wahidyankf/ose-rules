@@ -751,8 +751,8 @@ gates:
         args:
           - literal: -c
           - literal:
-              "./rhino harness adapters validate && bash .commandcode/hooks/agent-policy-selector.test.sh && exec bash
-              .commandcode/hooks/git-fixture-isolation.test.sh"
+              "./rhino harness adapters validate && bash .commandcode/hooks/agent-policy-selector.test.sh && bash
+              .commandcode/hooks/git-fixture-isolation.test.sh && exec bash .muse/hooks/run-policy-hook.test.sh"
       run-on:
         pre-commit: {}
         pull-request: {}
