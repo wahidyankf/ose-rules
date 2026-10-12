@@ -43,9 +43,9 @@ probe, anomaly, and cleanup candidate as its own task per [Task Tracking](../../
    no bucket or two, or self-contradicting (a worktree without its branch, a pushed branch with neither worktree nor
    pull request, two worktrees for one plan), is an anomaly: stop and escalate with it.
 10. **Adopt live work.** Enter its worktree or create one from its branch, never trunk; sync as Execution does.
-    Uncommitted changes await the user's direction, never stashed or discarded; a rebase conflict is aborted and
-    reported. Every changed path is unattributed until branch history rebuilds the touched-file record. Reuse an
-    existing pull request; tick a checkbox only from cited discovery evidence.
+    Uncommitted changes await the user's direction, never stashed or discarded; rebase conflicts follow the [owned task
+    sync contract][task-sync]. Every changed path is unattributed until branch history rebuilds the touched-file record.
+    Reuse an existing pull request; tick a checkbox only from cited discovery evidence.
 11. **Clean up only after classification.** A found, unadopted worktree or branch passes the pre-removal checks of
     [Dev Artifact Clean-Up](../maintenance/dev-artifact-clean-up.md). Anomalies are never cleaned; anything unproven
     idle stays and is reported; each removal or skip is logged.
@@ -80,3 +80,5 @@ A checklist records what is done, not what is safely half-done or which lessons 
 touch stales it, so takeover verifies everything, bounded by its fixed candidate set. This workflow implements
 [Evidence Over Assertion](../../principles/evidence-over-assertion.md) and
 [Explicit Over Implicit](../../principles/explicit-over-implicit.md).
+
+[task-sync]: ../../development/workflow/no-destructive-git-operations/001-authorized-task-branch-sync.md

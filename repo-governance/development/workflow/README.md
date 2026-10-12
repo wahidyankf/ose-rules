@@ -23,8 +23,8 @@ standards sit alongside them.
   task-runner command, and when it reruns
 - [CI Post-Push Verification](ci-post-push-verification.md) — following every covering pipeline workflow to green after
   a push, and the gate for a repository with no remote
-- [Commit Authorization](commit-authorization.md) — when staging, committing, and pushing are permitted, and why each
-  grant is single-use
+- [Commit Authorization](commit-authorization.md) — when staging, committing, and pushing are permitted, distinguishing
+  single-action grants from ongoing scoped task delivery
 - [Commit Messages](commit-messages.md) — the Conventional Commits format and type list, and why types never decide
   commit boundaries
 - [Dependency Bump Policy](dependency-bump-policy.md) — exact pins, the long-term-support, soak, and waiver paths,
@@ -49,8 +49,8 @@ standards sit alongside them.
   task, reconcile, and cleanup
 - [Native-First Toolchain](native-first-toolchain.md) — pinned native toolchain managers, the idempotent health command,
   what repair may change, and when to revisit
-- [No Destructive Git Operations](no-destructive-git-operations.md) — per-instance approval and additive equivalents for
-  operations that destroy work or rewrite history
+- [No Destructive Git Operations](no-destructive-git-operations.md) — bounded authorized task sync, per-instance
+  approval, and additive equivalents for operations that destroy work or rewrite history
 - [Pull Request Body](pull-request-body.md) — what a body states, the trunk-state claim, and rewriting the body whenever
   the head moves
 - [Pull Request Merge](pull-request-merge.md) — the merge preconditions, the recorded landing method, the no-bypass
