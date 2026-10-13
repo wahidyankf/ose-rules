@@ -25,6 +25,6 @@ per batch instead of per scenario, so planned work does not pay a full red-green
 A batch is one cohesive behaviour slice sharing a boundary and fixtures. Unrelated failures in one RED run mean the
 batch is too large; split it. Small single-scenario changes and single bug fixes keep the per-scenario cycle. This
 module changes run and evidence granularity only: it never permits writing tests after the code, and the scope
-exemptions in [Test-Driven Development](../../test-driven-development.md#scope) are unchanged. Batching leaves Small Cycles
-in place for test authorship: each test still covers one behaviour, and only the RED, GREEN, and refactor runs and their
-records are grouped per batch.
+exemptions in [Test-Driven Development](../../test-driven-development.md#scope) are unchanged. Batching leaves Small
+Cycles in place for test authorship: each test still covers one behaviour, and only the RED, GREEN, and refactor runs
+and their records are grouped per batch.
