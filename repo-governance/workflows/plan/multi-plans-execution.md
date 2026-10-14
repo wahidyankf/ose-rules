@@ -23,9 +23,8 @@ Two or more plans are named. A quality-gate verdict is optional; a missing verdi
 
 1. **Resolve and freeze the scope.** Resolve the selector once, echo the set, and never re-expand it. An exclusion
    matching no member is an error.
-2. **Record each member's verdict state before any side effect.** Verdicts are advisory history: `FAIL` and
-   `BLOCKED` stop nothing,
-   and a missing verdict stops nothing. Then move queued members into `plans/in-progress/`.
+2. **Record each member's verdict state before any side effect.** Verdicts are advisory history: `FAIL` and `BLOCKED`
+   stop nothing, and a missing verdict stops nothing. Then move queued members into `plans/in-progress/`.
 3. **Parse each checklist into nodes:** one per action checkbox, carrying its plan, phase, executor label, and resource
    set. A plan's nodes stay sequential unless it marks steps independent.
 4. **Compute resource sets conservatively:** the paths, projects, repositories, and checkout each node touches. An
