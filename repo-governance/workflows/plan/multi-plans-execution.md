@@ -1,17 +1,18 @@
 ---
 name: multi-plans-execution
 description: >-
-  Schedules several gate-reviewed plans into one pass: a dependency graph, bounded conflict-guarded parallelism,
-  failing-plan quarantine, and cross-plan knowledge capture.
+  Schedules several plans into one pass: a dependency graph, bounded conflict-guarded parallelism, failing-plan
+  quarantine, and cross-plan knowledge capture.
 when_to_use: >-
-  Use when two or more gate-reviewed plans should run together in one scheduled pass.
+  Use when two or more plans should run together in one scheduled pass.
 ---
 
 # Multi-Plans Execution
 
 ## Entry
 
-Two or more plans are named, each with a current verdict from an explicitly directed quality-gate run.
+Two or more plans are named. A quality-gate verdict is optional; a missing verdict is recorded as
+`plan-quality-gate: not run (manual-only)` and never stops the run.
 
 - `plans` (`string`, required): plan identifiers, or a lifecycle selector (`all-in-progress`, `all-backlog`, `all`) with
   optional exclusions.
@@ -22,9 +23,9 @@ Two or more plans are named, each with a current verdict from an explicitly dire
 
 1. **Resolve and freeze the scope.** Resolve the selector once, echo the set, and never re-expand it. An exclusion
    matching no member is an error.
-2. **Record each member's verdict before any side effect.** Verdicts are advisory: `FAIL` and `BLOCKED` stop nothing,
-   but a member without one stops the whole run, never just a subset. Then move queued members into
-   `plans/in-progress/`.
+2. **Record each member's verdict state before any side effect.** Verdicts are advisory history: `FAIL` and
+   `BLOCKED` stop nothing,
+   and a missing verdict stops nothing. Then move queued members into `plans/in-progress/`.
 3. **Parse each checklist into nodes:** one per action checkbox, carrying its plan, phase, executor label, and resource
    set. A plan's nodes stay sequential unless it marks steps independent.
 4. **Compute resource sets conservatively:** the paths, projects, repositories, and checkout each node touches. An
@@ -56,7 +57,7 @@ location per [Temporary Files](../../conventions/structure/temporary-files.md)).
 parallelism reached, quarantines and reasons, pre-existing failures fixed, and theme routing.
 
 Partial outcome: the summary names each quarantined or stopped plan with its reason. The run fails when no schedule can
-be built: a declared cycle, a missing plan, or a member without a verdict.
+be built: a declared cycle or a missing plan.
 
 ## Example Usage
 
@@ -67,7 +68,7 @@ Run multi-plans-execution with plans "all-in-progress", parallelism 2.
 ## Related Workflows
 
 - [Execution](plan-execution.md) runs every node and owns each plan's rules.
-- [Quality Gate](../quality/plan-quality-gate.md) produces step 2's verdicts.
+- [Quality Gate](../quality/plan-quality-gate.md) is an optional manual source for step 2's verdict history.
 - [Execution Check](plan-execution-check.md) judges each plan before archival.
 
 ## Adopter Decision: The Parallelism Ceiling
