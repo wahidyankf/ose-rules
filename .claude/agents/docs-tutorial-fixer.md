@@ -1,7 +1,7 @@
 ---
 description: |-
   Re-validates each tutorial review finding against the current file, applies only objective findings with one correct repair, and records false positives and judgement calls for others.
-effort: xhigh
+effort: high
 model: haiku
 name: docs-tutorial-fixer
 tools: |-

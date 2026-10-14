@@ -174,13 +174,13 @@ harness:
       tiers:
         ultra:
           model: opus
-          effort: xhigh
+          effort: high
         plan:
           model: sonnet
           effort: high
         execution:
           model: haiku
-          effort: xhigh
+          effort: high
         fast:
           model: haiku
           effort: medium
@@ -220,7 +220,7 @@ harness:
               - models
             pattern: gpt-*-sol
             fallback: gpt-6-sol
-          effort: xhigh
+          effort: high
         plan:
           model-resolve:
             command:
@@ -238,7 +238,7 @@ harness:
               - models
             pattern: gpt-*-luna
             fallback: gpt-6-luna
-          effort: xhigh
+          effort: high
         fast:
           model-resolve:
             command:
