@@ -24,7 +24,8 @@ Two entry points share one judgement:
 - **Push.** Before any push to a remote, review the outgoing range privately per
   [Push Review](pr-leak-review/002-push-review.md). Nothing is posted; a finding blocks the push.
 - **Merge.** A pull request is open, and no `pass` record from the designated reviewer identity exists for its current
-  head. `pull-request` (`string`, required): its number or address.
+  head. The delivery harness runs this workflow for that head before merge. `pull-request` (`string`, required): its
+  number or address.
 
 ## Sequence
 
@@ -65,8 +66,8 @@ Success leaves `result` (`enum`: `pass`, `findings`, `stale`, `failed`) at `pass
 (`string`), `review-id` (`string`), and `counts` (`string`) per class. `pass` means every count is zero; `findings`, any
 nonzero count. Only `pass` for the merging head satisfies the precondition.
 
-`stale` means the head moved and authorizes nothing for the new head. `failed` means a spawn, API, posting, read-back,
-or authentication error, or an unreadable pin, left no verdict. Neither retries within the run.
+`stale` means the head moved and authorizes nothing. `failed` means a spawn, API, posting, read-back, or authentication
+error, or an unreadable pin, left no verdict. Neither retries within the run.
 
 ## Example Usage
 
@@ -81,9 +82,9 @@ Run the push leak review on this branch's outgoing commits.
 
 ## One Head, One Review
 
-A moved head needs one new review from a new subagent. Earlier passes say nothing about the merging head, so the run
-neither retries nor waits for a clean streak. An unposted pass is indistinguishable from no review, so step 7 posts
-every result. [Enforcement](pr-leak-review/003-enforcement.md) makes the precondition mechanical.
+A moved head needs one new review from a new subagent. Earlier passes say nothing about the merging head. An unposted
+pass is indistinguishable from no review, so step 7 posts every result. [Enforcement](pr-leak-review/003-enforcement.md)
+makes the precondition mechanical.
 
 ## Principles
 
