@@ -30,6 +30,7 @@ edits the canonical file, and an adapter is generated from it, never edited in p
 - [docs-tutorial-maker](docs-tutorial-maker.md) — writing one tutorial of a declared type
 - [harness-checker](harness-checker.md) — auditing bindings for upstream drift and parity
 - [harness-fixer](harness-fixer.md) — repairing binding drift at its canonical source through Harness Propagation
+- [leak-reviewer](leak-reviewer.md) — judging a change against leak classes
 - [pdf-to-md-checker](pdf-to-md-checker.md) — judging a PDF conversion's fidelity against its source
 - [pdf-to-md-fixer](pdf-to-md-fixer.md) — restoring confirmed conversion gaps from the source
 - [pdf-to-md-maker](pdf-to-md-maker.md) — converting a PDF to verbatim Markdown

@@ -78,6 +78,11 @@
       "digest": "6932a050a146268cf0d50c73cfe18194db67f4d4cc764ef7fc2d3f69f56a2c82"
     },
     {
+      "id": "agent/leak-reviewer",
+      "path": ".agents/agents/leak-reviewer.md",
+      "digest": "eaf3b315def83cb0b387501125b7f660e2aa330062bc7bccbfbee0d888465634"
+    },
+    {
       "id": "agent/pdf-to-md-checker",
       "path": ".agents/agents/pdf-to-md-checker.md",
       "digest": "95539ba765b5fceeb3df4b1ddfd182172abe53b38a55058a84af7bcae3f73639"
