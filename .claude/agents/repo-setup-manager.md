@@ -1,7 +1,7 @@
 ---
 description: |-
   Proves a plan's execution checkout ready before any change: runs the declared bootstrap and toolchain check, records the in-scope gates as a baseline, and triages every failure without repairing code.
-effort: xhigh
+effort: high
 model: haiku
 name: repo-setup-manager
 tools: |-

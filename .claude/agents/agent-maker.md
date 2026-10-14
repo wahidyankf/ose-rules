@@ -1,7 +1,7 @@
 ---
 description: |-
   Drafts one canonical agent definition from a decided role, checks its name and metadata, regenerates the harness adapters from it, and adds its annotated index entry.
-effort: xhigh
+effort: high
 model: haiku
 name: agent-maker
 tools: |-

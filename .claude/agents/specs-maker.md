@@ -1,7 +1,7 @@
 ---
 description: |-
   Creates a specification corpus, or its missing index, architecture document, or first behaviour files, at an explicitly named path, sized to the owner's real surfaces and true from the moment it lands.
-effort: xhigh
+effort: high
 model: haiku
 name: specs-maker
 tools: |-

@@ -1,7 +1,7 @@
 ---
 description: |-
   Applies workflow checker findings to workflow documents after re-validating each against the current text, edits only what the cited rule settles, and records what it fixed, disproved, and left for a person.
-effort: xhigh
+effort: high
 model: haiku
 name: repo-workflow-fixer
 tools: |-

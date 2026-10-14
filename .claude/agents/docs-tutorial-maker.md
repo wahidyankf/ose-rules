@@ -1,7 +1,7 @@
 ---
 description: |-
   Writes or reworks one tutorial of a single declared type, with the required sections in order, every example run as printed, and checkpoints a learner can confirm.
-effort: xhigh
+effort: high
 model: haiku
 name: docs-tutorial-maker
 tools: |-

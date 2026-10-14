@@ -1,7 +1,7 @@
 ---
 description: |-
   Renames, moves, and deletes documents and directories after mapping every reference to them, repairs those references and the affected indexes, and proves nothing was left broken.
-effort: xhigh
+effort: high
 model: haiku
 name: docs-file-manager
 tools: |-
