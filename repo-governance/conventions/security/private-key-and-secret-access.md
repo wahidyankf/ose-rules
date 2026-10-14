@@ -28,7 +28,7 @@ Reason: human-only steps keep values out of the session, and proper pipelines ea
 5. Agent-assisted delivery applies only with a proper pipeline and secrets management (tracked wrapper, closed one-word
    outputs, leak screens, green gates); elsewhere the agent stops at the secret boundary.
 6. An agent may operate the leak review after reading every commit at the pinned head against the three leak classes; a
-   record without that reading is fabrication.
+   verdict without that reading is fabrication.
 
 The [details](private-key-and-secret-access/README.md) hold the scope and boundaries, the verification observations, and
 the enforcement disposition.
