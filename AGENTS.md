@@ -54,8 +54,9 @@ secret-wrapper pattern.
   sources.
 - Shell scripts are Bash, run `set -euo pipefail`, stay executable, and carry descriptive comments.
 - Before any rule edit, follow [Rules Propagation](repo-governance/workflows/quality/rules-propagation.md) unprompted.
-- Dispatch coding work to the fitting `swe-*` agent, except a trivial edit, a harness without subagents, or a tool
-  repin, per [SWE Delegation](repo-governance/development/agents/swe-delegation.md).
+- Dispatch every create, modify, update, or delete of code or declarative configuration to the fitting `swe-*` agent,
+  except a harness without subagents or a tool repin, per
+  [SWE Delegation](repo-governance/development/agents/swe-delegation.md).
 
 ## Layout
 

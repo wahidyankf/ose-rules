@@ -46,6 +46,9 @@ without the manifest, but type declarations and export maps that read it do not.
 
 ## When an Application Gains an Internal Dependency
 
+Steps 1 and 2 change declarative configuration, so `swe-developer` makes them, per
+[SWE Delegation](../agents/swe-delegation.md).
+
 1. Update its build file for the recorded strategy.
 2. Update every compose file and pipeline overlay that builds the application, and confirm each uses the root context.
 3. Build the image locally before pushing, and confirm the pipeline job that builds it passes.
