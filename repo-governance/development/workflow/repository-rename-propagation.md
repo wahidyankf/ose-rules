@@ -53,6 +53,8 @@ keeping the rename incomplete.
 2. **Order the hits by what breaks first.** Writes in deployment and pipeline automation, and defaults that feed them,
    come first; then reads and references elsewhere; documentation last.
 3. **Fix in that order,** one surface at a time, naming the old name in each fix's commit message for history searches.
+   A fix to code or declarative configuration is made by `swe-developer`, per
+   [SWE Delegation](../agents/swe-delegation.md).
 4. **Search each host.** Service-manager definitions, shell profiles, and personal scripts on every machine running the
    automation lie outside any repository. Restart every long-running process that read the old name; a changed file does
    nothing until the process reloads it.

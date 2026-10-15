@@ -39,7 +39,10 @@ starts a gate, or runs another propagation.
    - the file still holds the value the finding quotes: rate confidence from the citation's label, as
      [Checking Harness Compatibility](../skills/checking-harness-compatibility/SKILL.md) sets out;
    - the file holds neither: `MEDIUM`, for a person, because the ground moved under the finding.
-3. Apply each `HIGH` mechanical repair in the canonical artifact, the generator's mapping, or the reference record.
+3. Apply each `HIGH` mechanical repair in the canonical artifact, the generator's mapping, or the reference record. The
+   canonical artifacts are Markdown the fixer edits itself. The generator's mapping is declarative configuration, so
+   `swe-developer` writes a repair there: the fixer names it as repairer, and the fixer or its caller dispatches it, per
+   [SWE Delegation](../../repo-governance/development/agents/swe-delegation.md).
 4. Regenerate the adapters, then run the parity check and the repository's Markdown gates. A repair that leaves either
    failing is recorded as failed.
 5. Close the report with each finding's outcome, the files changed, and every finding handed to a person with its
