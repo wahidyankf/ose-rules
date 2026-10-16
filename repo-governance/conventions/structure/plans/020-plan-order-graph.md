@@ -45,7 +45,9 @@ complete-and-inert code, so producers and consumers proceed concurrently instead
 Both paths are tested, and rollout, rollback, and removal are recorded; the flag is removed once the behaviour is
 complete. A flag never substitutes for a declared dependency between plans. A join plan declares several dependencies
 and owns turning their flags off: flag removal is a delivery unit of the join plan, with its rollout evidence, not
-scattered across the producers.
+scattered across the producers. Flags are essential because this is trunk-based development: the trunk is the only
+persistent branch, so everything landing on it is deploy-ready, and flags keep parallel landings that way. See
+[Integration Path](../../../development/workflow/integration-path.md).
 
 ```mermaid
 flowchart LR
