@@ -24,8 +24,8 @@ The gate starts only on an explicit request that names it, or from one of these 
 
 An adopting repository lists only the callers it has, chosen from this set.
 
-Creating, editing, or executing a plan never starts it alone. Each run serves one named checkpoint: an optional manual
-check before execution, or a check after a material change. Neither checkpoint is required by execution.
+Creating, editing, or executing a plan never starts it alone. Each run serves one named checkpoint: an optional
+pre-execution check or a post-material-change check. Neither checkpoint is required by execution.
 
 ## Inputs
 
@@ -51,8 +51,7 @@ The checker reports none of these properties. The entry and exit checks run thei
 
 The plan validator's checks are listed in
 [Structural Validation](../../conventions/structure/plans/006-structural-validation.md). An adopting repository replaces
-the last column with the tools its declared gate runs. A property no tool of its own owns leaves the table and becomes
-judgeable.
+the last column with the tools its declared gate runs. A property no tool owns leaves the table and becomes judgeable.
 
 ## Cycle
 
@@ -68,11 +67,12 @@ reads the frozen plan and asks whether:
 4. for a bug-fix plan, the root cause carries checkable evidence and the solution cites references;
 5. every decision the plan relies on is recorded, so an executor invents no policy; and
 6. every checklist item carries a **Deterministic proof** and is **Execution-tier executable**, per
-   [Delivery Contract](../../conventions/structure/plans/004-delivery-contract.md); a breach of either is `HIGH`.
+   [Delivery Contract](../../conventions/structure/plans/004-delivery-contract.md); either breach is `HIGH`.
 
-Wording preference and speculative cases are not findings, per
-[Minimal Sufficiency](../../principles/minimal-sufficiency.md). `plan-maker` authors plans; `plan-fixer` only repairs
-ledger rows.
+The checker raises only essential findings: executability, correctness, or decision completeness; wording preference,
+style, and speculative cases without executability impact are never findings, per
+[Minimal Sufficiency](../../principles/minimal-sufficiency.md). Unenforced by decision: nitpicking has no mechanical
+check. `plan-maker` authors plans; `plan-fixer` only repairs ledger rows.
 
 ## Termination
 
