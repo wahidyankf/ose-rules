@@ -31,7 +31,9 @@ the plan is then reverse-engineered to justify it.
 
 Sequence in the file is not dependency. Express phases and items as the dependency graph
 [Dependency Graph and Recovery](../../../repo-governance/conventions/structure/plans/014-dependency-graph-and-recovery.md)
-defines, with a Parallelization Model section, so independent nodes can run concurrently.
+defines, with a Parallelization Model section, so independent nodes can run concurrently. Declare inter-plan
+dependencies as [Plan-Order Graph](../../../repo-governance/conventions/structure/plans/020-plan-order-graph.md)
+defines, so the live-plan index can order this plan.
 
 ## Granularity Is the Hard Part
 
@@ -94,5 +96,6 @@ Use
 [Focused Runs and Regression Gates](../../../repo-governance/development/quality/testing/test-driven-development/001-cycle-and-evidence.md#focused-runs-and-regression-gates)
 to name the minimal runner selection, positive executed-case evidence, and separate full phase/pre-pull-request gates.
 Under the split cycle, red, green, and refactor are separate items naming test path, command, and expected result,
-repeated per behaviour. Under either choice the item names the test before the production path, as
+repeated per behaviour. Under batched delivery, group the RED and GREEN runs per batch per
+[Batched Cycles](../../../repo-governance/development/quality/testing/test-driven-development/001-cycle-and-evidence/002-batched-cycles-in-planned-delivery.md). Under either choice the item names the test before the production path, as
 [Test-Driven Development](../../../repo-governance/development/quality/testing/test-driven-development.md) requires.

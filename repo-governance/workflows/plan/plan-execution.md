@@ -18,6 +18,10 @@ Execution starts with or without a verdict and never runs the gate itself. A mis
 remains available direction when explicitly invoked. A queued plan is moved into `plans/in-progress/` first, never
 copied. Input: `plan` (`directory`, required).
 
+Before starting, resolve every dependency the plan declares under
+[Plan-Order Graph](../../conventions/structure/plans/020-plan-order-graph.md): each must already be satisfied,
+or the run stops and names the unmet one. A missing declaration reads as no dependencies.
+
 ## Sequence
 
 1. **Read the plan before the checklist.** `delivery.md` is executable, not self-explanatory; the other five documents

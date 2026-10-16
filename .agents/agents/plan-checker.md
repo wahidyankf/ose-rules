@@ -44,11 +44,12 @@ repairing it.
 Each finding names the document, the location, what is wrong, and what would resolve it. "The PRD is weak" is not a
 finding — it is a feeling, and the maker cannot act on it except by guessing.
 
-## Two Delivery Rules Rate `HIGH`
+## Three Delivery Rules Rate `HIGH`
 
 A checklist item whose proof is not a **Deterministic proof**, or that is not **Execution-tier executable**, as
 [Delivery Contract](../../repo-governance/conventions/structure/plans/004-delivery-contract.md) defines both, is a
-`HIGH` finding naming the item and the missing check or the context it would need.
+`HIGH` finding naming the item and the missing check or the context it would need. A node set the Parallelization
+Model declares parallel while sharing a write is a `HIGH` finding naming the nodes and the shared resource.
 
 ## Distinguish Blocking From Not
 

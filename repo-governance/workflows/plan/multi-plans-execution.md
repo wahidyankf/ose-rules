@@ -29,7 +29,8 @@ Two or more plans are named. A quality-gate verdict is optional; a missing verdi
    set. A plan's nodes stay sequential unless it marks steps independent.
 4. **Compute resource sets conservatively:** the paths, projects, repositories, and checkout each node touches. An
    uncertain footprint takes the plan's whole declared impact, so doubt serializes rather than races.
-5. **Add edges between plans.** A declared dependency orders whole plans; inference never overrides it. Otherwise
+5. **Add edges between plans.** A declared dependency orders whole plans; inference never overrides it. Declare
+   dependencies as [Plan-Order Graph](../../conventions/structure/plans/020-plan-order-graph.md) defines. Otherwise
    overlapping resource sets serialize; disjoint ones may run in parallel. A declared cycle stops the run as a planning
    error; an unresolved ordering assumption goes to a
    [decision gate](../../development/agents/planning-capabilities/003-decision-gates.md) before scheduling.
