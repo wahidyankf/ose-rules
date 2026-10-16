@@ -100,7 +100,7 @@
     {
       "id": "agent/plan-checker",
       "path": ".agents/agents/plan-checker.md",
-      "digest": "1e0a7cf2997e27667090feaf11ad52557aaa329e280efe7277cc19137549da07"
+      "digest": "07cc0625d8b2ad5b75afec4125bfa3a64ee08629ff08b9175c2be0d16ec21b41"
     },
     {
       "id": "agent/plan-execution-checker",
@@ -525,7 +525,7 @@
     {
       "id": "skill/plan-creating-project-plans",
       "path": ".agents/skills/plan-creating-project-plans/SKILL.md",
-      "digest": "b7bbe3f8fd8fe3746b4a9fd22ed3e41b4431b961d4108ef3f1563039e0189132"
+      "digest": "6817794448c7e2b8f90117029725dddb8788d88e6dc6241a5d0cb0a0230ef6b6"
     },
     {
       "id": "skill/plan-grooming-idea-briefs",
@@ -535,7 +535,7 @@
     {
       "id": "skill/plan-validating-quality",
       "path": ".agents/skills/plan-validating-quality/SKILL.md",
-      "digest": "67ed175448cec413fbd5b80cd789312ecffe7d7476022dcb662cf9662513f471"
+      "digest": "16a9d779fdfecd21a38362d0b83565d5f906fe77f37f1bd73bfd2734bd1bc41a"
     },
     {
       "id": "skill/plan-verifying-execution",
