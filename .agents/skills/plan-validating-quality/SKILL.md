@@ -61,8 +61,8 @@ be verified without doing the next one, and finishing it would take longer than 
 ## Dependencies and Declared Parallelism
 
 A `Depends-on` naming a plan that does not exist, or one already archived where a live plan was meant, is a finding
-naming the declaration. A node set the Parallelization Model declares parallel while sharing a write — an output file,
-a branch, or an ordering constraint — is `HIGH`: the declaration promises concurrency the resources forbid.
+naming the declaration. A node set the Parallelization Model declares parallel while sharing a write — an output file, a
+branch, or an ordering constraint — is `HIGH`: the declaration promises concurrency the resources forbid.
 
 ## What This Skill Deliberately Does Not Judge
 

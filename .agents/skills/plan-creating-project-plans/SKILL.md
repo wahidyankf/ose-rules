@@ -97,5 +97,6 @@ Use
 to name the minimal runner selection, positive executed-case evidence, and separate full phase/pre-pull-request gates.
 Under the split cycle, red, green, and refactor are separate items naming test path, command, and expected result,
 repeated per behaviour. Under batched delivery, group the RED and GREEN runs per batch per
-[Batched Cycles](../../../repo-governance/development/quality/testing/test-driven-development/001-cycle-and-evidence/002-batched-cycles-in-planned-delivery.md). Under either choice the item names the test before the production path, as
+[Batched Cycles](../../../repo-governance/development/quality/testing/test-driven-development/001-cycle-and-evidence/002-batched-cycles-in-planned-delivery.md).
+Under either choice the item names the test before the production path, as
 [Test-Driven Development](../../../repo-governance/development/quality/testing/test-driven-development.md) requires.

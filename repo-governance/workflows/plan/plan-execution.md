@@ -19,8 +19,8 @@ remains available direction when explicitly invoked. A queued plan is moved into
 copied. Input: `plan` (`directory`, required).
 
 Before starting, resolve every dependency the plan declares under
-[Plan-Order Graph](../../conventions/structure/plans/020-plan-order-graph.md): each must already be satisfied,
-or the run stops and names the unmet one. A missing declaration reads as no dependencies.
+[Plan-Order Graph](../../conventions/structure/plans/020-plan-order-graph.md): each must already be satisfied, or the
+run stops and names the unmet one. A missing declaration reads as no dependencies.
 
 ## Sequence
 
