@@ -61,8 +61,8 @@ was made — content, not maintenance metadata.
 Records live where the repository's `ADR location` decision places them, by default `docs/explanation/decisions/`, named
 `NNN-<slug>.md` — a three-digit sequence number and a kebab-case slug — with a `README.md` index listing every record
 and its status. The decision is recorded once in the repository adapter, and
-[SWE Architect](../../../../.agents/agents/swe-architect.md) writes there. A decision scoped to one component lives in
-the same relative location inside that component, in the same form.
+[SWE Architect](../../../../agents/swe-architect.md) writes there. A decision scoped to one component lives in the same
+relative location inside that component, in the same form.
 
 Numbers are never reused. A number is how later records cite a decision, and a reused one makes an old citation point at
 the wrong decision.

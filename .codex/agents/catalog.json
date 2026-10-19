@@ -3,341 +3,6 @@
   "profile": "codex",
   "sources": [
     {
-      "id": "agent/agent-maker",
-      "path": ".agents/agents/agent-maker.md",
-      "digest": "320ebd797a6925ab8aaa84e1e3fb80211cb89ce98c5b90246ee059cd5a538d29"
-    },
-    {
-      "id": "agent/ci-checker",
-      "path": ".agents/agents/ci-checker.md",
-      "digest": "47d481ae8954fc29743babb206144dbcfbc61e865eeb71fcdd5fdba7cbf14054"
-    },
-    {
-      "id": "agent/ci-fixer",
-      "path": ".agents/agents/ci-fixer.md",
-      "digest": "b6dcaeff892ce2bdae352d702c1ed9c53c90bc5742bdfd6744e67ad8a69a7286"
-    },
-    {
-      "id": "agent/content-checker",
-      "path": ".agents/agents/content-checker.md",
-      "digest": "78312183b6c77898b49884785f584a3eb75bfbbae625e73e3026f23b75da4700"
-    },
-    {
-      "id": "agent/content-fixer",
-      "path": ".agents/agents/content-fixer.md",
-      "digest": "556ad8baaa6204981614e0f546df503d966a7045430ea142b8b633c4676040e8"
-    },
-    {
-      "id": "agent/docs-checker",
-      "path": ".agents/agents/docs-checker.md",
-      "digest": "f5f9c9991004ceaaa55e79f1f779a15d58838e5e893fa8d3c8f16054ec560cef"
-    },
-    {
-      "id": "agent/docs-file-manager",
-      "path": ".agents/agents/docs-file-manager.md",
-      "digest": "c5424cad030808a6cc33590312fb802a89501cbd31a520bf3161977ede934f39"
-    },
-    {
-      "id": "agent/docs-fixer",
-      "path": ".agents/agents/docs-fixer.md",
-      "digest": "fcb3616358d2505fbb31d8323f26f3436e4205a422ac437ea379969e2d114efc"
-    },
-    {
-      "id": "agent/docs-link-checker",
-      "path": ".agents/agents/docs-link-checker.md",
-      "digest": "6a037e52c35fdb461b7240a9089b6f0c68b61098fb8ccfb7640f78e5cd7624f3"
-    },
-    {
-      "id": "agent/docs-maker",
-      "path": ".agents/agents/docs-maker.md",
-      "digest": "7dc2be1510b2e3c063e1a2716b460e0b565ee7a8bc7b9d810bfc52e9624892ac"
-    },
-    {
-      "id": "agent/docs-tutorial-checker",
-      "path": ".agents/agents/docs-tutorial-checker.md",
-      "digest": "b758199121545063744d6ef19577a99732dffe5639ef90b5b5ea360bb37f7f02"
-    },
-    {
-      "id": "agent/docs-tutorial-fixer",
-      "path": ".agents/agents/docs-tutorial-fixer.md",
-      "digest": "5955a08ccd283e8177f0b5694dab2ab2a3a25a87f947cf372d46ba56148fdd3e"
-    },
-    {
-      "id": "agent/docs-tutorial-maker",
-      "path": ".agents/agents/docs-tutorial-maker.md",
-      "digest": "540ea2d069f05b4860a87a64c948e036085a55c192babb865de7f3350d2d86ee"
-    },
-    {
-      "id": "agent/harness-checker",
-      "path": ".agents/agents/harness-checker.md",
-      "digest": "c343b25a2eb22e707ccd3d1fc43c4b4a0f14ba0f1efa431bd096ae047842cbb8"
-    },
-    {
-      "id": "agent/harness-fixer",
-      "path": ".agents/agents/harness-fixer.md",
-      "digest": "b04ffed0c180adbb029594c6551a4f21fdddc4e8ec6e97cde072d7e8e066e163"
-    },
-    {
-      "id": "agent/leak-reviewer",
-      "path": ".agents/agents/leak-reviewer.md",
-      "digest": "eaf3b315def83cb0b387501125b7f660e2aa330062bc7bccbfbee0d888465634"
-    },
-    {
-      "id": "agent/pdf-to-md-checker",
-      "path": ".agents/agents/pdf-to-md-checker.md",
-      "digest": "95539ba765b5fceeb3df4b1ddfd182172abe53b38a55058a84af7bcae3f73639"
-    },
-    {
-      "id": "agent/pdf-to-md-fixer",
-      "path": ".agents/agents/pdf-to-md-fixer.md",
-      "digest": "83ac09df979e8b325cd4fd433b88d34248e3085e682545c740d818d1e5e1dc72"
-    },
-    {
-      "id": "agent/pdf-to-md-maker",
-      "path": ".agents/agents/pdf-to-md-maker.md",
-      "digest": "25fb913081e10d0091365a867b540e98c9988dec431483fabc17c1f5c9e09054"
-    },
-    {
-      "id": "agent/plan-checker",
-      "path": ".agents/agents/plan-checker.md",
-      "digest": "07cc0625d8b2ad5b75afec4125bfa3a64ee08629ff08b9175c2be0d16ec21b41"
-    },
-    {
-      "id": "agent/plan-execution-checker",
-      "path": ".agents/agents/plan-execution-checker.md",
-      "digest": "cf6403dde62c3731ceae76f10dfe13f3d39c586c51603d968b86c20a895bdb90"
-    },
-    {
-      "id": "agent/plan-fixer",
-      "path": ".agents/agents/plan-fixer.md",
-      "digest": "bdb8a39a8ba6f909e288f97784a715630879232bcf54cb755d97a559dcf5c33c"
-    },
-    {
-      "id": "agent/plan-maker",
-      "path": ".agents/agents/plan-maker.md",
-      "digest": "96c5276a8e2a7b62995bb02e3e9f98d21f0efa8f075acacd9b4c9623583a37e7"
-    },
-    {
-      "id": "agent/pr-review-checker",
-      "path": ".agents/agents/pr-review-checker.md",
-      "digest": "cd7b0879a70d4518dc5462954e987ddb5389f35fb438f85dadfb1d721b9439e5"
-    },
-    {
-      "id": "agent/pr-review-docs-checker",
-      "path": ".agents/agents/pr-review-docs-checker.md",
-      "digest": "5a930d795315a605a0d3bfe76bae9d39e185a5c89cdc9ef43eb2fda2a8201c05"
-    },
-    {
-      "id": "agent/pr-review-fixer",
-      "path": ".agents/agents/pr-review-fixer.md",
-      "digest": "0fd0fabb93c81c3d313999a830e2e4677cb023f8c28866c4a0040a821095da1d"
-    },
-    {
-      "id": "agent/pr-review-governance-checker",
-      "path": ".agents/agents/pr-review-governance-checker.md",
-      "digest": "d432d1df075b6fad5cce84c10895b09ce12bcb47cd9bfb78bb6425622096e438"
-    },
-    {
-      "id": "agent/pr-review-instruction-checker",
-      "path": ".agents/agents/pr-review-instruction-checker.md",
-      "digest": "71b1fb0f1681ddcbbd74e7f97505953f669e2c4525d0daafd8a28de825086d7c"
-    },
-    {
-      "id": "agent/pr-review-integrity-checker",
-      "path": ".agents/agents/pr-review-integrity-checker.md",
-      "digest": "6f21a74c0fc05f905823b386666b9a7e07f8a47afdd5f6a4cc0775568f46bc75"
-    },
-    {
-      "id": "agent/pr-review-logic-checker",
-      "path": ".agents/agents/pr-review-logic-checker.md",
-      "digest": "0ae766a526d028ee4d070cc8376b19701a11d47dbad3f4eacf34d653485aa3aa"
-    },
-    {
-      "id": "agent/pr-review-performance-checker",
-      "path": ".agents/agents/pr-review-performance-checker.md",
-      "digest": "6d12438da365dc84b5df53f6345d4a234638c0b8d00b71b9eaf874dd142fe1df"
-    },
-    {
-      "id": "agent/pr-review-scout",
-      "path": ".agents/agents/pr-review-scout.md",
-      "digest": "6dd0d9232d8be4383e832703bf0861c701731b52728f6aeacd426d0f8022bf02"
-    },
-    {
-      "id": "agent/pr-review-security-checker",
-      "path": ".agents/agents/pr-review-security-checker.md",
-      "digest": "56a4ef9427f1a0ee5ce26514f5ed096246c192640ba12b50e7119790a9bb1b10"
-    },
-    {
-      "id": "agent/pr-review-types-checker",
-      "path": ".agents/agents/pr-review-types-checker.md",
-      "digest": "1525e93ed122ead03d205f14abb51f5d2c0b0e593265e01a3a7e86708618393a"
-    },
-    {
-      "id": "agent/readme-checker",
-      "path": ".agents/agents/readme-checker.md",
-      "digest": "166498a9efc6108408ac1f3ffd86c88530652706bab7a16e0be4557f8ae66ba3"
-    },
-    {
-      "id": "agent/readme-fixer",
-      "path": ".agents/agents/readme-fixer.md",
-      "digest": "923bb70e10342bedf19cf4312fb57a955227b47ed97caa56cef700cbac67bc5a"
-    },
-    {
-      "id": "agent/readme-maker",
-      "path": ".agents/agents/readme-maker.md",
-      "digest": "4131615d986a6faec7842c2e3da541de594494a5ae94da72dbe480cbc14e0cad"
-    },
-    {
-      "id": "agent/repo-explorer",
-      "path": ".agents/agents/repo-explorer.md",
-      "digest": "f860550c4340954ae5429483c00a4bfd672ba4e0bd706ab667d455f74cb062e2"
-    },
-    {
-      "id": "agent/repo-rules-maker",
-      "path": ".agents/agents/repo-rules-maker.md",
-      "digest": "d5e1be8eda120c53bbf687397268234d00569b5663a6c7784b03ba43efe5ff0e"
-    },
-    {
-      "id": "agent/repo-setup-manager",
-      "path": ".agents/agents/repo-setup-manager.md",
-      "digest": "0531e2c4c48997a3f122b71eaa2e6a084a3ffc141dea99a4d0f3025d9fbca849"
-    },
-    {
-      "id": "agent/repo-workflow-checker",
-      "path": ".agents/agents/repo-workflow-checker.md",
-      "digest": "fbce0748e059f39a19fa4b542042fc1a5e012edf08241530008ce642d67cca46"
-    },
-    {
-      "id": "agent/repo-workflow-fixer",
-      "path": ".agents/agents/repo-workflow-fixer.md",
-      "digest": "758f29435ebbeb849be5a5c57ceff2108097de8259eca9122bd7e876d5856422"
-    },
-    {
-      "id": "agent/repo-workflow-maker",
-      "path": ".agents/agents/repo-workflow-maker.md",
-      "digest": "ff48e52c948aa10c26159a528e1ed70eb229386da3bcd1c577ca440973396322"
-    },
-    {
-      "id": "agent/rules-checker",
-      "path": ".agents/agents/rules-checker.md",
-      "digest": "c9225b01111cadca7841b6094bd47956105e98e134b8de26cb830c772e12fb3d"
-    },
-    {
-      "id": "agent/rules-fixer",
-      "path": ".agents/agents/rules-fixer.md",
-      "digest": "b9443178c618459d10dd1fd0db331d63101cea390d90b735b01517ee1b57ddfe"
-    },
-    {
-      "id": "agent/specs-checker",
-      "path": ".agents/agents/specs-checker.md",
-      "digest": "b994ce43fc0b1ea1f53a4fa8d4c60de61f85c3626f6ca75b403067c6324bdd7f"
-    },
-    {
-      "id": "agent/specs-fixer",
-      "path": ".agents/agents/specs-fixer.md",
-      "digest": "b806ead4e7da1330fd7667aa5c737bd2b0197665499cc803813ae21125d8a227"
-    },
-    {
-      "id": "agent/specs-maker",
-      "path": ".agents/agents/specs-maker.md",
-      "digest": "ad63ddd76f81350aab70484a51a14724e0d21aaa9e43162b584da215e51a613d"
-    },
-    {
-      "id": "agent/swe-api-tester",
-      "path": ".agents/agents/swe-api-tester.md",
-      "digest": "4fddfdded7d8b55a4a4b34a1c8621450e897e644bda876d62ce2b28a8ca3e9a2"
-    },
-    {
-      "id": "agent/swe-architect",
-      "path": ".agents/agents/swe-architect.md",
-      "digest": "1f657d551175a6daefb0df5f39bf4419ea68e16fd3362cfd5ee6f1ea0f26cc23"
-    },
-    {
-      "id": "agent/swe-debugger",
-      "path": ".agents/agents/swe-debugger.md",
-      "digest": "bd7c39a5b5e55bc488fec9e84c75ea818d39a6d9419a85c971476515aa204863"
-    },
-    {
-      "id": "agent/swe-developer",
-      "path": ".agents/agents/swe-developer.md",
-      "digest": "992889fe44275832be413041baca6227557d19cea97c1a4761bc8b97080c9f66"
-    },
-    {
-      "id": "agent/swe-infra-tester",
-      "path": ".agents/agents/swe-infra-tester.md",
-      "digest": "4ec352af4329ea1eaa03eba6070b91227bcff257c76a85de9701fc702e294060"
-    },
-    {
-      "id": "agent/swe-orchestrator",
-      "path": ".agents/agents/swe-orchestrator.md",
-      "digest": "23c92a50f7eebdaddc930492908a344ade321b7a54e83fb53ed989e3e008013a"
-    },
-    {
-      "id": "agent/swe-releaser",
-      "path": ".agents/agents/swe-releaser.md",
-      "digest": "ba84c93fff469b76c3a30ff926a443cd77553655d7e406cc748b39d19eb68e7f"
-    },
-    {
-      "id": "agent/swe-reviewer",
-      "path": ".agents/agents/swe-reviewer.md",
-      "digest": "45fed2e6caa0ee1ec8cb15fefe10dc8ad4a2414b9a2ea71aa7cc7bd5bee552a2"
-    },
-    {
-      "id": "agent/swe-usability-tester",
-      "path": ".agents/agents/swe-usability-tester.md",
-      "digest": "2900ac2c5c5bd297c1811f5409b7722ee966378df321257aed898785ad3c2a39"
-    },
-    {
-      "id": "agent/swe-web-tester",
-      "path": ".agents/agents/swe-web-tester.md",
-      "digest": "bfd26933fc5ec221f3b541019f0411ec58cc8aec2ba9f6d01e2076da060e8222"
-    },
-    {
-      "id": "agent/tutorial-annotated-concept-checker",
-      "path": ".agents/agents/tutorial-annotated-concept-checker.md",
-      "digest": "fe8f2b9e33f48194e34860983f6e48fade29ea5af30e1ceb6be213a57bffd6cd"
-    },
-    {
-      "id": "agent/tutorial-annotated-concept-fixer",
-      "path": ".agents/agents/tutorial-annotated-concept-fixer.md",
-      "digest": "8e8f5227b18fe356356da6c0c1b6d6442a3489416db69069ea439b4e8690ccbd"
-    },
-    {
-      "id": "agent/tutorial-by-example-checker",
-      "path": ".agents/agents/tutorial-by-example-checker.md",
-      "digest": "fadaca6cd7533913cfa9aec80d9c694a223a34b6ae077e326a67f30e14e9bd3e"
-    },
-    {
-      "id": "agent/tutorial-by-example-fixer",
-      "path": ".agents/agents/tutorial-by-example-fixer.md",
-      "digest": "353de73df8723a7485ccd8f3732cc2e108d1d3a789070d9b7068fc4531019e44"
-    },
-    {
-      "id": "agent/tutorial-in-the-field-checker",
-      "path": ".agents/agents/tutorial-in-the-field-checker.md",
-      "digest": "ff4205f9d28b3aecc78ca411d35e5ce510c19a786cbd8b4efff1789f1b5a6c2b"
-    },
-    {
-      "id": "agent/tutorial-in-the-field-fixer",
-      "path": ".agents/agents/tutorial-in-the-field-fixer.md",
-      "digest": "17f8c9b99da2d01ccff2806ba108267945c5ed3725e329dee4fa79a7a2e400b6"
-    },
-    {
-      "id": "agent/tutorial-primer-checker",
-      "path": ".agents/agents/tutorial-primer-checker.md",
-      "digest": "980e12aaed8c255def56fb5a221e3f51af38fc8888e0dff0bb8971e72dacd815"
-    },
-    {
-      "id": "agent/tutorial-primer-fixer",
-      "path": ".agents/agents/tutorial-primer-fixer.md",
-      "digest": "4ffaef19ecd794b11bc1de65adb0c0c0d3c93d1b981e59067e6f590d291a4757"
-    },
-    {
-      "id": "agent/web-researcher",
-      "path": ".agents/agents/web-researcher.md",
-      "digest": "97aaf61d151a55d45ecf0fbbc7e8b23126d495209485050e919b0ae6f7f87b1d"
-    },
-    {
       "id": "skill/adopt-artifact",
       "path": ".agents/skills/adopt-artifact/SKILL.md",
       "digest": "6dd96c5d6f939997f05b38cb22c2fe8ecae901a5070f3c6866a020cac48469d2"
@@ -706,6 +371,341 @@
       "id": "instruction",
       "path": "AGENTS.md",
       "digest": "f98a64fe9d94be3dcc589fdc9b628d366ea266408cebaf78ea1886e2f13d8092"
+    },
+    {
+      "id": "agent/agent-maker",
+      "path": "agents/agent-maker.md",
+      "digest": "8c1ba8267429a727213bfa8575f14a5b4c8a406ab9d4217bba75ab566db6f14a"
+    },
+    {
+      "id": "agent/ci-checker",
+      "path": "agents/ci-checker.md",
+      "digest": "a669109d038adf43db952274fc65db543eb803dfd9e8e223911a921c467d6efc"
+    },
+    {
+      "id": "agent/ci-fixer",
+      "path": "agents/ci-fixer.md",
+      "digest": "11c55c1dfd1bc6e196ed7283f7cfdf839a009a0ab5eb27a8a70a93db11ebdb38"
+    },
+    {
+      "id": "agent/content-checker",
+      "path": "agents/content-checker.md",
+      "digest": "cbdee1a92eba5598754a1f98d20c039d17607d6add62012298852f857af99979"
+    },
+    {
+      "id": "agent/content-fixer",
+      "path": "agents/content-fixer.md",
+      "digest": "e93bf59619a3721c47268bc2d82f5573198675bf24eb9aeff74b00bbca4e8817"
+    },
+    {
+      "id": "agent/docs-checker",
+      "path": "agents/docs-checker.md",
+      "digest": "cd5c9a3ffc6ea917aaf035cbb409093dee10709a33a8a47d43fc9e14666e9453"
+    },
+    {
+      "id": "agent/docs-file-manager",
+      "path": "agents/docs-file-manager.md",
+      "digest": "466b1eb793051b1ee30c4d74218e861decc2621cf1ad7800638da3299bfc16d6"
+    },
+    {
+      "id": "agent/docs-fixer",
+      "path": "agents/docs-fixer.md",
+      "digest": "bc8d141c4effd7c4eb123d179401d8d84e2b10fa71c361a705770d7707be354e"
+    },
+    {
+      "id": "agent/docs-link-checker",
+      "path": "agents/docs-link-checker.md",
+      "digest": "c9b1f1d145c65eb14595931655e53149a901ea28a1d73c347f8feacf4fa0b62b"
+    },
+    {
+      "id": "agent/docs-maker",
+      "path": "agents/docs-maker.md",
+      "digest": "a155851f7a356c561ee3daa9dc0f17b520ae7eb64286a6cb36b21c2c77f038bf"
+    },
+    {
+      "id": "agent/docs-tutorial-checker",
+      "path": "agents/docs-tutorial-checker.md",
+      "digest": "500712c303466a7f3484304b4ac4169463ea87d466a5723aa8ccc307e8c40e86"
+    },
+    {
+      "id": "agent/docs-tutorial-fixer",
+      "path": "agents/docs-tutorial-fixer.md",
+      "digest": "e456c09972e917a9dd3812fed936ad403d1140ee8eabcd636148384870614409"
+    },
+    {
+      "id": "agent/docs-tutorial-maker",
+      "path": "agents/docs-tutorial-maker.md",
+      "digest": "78d29928ab1809bd38e07490a77770f133054bcf3f773e80d6e5dceff9817109"
+    },
+    {
+      "id": "agent/harness-checker",
+      "path": "agents/harness-checker.md",
+      "digest": "f268b778f084278c36519e0f9ddf071a1e52fbfa22e8ce0778cc6a6e075e8258"
+    },
+    {
+      "id": "agent/harness-fixer",
+      "path": "agents/harness-fixer.md",
+      "digest": "3819b665ca005442d2ef1b6bda8539b842da609a13e9724447f3aac47951713d"
+    },
+    {
+      "id": "agent/leak-reviewer",
+      "path": "agents/leak-reviewer.md",
+      "digest": "0d89afbc5f369ff6f9fb717317bc3a516544bc64ac4ec72f62f81b51fd0726e7"
+    },
+    {
+      "id": "agent/pdf-to-md-checker",
+      "path": "agents/pdf-to-md-checker.md",
+      "digest": "233093c9bc70c6dac2d7c80fee5531a2123ea321c142079442f741b39dec2320"
+    },
+    {
+      "id": "agent/pdf-to-md-fixer",
+      "path": "agents/pdf-to-md-fixer.md",
+      "digest": "ba210e8e36a33213210ef0a1e700181f154acd5c337d6858274570c9a87497a0"
+    },
+    {
+      "id": "agent/pdf-to-md-maker",
+      "path": "agents/pdf-to-md-maker.md",
+      "digest": "890cf2775fda9fd053521822264e732102d5e0797336e1383f0a469cf26c412a"
+    },
+    {
+      "id": "agent/plan-checker",
+      "path": "agents/plan-checker.md",
+      "digest": "b121e1822b7bb4273573c74ec46813eb88ec008aacbde5729318d95586a900de"
+    },
+    {
+      "id": "agent/plan-execution-checker",
+      "path": "agents/plan-execution-checker.md",
+      "digest": "95a32638acc8932283910fac68bda9ad07c0cf7c9fbaf1698890e57c004549fc"
+    },
+    {
+      "id": "agent/plan-fixer",
+      "path": "agents/plan-fixer.md",
+      "digest": "0dd49455f6b2b8db648ddd91fa8d1c86fb625cbfb62efd07f1d5401acc3469ef"
+    },
+    {
+      "id": "agent/plan-maker",
+      "path": "agents/plan-maker.md",
+      "digest": "80b389040d54797d17c614ed88efd9a20f18b289a6752aaaa037ff24ac3cbaa8"
+    },
+    {
+      "id": "agent/pr-review-checker",
+      "path": "agents/pr-review-checker.md",
+      "digest": "18ba504db650339868ea8c02de90fff2f1e2e7994c7a9d7ac989148b2526e8d4"
+    },
+    {
+      "id": "agent/pr-review-docs-checker",
+      "path": "agents/pr-review-docs-checker.md",
+      "digest": "a30b611ef3bfd5bc7cd8c26ac48fd15eddd7357fed82091be3d30c8d0d1b2dc1"
+    },
+    {
+      "id": "agent/pr-review-fixer",
+      "path": "agents/pr-review-fixer.md",
+      "digest": "fda6308bee0834467df885b9c761bf54a409a3d5de2abe4fd898dda25fb356e9"
+    },
+    {
+      "id": "agent/pr-review-governance-checker",
+      "path": "agents/pr-review-governance-checker.md",
+      "digest": "3fddef224560c374f21ca3706a2c22192af2bf219656dee49f98a0dbfc58ee96"
+    },
+    {
+      "id": "agent/pr-review-instruction-checker",
+      "path": "agents/pr-review-instruction-checker.md",
+      "digest": "a11bb21f2d99d9a2925918aec8b9bc7a2e3c82a915a35138a08b2fa9064894bb"
+    },
+    {
+      "id": "agent/pr-review-integrity-checker",
+      "path": "agents/pr-review-integrity-checker.md",
+      "digest": "459dd87bbf1abf77344f9ba1477324e3928e6cee5ffccfba26b85856d304862d"
+    },
+    {
+      "id": "agent/pr-review-logic-checker",
+      "path": "agents/pr-review-logic-checker.md",
+      "digest": "91bf8a06f0c227331f80bac02777ce1c5c65a26ab6669715f60c55c651783185"
+    },
+    {
+      "id": "agent/pr-review-performance-checker",
+      "path": "agents/pr-review-performance-checker.md",
+      "digest": "cec17508c96004aabad013110fa2b2d02cfc887927a1955ab9c5088ab008f98a"
+    },
+    {
+      "id": "agent/pr-review-scout",
+      "path": "agents/pr-review-scout.md",
+      "digest": "5759a26389c1f46d60f29d0ea59532a602a156ffd020abee6bd3db94b575d725"
+    },
+    {
+      "id": "agent/pr-review-security-checker",
+      "path": "agents/pr-review-security-checker.md",
+      "digest": "91a395f03319060a56db06f01499d0f10a7bddef6bde8fa831a31826872a95ba"
+    },
+    {
+      "id": "agent/pr-review-types-checker",
+      "path": "agents/pr-review-types-checker.md",
+      "digest": "4d18aca2a561cff50c13c3c9666b4818eab25cb2c6a1713a78d449fc550c3ce0"
+    },
+    {
+      "id": "agent/readme-checker",
+      "path": "agents/readme-checker.md",
+      "digest": "142fd66ef2cba2fa0349a7a0a0d5399ff0b6f791da54a0c229fc7ac38aff4790"
+    },
+    {
+      "id": "agent/readme-fixer",
+      "path": "agents/readme-fixer.md",
+      "digest": "2e4273d636afcc55c7c9178387e019eb863538a719aa3d430e509b0f762a783c"
+    },
+    {
+      "id": "agent/readme-maker",
+      "path": "agents/readme-maker.md",
+      "digest": "de53452386d4713f24cb2a8c3444c3821feacaced692fb7c344767f7dd135105"
+    },
+    {
+      "id": "agent/repo-explorer",
+      "path": "agents/repo-explorer.md",
+      "digest": "0be77f94e2a65c10d538cde3e6f01029fd364745c98057293520a30f0c676d23"
+    },
+    {
+      "id": "agent/repo-rules-maker",
+      "path": "agents/repo-rules-maker.md",
+      "digest": "4fd839294e920282cdbfa9228d74d7d72997bdca485f4ee2e1b97de400868213"
+    },
+    {
+      "id": "agent/repo-setup-manager",
+      "path": "agents/repo-setup-manager.md",
+      "digest": "e0d4e953e7a73e8fc3a0ec8a4192a0bc572e4f5b34aa0edca5890d7275684920"
+    },
+    {
+      "id": "agent/repo-workflow-checker",
+      "path": "agents/repo-workflow-checker.md",
+      "digest": "a30cff68a302aa01d070f9ede6056d322cc16a7a0e376f01adac0beb4af1c587"
+    },
+    {
+      "id": "agent/repo-workflow-fixer",
+      "path": "agents/repo-workflow-fixer.md",
+      "digest": "a38dc1c3982361a4514ae7c2b858ea0aa519e3d189ab735cd8d7b3fd57544a80"
+    },
+    {
+      "id": "agent/repo-workflow-maker",
+      "path": "agents/repo-workflow-maker.md",
+      "digest": "1cc87b1ceb3b4cba25dc7461ed314285e928b802e42689b3a5b7450f4db910ab"
+    },
+    {
+      "id": "agent/rules-checker",
+      "path": "agents/rules-checker.md",
+      "digest": "a3ea1a667a51b8556631160f371e8ee84faee9257674fbdc28a3b6b2df22de84"
+    },
+    {
+      "id": "agent/rules-fixer",
+      "path": "agents/rules-fixer.md",
+      "digest": "fa6dd6b506adcf1b20dbea56f1fae5e1abd4f20c0a49ef2e799dde7d36b34ee5"
+    },
+    {
+      "id": "agent/specs-checker",
+      "path": "agents/specs-checker.md",
+      "digest": "43e3cc85a57d77972397824f043a123dfc5ff3b838bc8ab8bfefb514762184b7"
+    },
+    {
+      "id": "agent/specs-fixer",
+      "path": "agents/specs-fixer.md",
+      "digest": "5f59e50b8d2e601545ffc75e05f0660149168142d31f2aedf0ab75bf707a2e5e"
+    },
+    {
+      "id": "agent/specs-maker",
+      "path": "agents/specs-maker.md",
+      "digest": "ce4b5def3343a7f3f0f25ac81bca9a6e541cdbe0ccb3a2c33b17d1dc20079bff"
+    },
+    {
+      "id": "agent/swe-api-tester",
+      "path": "agents/swe-api-tester.md",
+      "digest": "9759a7863fffc5f9d54f9c899dd2fa3dc4856d1b9a46794847273e5ef3397724"
+    },
+    {
+      "id": "agent/swe-architect",
+      "path": "agents/swe-architect.md",
+      "digest": "909ac07caf586581f257e75b4c6e533fe75d4f4056ef2a11569efe82666d5b17"
+    },
+    {
+      "id": "agent/swe-debugger",
+      "path": "agents/swe-debugger.md",
+      "digest": "e10184c878e207d96c80a7f251b68f7097d65a84c01a094194f9ad04b2f71e40"
+    },
+    {
+      "id": "agent/swe-developer",
+      "path": "agents/swe-developer.md",
+      "digest": "8fd96226e237b7cdc16abc5a1e3822b8775e82807bf5a4910c28b21011db2f23"
+    },
+    {
+      "id": "agent/swe-infra-tester",
+      "path": "agents/swe-infra-tester.md",
+      "digest": "26399bb99f2f588945a5d87d4d25ca005eff99806551dc17ef814441f2a89ad4"
+    },
+    {
+      "id": "agent/swe-orchestrator",
+      "path": "agents/swe-orchestrator.md",
+      "digest": "e1bc6ab02219e2d3a014f63f16ffca1c9fa3f1b2a636b8624afb50722885add0"
+    },
+    {
+      "id": "agent/swe-releaser",
+      "path": "agents/swe-releaser.md",
+      "digest": "7c9f0477230c01cf12eb0fc8e3c06f0357be33651381a4036d5302bd1be4e019"
+    },
+    {
+      "id": "agent/swe-reviewer",
+      "path": "agents/swe-reviewer.md",
+      "digest": "860de0dfa6ae5231eaaaedf7aee7d51dc53a190fcb0e883c9865b8e75f6b1cd0"
+    },
+    {
+      "id": "agent/swe-usability-tester",
+      "path": "agents/swe-usability-tester.md",
+      "digest": "788037d1a3f676155d737929c67defeed8e10f3fcfe507dbbb39e5f16e115b46"
+    },
+    {
+      "id": "agent/swe-web-tester",
+      "path": "agents/swe-web-tester.md",
+      "digest": "3b1d5c3ed082cc0b2b5e9efa6155a2fa38de9cdd239cdae184a49acd7a4d7839"
+    },
+    {
+      "id": "agent/tutorial-annotated-concept-checker",
+      "path": "agents/tutorial-annotated-concept-checker.md",
+      "digest": "068b7507a9157d826f2ac55791a36c27ec69e98c095d7053de9d75243113da1d"
+    },
+    {
+      "id": "agent/tutorial-annotated-concept-fixer",
+      "path": "agents/tutorial-annotated-concept-fixer.md",
+      "digest": "c408eeabe802be0bdd6d89132ec122ace7e854826f2c202790e19506fd215c41"
+    },
+    {
+      "id": "agent/tutorial-by-example-checker",
+      "path": "agents/tutorial-by-example-checker.md",
+      "digest": "650889185705b62beac030590f0b6311b017f9f2c5a890d483ad919f598e4f09"
+    },
+    {
+      "id": "agent/tutorial-by-example-fixer",
+      "path": "agents/tutorial-by-example-fixer.md",
+      "digest": "d0f31f018478a2af5cfc1b43177c91f41bd63639bc1fb3db4f260990c6a1a5ad"
+    },
+    {
+      "id": "agent/tutorial-in-the-field-checker",
+      "path": "agents/tutorial-in-the-field-checker.md",
+      "digest": "312cbd1688f3aa9b7bed8bab4058dbdf4ededdb5a3fbadf2349d1bcdfca5ade2"
+    },
+    {
+      "id": "agent/tutorial-in-the-field-fixer",
+      "path": "agents/tutorial-in-the-field-fixer.md",
+      "digest": "1bbc95cb0625dc43b3c62ce09269c28b6e45891025f381394132da128d782ab9"
+    },
+    {
+      "id": "agent/tutorial-primer-checker",
+      "path": "agents/tutorial-primer-checker.md",
+      "digest": "5202d64ec400b0173f535d9360c8bd9820f22f936fc63b47fb60c57da290cf98"
+    },
+    {
+      "id": "agent/tutorial-primer-fixer",
+      "path": "agents/tutorial-primer-fixer.md",
+      "digest": "d99e0cd1f5ef5d9b4028aec6f77f0e11f93575e139e3639b5ecb680d5ebefd88"
+    },
+    {
+      "id": "agent/web-researcher",
+      "path": "agents/web-researcher.md",
+      "digest": "186d4729d51bad86a140fa3d78e9c1cc090dffa43e225549c127783c24001d31"
     }
   ]
 }

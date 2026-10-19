@@ -33,7 +33,7 @@ boundary, a build step, or a generated intermediate in between.
 | Root                                            | Holds                                                             |
 | ----------------------------------------------- | ----------------------------------------------------------------- |
 | [`repo-governance/`](repo-governance/README.md) | principles, conventions, development standards, and workflows     |
-| [`.agents/agents/`](.agents/agents/README.md)   | canonical agent definitions                                       |
+| [`agents/`](agents/README.md)                   | canonical agent definitions                                       |
 | [`.agents/skills/`](.agents/skills/README.md)   | canonical skills, one directory per skill, each with a `SKILL.md` |
 
 Beside them, [`specs/`](specs/README.md) holds behaviour specifications and the shared plan-structure corpus, and
@@ -43,7 +43,7 @@ Every file under those roots is authored and read directly. None of them is gene
 them is nested inside a package, workspace, or app directory. A harness-specific adapter, where a harness needs one, is
 generated _from_ these roots and never becomes the thing an editor edits.
 
-`./rhino harness adapters generate` writes every adapter this repository ships, reading the canon and the four declared
+`./rhino harness adapters generate` writes every adapter this repository ships, reading the canon and the five declared
 profiles in `repo-config.yml`. `./rhino harness adapters validate` decides whether what is on disk matches that model;
 the generated output is never edited directly. Command Code has 65 generated native leaf adapters with static parity
 verified; native runtime discovery and enforcement remain unverified. It reads root `AGENTS.md` and `.agents/skills/`

@@ -48,8 +48,8 @@ Under either option, a checker never modifies what it judges. Record the choice 
 - **Report file.** The checker adds `repository-write` for its own report only, written progressively as below. Findings
   survive interruption, but the body, not the harness, keeps writes off the judged content.
 - **Read-only.** The checker declares the `read-only` constraint and returns findings to its caller, like
-  [Plan Checker](../../../.agents/agents/plan-checker.md). The harness enforces non-modification, but findings live only
-  in the caller's context until recorded.
+  [Plan Checker](../../../agents/plan-checker.md). The harness enforces non-modification, but findings live only in the
+  caller's context until recorded.
 
 ## The Name States the Role
 
