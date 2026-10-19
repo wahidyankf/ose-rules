@@ -1,7 +1,7 @@
 ---
 description: >-
   Requires a migration plan to list every affected source before its steps, to diagram a changed persistent data model,
-  and to explain each resulting field in plain language.
+  to explain each resulting field in plain language, and to treat any migration number it names as a hint.
 when_to_use: >-
   Use while a migration plan's source list is being drafted, or whenever a plan adds, alters, or drops a persistent
   schema.
@@ -46,6 +46,19 @@ sense of it.
 The diagram helps a reader understand; it is not the contract. Old and new field definitions, with each type,
 constraint, and default, are still written out exactly, as are compatibility, validation, the migration itself,
 rollback, and tests. Anything critical is stated in prose a search can find, not only in the picture.
+
+## Migration Numbers Are Hints
+
+A plan, brief, or other document that names a migration number must call that number a hint. A number in a document
+reserves no number and authorizes no migration to take it, because the plan cannot know which number will be free when
+the work merges. Followed: the document calls the number a hint, or names none. Violated: the document says a number is
+reserved, claimed, or fixed, or a migration takes a number because a document named it. The migration takes the next
+free number when its work executes, as
+[Migration Numbers Are Taken at Use](../../../development/quality/delivery/live-service-continuity/002-release-cutover.md#migration-numbers-are-taken-at-use)
+requires.
+
+Enforcement: unenforced by decision. Whether a wording reserves a number is a judgement a reader makes, and no check in
+this catalog reads plan prose for it.
 
 ## Field Guide
 
