@@ -34,6 +34,15 @@ change rules, or stops and asks.
 Authorizing a plan does not authorize executing it. Approving a design and approving the changes it prescribes are
 different decisions, made with different information.
 
+## Access Before Execution
+
+Authorizing execution is not holding access. Before Phase 0, derive the access list from the plan's scope alone — never
+a standing checklist — and prove this machine holds each item through its authorized route: repo, branch, review, merge
+scope, each secret through its wrapper, claiming nothing more: least privilege, infra secrets only for infra. Never
+assume from the machine's name. Record each need portable or bound to machines holding the secret, so any run knows what
+runs everywhere and only there — ayokoding-www runs anywhere, infra-apply only where its secret lives. Missing access
+stops the run as a human blocker; a machine-bound node parks where the machine lacks it, claimed by a capable one.
+
 The request that authorized a plan does cover the records its execution writes — ticks and Execution Record lines in
 `delivery.md`, entries in `learnings.md`, and files in `evidence/` — so none of them needs a request of its own.
 
