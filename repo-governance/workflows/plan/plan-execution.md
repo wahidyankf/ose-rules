@@ -1,79 +1,97 @@
 ---
 name: plan-execution
 description: >-
-  Works through a plan's delivery checklist, recording the result of each item as it resolves.
+  Executes a plan's delivery checklist, recording results.
 when_to_use: >-
-  Use when a plan's checklist is ready, with or without a quality-gate verdict.
+  Use when a plan's checklist is ready, verdict or not.
 ---
 
 # Execution
 
 ## Entry
 
-A plan in `plans/in-progress/` with its checklist ready. A quality-gate verdict in its `delivery.md`, when present, is
-advisory history: a `FAIL` or `BLOCKED` verdict's open blocking rows keep the owners the gate gave them.
+A plan in `plans/in-progress/`, checklist ready. Verdicts advisory: `FAIL`/`BLOCKED` open rows keep their owners.
+Execution never runs the gate; missing verdicts are recorded as `plan-quality-gate: not run (manual-only)`, never a
+stop. For a bug-fix plan, an adopted Upstream Tool Defects standard stays available on request.
 
-Execution starts with or without a verdict and never runs the gate itself. A missing verdict is recorded as
-`plan-quality-gate: not run (manual-only)`, never a stop. For a bug-fix plan, an adopted Upstream Tool Defects standard
-remains available direction when explicitly invoked. A queued plan is moved into `plans/in-progress/` first, never
-copied. Input: `plan` (`directory`, required).
+A queued plan reaches `plans/in-progress/` only by its own promotion: one pull request (or permitted direct commit)
+moving only it to `origin/main`, updating its
+[Plan-Order Graph](../../conventions/structure/plans/020-plan-order-graph.md) node, before Phase 0. Worktree from that
+fresh trunk; the promotion branch dies at merge.
 
-Before starting, resolve every dependency the plan declares under
-[Plan-Order Graph](../../conventions/structure/plans/020-plan-order-graph.md): each must already be satisfied, or the
-run stops and names the unmet one. A missing declaration reads as no dependencies.
+Inputs: `plan` (directory, required); `max-worktrees-per-plan-repo` (default `1`); `max-active-worktrees` (default `1`).
+Only the caller raises a cap.
+
+Mirror the run ledger from the [Temporary Files](../../conventions/structure/temporary-files.md) scratch into one
+per-run Issue. Before worktree work, prove from lease, branches, open PRs no other run holds the plan. A stale lease
+yields only to an explicit caller override naming it.
+
+Resolve declared dependencies under the [Plan-Order Graph](../../conventions/structure/plans/020-plan-order-graph.md):
+each satisfied, else stop and name the unmet; silence is none. On disagreement reconcile the diagram first; mid-run
+change via reviewed merged PR is authoritative — adapt it.
 
 ## Sequence
 
-1. **Read the plan before the checklist.** `delivery.md` is executable, not self-explanatory; the other five documents
-   hold why each item exists.
-2. **Confirm the execution checkout:** which working copy, branch or worktree, and delivery mode. A wrong checkout
-   noticed late is expensive. Enter it, synced per [Integration Path](../../development/workflow/integration-path.md),
-   before any change; every delivery unit reuses the plan's one worktree when its route uses one.
-3. **Mirror the checklist, disk first.** On every start or resume, rebuild tasks from `delivery.md`: one per unchecked
-   action checkbox, in dependency order, and none without one. Untick and rerun an item whose change is missing. Keep
-   dormant recoveries inactive until triggered. See [Task Tracking](../../development/agents/task-tracking.md) and
-   [Dependency Graph and Recovery](../../conventions/structure/plans/014-dependency-graph-and-recovery.md).
-4. **Work ready items concurrently.** Dispatch ready items up to the concurrency cap, following dependencies and reusing
-   one worktree per repository; a failure blocks only downstream work. Record external blockers and what would unblock
-   them. Prepare `[HUMAN]` items as far as possible, then hand them over without performing or ticking. Revise
-   `delivery.md` before changing order, preserving criteria and outcome; a material change re-passes the quality gate.
-5. **Resolve each item atomically.** Tick the checkbox, record the result, and move on, in that order, as one step; a
-   batch of ticks at session end cannot say which item produced which result. Tick only once the item's outcome and its
-   proof both hold.
-6. **Record results, not only ticks:** what was produced, what changed, what surprised. A tick says an action happened,
-   not what it found. See
-   [Verification Routing](../../development/agents/planning-capabilities/006-verification-routing.md).
-7. **Pass each phase gate before the next phase.** Per
-   [Phase Boundaries and Delivery Choices](../../conventions/structure/plans/011-phase-boundaries-and-delivery-choices.md),
-   run each gate check as written against the phase's combined state, and repair a failure inside the phase before its
-   delivery or the next phase starts.
-8. **Land each delivery unit** by the Integration Path. It is complete when
-   [landed](../../conventions/structure/plans/009-portability.md#what-landed-means), with its gates re-run on refreshed
-   state. Independent units may land in any order, per
-   [Delivery Seams and Ownership](../../development/agents/planning-capabilities/005-delivery-seams-and-ownership.md).
-9. **Fix every failure**, including pre-existing ones. Pre-existing explains; it never exempts.
-10. **Route discoveries** to `learnings.md` or a bug-fix plan's Learnings section as they arise. Add a task only when it
-    serves a planned outcome.
-11. **Run [Execution Check](plan-execution-check.md)** once substantive items are terminal. Its verdict permits
-    archival; post-delivery cleanup may remain pending.
-12. **Archive and finish delivery.** Give each dormant recovery a dated, evidenced `Not triggered` disposition, then
-    archive and land the final delivery per
-    [Knowledge Capture and Archival](../../conventions/structure/plans/008-knowledge-capture-and-archival.md), keeping
-    the worktree and local and remote task branches until it lands. Then run
-    [Dev Artifact Clean-Up](../maintenance/dev-artifact-clean-up.md) and record proof outside `plans/done/` in the final
-    delivery record (archival PR body for a PR route). Keep the task open until cleanup is verified and recorded, as
-    [Dependency Graph and Recovery](../../conventions/structure/plans/014-dependency-graph-and-recovery.md) requires.
+1. **Read the plan before the checklist.** `delivery.md` is executable, not self-explanatory; the other five hold why.
+2. **Confirm the checkout** — copy, branch or worktree, mode — and enter it synced per
+   [Integration Path](../../development/workflow/integration-path.md); each unit reuses the plan's one worktree where
+   used. Confirm access per
+   [Access](../../conventions/structure/plans/010-authorization-and-execution-record.md#access-before-execution): every
+   scope the plan needs, least privilege, infra secrets only for infra scope; missing access stops the run.
+3. **Mirror the checklist, disk first.** Each start or resume rebuilds tasks from `delivery.md`: one per unchecked
+   checkbox, in dependency order, none without one. Untick and rerun items missing their change; dormant recoveries stay
+   inactive until triggered.
+4. **Work ready items under the worktree lock.** Dispatch dependency-terminal items: one `in_progress` per worktree,
+   every compute node through one guard per
+   [Resource-Aware Development](../../development/workflow/resource-aware-development.md). A deferred guard queues —
+   retry it, never bypass, never abandon. Failures block only downstream. Record external blockers and unblockers. Hand
+   `[HUMAN]` items over unperformed, prepared. Revise `delivery.md` before reordering; material changes re-pass the
+   quality gate. Code-shipping items use batched cycles per
+   [Phase Boundaries](../../conventions/structure/plans/011-phase-boundaries-and-delivery-choices.md).
+5. **Resolve each item atomically.** Tick, record, move on — one step, in order, only with outcome and proof held; note
+   product, change, surprise. No end-of-session batch ticks.
+6. **Pass each phase gate before the next** per
+   [Phase Boundaries](../../conventions/structure/plans/011-phase-boundaries-and-delivery-choices.md): run each check as
+   written, repair in phase; fix every failure, pre-existing included.
+7. **Land each delivery unit** via the Integration Path when
+   [landed](../../conventions/structure/plans/009-portability.md#what-landed-means); gates re-run on refresh.
+   Independent units land in any order.
+8. **Route discoveries** to `learnings.md` (or a bug-fix plan's Learnings) as they arise; add a task only for a planned
+   outcome.
+9. **Run [Execution Check](plan-execution-check.md)** once substantive items are terminal; only its verdict permits
+   archival; cleanup may pend.
+10. **Archive and finish delivery** per
+    [Knowledge Capture](../../conventions/structure/plans/008-knowledge-capture-and-archival.md): mark dormant
+    recoveries dated `Not triggered`; archive and land, retaining worktree and branches. Run
+    [Dev Artifact Clean-Up](../maintenance/dev-artifact-clean-up.md), recording proof outside `plans/done/`. The task
+    stays open until cleanup verifies per
+    [Dependency Recovery](../../conventions/structure/plans/014-dependency-graph-and-recovery.md).
+
+## Goal and Termination
+
+One end state; `pass` is the only success:
+
+- **`pass`**: all items terminal, check permits archival, delivery landed and verified, plan in `plans/done/`,
+  worktree/branches gone, learnings routed or discarded.
+- **`handed-off`**: `[AI]` work ready, only a `[HUMAN]` merge or decision remains. No archive or cleanup; resume to
+  `pass` after confirmation.
+- **`partial`**: findings remain or work unexecuted. Plan stays in `plans/in-progress/` with its location; blockers and
+  unblockers only.
+- **`fail`**: a technical error blocks completion; plan and work location stay for diagnosis.
 
 ## Exit
 
-Every substantive item is terminal, `learnings.md` is resolved, and Execution Check has recorded archive readiness. Only
-that check permits archival. The quality gate runs before execution and after a material change, not at completion or
-resume. Post-delivery cleanup may remain pending in `plans/done/`, but task completion awaits its proof under
-[Dependency Graph and Recovery](../../conventions/structure/plans/014-dependency-graph-and-recovery.md). A partial
-outcome leaves only recorded blockers and what would unblock each; the plan stays in `plans/in-progress/` and the check
-waits. A failed run keeps its worktree and records why.
+Only the Execution Check permits archival and `pass`. Cleanup may pend in `plans/done/`; task completion awaits proof
+per [Dependency Recovery](../../conventions/structure/plans/014-dependency-graph-and-recovery.md).
+
+## Status Cadence
+
+Milestones carry ordinary progress. Independently send a user-visible five-line heartbeat every **20 minutes** —
+weighted progress, steps left, blockers, decisions, next `[HUMAN]` timing — plus phase boundaries and terminal states.
+Weights from `delivery.md`, else `1` each. A queued node is reported, never a stop. At each heartbeat, clear owned
+subagents and processes of stuck work: `in_progress` with no progress since the last heartbeat and no guard or error
+reason is stuck — list it under blockers, nudge once, escalate if stuck again next.
 
 ## Pause Safety
 
-Execution may pause anytime. Record the current checkout, last terminal gate, next unresolved item, and any partly
-consumed budget so work resumes without resetting it.
+Execution may pause anytime. Record checkout, last gate, next item, consumed budget; resume whole.
