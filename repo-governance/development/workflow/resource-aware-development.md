@@ -73,7 +73,9 @@ proven races—not repository boundaries.
   that must drain.
 - Test admission and shedding with synthetic state and pressure only.
 
-A hook held back by a deferral has not failed; see [Hook Verification](hook-verification.md).
+A hook held back by a deferral has not failed; see [Hook Verification](hook-verification.md). Its one-push exception for
+a stop before any check started lives there. Reaching it never bypasses this guard: the hook's compute moves to the
+hosted gate, and the guard's admission, classes, and tiers stay exactly as declared.
 
 ## Enforcement
 

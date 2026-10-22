@@ -44,7 +44,9 @@ direction only once inspection leaves a genuine choice; see
 [Deliberate Problem-Solving](../../principles/deliberate-problem-solving.md).
 
 A hook held back because a local compute guard reported a busy host has not failed. Retry that same invocation once the
-stated condition clears, as [Resource-Aware Development](resource-aware-development.md) requires.
+stated condition clears, as [Resource-Aware Development](resource-aware-development.md) requires. The one exception — a
+guard stop before any check started, on a human-authorized push of a task-owned branch whose hosted gate mirrors the
+hook — lives in [Capacity-Held Hook](hook-verification/001-capacity-held-hook.md).
 
 ## When the Hook Is Wrong
 
