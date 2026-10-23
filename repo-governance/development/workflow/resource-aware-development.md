@@ -16,7 +16,10 @@ This standard implements [Explicit Over Implicit](../../principles/explicit-over
 
 ## One Outer Guard
 
-- Every local build, test, check, generator, service, or dependency install uses exactly one outer guard.
+- Every local build, test, check, generator, service, or dependency install uses exactly one outer guard, except
+  Markdown-only runs.
+- Markdown-only runs (`prettier` or `markdownlint-cli2` over `*.md` files alone, in any mode) need no admission, being
+  bounded and restartable; all other compute stays guarded.
 - Pin and verify its release checksum. Keep implementation, specifications, and releases upstream.
 - Never bypass the guard in a repository that uses it.
 - Never nest guards. Invoke an already-guarded script directly; otherwise its parent may hold the capacity it awaits.
@@ -79,8 +82,8 @@ hosted gate, and the guard's admission, classes, and tiers stay exactly as decla
 
 ## Enforcement
 
-Tests confirm one guard and declared class per compute entry, required pinned capabilities, and no blind retry of a
-protocol mismatch or of a receipt-less shed.
+Tests confirm one guard and declared class per compute entry other than Markdown-only runs, required pinned
+capabilities, and no blind retry of a protocol mismatch or of a receipt-less shed.
 
 ## Modules
 
