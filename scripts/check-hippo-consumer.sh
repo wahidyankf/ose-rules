@@ -45,7 +45,7 @@ if [ -n "$nested_findings" ]; then
 fi
 
 jq -e '
-  .scripts.format | contains("./hippo run --class transactional --resource-tier standard")
+  .scripts.format == "prettier --write ."
 ' "$repo_root/package.json" >/dev/null
 jq -e '
   .scripts["check:complete"] | contains("./hippo run --class ephemeral --resource-tier heavy") and contains("gate run --surface main")
