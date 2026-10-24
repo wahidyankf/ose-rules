@@ -71,8 +71,8 @@ Two layers, in this order:
    repository, verified before extraction, and run offline with
    `--no-verification --no-update --fail --fail-on-scan-errors`. The scanner is extracted into a temporary directory
    beside the cache, stamped with the digest of the extracted executable, and published by one atomic rename, so the
-   cache never holds a scanner without its stamp, and a cached scanner with a missing or mismatched stamp is refused
-   as a scan error (exit 2).
+   cache never holds a scanner without its stamp, and a cached scanner with a missing or mismatched stamp is refused as
+   a scan error (exit 2).
 
 Before either layer touches real material, a **canary** runs: an inert, unissued token-shaped marker assembled at run
 time and scanned by the pinned scanner with verification disabled. The canary must produce a real detection while
