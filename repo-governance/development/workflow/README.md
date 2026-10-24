@@ -74,4 +74,5 @@ standards sit alongside them.
 - [Upstream Tool Defects](upstream-tool-defects.md) — handling pinned upstream tool defects
 - [Workspace Container Builds](workspace-container-builds.md) — the root build context, per-application build files,
   hoisted dependencies, and internal-package resolution
-- [Resource modules](resource-aware-development/README.md) — external Nx cache awareness and unadmitted tool runs.
+- [Resource modules](resource-aware-development/README.md) — external Nx cache awareness, unadmitted tool runs, and
+  resource tiers.

@@ -54,8 +54,8 @@ concurrency, or deleting possibly live state. Corrupt state fails closed; follow
 
 The class follows from what the work is, never from which class is admitted sooner.
 
-Choose tiers independently: `light` for narrow static checks, `standard` for ordinary work, and `heavy` for full builds,
-suites, and gates. Schema 3 keeps one FIFO waiter and launches at most once.
+Choose each tier by what the work needs, never to be admitted faster: a tier reserves capacity without capping it.
+[Resource Tiers](resource-aware-development/003-resource-tiers.md) defines them and their failure modes.
 
 ## Parallelism
 
@@ -88,3 +88,4 @@ blind retry of a protocol mismatch or of a receipt-less shed.
 
 - [Nx cache eviction](resource-aware-development/001-external-nx-cache-eviction.md)
 - [Unadmitted runs](resource-aware-development/002-unadmitted-tool-runs.md)
+- [Resource tiers](resource-aware-development/003-resource-tiers.md)
