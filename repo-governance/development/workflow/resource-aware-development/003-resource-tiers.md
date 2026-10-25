@@ -1,10 +1,10 @@
 ---
 description: >-
-  Defines the three HIPPO resource tiers as reservations, the two failure modes of a wrong tier, and the queue rule that
-  follows from them.
+  Defines the HIPPO resource tiers as reservations: three required tiers and one optional last-resort tier, the two
+  failure modes of a wrong tier, and the queue rule that follows from them.
 when_to_use: >-
-  Use when choosing the `--resource-tier` of a HIPPO-guarded command, or when a tier looks too low or too high for the
-  work it guards.
+  Use when choosing the `--resource-tier` of a HIPPO-guarded command, when a tier looks too low or too high for the work
+  it guards, or when considering the optional `very-heavy` tier or swap counting.
 ---
 
 # Resource Tiers
@@ -17,13 +17,28 @@ A tier that is too low lets real use exceed the reservation: the host reaches pr
 tier that is too high, or `heavy` by habit, holds capacity other runs need and starves the queue. Never choose a tier to
 be admitted faster.
 
+Pick the smallest tier that fits the work, and move up only on measured need. `hippo history` reports each run's child
+CPU and wall time; the build tool or the operating system reports memory.
+
 Schema 3 keeps one FIFO waiter and launches at most once.
+
+## Optional Settings
+
+`very-heavy` is a last-resort tier, with 4 to 6 CPUs and 6144 to 10240 MiB in HIPPO's example. Declare it only in the
+machine-specific `hippo.local.json` of a machine that can hold its maximum. A run that names it where the loaded file
+does not declare it exits `2` with `hippo.args.invalid`.
+
+`coordination.countSwap` is off by default. On Linux with schema 3, it counts unused swap as memory up to an allowance.
+Never enable it on zram-backed swap: zram is carved from RAM, so the same memory would count twice.
+
+Declare either setting only once every consumer on the machine runs a binary that knows it. An older binary refuses any
+file that declares them.
 
 ## Observations
 
 A command follows the rule when its tier is the one its work needs and the tier is not changed after a look at the
-queue. It breaks the rule when a lone linter runs as `heavy`, a full build runs as `light`, or a tier is edited after
-`./hippo status` shows a shorter wait.
+queue. It breaks the rule when a lone linter runs as `heavy`, a full build runs as `light`, a tier is raised without a
+measured need, or a tier is edited after `./hippo status` shows a shorter wait.
 
 ## Enforcement
 

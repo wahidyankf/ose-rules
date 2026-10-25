@@ -15,4 +15,5 @@ Read the [resource rule](../resource-aware-development.md), then the companion t
 
 - [External Nx Cache Eviction](001-external-nx-cache-eviction.md) — approval, consequences, and retained state.
 - [Unadmitted Tool Runs](002-unadmitted-tool-runs.md) — allowed spellings, denied ones, and the residual gap.
-- [Resource Tiers](003-resource-tiers.md) — the three tiers as reservations, their failure modes, and enforcement.
+- [Resource Tiers](003-resource-tiers.md) — the tiers as reservations, their failure modes, the optional settings, and
+  enforcement.
