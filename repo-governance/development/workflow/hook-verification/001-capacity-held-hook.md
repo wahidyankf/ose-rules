@@ -1,11 +1,11 @@
 ---
 description: >-
   Allows one authorized push of a task-owned branch to skip a pre-push hook the compute guard stopped before any check
-  started, when the hosted gate mirrors the hook and passes on the same head; plus a standing exception for
-  HIPPO-congested hooks on pull-request branches with passing manual screens.
+  started, when the hosted gate mirrors the hook and passes on the same head; plus the standing worktree-to-PR
+  pre-authorization for task-owned branches with passing manual screens.
 when_to_use: >-
   Use when a compute guard reports exit 124 with a never-started receipt for a pre-push hook and waiting for capacity
-  would stall an otherwise ready task branch, or when HIPPO congestion blocks PR-branch hooks given passing manual
+  would stall an otherwise ready task branch, or when a worktree-to-PR branch skips its hooks given passing manual
   screens.
 ---
 
@@ -39,21 +39,27 @@ One push of a task-owned branch may skip its pre-push hook when every condition 
 - Suites the hosted pull-request gate does not run, such as integration or end-to-end suites placed after merge, stay
   owed where their own standards place them. This exception moves no suite.
 
-## Standing HIPPO-Congestion Exception
+## Worktree-to-PR Exception
 
-The maintainer pre-authorizes `--no-verify` on `git commit` and `git push` for a task-owned branch that lands through a
-pull request, with no per-instance prompt, when every condition below holds.
+The maintainer pre-authorizes `--no-verify` on `git commit` and `git push` for a task-owned branch that lands through
+[the integration path](../integration-path.md) — worktree to pull request to merge — with no per-instance prompt, when
+every condition below holds. It supersedes the earlier HIPPO-congestion-only pre-authorization: a hook the hosted gate
+mirrors need not run locally first.
 
-- The hook cannot run because the HIPPO guard deferred or failed it (exit `124` never-started, exit `125`, abnormal
-  latency), not because a gate found a violation.
-- The manual screens pass: the tracked-tree screen and the per-commit range screen both exit `0`, with no leak-review
-  finding. The `commit-msg` hook stays enabled.
+- The branch is a task-owned worktree branch whose only route to `main` is its pull request. Direct pushes to `main`
+  stay outside this exception: explicit per-instance authorization still applies, strongly discouraged except for manual
+  override.
+- No reported finding is skipped: a hook that reported a violation is fixed at its cause. The outbound safety screens
+  have no bypass — the tracked-tree screen and the per-commit range screen both exit `0`, with no leak-review finding.
+  The `commit-msg` hook stays enabled.
 - Formatting is done by hand or editor; the hosted gate verifies it.
-- The bypass cites the guard receipt and screen evidence in the push and PR notes, and never carries into a later
-  operation.
+- The bypass cites the screen evidence in the push and PR notes, and never carries into a later operation.
+- The branch does not merge until the hosted gate passes on the exact pushed head. A later push replaces that head and
+  owes a fresh pass.
 
-Direct pushes to `main` stay outside this exception: explicit per-instance authorization still applies, strongly
-discouraged except for manual override.
+Enforcement: gated — [`quality.yml`](../../../../.github/workflows/quality.yml) runs on every push and pull request, so
+a bypassed hook moves its failure into the gate, where it blocks the merge; review verifies the cited screen evidence
+against the gate result.
 
 ## What This Never Covers
 

@@ -1,7 +1,8 @@
 ---
 description: >-
-  Requires explicit per-operation authorization before skipping a commit or push hook, and requires a failing hook to be
-  reproduced and fixed at its cause, never muted, weakened, or routed around.
+  Requires explicit per-operation authorization, or the worktree-to-PR pre-authorization, before skipping a commit or
+  push hook, and requires a failing hook to be reproduced and fixed at its cause, never muted, weakened, or routed
+  around.
 when_to_use: >-
   Use when a hook fails, when skipping a hook is proposed for any reason, or when a fixture commit must be built so a
   gate can be shown refusing it.
@@ -18,7 +19,8 @@ This standard implements [Root Cause Orientation](../../principles/root-cause-or
 ## Bypass Is a Separate Permission
 
 Skipping the hooks on a commit or a push needs explicit authorization that names the bypass, or clearly includes it, for
-that one operation.
+that one operation — or the standing
+[worktree-to-PR pre-authorization](hook-verification/001-capacity-held-hook.md#worktree-to-pr-exception).
 
 - A request to commit or push never authorizes a bypass; see [Commit Authorization](commit-authorization.md).
 - The authorization is spent by the operation it names. It never carries into a later operation or a wider scope.
@@ -44,8 +46,8 @@ direction only once inspection leaves a genuine choice; see
 [Deliberate Problem-Solving](../../principles/deliberate-problem-solving.md).
 
 A hook held back because a local compute guard reported a busy host has not failed. Retry that same invocation once the
-stated condition clears, as [Resource-Aware Development](resource-aware-development.md) requires. Exceptions for
-guard-held hooks — the one-push exception and the standing HIPPO-congestion exception — live in
+stated condition clears, as [Resource-Aware Development](resource-aware-development.md) requires. Exceptions — the
+one-push exception for guard-held hooks and the standing worktree-to-PR pre-authorization — live in
 [Capacity-Held Hook](hook-verification/001-capacity-held-hook.md).
 
 ## When the Hook Is Wrong
