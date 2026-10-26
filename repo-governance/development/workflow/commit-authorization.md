@@ -64,8 +64,9 @@ Keep to the stated scope, meaning the files, theme, branch, and target it names,
 - Choosing where a change goes follows [Integration Path](integration-path.md), which picks a route and grants none.
 - Merging a pull request follows [Pull Request Merge](pull-request-merge.md).
 - Rewriting or discarding history follows [No Destructive Git Operations](no-destructive-git-operations.md).
-- Bypassing a hook follows [Hook Verification](hook-verification.md); publishing a release follows the adopter's rule. A
-  commit or push grant includes neither.
+- Bypassing a hook follows [Hook Verification](hook-verification.md), except the standing
+  [worktree-to-PR pre-authorization](hook-verification/001-capacity-held-hook.md#worktree-to-pr-exception); publishing a
+  release follows the adopter's rule. A commit or push grant includes neither.
 
 ## Why the Cost Is Asymmetric
 
