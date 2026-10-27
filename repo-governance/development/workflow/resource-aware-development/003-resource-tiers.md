@@ -34,6 +34,16 @@ Never enable it on zram-backed swap: zram is carved from RAM, so the same memory
 Declare either setting only once every consumer on the machine runs a binary that knows it. An older binary refuses any
 file that declares them.
 
+## Operation Notes
+
+Run guarded work as
+`./hippo run --class <ephemeral|transactional|service> --resource-tier <light|standard|heavy> --disk-path . -- <cmd>`.
+Exit `124` means a limit stopped the work: `storage-blocked` means free disk first, since waiting frees none;
+`capacity-deferred` means retry when the host is quieter. Exit `125` means the guard refused and only `never-started`
+receipts apply. v0.13.0 also adds opt-in proportional thresholds (`coordination.memoryPolicy`, schema 3 only) and an
+opt-in per-machine swap gate (`coordination.swapUsedMaxMultiple`); an omitted key keeps the legacy behavior. No
+production percents, floors, or multiples are set anywhere yet.
+
 ## Observations
 
 A command follows the rule when its tier is the one its work needs and the tier is not changed after a look at the
