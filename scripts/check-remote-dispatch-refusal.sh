@@ -28,5 +28,6 @@ grep -Fq '004-remote-dispatch.md' "$entrypoint"
 grep -Fq 'single guard sits on the target host' "$entrypoint"
 grep -Fq '004-remote-dispatch.md' "$map"
 grep -Fq 'max-worktree caps' "$module"
+grep -Fq 'age alone never suffices' "$module"
 
 printf '%s\n' 'Remote-dispatch refusal contract: PASS'

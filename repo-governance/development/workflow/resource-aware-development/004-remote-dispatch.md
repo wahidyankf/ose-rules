@@ -45,6 +45,10 @@ host, never locally.
   enforce, per-repo and global: every active dispatch-created worktree is included in the cap count, and a dispatch
   waits or moves to another eligible host when the cap is full. (RD-B6, unenforced by decision: active worktrees live
   only on their hosts, which no catalog check lists.)
+- A project may clean up state on a target only when that state is proven unused: confirm over ssh on the target
+  that no live session or process uses it, remove only the confirmed-unused items, and report what was removed;
+  cleaning by age alone never suffices. (RD-B7, unenforced by decision: live use needs the target's own session
+  and process listing at cleanup time, which no check here can replay.)
 
 Adaptation note: dispatch needs a non-normal local reading only. A source that also dispatches while local HIPPO would
 make the run wait is wider than this rule; that width is not adopted here.
