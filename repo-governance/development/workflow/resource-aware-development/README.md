@@ -1,10 +1,10 @@
 ---
 description: >-
-  Indexes the resource-aware development companions on external Nx cache eviction, unadmitted tool runs, and resource
-  tiers.
+  Indexes the resource-aware development companions on external Nx cache eviction, unadmitted tool runs, resource
+  tiers, and remote dispatch.
 when_to_use: >-
   Use when following the resource-aware development rule for a local Nx task cache, for the two tools that need no
-  admission, or for choosing a resource tier.
+  admission, for choosing a resource tier, or when dispatching compute to another controlled machine.
 ---
 
 # Resource-Aware Development Modules
@@ -17,3 +17,4 @@ Read the [resource rule](../resource-aware-development.md), then the companion t
 - [Unadmitted Tool Runs](002-unadmitted-tool-runs.md) — allowed spellings, denied ones, and the residual gap.
 - [Resource Tiers](003-resource-tiers.md) — the tiers as reservations, their failure modes, the optional settings, and
   enforcement.
+- [Remote Dispatch](004-remote-dispatch.md) — binding, lifecycle, and confidentiality.
