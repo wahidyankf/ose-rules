@@ -27,7 +27,8 @@ grep -Fq 'public-outbound-safety.md' "$module"
 grep -Fq '004-remote-dispatch.md' "$entrypoint"
 grep -Fq 'single guard sits on the target host' "$entrypoint"
 grep -Fq '004-remote-dispatch.md' "$map"
-grep -Fq 'max-worktree caps' "$module"
-grep -Fq 'age alone never suffices' "$module"
+# Assertions use short phrases: proseWrap reflows long lines, so a long phrase can split. Keep each under ~20 characters.
+grep -Fq 'max-worktree' "$module"
+grep -Fq 'never suffices' "$module"
 
 printf '%s\n' 'Remote-dispatch refusal contract: PASS'

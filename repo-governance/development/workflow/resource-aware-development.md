@@ -7,9 +7,8 @@ when_to_use: >-
 
 # Resource-Aware Development
 
-HIPPO is an upstream, checksum-pinned wrapper that starts local compute only when shared capacity and pressure permit;
-a remote payload's single guard sits on the target host.
-This standard governs consumers.
+HIPPO is an upstream, checksum-pinned wrapper that starts local compute only when shared capacity and pressure permit; a
+remote payload's single guard sits on the target host. This standard governs consumers.
 
 This standard implements [Explicit Over Implicit](../../principles/explicit-over-implicit.md),
 [Root Cause Orientation](../../principles/root-cause-orientation.md),
@@ -72,8 +71,8 @@ proven races—not repository boundaries.
 - Track privacy-safe `hippo.identity.json`; contained worktrees keep its source and may add
   `--tag checkout=worktree --tag plan=<slug>`. Use the shared root; reserve `HIPPO_ROOT` for isolated tests. A worktree
   without ignored `hippo.local.json` uses its worktree-local wrapper and inherits the primary checkout's policy. Run
-  `./hippo status`, `./hippo watch`, and `./hippo history`; on a protocol mismatch, status identifies the peers
-  that must drain.
+  `./hippo status`, `./hippo watch`, and `./hippo history`; on a protocol mismatch, status identifies the peers that
+  must drain.
 - Test admission and shedding with synthetic state and pressure only.
 
 A hook held back by a deferral has not failed; see [Hook Verification](hook-verification.md). Its one-push exception for

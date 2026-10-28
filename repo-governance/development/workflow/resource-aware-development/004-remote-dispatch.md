@@ -31,9 +31,9 @@ host, never locally.
 - Immediately before any remote work, a fresh target query must read normal. (RD-B2, unenforced by decision: freshness
   and the target's state need a live query of another host, which no check here can replay.)
 - Remote compute carries exactly one HIPPO boundary, placed on the target host: one target-side admission, or an
-  already-guarded target script supplying that one admission, and no second local or nested boundary. (RD-B3,
-  unenforced by decision: no checker proves how many admissions a quoted payload received, or the remote host's
-  identity; review compares the transcript with target admission evidence.)
+  already-guarded target script supplying that one admission, and no second local or nested boundary. (RD-B3, unenforced
+  by decision: no checker proves how many admissions a quoted payload received, or the remote host's identity; review
+  compares the transcript with target admission evidence.)
 - After the work ends, teardown removes every artifact and worktree the task created on the target, or reports what
   remains and why. (RD-B4, unenforced by decision: remaining state exists only on the target; review compares the
   post-work target listing with what the task created.)
@@ -45,10 +45,10 @@ host, never locally.
   enforce, per-repo and global: every active dispatch-created worktree is included in the cap count, and a dispatch
   waits or moves to another eligible host when the cap is full. (RD-B6, unenforced by decision: active worktrees live
   only on their hosts, which no catalog check lists.)
-- A project may clean up state on a target only when that state is proven unused: confirm over ssh on the target
-  that no live session or process uses it, remove only the confirmed-unused items, and report what was removed;
-  cleaning by age alone never suffices. (RD-B7, unenforced by decision: live use needs the target's own session
-  and process listing at cleanup time, which no check here can replay.)
+- A project may clean up state on a target only when that state is proven unused: confirm over ssh on the target that no
+  live session or process uses it, remove only the confirmed-unused items, and report what was removed; cleaning by age
+  alone never suffices. (RD-B7, unenforced by decision: live use needs the target's own session and process listing at
+  cleanup time, which no check here can replay.)
 
 Adaptation note: dispatch needs a non-normal local reading only. A source that also dispatches while local HIPPO would
 make the run wait is wider than this rule; that width is not adopted here.
@@ -63,6 +63,6 @@ shape: an alias is an ordinary token no shape tells from code.
 
 ## Enforcement
 
-RD-A2 is gated; every other statement above is unenforced by decision, with its reason beside it. A refusal test
-against live adopter tooling and bindings is filed as its own work: this catalog ships the documented refusal, not the
-tooling that performs it.
+RD-A2 is gated; every other statement above is unenforced by decision, with its reason beside it. A refusal test against
+live adopter tooling and bindings is filed as its own work: this catalog ships the documented refusal, not the tooling
+that performs it.

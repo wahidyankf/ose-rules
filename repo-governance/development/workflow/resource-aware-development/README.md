@@ -1,7 +1,7 @@
 ---
 description: >-
-  Indexes the resource-aware development companions on external Nx cache eviction, unadmitted tool runs, resource
-  tiers, and remote dispatch.
+  Indexes the resource-aware development companions on external Nx cache eviction, unadmitted tool runs, resource tiers,
+  and remote dispatch.
 when_to_use: >-
   Use when following the resource-aware development rule for a local Nx task cache, for the two tools that need no
   admission, for choosing a resource tier, or when dispatching compute to another controlled machine.
