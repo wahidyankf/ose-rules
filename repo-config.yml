@@ -802,6 +802,16 @@ gates:
         pre-commit: {}
         pull-request: {}
         main: {}
+    - id: remote-dispatch-refusal
+      type: check
+      command:
+        executable: bash
+        args:
+          - literal: scripts/check-remote-dispatch-refusal.sh
+      run-on:
+        pre-commit: {}
+        pull-request: {}
+        main: {}
     - id: harness-adapters
       type: check
       command:
