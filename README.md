@@ -77,7 +77,7 @@ GitHub Releases. A correction is another commit on `main`; prior commits remain 
 
 ## Related Repositories
 
-`ose-rules` is one of the seven `ose-projects` repositories. The label is navigation only: it is not an organization, a
+`ose-rules` is one of the eight `ose-projects` repositories. The label is navigation only: it is not an organization, a
 parent repository, a parity group, or a shared release, and each member versions, gates, and releases independently. The
 [Related Repositories](repo-governance/conventions/structure/related-repositories.md) convention holds the rules. This
 catalogue is specific to this repository and is never copied with a catalog artifact, which names no repository.
@@ -102,6 +102,8 @@ catalogue is specific to this repository and is never copied with a catalog arti
   here to adopt or change a catalog artifact.
 - [`py-typekit`](https://github.com/wahidyankf/py-typekit) — public, MIT. Owns a library of typed functional primitives
   for Python. Knowledge sharing: it adopts artifacts from here by explicit copy. Start there to change py-typekit.
+- [`ex-bdd`](https://github.com/wahidyankf/ex-bdd) — public, MIT. Owns behaviour-driven development testing for Elixir.
+  Knowledge sharing: it adopts artifacts from here by explicit copy. Start there to change ex-bdd.
 
 No member is a parity sibling, and adoption never syncs: an adopter owns its copy, as [Adoption](#adoption) describes.
 
