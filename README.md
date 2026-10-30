@@ -107,6 +107,11 @@ catalogue is specific to this repository and is never copied with a catalog arti
 
 No member is a parity sibling, and adoption never syncs: an adopter owns its copy, as [Adoption](#adoption) describes.
 
+## Contributing
+
+External contributions are currently closed while the engineering patterns stabilize. Forks remain welcome under the MIT
+license.
+
 ## License
 
 MIT. See [LICENSE](LICENSE).
