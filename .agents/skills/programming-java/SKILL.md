@@ -73,6 +73,6 @@ fail, then change the configuration.
 ## Before Handing Off
 
 - the wrapper build passed the formatter, compiler warnings, and coverage verification;
-- each behaviour has its scenario, and each recorded red failed on an assertion about the missing behaviour;
+- each contract behaviour has its scenario, and each recorded red failed on an assertion about the missing behaviour;
 - no decision under test needs a framework context to run; and
 - every configuration or exposure change the work made is pinned by a test.
