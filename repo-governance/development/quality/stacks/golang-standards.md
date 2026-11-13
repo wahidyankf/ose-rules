@@ -28,6 +28,12 @@ It implements [Explicit Over Implicit](../../../principles/explicit-over-implici
 Findings fail at the threshold [Lint Strictness](../checks/lint-strictness.md) sets, and each `//nolint` names its
 linter and reason.
 
+## Module Directives
+
+A `toolchain` line, when present, must name a release newer than the `go` line, such as `go 1.27.0` with
+`toolchain go1.27.4`. Why: the go command treats an equal toolchain line as implied, so `go 1.27.4` beside
+`toolchain go1.27.4` fails `go build` with "updates to go.mod needed", and `go mod tidy` removes the line.
+
 ## Type and Boundary Safety
 
 The compiler is Go's checker under [Type and Boundary Safety](../code/type-and-boundary-safety.md):
