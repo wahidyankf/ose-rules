@@ -66,8 +66,8 @@ rather than what was required, and nothing afterwards can show that it was ever 
 
 - [Test Boundaries and Gates](test-boundaries-and-gates.md) decides which layer a test belongs to and which gate runs
   it.
-- [Layers and Adapters](behaviour-driven-development/002-layers-and-adapters.md) records whether coverage carries a
-  numeric floor.
+- [Meaningful Coverage](meaningful-coverage.md) sets the coverage floor and what it measures, and
+  [Layers and Adapters](behaviour-driven-development/002-layers-and-adapters.md) records any higher floor.
 - [Manual Verification](../manual-verification.md) owns what a person still checks once the suite is green.
 - [Software Quality Enforcement](../checks/software-quality-enforcement.md) records that test-first order is proven by
   evidence, since a gate only sees the final state.

@@ -38,8 +38,9 @@ The standards own every rule; [CI Quality Gate](../repo-governance/workflows/qua
    [Task Runner Target Standards](../repo-governance/development/workflow/task-runner-target-standards.md).
 2. **Boundaries.** Unit suites inject every resource, integration suites use only local resources they own, and
    end-to-end suites observe the public boundary.
-3. **Coverage.** Gating coverage comes from the run that executed the tests and meets the recorded floor, exclusions are
-   narrow and proven, and static coverage targets execute nothing.
+3. **Coverage.** Gating coverage merges the unit and integration runs that executed the tests over the whole project and
+   meets the floor, exclusions are only the allowed kinds or proven exemptions, and static coverage targets execute
+   nothing.
 4. **Fast surfaces.** No hook or change-triggered pipeline reaches an integration or end-to-end suite, directly or
    through a dependency, per
    [Automated Quality Gates](../repo-governance/development/quality/checks/automated-quality-gates.md).
@@ -64,9 +65,9 @@ evidence is reported as pending. Without such a handoff, nothing is skipped.
 
 Rate each finding by consequence, per
 [Criticality Levels](../repo-governance/development/quality/evidence/finding-criticality-and-confidence/001-criticality-levels.md).
-On this surface, a slow suite reachable from a fast gate, a missing unit layer, coverage under the recorded floor, or a
-runtime reachable from a static target usually breaks what the gate promises. A placeholder target, a networked
-integration suite, an invalid exemption, a missing scheduled full run, or a bypass seriously lowers quality.
+On this surface, a slow suite reachable from a fast gate, a missing unit layer, coverage under the floor, or a runtime
+reachable from a static target usually breaks what the gate promises. A placeholder target, a networked integration
+suite, an invalid exemption, a missing scheduled full run, or a bypass seriously lowers quality.
 
 ## Findings
 

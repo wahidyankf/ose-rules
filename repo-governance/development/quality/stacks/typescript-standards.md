@@ -72,7 +72,8 @@ returned, or given a rejection handler, since a floating promise's rejection esc
 Findings fail at the [Lint Strictness](../checks/lint-strictness.md) threshold; each gate is a named target per
 [Test Boundaries and Gates](../testing/test-boundaries-and-gates.md). Behaviour is built test-first per
 [Test-Driven Development](../testing/test-driven-development.md). A test intercepting network requests in process is a
-unit test, never integration evidence. Whether coverage has a floor is recorded under
+unit test, never integration evidence. Coverage meets the floor in
+[Meaningful Coverage](../testing/meaningful-coverage.md), and any higher floor is recorded under
 [Layers and Adapters](../testing/behaviour-driven-development/002-layers-and-adapters.md).
 
 ## Illustrative Example

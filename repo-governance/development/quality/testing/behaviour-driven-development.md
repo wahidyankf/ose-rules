@@ -1,10 +1,10 @@
 ---
 description: >-
-  Makes one canonical Gherkin corpus per behaviour owner the statement of acceptance behaviour, bound strictly at every
-  applicable test layer, with each scenario written before the code that satisfies it.
+  Chooses a Gherkin scenario for contract behaviour and a plain test for a developer detail, makes one canonical corpus
+  per application the statement of acceptance behaviour, and binds it strictly at every applicable test layer.
 when_to_use: >-
-  Use when adding or changing observable behaviour, organizing feature files, binding scenarios to tests at a layer, or
-  deciding whether a scenario may be exempt from a layer.
+  Use when adding or changing behaviour, choosing between a scenario and a plain test, organizing feature files, binding
+  scenarios to tests at a layer, or deciding whether a scenario may be exempt from a layer.
 ---
 
 # Behaviour-Driven Development
@@ -17,24 +17,48 @@ This standard implements [Explicit Over Implicit](../../../principles/explicit-o
 [Automation Over Manual](../../../principles/automation-over-manual.md), and
 [Evidence Over Assertion](../../../principles/evidence-over-assertion.md).
 
-## One Corpus Per Behaviour Owner
+## Scenario or Plain Test
 
-Each behaviour owner, whether an application, a library, or a tool, keeps one canonical Gherkin corpus in one directory
-tree, discovered recursively. Nothing registers feature files in a list; a list is a second source that falls out of
-date the first time someone forgets it.
+Who notices a break decides how a behaviour is proved:
 
-A dedicated end-to-end project implements the corpus of the owner it tests. It keeps no scenarios of its own, so a
+- **Contract behaviour** changes what a user, operator, or harness sees when it breaks: command-line output, exit codes,
+  machine-readable bodies, protocol results, and access and safety rules. It must be a Gherkin scenario in the specs
+  tree.
+- **A developer detail** is noticed only by a developer: a branch, an internal helper, a configuration mapping, a
+  structure rule. It must be a plain test beside the code, never a scenario.
+
+A scenario is a promise to people outside the code, and a plain test is a promise to its maintainers. A detail written
+as a scenario buries the contract in noise; a contract left as a plain test can change unseen.
+
+A scenario that needs both an integration exemption and an end-to-end exemption is a detail: only the unit layer proves
+it, so it becomes a plain test, per
+[Bindings and Exemptions](behaviour-driven-development/003-bindings-and-exemptions.md).
+
+Enforcement: gated for the exemption pair, by the static check in
+[Compliance and Reporting](behaviour-driven-development/004-compliance-and-reporting.md). Unenforced by decision for the
+choice itself, because whether anyone outside the code sees a break is a review judgement.
+
+## Only Applications Own a Corpus
+
+An application is anything with an entry point a user, operator, or harness reaches, such as a service, a command-line
+tool, or an interface. Each keeps one canonical Gherkin corpus in one directory tree, discovered recursively. A shared
+library and a script keep plain tests and no scenarios; the scenarios of the application using them prove what they
+contribute. Nothing registers feature files in a list; a list is a second source that falls out of date the first time
+someone forgets it.
+
+A dedicated end-to-end project implements the corpus of the application it tests. It keeps no scenarios of its own, so a
 behaviour never has two competing statements.
 
 ## Scenario First, Then Code
 
-For every behaviour change:
+For every change to contract behaviour:
 
 1. Read the scenarios that already describe the behaviour.
 2. Add or update the scenario so it states the new behaviour.
 3. Bind its steps in every applicable layer.
 4. Run them and confirm they fail for the expected reason.
 5. Implement until they pass.
+6. Cover the branches the scenario does not name with plain tests.
 
 A step that passes before the code exists proves only that its binding checks nothing.
 

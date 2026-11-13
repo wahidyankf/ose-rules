@@ -10,7 +10,7 @@
     {
       "id": "skill/applying-ci-standards",
       "path": ".agents/skills/applying-ci-standards/SKILL.md",
-      "digest": "c02e690e84cf20b1478790ca0a17429ef420f320bf3e5030239eb410b92f71a5"
+      "digest": "b15aa3bfafa43b7941b51f52843b22df1aa2512d935b2d1983fae58fc5437269"
     },
     {
       "id": "skill/applying-content-quality",
@@ -305,7 +305,7 @@
     {
       "id": "skill/scaffolding-specifications",
       "path": ".agents/skills/scaffolding-specifications/SKILL.md",
-      "digest": "a91a9b1944bc3fa2ff9f89c38d5b7f3daebd1c11cbc5d0558961a4a9a85bffd2"
+      "digest": "0a53afb59853d299e995207a9d17ae83f4ad91721411dfc9cb8b10e5eb88f8da"
     },
     {
       "id": "skill/synthesizing-review-findings",
@@ -380,7 +380,7 @@
     {
       "id": "agent/ci-checker",
       "path": "agents/ci-checker.md",
-      "digest": "a669109d038adf43db952274fc65db543eb803dfd9e8e223911a921c467d6efc"
+      "digest": "14a6717516652f088730076b775b679b080e5eec3f610d8f2ba647aca4c422db"
     },
     {
       "id": "agent/ci-fixer",

@@ -19,7 +19,7 @@ so a reader finds the specification for a deployable without searching and a str
 | Owner                           | Corpus                          |
 | ------------------------------- | ------------------------------- |
 | a deployed surface of a product | `specs/apps/<product>/<owner>/` |
-| a library                       | `specs/libs/<library>/`         |
+| a library, without scenarios    | `specs/libs/<library>/`         |
 
 A logical owner is something that deploys and runs on its own: a web front end, a backend service, a command-line tool.
 Two perspectives on one deployable, such as an administrator console served by the same service as its public pages, are
@@ -37,13 +37,13 @@ specs/apps/<product>/
 └── <owner>/
     ├── README.md         required: the index, linking back to the project
     ├── architecture.md   required: the as-built C4 description
-    ├── behaviours/       required: .feature files at any depth, with a README.md
+    ├── behaviours/       required for an application: .feature files at any depth, with a README.md
     │   └── <domain>/     optional: a business-area grouping
     └── contracts/        optional: OpenAPI documents, in the owner that serves them
 ```
 
-- **`behaviours/` is never empty.** At least one `.feature` file sits somewhere below it. A corpus with no scenario
-  states nothing a test can check.
+- **`behaviours/` is never empty.** At least one `.feature` file sits somewhere below it in an application corpus. A
+  corpus with no scenario states nothing a test can check.
 - **Domain directories only group.** They sort features by business area, are optional, and carry no meaning a tool
   relies on.
 - **A contract lives with its server.** `contracts/` belongs to the owner that serves the interface. A consumer links to
@@ -51,7 +51,9 @@ specs/apps/<product>/
 - **`overview.md` spans owners.** It sits at product level, says how the owners fit together, and holds no scenario and
   no architecture.
 
-A library corpus has the same shape without the product level.
+A library corpus has the same shape without the product level and without `behaviours/`: only applications own
+scenarios, and a library keeps plain tests, per
+[Behaviour-Driven Development](../../development/quality/testing/behaviour-driven-development.md#only-applications-own-a-corpus).
 
 ## Architecture Is As-Built
 

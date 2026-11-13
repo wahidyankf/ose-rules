@@ -64,8 +64,8 @@ kotlinx-coroutines-test.
 
 Per [Meaningful Coverage](../testing/meaningful-coverage.md), Kover measures lines, instructions, and branches; its
 verification task fails the build below a recorded rule. Generated classes are excluded by pattern or annotation, each
-with a reason ([Kover](https://kotlin.github.io/kotlinx-kover/gradle-plugin/)). Any floor is recorded under
-[Layers and Adapters](../testing/behaviour-driven-development/002-layers-and-adapters.md).
+with a reason ([Kover](https://kotlin.github.io/kotlinx-kover/gradle-plugin/)). Any floor above the minimum is recorded
+under [Layers and Adapters](../testing/behaviour-driven-development/002-layers-and-adapters.md).
 
 ## Documentation
 

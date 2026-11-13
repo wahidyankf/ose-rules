@@ -62,7 +62,7 @@ JSDoc annotations are JavaScript's static types under [Type and Boundary Safety]
 Tests follow [Test Boundaries and Gates](../testing/test-boundaries-and-gates.md): a test intercepting network requests
 in process is a unit test, never integration evidence. A gate relies only on a coverage instrument its runtime or runner
 marks stable, measuring branches where it can, per [Meaningful Coverage](../testing/meaningful-coverage.md). Example:
-Vitest with V8 coverage ([coverage](https://vitest.dev/guide/coverage)). Any floor is recorded under
+Vitest with V8 coverage ([coverage](https://vitest.dev/guide/coverage)). Any floor above the minimum is recorded under
 [Layers and Adapters](../testing/behaviour-driven-development/002-layers-and-adapters.md).
 
 ## Documentation

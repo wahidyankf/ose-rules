@@ -3,8 +3,8 @@ description: >-
   Defines the unit, integration, and end-to-end layers that bind the scenario corpus, how a test is classified, which
   test targets each project role carries, and the layer choices an adopter records.
 when_to_use: >-
-  Use when deciding which layer a test belongs to, which test targets a project needs, or whether integration tests may
-  open a loopback listener or must meet a coverage threshold.
+  Use when deciding which layer a test belongs to, which test targets a project needs, whether integration tests may
+  open a loopback listener, or whether a project sets a coverage floor above the minimum.
 ---
 
 # Layers and Adapters
@@ -49,12 +49,12 @@ coverage that does not exist.
 
 ## Adopter Decisions
 
-| Decision                         | Option                                                | Gains                                | Costs                                              |
-| -------------------------------- | ----------------------------------------------------- | ------------------------------------ | -------------------------------------------------- |
-| loopback listener in integration | allowed when the test starts, owns, and allowlists it | request handling is proven early     | port collisions and slower runs to manage          |
-|                                  | forbidden, leaving network use to end-to-end          | integration stays fast and hermetic  | request handling is proven only end-to-end         |
-| coverage threshold               | a fixed line-coverage floor on unit tests             | untested code is visible and blocked | tests get written to the number, not the behaviour |
-|                                  | no numeric floor, with review judging adequacy        | no metric to game                    | gaps depend on reviewer attention                  |
+| Decision                         | Option                                                | Gains                               | Costs                                              |
+| -------------------------------- | ----------------------------------------------------- | ----------------------------------- | -------------------------------------------------- |
+| loopback listener in integration | allowed when the test starts, owns, and allowlists it | request handling is proven early    | port collisions and slower runs to manage          |
+|                                  | forbidden, leaving network use to end-to-end          | integration stays fast and hermetic | request handling is proven only end-to-end         |
+| coverage floor above the minimum | a higher fixed floor than the 99% minimum             | more untested code is blocked       | tests get written to the number, not the behaviour |
+|                                  | the 99% minimum alone                                 | one number, with no stricter tier   | gaps between 99% and 100% depend on review         |
 
-Record each choice. An unrecorded choice is made differently by every contributor. The adopter enforces a recorded
-threshold in its own gate or CI.
+Record each choice. An unrecorded choice is made differently by every contributor. The adopter enforces the floor, the
+minimum from [Meaningful Coverage](../meaningful-coverage.md#the-floor) or a higher recorded one, in its own gate or CI.

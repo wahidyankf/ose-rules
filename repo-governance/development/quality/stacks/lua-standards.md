@@ -70,8 +70,10 @@ logic runs under unit tests outside the host. Host-only code is tested through t
 states its reason. Example: busted.
 
 Lua coverage counts lines, not branches, so no branch figure is claimed. Code the instrument cannot reach inside a host
-is outside the measurement, per [Meaningful Coverage](../testing/meaningful-coverage.md). Example: LuaCov. Any floor is
-recorded under [Layers and Adapters](../testing/behaviour-driven-development/002-layers-and-adapters.md).
+needs a documented exemption, per
+[Exclusions and Exemptions](../testing/meaningful-coverage/001-exclusions-and-exemptions.md). Example: LuaCov. Any floor
+above the minimum is recorded under
+[Layers and Adapters](../testing/behaviour-driven-development/002-layers-and-adapters.md).
 
 ## Documentation
 

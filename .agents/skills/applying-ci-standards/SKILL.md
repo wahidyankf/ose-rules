@@ -48,12 +48,13 @@ floor of the project it tests.
 
 ## Judge an Exclusion by Its Contents
 
-Where the adopter records a coverage floor, accept an exclusion from it only when all three hold:
+Accept an exclusion from the coverage floor only for a generated file, a test-support program, or an exemption meeting
+all three terms of
+[Exclusions and Exemptions](../../../repo-governance/development/quality/testing/meaningful-coverage/001-exclusions-and-exemptions.md):
 
-- it names a specific file or a narrow function, never a path pattern;
-- the named code is wholly a boundary, such as a resource, process, generated code, or static data, with no decision in
-  it; and
-- a named integration or end-to-end target and scenario exercises that code.
+- it names a specific file, function, or branch, never a path pattern;
+- the named code is wholly a boundary with no decision in it, or a branch no input can take; and
+- a named integration or end-to-end target and scenario exercises the boundary code.
 
 Code that mixes a boundary with a decision is split, so the decision stays under the floor. A broad pattern, or boundary
 code with no higher-layer proof, is coverage gaming. Lowering a floor is a gate change made as its own change.

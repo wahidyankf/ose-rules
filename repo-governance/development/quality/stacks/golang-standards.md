@@ -69,9 +69,9 @@ Unit tests sit in `_test.go` files beside their package and run with `-race`, me
 [Test Boundaries and Gates](../testing/test-boundaries-and-gates.md).
 
 Go coverage counts statements, so no branch figure is claimed. Integration coverage comes from an instrumented build
-([`-cover` with `GOCOVERDIR`](https://go.dev/doc/build-cover)) only where it measures distinct code, per
-[Meaningful Coverage](../testing/meaningful-coverage.md). Any floor is recorded under
-[Layers and Adapters](../testing/behaviour-driven-development/002-layers-and-adapters.md).
+([`-cover` with `GOCOVERDIR`](https://go.dev/doc/build-cover)) merged with the unit profile into the combined figure
+that [Meaningful Coverage](../testing/meaningful-coverage.md) holds to its floor. Any floor above that minimum is
+recorded under [Layers and Adapters](../testing/behaviour-driven-development/002-layers-and-adapters.md).
 
 ## Documentation
 

@@ -39,14 +39,19 @@ Each of these is a defect even when the run is green, and review treats it as a 
 ## Exemptions
 
 An exemption excuses one scenario from one layer, and only for a boundary reason: that layer cannot reach the behaviour
-at all, as with a hardware sensor or a page hosted by a third party. Every exemption names its alternative proof, the
-target and scenario in another layer that does cover the behaviour.
+at all, as with a hardware sensor or a page hosted by a third party. Every exemption, whether tag or inventory entry,
+carries a written justification stating that reason and its alternative proof: the scenario's unit binding, which no
+exemption can remove, or a binding at the other layer when that layer also covers the behaviour.
 
 Difficulty, runtime, flakiness, cost, and unfinished work are never valid reasons. Each describes a problem to fix, not
 a boundary.
 
 An exemption never applies to a `Feature`, a `Rule`, or a `Background`, never to the unit layer, and never removes all
 proof of a behaviour.
+
+A scenario exempt at both the integration layer and the end-to-end layer is a detail, not contract behaviour: only the
+unit layer proves it. It moves out of the corpus into a plain test beside the code, per
+[Behaviour-Driven Development](../behaviour-driven-development.md#scenario-or-plain-test).
 
 How exemptions are recorded is an adopter decision:
 
@@ -58,7 +63,7 @@ How exemptions are recorded is an adopter decision:
 In the tag form, a comment directly above the tag carries the reason and the alternative proof:
 
 ```gherkin
-# Exemption(e2e): <boundary reason>; alternative-proof: <target> / <scenario name>
+# Exemption(e2e): <boundary reason>; alternative-proof: unit binding of <scenario name>
 @e2e-exempt
 Scenario: <scenario name>
 ```

@@ -62,10 +62,11 @@ boundary the unit layer excludes, so a test using one is integration, per
 [Test Boundaries and Gates](../testing/test-boundaries-and-gates.md). Example: pytest's `tmp_path` and
 `monkeypatch.setenv`.
 
-The unit run measures coverage with branches on. An untakeable partial branch is excluded with its reason, per
-[Meaningful Coverage](../testing/meaningful-coverage.md). Example: coverage.py with `branch = true` and `fail_under`
-([branch coverage](https://coverage.readthedocs.io/en/latest/branch.html)). Any floor is recorded under
-[Layers and Adapters](../testing/behaviour-driven-development/002-layers-and-adapters.md).
+The unit and integration runs measure coverage with branches on. An untakeable partial branch needs a documented
+exemption, per [Exclusions and Exemptions](../testing/meaningful-coverage/001-exclusions-and-exemptions.md). Example:
+coverage.py with `branch = true` and `fail_under`
+([branch coverage](https://coverage.readthedocs.io/en/latest/branch.html)). Any floor above the minimum is recorded
+under [Layers and Adapters](../testing/behaviour-driven-development/002-layers-and-adapters.md).
 
 ## Documentation
 

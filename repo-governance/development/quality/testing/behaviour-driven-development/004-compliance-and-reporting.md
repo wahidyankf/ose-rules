@@ -1,7 +1,7 @@
 ---
 description: >-
-  Separates static binding compliance from semantic review, places each scenario check in its gate, and requires a
-  generated per-feature status report built from runner and binding evidence.
+  Separates static binding compliance from semantic review, fails the behaviour-coverage check on a missing binding or
+  justification, places each scenario check in its gate, and requires a generated per-feature status report.
 when_to_use: >-
   Use when configuring behaviour-driven development gates, deciding which scenario checks run in hooks, or publishing
   the scenario status of a feature.
@@ -22,6 +22,17 @@ After a material change to scenarios or to their implementation, run the
 [Gherkin Implementation Review](../../../../workflows/quality/gherkin-implementation-review.md). It checks the scenarios
 against the real behaviour of the implementation and its tests, across every applicable layer and every part of the
 corpus the change reaches, not only the files that changed.
+
+## The Behaviour-Coverage Check
+
+Every scenario is bound at the unit, integration, and end-to-end layers unless it carries an exemption. The static
+behaviour-coverage check fails on each of these:
+
+- a scenario with no binding at a layer it is not exempt from;
+- an exemption with no written justification; and
+- a scenario exempt at both the integration and end-to-end layers, which is a detail for a plain test.
+
+The check is proven on a deliberately violating corpus that it fails and on a conforming one that it passes.
 
 ## Each Check in Its Gate
 
