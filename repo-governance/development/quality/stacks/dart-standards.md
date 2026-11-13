@@ -64,7 +64,8 @@ takes a clock as a parameter, and timers run under a fake clock. Example: packag
 Coverage follows [Meaningful Coverage](../testing/meaningful-coverage.md); the tooling reports lines by default,
 functions and branches when asked; example: `coverage:test_with_coverage --branch-coverage`
 ([package:coverage](https://pub.dev/packages/coverage)). Generated sources are excluded with their reason, and any floor
-is recorded under [Layers and Adapters](../testing/behaviour-driven-development/002-layers-and-adapters.md).
+above the minimum is recorded under
+[Layers and Adapters](../testing/behaviour-driven-development/002-layers-and-adapters.md).
 
 ## Documentation
 

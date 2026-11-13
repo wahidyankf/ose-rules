@@ -15,7 +15,7 @@ order-sensitive, and running in a gate that promised neither.
 This standard implements [Reproducibility](../../../principles/reproducibility.md),
 [Explicit Over Implicit](../../../principles/explicit-over-implicit.md), and
 [Automation Over Manual](../../../principles/automation-over-manual.md). The three layers, classification by the
-strongest boundary a test touches, the loopback choice, and whether a coverage floor exists are owned by
+strongest boundary a test touches, the loopback choice, and any floor above the minimum are owned by
 [Layers and Adapters](behaviour-driven-development/002-layers-and-adapters.md).
 
 ## What Each Boundary Excludes
@@ -60,21 +60,19 @@ ahead of the complete end-to-end run, so a local failure surfaces before the slo
 
 ## Coverage Is Measured Where It Gates
 
-Gating coverage comes from the run that executed the tests, because two runs can disagree. What coverage may measure is
-owned by [Meaningful Coverage](meaningful-coverage.md). Each module excluded from measurement is named in the project's
-README, with the reason a test at that layer may not reach it.
+Gating coverage comes from the one instrumented unit run that executed the tests, because two runs can disagree. The
+floor, what coverage may measure, and the allowed exclusions are owned by [Meaningful Coverage](meaningful-coverage.md).
+The fast gate's unit run enforces the floor.
 
 Lowering a floor or widening an exclusion changes what the repository is willing to ship. It is a change to a gate, made
 as [Software Quality Enforcement](../checks/software-quality-enforcement.md) requires.
 
 ## Adopter Decisions
 
-| Decision              | Option               | Gains                                         | Costs                                             |
-| --------------------- | -------------------- | --------------------------------------------- | ------------------------------------------------- |
-| layers a floor covers | unit only            | the floor stays inside the fast gate          | code that only real resources reach is unmeasured |
-|                       | unit and integration | real-boundary code is measured as well        | a second floor, run outside the fast gate         |
-| task runner           | a task-graph tool    | affected selection and ordering come built in | one more tool to pin and maintain                 |
-|                       | plain scripts        | nothing beyond the language toolchain         | affected selection is maintained by hand          |
+| Decision    | Option            | Gains                                         | Costs                                    |
+| ----------- | ----------------- | --------------------------------------------- | ---------------------------------------- |
+| task runner | a task-graph tool | affected selection and ordering come built in | one more tool to pin and maintain        |
+|             | plain scripts     | nothing beyond the language toolchain         | affected selection is maintained by hand |
 
 Record each applicable choice. Each project's README names the commands its targets resolve to, and every omitted target
 with its reason.

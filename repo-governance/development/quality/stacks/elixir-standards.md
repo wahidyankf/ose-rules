@@ -73,7 +73,7 @@ sandboxed transaction. Doctests are unit tests.
 
 `mix test --cover` measures lines only. Under [Meaningful Coverage](../testing/meaningful-coverage.md), generated
 modules go under `:ignore_modules` with their reason, partitioned runs merge with `mix test.coverage` before judging,
-and any floor is recorded under
+and any floor above the minimum is recorded under
 [Layers and Adapters](../testing/behaviour-driven-development/002-layers-and-adapters.md).
 
 ## Documentation

@@ -34,15 +34,15 @@ Example: Gradle's `distributionSha256Sum` and a toolchain block.
 
 - **Formatting:** one formatter rewrites staged Java files on commit; the pipeline fails on any file it would still
   change. No file carries a formatter suppression. Example: google-java-format via a build plugin.
-- **Coverage:** verification runs inside the unit-test target. Where the adopter records a floor under
-  [Layers and Adapters](../testing/behaviour-driven-development/002-layers-and-adapters.md), the build fails below it;
-  otherwise the report stays in the gating run for review. Exclusions are named as
-  [Test Boundaries and Gates](../testing/test-boundaries-and-gates.md) requires.
+- **Coverage:** verification runs inside the unit-test target, and the build fails below the floor in
+  [Meaningful Coverage](../testing/meaningful-coverage.md), or below a higher floor the adopter records under
+  [Layers and Adapters](../testing/behaviour-driven-development/002-layers-and-adapters.md). Exclusions follow
+  [Exclusions and Exemptions](../testing/meaningful-coverage/001-exclusions-and-exemptions.md).
 - **Warnings:** compiler and lint findings fail at the [Lint Strictness](../checks/lint-strictness.md) threshold.
 
-Work proceeds test-first under [Test-Driven Development](../testing/test-driven-development.md); each behaviour, error
-paths included, is a [Behaviour-Driven Development](../testing/behaviour-driven-development.md) scenario before code
-exists. A reformat outside the change's purpose is out of scope under
+Work proceeds test-first under [Test-Driven Development](../testing/test-driven-development.md); each contract
+behaviour, error paths included, is a [Behaviour-Driven Development](../testing/behaviour-driven-development.md)
+scenario before code exists. A reformat outside the change's purpose is out of scope under
 [File-Touch Discipline](../../workflow/file-touch-discipline.md).
 
 ## Code Shape

@@ -68,10 +68,10 @@ Unit tests sit in `_test.go` files beside their package and run with `-race`, me
 `t.TempDir`, `t.Setenv`, a real listener, or a child process is integration under
 [Test Boundaries and Gates](../testing/test-boundaries-and-gates.md).
 
-Go coverage counts statements, so no branch figure is claimed. Integration coverage comes from an instrumented build
-([`-cover` with `GOCOVERDIR`](https://go.dev/doc/build-cover)) only where it measures distinct code, per
-[Meaningful Coverage](../testing/meaningful-coverage.md). Any floor is recorded under
-[Layers and Adapters](../testing/behaviour-driven-development/002-layers-and-adapters.md).
+Go coverage counts statements, so no branch figure is claimed. One instrumented unit run measures the whole module
+([`-coverpkg` and `-coverprofile`](https://go.dev/doc/build-cover)), and only that figure is held to the floor in
+[Meaningful Coverage](../testing/meaningful-coverage.md); integration runs stay outside it. Any floor above the minimum
+is recorded under [Layers and Adapters](../testing/behaviour-driven-development/002-layers-and-adapters.md).
 
 ## Documentation
 

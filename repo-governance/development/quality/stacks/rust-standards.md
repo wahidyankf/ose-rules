@@ -69,7 +69,8 @@ enums, and anyhow at the entry point.
 
 Unit tests sit in a `#[cfg(test)]` module beside the code, and integration tests sit in the crate's `tests/` directory.
 That split keeps the layers apart as [Test Boundaries and Gates](../testing/test-boundaries-and-gates.md) requires.
-Coverage is measured on the unit run, and any floor is recorded under
+Coverage is measured on the unit run, held to the floor in [Meaningful Coverage](../testing/meaningful-coverage.md), and
+any higher floor is recorded under
 [Layers and Adapters](../testing/behaviour-driven-development/002-layers-and-adapters.md).
 
 ## Modules

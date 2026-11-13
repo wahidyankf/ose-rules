@@ -61,7 +61,8 @@ Optimization starts from measured Web Vitals, never from a guess.
 
 Core functions and server actions are unit-tested as functions with their boundaries replaced, client components follow
 React Standards, and critical journeys run end to end in a real browser. Layers and gates follow
-[Test Boundaries and Gates](../testing/test-boundaries-and-gates.md), and whether coverage has a floor is recorded under
+[Test Boundaries and Gates](../testing/test-boundaries-and-gates.md), coverage meets the floor in
+[Meaningful Coverage](../testing/meaningful-coverage.md), and any higher floor is recorded under
 [Layers and Adapters](../testing/behaviour-driven-development/002-layers-and-adapters.md).
 
 ## Modules

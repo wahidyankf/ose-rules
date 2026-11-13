@@ -29,7 +29,8 @@ asserts the same dependency rule in the test run, so a forbidden dependency that
   test returns `Task`.
 - One assertion style serves the whole solution, so every failure message reads the same way.
 - Coverage is collected in the unit run that gates, as
-  [Test Boundaries and Gates](../../testing/test-boundaries-and-gates.md) requires. Any floor is recorded under
+  [Test Boundaries and Gates](../../testing/test-boundaries-and-gates.md) requires, and held to the floor in
+  [Meaningful Coverage](../../testing/meaningful-coverage.md). Any higher floor is recorded under
   [Layers and Adapters](../../testing/behaviour-driven-development/002-layers-and-adapters.md).
 - Work proceeds test-first under [Test-Driven Development](../../testing/test-driven-development.md).
 

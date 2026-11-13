@@ -63,8 +63,8 @@ such as test.check.
 
 Coverage follows [Meaningful Coverage](../testing/meaningful-coverage.md) and measures lines and forms, not branches;
 example: [cloverage](https://github.com/cloverage/cloverage), excluding generated namespaces by pattern with each reason
-recorded. [Layers and Adapters](../testing/behaviour-driven-development/002-layers-and-adapters.md) records which
-measure carries any floor.
+recorded. The unit figure carries the floor, and
+[Layers and Adapters](../testing/behaviour-driven-development/002-layers-and-adapters.md) records any higher one.
 
 ## Documentation
 
