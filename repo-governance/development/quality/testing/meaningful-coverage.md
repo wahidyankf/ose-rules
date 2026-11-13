@@ -1,8 +1,7 @@
 ---
 description: >-
   Limits numeric coverage to authored executable production code a reliable instrument measures, requires a 99% floor on
-  the combined unit and integration figure over the whole project, and gives end-to-end and infrastructure code no line
-  target.
+  the unit figure over the whole project, and gives integration, end-to-end, and infrastructure code no line target.
 when_to_use: >-
   Use when configuring coverage measurement, setting or checking the coverage floor, deciding what a coverage report may
   include, or deciding whether a layer or stack carries a numeric coverage target at all.
@@ -32,18 +31,18 @@ When either fails, a number is not evidence, and no number is reported.
 
 ## The Floor
 
-Wherever a number may be measured, a project's combined unit and integration coverage must be at least 99%:
+Wherever a number may be measured, a project's unit-test coverage must be at least 99%:
 
-- **Combined.** The unit and integration profiles merge into one figure over one denominator, so code only an
-  integration test reaches counts, and no line counts twice.
+- **Unit tests only.** The figure counts what unit tests execute, the unit-level scenario bindings included. Integration
+  and end-to-end tests prove real boundaries and stay outside the number.
 - **Whole project.** The denominator is every authored production file of the project, never a chosen core package. A
-  floor over a core can read 99% while the adapters, where boundary defects live, go unmeasured.
+  floor over a core can read 99% while the adapters go unmeasured.
+- **One run.** Every unit test and unit scenario binding runs in one instrumented run whose profiles form a union, so no
+  line counts twice and the figure the gate judges is the figure that run produced.
 - **A minimum.** A repository may record a higher floor under
   [Layers and Adapters](behaviour-driven-development/002-layers-and-adapters.md), never a lower one.
 
-The coverage gate runs the unit and integration suites together, wherever the repository runs integration suites under
-[Compliance and Reporting](behaviour-driven-development/004-compliance-and-reporting.md). The fast gate's unit run
-reports its own figure and cannot enforce a floor that integration tests help meet.
+The fast gate's unit run enforces the floor.
 
 ## Outside Numeric Coverage
 
@@ -59,9 +58,8 @@ Every exclusion and exemption follows [Exclusions and Exemptions](meaningful-cov
 
 ## Layers
 
-- **Unit.** Always measured for instrumentable production code.
-- **Integration.** Measured with the unit run in the combined figure, from an instrumented build where the language
-  needs one.
+- **Unit.** The only layer that counts toward the floor, for all instrumentable production code.
+- **Integration.** Proves real local boundaries. It carries no line-coverage target and counts toward no floor.
 - **End-to-end.** Proves public journeys and their failure paths. It carries no line-coverage target, counts toward no
   floor, and runs in no hook.
 
@@ -82,7 +80,7 @@ as a change to a gate.
 
 ## Enforcement
 
-Gated by the adopter's coverage gate, which fails below the floor on the merged figure and fails when an authored
+Gated by the adopter's coverage gate, which fails below the floor on the unit run's figure and fails when an authored
 production file is absent from the measured set. Show it failing on a 98.9% figure or a missing package, and passing at
 99.0% with every package present. Unenforced by decision: whether an instrument is reliable and whether code is authored
 production code are review judgements that no validator makes well.

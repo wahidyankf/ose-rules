@@ -34,7 +34,7 @@ Example: Gradle's `distributionSha256Sum` and a toolchain block.
 
 - **Formatting:** one formatter rewrites staged Java files on commit; the pipeline fails on any file it would still
   change. No file carries a formatter suppression. Example: google-java-format via a build plugin.
-- **Coverage:** verification merges the unit and integration reports, and the build fails below the floor in
+- **Coverage:** verification runs inside the unit-test target, and the build fails below the floor in
   [Meaningful Coverage](../testing/meaningful-coverage.md), or below a higher floor the adopter records under
   [Layers and Adapters](../testing/behaviour-driven-development/002-layers-and-adapters.md). Exclusions follow
   [Exclusions and Exemptions](../testing/meaningful-coverage/001-exclusions-and-exemptions.md).

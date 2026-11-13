@@ -380,7 +380,7 @@
     {
       "id": "agent/ci-checker",
       "path": "agents/ci-checker.md",
-      "digest": "14a6717516652f088730076b775b679b080e5eec3f610d8f2ba647aca4c422db"
+      "digest": "e64f4f1040aa944f950fc14360163e8ca13c5fea293db8e0f1f2f2d6e2aa105c"
     },
     {
       "id": "agent/ci-fixer",

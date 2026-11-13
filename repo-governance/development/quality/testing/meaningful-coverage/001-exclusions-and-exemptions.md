@@ -15,7 +15,7 @@ down once.
 
 ## Two Allowed Exclusions
 
-- **Generated files.** The generator's own tests cover them.
+- **Generated files.** Each carries a generated-code header, and the generator's own tests cover it.
 - **Test-support programs.** Programs that only support tests, such as fixture builders and the coverage tool itself,
   are test code, not production code.
 

@@ -28,7 +28,7 @@ asserts the same dependency rule in the test run, so a forbidden dependency that
 - One test framework serves every test project, with a single-case form and a parameterised form, and an asynchronous
   test returns `Task`.
 - One assertion style serves the whole solution, so every failure message reads the same way.
-- Coverage is collected in the unit and integration runs that gate, merged as
+- Coverage is collected in the unit run that gates, as
   [Test Boundaries and Gates](../../testing/test-boundaries-and-gates.md) requires, and held to the floor in
   [Meaningful Coverage](../../testing/meaningful-coverage.md). Any higher floor is recorded under
   [Layers and Adapters](../../testing/behaviour-driven-development/002-layers-and-adapters.md).

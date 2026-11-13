@@ -38,9 +38,8 @@ The standards own every rule; [CI Quality Gate](../repo-governance/workflows/qua
    [Task Runner Target Standards](../repo-governance/development/workflow/task-runner-target-standards.md).
 2. **Boundaries.** Unit suites inject every resource, integration suites use only local resources they own, and
    end-to-end suites observe the public boundary.
-3. **Coverage.** Gating coverage merges the unit and integration runs that executed the tests over the whole project and
-   meets the floor, exclusions are only the allowed kinds or proven exemptions, and static coverage targets execute
-   nothing.
+3. **Coverage.** Gating coverage comes from the one unit run that executed the tests over the whole project and meets
+   the floor, exclusions are only the allowed kinds or proven exemptions, and static coverage targets execute nothing.
 4. **Fast surfaces.** No hook or change-triggered pipeline reaches an integration or end-to-end suite, directly or
    through a dependency, per
    [Automated Quality Gates](../repo-governance/development/quality/checks/automated-quality-gates.md).

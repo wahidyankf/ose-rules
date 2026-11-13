@@ -43,7 +43,7 @@ commands, because a copied command drifts from the original.
 | ----------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | lint                          | formatting, style, suspicious-code, and dependency findings, per [Lint Strictness](../checks/lint-strictness.md) |
 | type check                    | compiler and static-type findings, leaving no build output behind                                                |
-| unit, integration, end-to-end | one layer's suite each; the unit and integration runs also measure coverage                                      |
+| unit, integration, end-to-end | one layer's suite each; the unit run also measures coverage                                                      |
 | static behaviour coverage     | scenario and binding resolution, executing nothing, where scenarios exist                                        |
 
 ## The Fast Gate
@@ -60,10 +60,9 @@ ahead of the complete end-to-end run, so a local failure surfaces before the slo
 
 ## Coverage Is Measured Where It Gates
 
-Gating coverage comes from the unit and integration runs that executed the tests, merged into one figure, because a
-separate rerun can disagree. The floor, what coverage may measure, and the allowed exclusions are owned by
-[Meaningful Coverage](meaningful-coverage.md). The fast gate reports its unit figure; the coverage gate enforces the
-floor on the merged one.
+Gating coverage comes from the one instrumented unit run that executed the tests, because two runs can disagree. The
+floor, what coverage may measure, and the allowed exclusions are owned by [Meaningful Coverage](meaningful-coverage.md).
+The fast gate's unit run enforces the floor.
 
 Lowering a floor or widening an exclusion changes what the repository is willing to ship. It is a change to a gate, made
 as [Software Quality Enforcement](../checks/software-quality-enforcement.md) requires.
