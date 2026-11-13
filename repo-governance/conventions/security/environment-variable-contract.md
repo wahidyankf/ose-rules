@@ -8,9 +8,9 @@ when_to_use: >-
 
 # Environment Variable Contract
 
-Every environment key a program reads is declared, by name, in one committed template. It holds no real value and is the
-one place a reader learns what a program needs. Its filename and the pattern naming real environment files are recorded
-as [Agent Environment-File Access](agent-env-file-access.md) requires.
+Every environment key a program's code names is declared, by name, in one committed template. It holds no real value and
+is the one place a reader learns what a program needs. Its filename and the pattern naming real environment files are
+recorded as [Agent Environment-File Access](agent-env-file-access.md) requires.
 
 ## The Template Is the Contract
 
@@ -20,6 +20,9 @@ enforces this in its own pre-commit or continuous-integration gate.
 
 A recorded, reviewed exemption list excuses only declared keys read by a platform or launcher, not the consumer; it
 never hides a read the validator misses, which is fixed at its read site.
+
+Names read from configuration data, such as a catalog of credential names, are the one exception to the drift rule
+above. They are documented where that configuration is documented; the template lists the keys the code names.
 
 Template values are placeholders nobody could mistake for real: a plausible one gets copied into real files unchanged.
 
@@ -58,12 +61,9 @@ A tier in the name forks the contract, and the production-only name is first rea
 
 ## Consumer Prefixes Are a Decision
 
-| Option                  | Example                  | Gains                                              | Costs                                    |
-| ----------------------- | ------------------------ | -------------------------------------------------- | ---------------------------------------- |
-| prefix app-defined keys | `<CONSUMER>_API_TIMEOUT` | visible ownership; no collisions in a shared scope | longer names; exempt names must be known |
-| no prefix               | `API_TIMEOUT`            | short names matching library defaults              | consumers sharing a scope can collide    |
-
-Framework-reserved and conventional shared names such as `NODE_ENV` stay unprefixed, and a prefix never names a tier.
+The options and their trade-offs are in
+[Consumer Prefix Options](environment-variable-contract/001-consumer-prefix-options.md). Framework-reserved and
+conventional shared names such as `NODE_ENV` stay unprefixed, and a prefix never names a tier.
 
 ## Precedence
 
