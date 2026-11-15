@@ -35,6 +35,7 @@ promoted.
 | [Reproducibility](reproducibility.md)                       | a clean checkout reaches the same environment and result on any machine meeting documented prerequisites |
 | [Root Cause Orientation](root-cause-orientation.md)         | fix the cause at the layer that owns it; a hidden symptom is not a fix                                   |
 | [Simplicity Over Complexity](simplicity-over-complexity.md) | the fewest concepts that do the job; abstraction waits for a real need                                   |
+| [Consumer Correctness First](consumer-correctness-first.md) | when options differ, the one that most helps the consumer be correct wins                                |
 
 ## What Is Not Here
 
@@ -65,3 +66,4 @@ system and this repository's instructions own it for the catalog, which is two p
 - [Reproducibility](reproducibility.md)
 - [Root Cause Orientation](root-cause-orientation.md)
 - [Simplicity Over Complexity](simplicity-over-complexity.md)
+- [Consumer Correctness First](consumer-correctness-first.md)
