@@ -49,7 +49,9 @@ Cache a target only when its declared inputs fully determine its result.
 
 - Each operation has one canonical name, used identically in every project, and no aliases. A development server is
   `dev` and a production server `start`; neither is `serve`.
-- Qualifiers are joined with a colon, as in `test:unit` and `test:e2e`, never a hyphen or underscore.
+- Qualifiers are joined with a colon, never a hyphen or underscore. The standard test targets are `test:quick`,
+  `test:behaviour:coverage`, `test:integration`, and `test:e2e`, per rule C14 of
+  [Test Levels and Targets](../quality/checks/test-and-gate-contract/004-test-levels-and-targets.md).
 - Every segment is lowercase kebab-case.
 - A renamed target keeps no alias for its old name.
 
@@ -58,8 +60,8 @@ Cache a target only when its declared inputs fully determine its result.
 A target exists only where the project has the capability it names. Never add an echo, no-op, always-passing, or
 duplicate target to fill a slot: it reports a tested boundary where nothing is tested. Omit an inapplicable target and
 record the reason in the project's README. A dedicated end-to-end project exposes no unit or coverage target it cannot
-really run. A check selected by file type that judges each file alone runs over staged files before commit, not as a
-project target.
+really run. A file-type formatter runs over staged files before commit; other such checks run in the pull-request gate,
+never as project targets.
 
 ## Ordered Aggregates
 
@@ -67,7 +69,7 @@ An aggregate that runs several gates in a fixed order is non-parallel and invoke
 copies their commands, so each command keeps a single owner. The ordered list expresses gate order; anything that must
 finish before the whole aggregate starts is a declared prerequisite.
 
-Integration and end-to-end runtime targets stay uncached, out of every fast aggregate, and out of commit and push hooks.
+Integration and end-to-end runtime targets stay out of every fast aggregate and every hook.
 
 ## Adopter Decision: Runner Plugins
 

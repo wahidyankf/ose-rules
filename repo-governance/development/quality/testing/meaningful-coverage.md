@@ -16,8 +16,8 @@ exactly where it was.
 This standard implements [Evidence Over Assertion](../../../principles/evidence-over-assertion.md) and
 [Explicit Over Implicit](../../../principles/explicit-over-implicit.md). It decides what coverage may measure and the
 floor it must reach. Which run gates coverage belongs to [Test Boundaries and Gates](test-boundaries-and-gates.md), and
-which code may be excluded to [Exclusions and Exemptions](meaningful-coverage/001-exclusions-and-exemptions.md). A
-measured figure is read as [Trustworthy Measurement](../evidence/trustworthy-measurement.md) requires.
+which code may be excluded to [Exclusions](meaningful-coverage/001-exclusions-and-exemptions.md). A measured figure is
+read as [Trustworthy Measurement](../evidence/trustworthy-measurement.md) requires.
 
 ## What a Number May Measure
 
@@ -34,7 +34,9 @@ When either fails, a number is not evidence, and no number is reported.
 Wherever a number may be measured, a project's unit-test coverage must be at least 99%:
 
 - **Unit tests only.** The figure counts what unit tests execute, the unit-level scenario bindings included. Integration
-  and end-to-end tests prove real boundaries and stay outside the number.
+  and end-to-end coverage is never combined with it: a combined number misleads, and those suites need not be complete.
+  Code a unit test cannot reach moves behind a port until one can, per
+  [Coverage Floor](../checks/test-and-gate-contract/006-coverage-floor.md).
 - **Whole project.** The denominator is every authored production file of the project, never a chosen core package. A
   floor over a core can read 99% while the adapters go unmeasured.
 - **One run.** Every unit test and unit scenario binding runs in one instrumented run whose profiles form a union, so no
@@ -54,7 +56,7 @@ The fast gate's unit run enforces the floor.
 | external and vendored code | its owner tests it, and this repository cannot change it                 |
 
 Only the first two rows are exclusions from an otherwise measured project; the last two never enter the denominator.
-Every exclusion and exemption follows [Exclusions and Exemptions](meaningful-coverage/001-exclusions-and-exemptions.md).
+Every exclusion follows [Exclusions](meaningful-coverage/001-exclusions-and-exemptions.md), which admits no exemption.
 
 ## Layers
 

@@ -16,10 +16,13 @@ so a reader finds the specification for a deployable without searching and a str
 
 ## One Corpus Per Logical Owner
 
-| Owner                           | Corpus                          |
-| ------------------------------- | ------------------------------- |
-| a deployed surface of a product | `specs/apps/<product>/<owner>/` |
-| a library, without scenarios    | `specs/libs/<library>/`         |
+| Owner                           | Corpus                             |
+| ------------------------------- | ---------------------------------- |
+| a deployed surface of a product | `specs/apps/<product>/<owner>/`    |
+| a single-product repository     | `specs/`, with `specs/behaviours/` |
+| a library                       | `specs/libs/<library>/`            |
+
+A repository with one owner keeps `specs/behaviours/`, since a product level would name nothing.
 
 A logical owner is something that deploys and runs on its own: a web front end, a backend service, a command-line tool.
 Two perspectives on one deployable, such as an administrator console served by the same service as its public pages, are
@@ -37,13 +40,13 @@ specs/apps/<product>/
 └── <owner>/
     ├── README.md         required: the index, linking back to the project
     ├── architecture.md   required: the as-built C4 description
-    ├── behaviours/       required for an application: .feature files at any depth, with a README.md
+    ├── behaviours/       required: .feature files at any depth, with a README.md
     │   └── <domain>/     optional: a business-area grouping
     └── contracts/        optional: OpenAPI documents, in the owner that serves them
 ```
 
-- **`behaviours/` is never empty.** At least one `.feature` file sits somewhere below it in an application corpus. A
-  corpus with no scenario states nothing a test can check.
+- **`behaviours/` is never empty.** At least one `.feature` file sits somewhere below it in every corpus. A corpus with
+  no scenario states nothing a test can check.
 - **Domain directories only group.** They sort features by business area, are optional, and carry no meaning a tool
   relies on.
 - **A contract lives with its server.** `contracts/` belongs to the owner that serves the interface. A consumer links to
@@ -51,9 +54,9 @@ specs/apps/<product>/
 - **`overview.md` spans owners.** It sits at product level, says how the owners fit together, and holds no scenario and
   no architecture.
 
-A library corpus has the same shape without the product level and without `behaviours/`: only applications own
-scenarios, and a library keeps plain tests, per
-[Behaviour-Driven Development](../../development/quality/testing/behaviour-driven-development.md#only-applications-own-a-corpus).
+A library corpus has the same shape without the product level; its `behaviours/` states what a caller of its public API
+observes, per
+[Behaviour-Driven Development](../../development/quality/testing/behaviour-driven-development.md#every-owner-of-runtime-code-owns-a-corpus).
 
 ## Architecture Is As-Built
 
@@ -71,8 +74,8 @@ A repository adopting this convention indexes its specification tree, with every
 will find. The project side of each corpus follows [Project READMEs](project-readmes.md), whose README links here and is
 linked back.
 
-An adopter enforces the required files, non-empty behaviours, and index completeness with its own structure check in
-pre-commit or CI.
+An adopter enforces the required files, non-empty behaviours, and index completeness with its own structure check in the
+pull-request gate.
 
 ## Other Specification Forms
 

@@ -1,7 +1,7 @@
 ---
 description: >-
   Formats Markdown with one pinned layout formatter and lints it with one pinned structural linter, both reading
-  committed configuration, excludes frozen archives, and leaves the rule set and local lint surface to the adopter.
+  committed configuration, excludes frozen archives, and leaves the rule set to the adopter.
 when_to_use: >-
   Use when setting up or changing how Markdown is formatted and linted, or when a Markdown formatting or lint gate
   blocks a change.
@@ -37,13 +37,11 @@ The formatter runs before every commit on the staged Markdown files and restages
 continuous integration where the repository has it. There, a check mode that fails on a file the formatter would change,
 instead of rewriting it, is the usual way to run it.
 
-The linter runs in the local hooks, and in continuous integration where the repository has it. Which local surface is an
-adopter decision, and the adopter records which it uses:
-
-| Lint locally at                  | Gains                                                    | Costs                                                                  |
-| -------------------------------- | -------------------------------------------------------- | ---------------------------------------------------------------------- |
-| before a commit, on staged files | a finding arrives while the author can still edit        | files outside the commit are not rechecked until the pipeline runs     |
-| before a push, across the tree   | every file is checked together before anything is shared | a finding arrives after the commit exists and needs another one to fix |
+The linter runs in the pull-request gate, and the link and index checks run there as a global scan, per C7 of
+[Test and Gate Contract](test-and-gate-contract.md): moving or deleting one file can break a link or index entry in
+another, so the scan cannot be limited to the files a change touches. No hook runs them. A finding of theirs is not
+formatting that a hook can rewrite and restage, and a slow hook gets bypassed, while the pull-request gate runs them in
+parallel on any machine. A repository without a pull-request gate runs them in its landing gate.
 
 ## The Rule Set Is the Adopter's
 
@@ -63,4 +61,4 @@ work without improving anything.
 The exclusion is declared in each tool's ignore configuration, and the two lists agree. Dependencies, build output, and
 generated reports are excluded because nobody authors them. Everything else is checked without exception.
 
-An adopter enforces both tools in its own hooks and pipeline.
+An adopter enforces the formatter in its own pre-commit hook and both tools in its pull-request gate.

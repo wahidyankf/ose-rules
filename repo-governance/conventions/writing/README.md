@@ -48,6 +48,7 @@ inside it, how it is formatted, and how it stays true.
   formatting.
 - [Convention Documents](convention-documents.md)
 - [Diagrams](diagrams.md)
+- [Diagrams Modules](diagrams/README.md) — the module on visual classification and the Neovim-manual exclusion.
 - [Dynamic Collection References](dynamic-collection-references.md)
 - [Emoji Usage](emoji-usage.md)
 - [Factual Validation](factual-validation.md)

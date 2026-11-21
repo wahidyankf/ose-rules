@@ -10,8 +10,7 @@ when_to_use: >-
 
 # F# Standards
 
-This standard is canonical for F# on .NET, holding the choices F# and the SDK leave open; an F# skill defers here per
-rule.
+Canonical for F# on .NET, this standard holds what F# and the SDK leave open; an F# skill defers here per rule.
 
 It implements [Explicit Over Implicit](../../../principles/explicit-over-implicit.md),
 [Immutability](../../../principles/immutability.md), [Pure Functions](../../../principles/pure-functions.md), and
@@ -45,6 +44,12 @@ the network stay in the shell and reach the core as passed-in functions, per
 [Functional Core, Imperative Shell](../architecture/functional-core-imperative-shell.md). Pure functions are tested
 directly; an invariant every valid input must keep also gets a property-based test.
 
+## Hermetic Unit Tests
+
+Unit-test projects run a tested, repository-owned analyzer flagging `System.IO`, `System.Net`,
+`System.Diagnostics.Process`, `System.Environment`, `DateTime.Now`, and `System.Random`. Example: an
+FSharp.Analyzers.SDK analyzer under `dotnet fsharp-analyzers --treat-as-error`.
+
 Domain state uses no classes, inheritance, or `mutable` fields. A `mutable` binding appears only on a measured hot path,
 citing its measurement.
 
@@ -71,7 +76,7 @@ modules, union cases, and record fields are `PascalCase`; a public function decl
 
 ## Adopter Decision
 
-The adopter records each choice that applies:
+Record each choice that applies:
 
 | Decision       | Option                                            | Gains                                  | Costs                                 |
 | -------------- | ------------------------------------------------- | -------------------------------------- | ------------------------------------- |
@@ -82,7 +87,7 @@ The adopter records each choice that applies:
 
 ## Enforcement
 
-The formatter check and compiler settings enforce the gates in the adopter's build, hooks, and pipeline. Review applies
-compile order, domain shapes, and failure types. Test layers and coverage follow
+The formatter check and compiler settings enforce the gates in the adopter's build and pipeline. Review applies compile
+order, domain shapes, and failure types. Test layers and coverage follow
 [Test Boundaries and Gates](../testing/test-boundaries-and-gates.md), and work proceeds under
 [Test-Driven Development](../testing/test-driven-development.md).

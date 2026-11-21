@@ -19,11 +19,11 @@ Reason: keep local feedback short without weakening test-first proof or delivery
 - After each refactor, run the named regression selection covering the changed behaviour and its affected shared
   boundary, rather than a full-suite run for every item.
 - At the end of each plan phase, and before PR ready-for-review or session end as a safety net, run the whole automated
-  suite except full E2E, including the mandatory fast gate with coverage, plus only the affected E2E flow. Hooks already
-  enforce the affected scope at push time; the phase boundary is where the whole-check pays off. The same passing proof
-  may cover both boundaries while its tested scope remains unchanged.
+  suite except full E2E, including the mandatory fast gate with coverage, plus only the affected E2E flow. No hook runs
+  a test, so the phase boundary is where the whole-check pays off. The same passing proof may cover both boundaries
+  while its tested scope remains unchanged.
 - Run the full E2E suite on its scheduled CI workflow (CRON) by default in every repository that has E2E; keep local E2E
-  selective to the touched flow. Repositories without E2E, such as libraries and CLIs, carry no such schedule.
+  selective to the touched flow. Repositories without E2E carry no such schedule.
 - Never require a full E2E run as a completion condition for plan execution or a plan phase; full E2E is a separately
   batched set.
 - Record executed case identities and a positive executed-test count for every filtered cycle run. Zero tests, unmatched

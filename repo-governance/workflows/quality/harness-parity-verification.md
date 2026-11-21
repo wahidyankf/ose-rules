@@ -71,8 +71,7 @@ A run that edits while verifying cannot say which state its verdict describes. A
 artifact or the generator, never an adapter by hand, and rerun from a fresh baseline. Never weaken the check, drop a
 restriction, or exclude a path to reach `pass`.
 
-An adopter runs the deterministic check in its own pre-push hook or CI gate; this workflow adds the reading a gate does
-not do.
+An adopter runs the deterministic check in its own pull-request gate; this workflow adds the reading a gate does not do.
 
 ## What the Check Cannot Prove
 

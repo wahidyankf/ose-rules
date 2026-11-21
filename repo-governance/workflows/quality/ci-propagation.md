@@ -43,7 +43,7 @@ The [CI Quality Gate](ci-quality-gate.md) hands over a frozen ledger, or an expl
 1. **Skip delegated predicates.** A row whose exact predicate a delegated check owns is neither re-validated nor
    repaired; its evidence is carried unchanged.
 2. **Apply only what the cited standard settles,** such as building the real target a placeholder stood in for, moving a
-   slow suite out of a hook into the scheduled full run, or adding a missing example environment file.
+   test out of a hook into the pull-request gate, or adding a missing example environment file.
 3. **Never weaken a check.** Lowering a floor, widening an exclusion, skipping a step, letting a step continue on error,
    or adding a stub because a check expects a target is never a repair. Such a row, and one that needs an exemption, a
    rewritten suite, or a choice among valid designs, is `needs-decision`; a deliberate gate change lands as its own

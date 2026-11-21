@@ -58,6 +58,7 @@ runs `git config --local --unset user.name` and `git config --local --unset user
 
 ## Enforcement
 
-For agents the rule is behavioural and lives in their instructions. An adopter wanting a mechanical check adds the query
-above to its own pre-commit hook. The check must read local configuration only, so that a conditional include in
-user-level configuration still passes.
+For agents the rule is behavioural and lives in their instructions. An adopter wanting a mechanical check verifies, in
+the pull-request gate, the author and committer identity of every commit in the range, since identity is commit metadata
+and no hook runs at commit time. The query above stays the local check; it must read local configuration only, so that a
+conditional include in user-level configuration still passes.

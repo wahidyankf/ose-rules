@@ -88,5 +88,5 @@ Record each choice once.
 
 ## Enforcement
 
-An adopter's hooks and pipeline run the format, analyze, and test gates. Review applies boundary decoding, the `!` and
+An adopter's pull-request gate runs the format, analyze, and test gates. Review applies boundary decoding, the `!` and
 `late` claims, future and stream ownership, and the coverage exclusions.

@@ -82,8 +82,11 @@ Palette-naming comments and default flow direction remain adopter decisions beca
 The rule covers **conceptual** diagrams — ones drawn to explain a relationship. It does not cover:
 
 - literal code, command output, or file trees;
-- interface wireframes; or
+- interface wireframes;
+- manuals read inside Neovim's help system; or
 - archived material.
+
+Under the rendered rule, [Visual Classification](diagrams/001-visual-classification.md) decides each visual's form.
 
 A directory tree is not a diagram of a structure; it is the structure, quoted. Converting it into a rendered graph makes
 it harder to copy, harder to diff, and no clearer.

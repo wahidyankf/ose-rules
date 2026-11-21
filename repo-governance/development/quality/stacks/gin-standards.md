@@ -70,5 +70,5 @@ the contract's operations match one to one.
 
 ## Enforcement
 
-The Go gates enforce in the adopter's own build, hooks, and pipeline, and a configuration test proves trusted proxies
+The Go gates enforce in the adopter's own build and pull-request gate, and a configuration test proves trusted proxies
 and release mode are set. Review applies binding variants, context handling, middleware order, and handler thinness.

@@ -39,9 +39,9 @@ The standards own every rule; [CI Quality Gate](../repo-governance/workflows/qua
 2. **Boundaries.** Unit suites inject every resource, integration suites use only local resources they own, and
    end-to-end suites observe the public boundary.
 3. **Coverage.** Gating coverage comes from the one unit run that executed the tests over the whole project and meets
-   the floor, exclusions are only the allowed kinds or proven exemptions, and static coverage targets execute nothing.
-4. **Fast surfaces.** No hook or change-triggered pipeline reaches an integration or end-to-end suite, directly or
-   through a dependency, per
+   the floor, exclusions are only the named categories, and static coverage targets execute nothing.
+4. **Fast surfaces.** No hook runs a test, and no hook or pull-request gate reaches an end-to-end suite, directly or
+   through a dependency; the pull-request gate runs integration, per
    [Automated Quality Gates](../repo-governance/development/quality/checks/automated-quality-gates.md).
 5. **Full runs.** A scheduled pipeline run executes static checks, integration, then every end-to-end journey, and fails
    closed without a bypass, as
@@ -64,9 +64,10 @@ evidence is reported as pending. Without such a handoff, nothing is skipped.
 
 Rate each finding by consequence, per
 [Criticality Levels](../repo-governance/development/quality/evidence/finding-criticality-and-confidence/001-criticality-levels.md).
-On this surface, a slow suite reachable from a fast gate, a missing unit layer, coverage under the floor, or a runtime
-reachable from a static target usually breaks what the gate promises. A placeholder target, a networked integration
-suite, an invalid exemption, a missing scheduled full run, or a bypass seriously lowers quality.
+On this surface, a test in a hook, an end-to-end suite reachable from the pull-request gate, a missing unit layer,
+coverage under the floor, or a runtime reachable from a static target usually breaks what the gate promises. A
+placeholder target, a networked integration suite, an invalid exemption, a missing scheduled full run, or a bypass
+seriously lowers quality.
 
 ## Findings
 

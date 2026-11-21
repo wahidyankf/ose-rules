@@ -15,14 +15,16 @@ where a mechanism exists. Here the delivery harness is that mechanism, and nothi
 
 ## The Screen
 
-The repository's outbound screen runs at the pre-push hook. It screens the outgoing range commit by commit: each
-commit's added lines at the line numbers they occupy, its file names, its message, and the ref names. A merge
-contributes what it resolved beyond the automatic merge. Content the range did not add is not screened again, so the
-screen binds from adoption onward. Its shapes include absolute home paths, private addresses, and internal hostnames,
-beside a credential scanner.
+Every repository registers a deterministic outbound screen at the pre-push hook, public or private, because history that
+has left the machine cannot be recalled and the review alone can miss a shape a matcher never misses. It screens the
+outgoing range commit by commit: each commit's added lines at the line numbers they occupy, its file names, its message,
+and the ref names. A merge contributes what it resolved beyond the automatic merge. Content the range did not add is not
+screened again, so the screen binds from adoption onward. Its shapes include absolute home paths, private addresses, and
+internal hostnames, beside a credential scanner.
 
-The screen matches shapes; the review reads context. Neither replaces the other. A pull-request replay of the same
-screen can run in a repository's hosted pipeline for composition reasons; the harness's refusal does not depend on it.
+The screen matches shapes; the review reads context. Neither replaces the other. The pull-request gate replays the same
+screen over the tree, the range, and the messages; a repository without a remote keeps the pre-push entry dormant and
+runs the screen in its local landing gate. The harness's refusal does not depend on either.
 
 ## Harness Refusal
 

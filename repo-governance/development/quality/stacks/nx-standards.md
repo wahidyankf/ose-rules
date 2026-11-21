@@ -74,6 +74,6 @@ names its targets and every omitted one with its reason.
 
 ## Enforcement
 
-The module-boundary lint rule and project-configuration validator enforce what they can in the adopter's hooks and
-pipeline; review applies tags on new projects, undeclared dependencies, cache inputs, the affected base, and the version
+The module-boundary lint rule and project-configuration validator enforce what they can in the adopter's pull-request
+gate; review applies tags on new projects, undeclared dependencies, cache inputs, the affected base, and the version
 pin.

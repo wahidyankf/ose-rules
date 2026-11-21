@@ -1,7 +1,8 @@
 ---
 description: >-
   Chooses a Gherkin scenario for contract behaviour and a plain test for a developer detail, makes one canonical corpus
-  per application the statement of acceptance behaviour, and binds it strictly at every applicable test layer.
+  per owner of runtime code the statement of caller-visible behaviour, and binds it strictly at every applicable test
+  layer.
 when_to_use: >-
   Use when adding or changing behaviour, choosing between a scenario and a plain test, organizing feature files, binding
   scenarios to tests at a layer, or deciding whether a scenario may be exempt from a layer.
@@ -38,13 +39,14 @@ Enforcement: gated for the exemption pair, by the static check in
 [Compliance and Reporting](behaviour-driven-development/004-compliance-and-reporting.md). Unenforced by decision for the
 choice itself, because whether anyone outside the code sees a break is a review judgement.
 
-## Only Applications Own a Corpus
+## Every Owner of Runtime Code Owns a Corpus
 
-An application is anything with an entry point a user, operator, or harness reaches, such as a service, a command-line
-tool, or an interface. Each keeps one canonical Gherkin corpus in one directory tree, discovered recursively. A shared
-library and a script keep plain tests and no scenarios; the scenarios of the application using them prove what they
-contribute. Nothing registers feature files in a list; a list is a second source that falls out of date the first time
-someone forgets it.
+An owner is anything with runtime code that a user, operator, harness, or caller reaches: a service, a command-line
+tool, an interface, or a library. Each keeps one canonical Gherkin corpus in one directory tree, discovered recursively.
+An application's scenarios describe what its user sees. A library's scenarios describe behaviour visible to the caller
+of its public API, so a library's contract is stated once and does not rely on a consuming application's scenarios. A
+script's behaviour is contract behaviour too, when a caller reaches it. Nothing registers feature files in a list; a
+list is a second source that falls out of date the first time someone forgets it.
 
 A dedicated end-to-end project implements the corpus of the application it tests. It keeps no scenarios of its own, so a
 behaviour never has two competing statements.

@@ -91,6 +91,6 @@ changes are contract changes under [Public Contract](../architecture/public-cont
 
 ## Enforcement
 
-An adopter enforces ansible-lint and yamllint in its own hooks and pipeline, keeping Molecule, integration suites, and
-real runs out of commit and push hooks: a real run is a deployment, never a gate's side effect. Review covers argument
+An adopter enforces ansible-lint and yamllint in its own pull-request gate, keeping Molecule, integration suites, and
+real runs out of every hook: a real run is a deployment, never a gate's side effect. Review covers argument
 specifications, change reporting, secret handling, and check-mode diffs.

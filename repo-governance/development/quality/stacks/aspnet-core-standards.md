@@ -77,6 +77,6 @@ description is checked against the authored contract, never published in its pla
 
 ## Enforcement
 
-The language standard's compiler, analyzer, and formatter gates enforce in the adopter's build, hooks, and pipeline; a
+The language standard's compiler, analyzer, and formatter gates enforce in the adopter's build and pull-request gate; a
 startup test proves invalid options stop the host. Review applies lifetimes, client creation, context handling, and
 endpoint thinness.

@@ -11,7 +11,7 @@ when_to_use: >-
 | ----------------------- | ----------------------------------------------------------------- |
 | harness permission deny | agent file tools on restricted paths                              |
 | pre-tool hook           | the same, plus shell commands that name a restricted file         |
-| staged-file guard       | a real file reaching a commit, from any actor                     |
+| leak scan               | a real file reaching pushed history, from any actor               |
 | this convention         | what the layers above cannot see, such as an agent-written script |
 
 A guard matching command text is best-effort, and documented as such: it cannot recognize a filename assembled from

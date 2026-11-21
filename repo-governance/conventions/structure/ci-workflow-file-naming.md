@@ -51,8 +51,8 @@ The declared name and the filename change together, in one change. Changing eith
 the rule exists to prevent. The same change updates everything that refers to the old file path, such as status badges
 and callers of a reusable workflow.
 
-An adopter enforces the rule with its own check in pre-commit or CI that derives each file's expected filename from its
-declared name and fails on any difference.
+An adopter enforces the rule with its own check in the pull-request gate that derives each file's expected filename from
+its declared name and fails on any difference.
 
 ## Principles
 

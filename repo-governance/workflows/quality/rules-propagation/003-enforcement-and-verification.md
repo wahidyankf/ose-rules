@@ -65,8 +65,8 @@ published head, never from a branch or a worktree. A member adoption names the c
 ## Adopter Decision: How Entry Becomes Automatic
 
 - **Root instruction file:** a route before any rule edit; it needs no tooling but relies on being read.
-- **Commit-time notice:** names this workflow whenever a staged path carries rules, reaching every editor; it reports
-  without blocking, since a hook cannot judge semantic decisions.
+- **Pull-request notice:** names this workflow in the pull-request gate whenever a changed path carries rules, reaching
+  every editor; it reports without blocking, since a check cannot judge semantic decisions, and no hook runs it.
 - **Editor pre-edit trigger:** the same notice earlier, in one harness; a convenience that can be switched off.
 
 Record the routes taken and the delivery route. Every trigger reads one recorded list of rule-bearing paths.

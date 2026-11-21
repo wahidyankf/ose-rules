@@ -2,7 +2,7 @@
 name: applying-ci-standards
 description: >-
   Guides judging hooks, pipelines, and project test targets against the catalog's gate standards: whether a target is
-  real, a coverage exclusion is a true boundary, an exemption reason holds, and a check belongs to another owner.
+  real, a coverage exclusion is in a named category, an exemption reason holds, and a check belongs to another owner.
 when_to_use: >-
   Use when auditing or repairing gate wiring or project test targets, or when a gate passes and nobody can say what it
   inspected.
@@ -30,14 +30,14 @@ covers the judgement a reviewer or repairer of that wiring needs.
 Open what each target resolves to and ask what it would do on a broken change. A target is real when a defect inside its
 boundary makes it fail.
 
-| Observed                                                                 | Judgement                                                   |
-| ------------------------------------------------------------------------ | ----------------------------------------------------------- |
-| the command prints, exits zero, or runs nothing for this project         | a placeholder, and a finding however green it is            |
-| an aggregate repeats another target's command instead of naming it       | two owners for one command, which will drift                |
-| a static coverage target starts the test runner or depends on a test run | a runtime check wearing a static name, slow and order-bound |
-| a fast gate or hook starts an integration or end-to-end suite            | misplaced, and a slow hook is the one that gets bypassed    |
-| a step's exit status is discarded                                        | not a gate                                                  |
-| a check reports zero files, cases, or scenarios inspected                | nothing inspected, which is never a pass                    |
+| Observed                                                                       | Judgement                                                   |
+| ------------------------------------------------------------------------------ | ----------------------------------------------------------- |
+| the command prints, exits zero, or runs nothing for this project               | a placeholder, and a finding however green it is            |
+| an aggregate repeats another target's command instead of naming it             | two owners for one command, which will drift                |
+| a static coverage target starts the test runner or depends on a test run       | a runtime check wearing a static name, slow and order-bound |
+| a hook starts a test, or a fast gate starts an integration or end-to-end suite | misplaced, and a slow hook is the one that gets bypassed    |
+| a step's exit status is discarded                                              | not a gate                                                  |
+| a check reports zero files, cases, or scenarios inspected                      | nothing inspected, which is never a pass                    |
 
 ## An Omission Needs a Reason; a Stub Never Passes
 
@@ -48,16 +48,11 @@ floor of the project it tests.
 
 ## Judge an Exclusion by Its Contents
 
-Accept an exclusion from the coverage floor only for a generated file, a test-support program, or an exemption meeting
-all three terms of
-[Exclusions and Exemptions](../../../repo-governance/development/quality/testing/meaningful-coverage/001-exclusions-and-exemptions.md):
-
-- it names a specific file, function, or branch, never a path pattern;
-- the named code is wholly a boundary with no decision in it, or a branch no input can take; and
-- a named integration or end-to-end target and scenario exercises the boundary code.
-
-Code that mixes a boundary with a decision is split, so the decision stays under the floor. A broad pattern, or boundary
-code with no higher-layer proof, is coverage gaming. Lowering a floor is a gate change made as its own change.
+Accept an exclusion from the coverage floor only for generated output, declarative configuration, vendored code, or
+non-production code such as tests, fixtures, and test-support doubles, per
+[Exclusions](../../../repo-governance/development/quality/testing/meaningful-coverage/001-exclusions-and-exemptions.md).
+Any other exclusion is coverage gaming, however boundary-like the code looks: code a unit test cannot reach moves behind
+a port until one can. Lowering a floor is a gate change made as its own change.
 
 ## Weigh an Exemption Reason
 

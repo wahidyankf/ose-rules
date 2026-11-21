@@ -1,7 +1,7 @@
 ---
 description: >-
-  Assigns each kind of automated quality check to the earliest gate surface able to see its problem: staged files before
-  a commit, the message at commit time, affected work before a push, and a failing build in the pipeline.
+  Assigns each kind of automated quality check to its gate surface: staged-file formatting before a commit, the message
+  at commit time, the leak scan before a push, every other check in the pull-request gate, and end-to-end on main.
 when_to_use: >-
   Use when wiring a check into a hook or pipeline, deciding which surface a check belongs on, or when a gate is slow,
   scans too much, or cannot fail.
@@ -10,58 +10,59 @@ when_to_use: >-
 # Automated Quality Gates
 
 A quality rule a contributor must remember is enforced only on the days they remember it, so every mechanical check runs
-by itself, at the earliest moment that can see the problem, and blocks.
+by itself and blocks.
 
 This standard implements [Automation Over Manual](../../../principles/automation-over-manual.md) and
 [Fail Closed](../../../principles/fail-closed.md). What a surface is, and which gates may change files, is owned by
 [Surfaces and Mutation](../../../conventions/structure/repository-configuration/003-surfaces-and-mutation.md); this
-standard decides what belongs on each surface.
+standard decides what belongs on each surface, as rule C6 of the
+[Test and Gate Contract](test-and-gate-contract/002-surface-placement.md) states it.
 
 ## Where Each Check Runs
 
-| Surface                | Runs                                                                               | Never runs                                                                |
-| ---------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| before a commit        | formatters and file-level checks over staged files; fast deterministic repo checks | runtime test suites, except as recorded below; rewriting files not staged |
-| at commit-message time | validation of the message against the repository's commit format                   | anything about file contents                                              |
-| before a push          | fast checks scoped to what the pushed commits affect                               | slow integration or end-to-end suites                                     |
-| continuous integration | every blocking check, on each proposed change and on the integration branch        | a step whose failure is discarded                                         |
+| Surface                | Runs                                                                  | Never runs                        |
+| ---------------------- | --------------------------------------------------------------------- | --------------------------------- |
+| before a commit        | formatters that rewrite and restage staged files                      | any check, test, or scan          |
+| at commit-message time | validation of the message against the repository's commit format      | anything about file contents      |
+| before a push          | the deterministic leak scanner over the pushed range                  | tests, lint, or document checks   |
+| pull request           | every other blocking check, end-to-end excepted, hook checks replayed | a step whose failure is discarded |
+| main or scheduled      | end-to-end suites                                                     | a layer nothing else runs         |
 
-Each row trades feedback speed against coverage. The earlier the surface, the cheaper the fix and the less the check may
-cost; the later the surface, the more complete the check and the more a finding costs to act on.
+The table is the default. A repository may declare, in its gate registry, which entries each local surface holds, and
+its wiring check refuses any other.
 
-## Tests Run Before a Push
+## Hooks Stay Thin
 
-Test suites stay off `pre-commit`, because a slow pre-commit hook gets bypassed and then checks nothing. They run at
-`pre-push` or in `ci`.
+Only three kinds of work must run on the author's machine: a rewrite of files, which a hosted job cannot make; the
+message lint, because a bad message found at the pull request forces rewriting pushed history; and the leak scan, which
+must finish before history leaves the machine.
 
-A repository with no `ci` surface records one option:
+Everything else, tests and lint included, runs in the pull-request gate rather than before a push. Work there can be
+dispatched from any machine, spreads over runners, and runs in parallel per project and per level; work in a hook runs
+serially on one machine before anyone can look at the change, and a slow hook gets bypassed.
 
-| Option                        | Gains                                     | Costs                                       |
-| ----------------------------- | ----------------------------------------- | ------------------------------------------- |
-| fast tests at `pre-commit`    | failures stop before history records them | slower commits, and more pressure to bypass |
-| fast tests at `pre-push` only | commits stay quick                        | the push hook is the only test gate         |
+A repository with no pull-request gate keeps the same hooks and runs its registry's pull-request surface locally over
+the change before landing or pushing, recording the result.
 
 ## Staged, Not the Whole Tree
 
-A formatter or file-level check before a commit inspects what is being committed. Formatting the entire tree on every
-commit is slow enough to resent, and rewrites and stages untouched files, so the commit carries changes nobody reviewed.
+A formatter before a commit rewrites only what is being committed. Formatting the entire tree on every commit is slow
+enough to resent, and rewrites and stages untouched files, so the commit carries changes nobody reviewed.
 
 A formatter that rewrites a staged file restages it, so the commit holds the formatted version rather than needing a
-follow-up fix.
+follow-up fix. The pull-request gate replays each formatter in verify-clean mode.
 
-## Affected, Not Everything
+## Scope by Dependence
 
-A pre-push gate runs the checks the pushed change can affect, derived from the dependency graph or the changed paths. A
-check that genuinely cannot be scoped, because it reads links or invariants spanning the whole repository, runs over the
-whole tree; naming each such exception and its reason is good practice, since an unexplained whole-tree check is where
-gate time quietly grows.
-
-A gate slow enough to be worked around protects nothing; keeping local gates fast keeps them run.
+A pull-request check may run over only the affected projects when its result cannot change because of edits outside
+them; otherwise it runs over the whole tree. Links, anchors, indexes, and registry wiring are global, because a deletion
+in one project can break another. The classification is in
+[Pull-Request Scope](test-and-gate-contract/003-pull-request-scope.md).
 
 ## The Pipeline Fails the Build
 
-Where a repository has continuous integration, it runs the complete blocking set and a violation fails the run. It is
-the one control a contributor cannot skip locally, so it is a superset of the hooks, never a subset.
+The pull-request gate runs the complete blocking set and a violation fails the run. It is the one control a contributor
+cannot skip locally, so it is a superset of the hooks, never a subset.
 
 A step written so it cannot fail, its exit status discarded or its tool told to succeed regardless, is not a gate: it
 reports green over exactly the state it exists to catch.

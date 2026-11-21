@@ -75,6 +75,6 @@ this rule; no portable linter can identify every state-changing producer.
 
 ## Enforcement
 
-Review applies these rules. An adopter enforces the mechanical parts in its own hook or pipeline: the interpreter line,
+Review applies these rules. An adopter enforces the mechanical parts in its own pull-request gate: the interpreter line,
 the strict-mode setting, the committed file mode, and a shell linter at the threshold
 [Lint Strictness](../checks/lint-strictness.md) sets.

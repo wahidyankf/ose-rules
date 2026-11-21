@@ -61,8 +61,8 @@ beyond counters, or growing past roughly a hundred lines, moves its logic to a l
 
 ## Tests
 
-A shell test runs the script as callers do and asserts exit status, output, and effects. Each test is isolated per
-[Git Fixture Isolation](../testing/git-fixture-isolation.md) and
+An integration shell test runs the script as callers do and asserts exit status, output, and effects. Each is isolated
+per [Git Fixture Isolation](../testing/git-fixture-isolation.md) and
 [Test Data Isolation](../testing/test-data-isolation.md), and is classified by the boundary it touches under
 [Test Boundaries and Gates](../testing/test-boundaries-and-gates.md). Example: bats-core.
 
@@ -70,6 +70,13 @@ Shell coverage is never a gate: available instruments report unreliably for shel
 ([kcov](https://raw.githubusercontent.com/SimonKagstrom/kcov/master/doc/kcov.1)), so no floor or surrogate figure is
 recorded, per [Meaningful Coverage](../testing/meaningful-coverage.md). Behaviour tests over every documented exit path
 carry the evidence.
+
+## Hermetic Unit Tests
+
+Shell has no process-free seam, so a unit test sources the script's functions, its `main` call guarded to skip when
+sourced, and calls them in the test's shell. Every command a function runs is stubbed, with `PATH` set to a directory of
+stubs so an unstubbed command fails with status 127, and every path is injected as text. Logic that cannot be tested
+this way moves to a stack with a seam.
 
 ## Documentation
 
@@ -88,5 +95,5 @@ Record the choice in the repository adapter [Stack Packs](../../../conventions/s
 
 ## Enforcement
 
-The analyser, formatter, and syntax check enforce the gates in the adopter's hooks and pipeline; review applies quoting,
+The analyser, formatter, and syntax check enforce the gates in the adopter's pull-request gate; review applies quoting,
 input checks, strict-mode gaps, and script size.

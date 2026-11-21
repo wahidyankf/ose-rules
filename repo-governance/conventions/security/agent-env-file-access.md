@@ -44,20 +44,20 @@ controls enforce this for every actor, not agents alone:
 
 1. **Ignore rules** cover the recorded pattern, with the template re-included, so an ordinary stage cannot pick up a
    real file.
-2. **A staged-file guard** runs before each commit and refuses any staged file matching the pattern, catching the forced
-   add that ignore rules cannot.
+2. **The leak scan** at pre-push and in the pull-request gate, over all commits (equivalent for outbound safety),
+   refuses any matching file, catching the forced add ignore rules cannot.
 
-An ignore rule prevents accidents, not a deliberate force, which is why the guard exists. An adopter wires the guard
-into its own pre-commit hook, and the permission deny and pre-tool hook listed under Enforcement into each agent harness
-it supports.
+An ignore rule prevents accidents, not a deliberate force. An adopter wires the scan into its pre-push hook and
+pull-request gate, and the permission deny and pre-tool hook listed under Enforcement into each agent harness it
+supports.
 
 ## Existing Commands Are the Sanctioned Route
 
 Tracked project commands may read and write environment files at runtime, and an agent may run them. The rule targets
 the agent's direct access, not the work such a command exists to do.
 
-The carve-out is a deliberate trust boundary: a tracked command was reviewed, and the commit guard still stands behind
-it. A script an agent writes to reach a restricted file had no review, so it counts as direct access. Closing that route
+The carve-out is a deliberate trust boundary: a tracked command was reviewed, and the leak scan still stands behind it.
+A script an agent writes to reach a restricted file had no review, so it counts as direct access. Closing that route
 mechanically would take a sandbox that also blocks legitimate commands, so this convention holds it instead.
 
 Before treating a step as blocked, use a tracked command that already provides the value. If none does, the agent stops,

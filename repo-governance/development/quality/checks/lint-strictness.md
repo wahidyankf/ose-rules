@@ -30,7 +30,7 @@ ships.
 There is no advisory tier. One threshold everywhere means quality does not depend on which kind of file a change happens
 to touch, and nobody learns a separate bar per language.
 
-Each gate runs in the local hooks, and in continuous integration as well wherever the repository has it.
+Each gate runs in the pull-request gate, and no hook runs a linter.
 
 ## Clean, Then Gate
 
@@ -38,7 +38,7 @@ A new gate is introduced in order:
 
 1. **Clean.** Fix the existing violations, or waive them under the rule below.
 2. **Verify.** Run the linter over its full scope and confirm it exits cleanly.
-3. **Turn it on.** Only then wire it into the hooks and the pipeline.
+3. **Turn it on.** Only then wire it into the pull-request gate.
 
 A gate switched on over an existing backlog fails the first unrelated change that runs it. The author of that change
 inherits someone else's debt, and the quickest way out is to disable the gate. Cleaning first means the gate is green on
@@ -69,4 +69,4 @@ runs. The inventory differs between repositories; the threshold, the rollout ord
 
 Where a stack has both a formatter and a linter, the linter's layout rules are disabled so the two never disagree.
 
-An adopter enforces the threshold in the linter configuration its own hooks and pipeline read.
+An adopter enforces the threshold in the linter configuration its own pull-request gate reads.

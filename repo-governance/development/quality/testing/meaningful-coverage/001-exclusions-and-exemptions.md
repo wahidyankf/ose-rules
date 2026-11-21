@@ -1,13 +1,13 @@
 ---
 description: >-
   Limits coverage exclusions to generated files and test-support programs, records each with its reason in one place,
-  and admits any other exclusion only as a documented exemption of named boundary code.
+  and admits no exemption: code a unit test cannot reach moves behind a port.
 when_to_use: >-
-  Use when adding or reviewing a coverage exclusion, deciding whether code may leave the measured set, or writing the
-  exemption for boundary code a test cannot reach.
+  Use when adding or reviewing a coverage exclusion, deciding whether code may leave the measured set, or handling code
+  a unit test cannot reach.
 ---
 
-# Exclusions and Exemptions
+# Exclusions
 
 An exclusion removes authored code from the denominator, so each one makes the floor in
 [Meaningful Coverage](../meaningful-coverage.md#the-floor) easier to clear. Few kinds are allowed, and each is written
@@ -26,22 +26,18 @@ No other kind is excluded.
 Each exclusion sits in the gating run's coverage configuration with its reason beside it. No other document restates the
 list; the project README links to the configuration. A second list is a second copy that drifts.
 
-## Any Other Exclusion Needs an Exemption
+## Unreachable Code Is Not Excluded
 
-An exemption is an exclusion documented in that same place. It is valid only when all three hold:
-
-- it names a specific file, function, or branch, never a path pattern;
-- the named code is wholly a boundary, such as a resource or a process, with no decision in it, or a branch no input can
-  take; and
-- a named integration or end-to-end target and scenario exercises the boundary code, while an untakeable branch has
-  nothing to exercise.
-
-Code mixing a boundary with a decision is split, so the decision stays under the floor. Difficulty, schedule, and
-unfinished work are never reasons. Choosing a core package to measure is a wholesale exemption, and none qualifies.
+There is no exemption. Code a unit test cannot reach, such as a resource or a process boundary, stays in the measured
+set and moves behind a port until a unit test backed by a [test double](../test-doubles.md) reaches it, following
+[Hexagonal Architecture](../../architecture/hexagonal-architecture.md) and
+[Functional Core, Imperative Shell](../../architecture/functional-core-imperative-shell.md), as
+[Coverage Floor](../../checks/test-and-gate-contract/006-coverage-floor.md) requires. An integration or end-to-end test
+never stands in for the unit figure. Difficulty, schedule, and unfinished work are never reasons, and choosing a core
+package to measure is a wholesale exclusion that none of these categories allows.
 
 ## Enforcement
 
-Gated by the adopter's coverage configuration check, which fails on an exclusion that has no reason, on an excluded path
-that is neither generated nor test support nor a named exemption, and on a path pattern in an exemption. Unenforced by
-decision: whether an exemption's boundary claim is true is a review judgement, applied as
-[Software Quality Enforcement](../../checks/software-quality-enforcement.md) requires.
+Gated by the adopter's coverage configuration check, which fails on an exclusion that has no reason and on an excluded
+path that is neither generated nor test support. Unenforced by decision: whether a file is generated or test support is
+a review judgement, applied as [Software Quality Enforcement](../../checks/software-quality-enforcement.md) requires.

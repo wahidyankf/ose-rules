@@ -29,7 +29,8 @@ Every scenario is bound at the unit, integration, and end-to-end layers unless i
 behaviour-coverage check fails on each of these:
 
 - a scenario with no binding at a layer it is not exempt from;
-- an exemption with no written justification; and
+- an exemption with no written justification;
+- a stale exemption, at a layer where a binding exists; and
 - a scenario exempt at both the integration and end-to-end layers, which is a detail for a plain test.
 
 The check is proven on a deliberately violating corpus that it fails and on a conforming one that it passes.
@@ -40,20 +41,20 @@ Placement uses the surfaces
 [Surfaces and Mutation](../../../../conventions/structure/repository-configuration/003-surfaces-and-mutation.md)
 declares.
 
-| Check                                | Runs                                                                                                                       |
-| ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------- |
-| unit scenarios                       | at `pre-push` for what the pushed commits affect, and in `ci`                                                              |
-| static compliance                    | at `pre-push` for what the pushed commits affect, and in `ci`                                                              |
-| integration and end-to-end scenarios | for affected scenarios before completion, and in full in `ci` or a scheduled `ci` run; never at `pre-commit` or `pre-push` |
-| semantic review                      | after a material change to scenarios or implementation, before completion                                                  |
+| Check                 | Runs                                                                             |
+| --------------------- | -------------------------------------------------------------------------------- |
+| unit scenarios        | in `pull-request`, inside the fast gate, for affected projects                   |
+| static compliance     | in `pull-request`, globally, as the fast gate's last step                        |
+| integration scenarios | in `pull-request` on every pull request, as a required job for affected projects |
+| end-to-end scenarios  | in a `main` or `scheduled` workflow, and for affected journeys before completion |
+| semantic review       | after a material change to scenarios or implementation, before completion        |
 
-Integration and end-to-end runtime stays out of hooks for the reason [End-to-End Testing](../end-to-end-testing.md)
-gives: a slow hook gets bypassed.
+No scenario runs in a hook: a slow hook gets bypassed, and the pull-request gate runs these jobs in parallel on any
+runner. End-to-end stays off the per-pull-request path because its journeys are the slowest and may depend on outside
+services.
 
-A repository with no `ci` surface runs unit scenarios where the option it records under
-[Automated Quality Gates](../../checks/automated-quality-gates.md) places fast tests, which may be `pre-commit`. Its
-integration and end-to-end scenarios still stay out of hooks and run for affected scenarios before completion. It
-records when it makes the full run its status report is produced from.
+A repository with no pull-request gate runs the same checks in its local landing gate before landing or pushing,
+end-to-end included where its dependencies are local, and records the result its status report is produced from.
 
 ## Generated Status Report
 

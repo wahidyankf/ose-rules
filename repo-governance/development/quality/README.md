@@ -17,8 +17,8 @@ repository-check standards sit alongside them.
 
 - [Architecture and Contracts](architecture/README.md) — architecture models, application structure, and published
   interfaces
-- [Checks and Gates](checks/README.md) — rule enforcement, which gate runs each check, strictness, validators, and what
-  a new check needs
+- [Checks and Gates](checks/README.md) — rule enforcement, which gate runs each check, the test and gate contract,
+  strictness, validators, and what a new check needs
 - [Code](code/README.md) — what code and dependencies justify, clarity, cross-file invariants, scripts, and data files
 - [Deletion With Proof](deletion-with-proof.md) — what must be demonstrated before something is removed
 - [Delivery](delivery/README.md) — live-service continuity, automation loop observability, and pipeline storage

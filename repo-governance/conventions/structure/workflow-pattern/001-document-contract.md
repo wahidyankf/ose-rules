@@ -89,4 +89,4 @@ A reader deciding whether to start needs the entry condition, and one judging wh
 without reading every step. Fixed headings put both in the same place everywhere, so a validator confirms they exist and
 a reader never searches.
 
-An adopter enforces the metadata and the three sections with its own workflow check in pre-commit or CI.
+An adopter enforces the metadata and the three sections with its own workflow check in the pull-request gate.

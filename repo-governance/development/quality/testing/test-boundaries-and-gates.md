@@ -24,10 +24,10 @@ strongest boundary a test touches, the loopback choice, and any floor above the 
 | ----------- | ------------------------------------------------------------------------------------------------------------------- |
 | unit        | touches a real filesystem, database, environment, clock, random source, child process, or network; each is injected |
 | integration | reaches an external network, drives a browser, or observes the served origin; it uses only local resources it owns  |
-| end-to-end  | calls an external service nobody controls without explicit authorization                                            |
+| end-to-end  | reaches past the public boundary, uses real user data, or shares a fixture with another case                        |
 
-The unit exclusion covers setup and assertions as well as the subject. End-to-end means observing the public boundary,
-not permission to use more resources.
+The unit exclusion covers setup and assertions as well as the subject. End-to-end may use any resource, real secrets
+included, with synthetic data and per-case fixtures, since only it proves the deployed system.
 
 ## Keep the Suites Apart
 
@@ -49,20 +49,22 @@ commands, because a copied command drifts from the original.
 ## The Fast Gate
 
 The fast gate runs type check, lint, unit with coverage, and static behaviour coverage, in that order, so the cheapest
-failure to read comes first. It runs before a push over what the change affects, and at the phase/pre-pull-request
-boundaries owned by
+failure to read comes first. It runs in the pull-request gate for affected projects, never in a hook, which would run it
+serially and get bypassed, and at the phase/pre-pull-request boundaries owned by
 [Focused Runs and Regression Gates](test-driven-development/001-cycle-and-evidence.md#focused-runs-and-regression-gates).
 A dedicated end-to-end project's fast gate holds only its type check, lint, and static behaviour coverage.
 
-It never runs an integration or end-to-end suite. Those run where
-[Compliance and Reporting](behaviour-driven-development/004-compliance-and-reporting.md) places them, with integration
-ahead of the complete end-to-end run, so a local failure surfaces before the slower journeys that depend on it.
+It never runs an integration or end-to-end suite. Integration runs in the pull-request gate as its own job, and
+end-to-end in a scheduled or main workflow, where
+[Compliance and Reporting](behaviour-driven-development/004-compliance-and-reporting.md) places them.
 
 ## Coverage Is Measured Where It Gates
 
 Gating coverage comes from the one instrumented unit run that executed the tests, because two runs can disagree. The
-floor, what coverage may measure, and the allowed exclusions are owned by [Meaningful Coverage](meaningful-coverage.md).
-The fast gate's unit run enforces the floor.
+floor is a 99% minimum fixed by rule C15 of the
+[Test and Gate Contract](../checks/test-and-gate-contract/006-coverage-floor.md), never lowered or made optional; what
+coverage may measure and the allowed exclusions are owned by [Meaningful Coverage](meaningful-coverage.md). The fast
+gate's unit run enforces the floor.
 
 Lowering a floor or widening an exclusion changes what the repository is willing to ship. It is a change to a gate, made
 as [Software Quality Enforcement](../checks/software-quality-enforcement.md) requires.
@@ -79,6 +81,6 @@ with its reason.
 
 ## Enforcement
 
-A failing gate is fixed at its cause, never weakened or bypassed. Review applies the classification as tests change, and
-a validator for it is added only when [Repository Check Policy](../checks/repository-check-policy.md) admits one. The
-adopter enforces the gate contracts in its own task configuration and `ci`.
+A failing gate is fixed at its cause, never weakened or bypassed. Each stack pack's hermetic-unit mechanism, an import
+and call ban on unit-test files, gates the unit exclusion, since review misses a clock read hidden in setup; review
+applies the rest. The adopter enforces the gate contracts in its own task configuration and pull-request gate.

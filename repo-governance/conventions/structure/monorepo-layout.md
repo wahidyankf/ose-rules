@@ -46,7 +46,7 @@ Project directories are named in lowercase kebab-case, per [File Naming](file-na
 `README.md` saying what the project is and how to run its tasks.
 
 The adopter enforces the dependency and import rules with its monorepo tooling's module-boundary constraints, run in its
-own pre-commit or CI gate, so a forbidden import fails before review rather than in it.
+own pull-request gate, so a forbidden import fails before review rather than in it.
 
 ## Principles
 

@@ -60,8 +60,8 @@ canonical metadata.
 A rename changes the path, the `name` field, the title, and every live reference in the same change. A harness routes by
 name, so one reference left behind fails at invocation rather than at review.
 
-Where the grammar or a closed vocabulary is adopted, the adopter enforces it with its own name check in pre-commit or
-CI, reading the vocabularies from their one declared place.
+Where the grammar or a closed vocabulary is adopted, the adopter enforces it with its own name check in the pull-request
+gate, reading the vocabularies from their one declared place.
 
 ## Principles
 
