@@ -2,6 +2,10 @@
 # The last local moment before anything reaches a remote. Git's ref-update
 # lines are the declared typed input, so Rhino reads what Git is actually about
 # to send without forwarding arbitrary hook arguments.
+#
+# This surface holds the deterministic leak scan and nothing else (C6). The
+# tests, lint, and document checks run at the pull-request surface, so a push
+# never waits on them.
 set -euo pipefail
 
 exec ./rhino gate run --surface pre-push --push-updates-stdin

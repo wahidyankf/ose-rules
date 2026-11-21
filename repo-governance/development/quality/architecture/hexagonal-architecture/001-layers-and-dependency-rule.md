@@ -18,9 +18,14 @@ when_to_use: >-
 
 ## The Dependency Rule
 
-```text
-inbound adapters   --depend on-->  application  --depends on-->  domain
-outbound adapters  --depend on-->  application
+```mermaid
+flowchart LR
+    accTitle: Hexagonal dependency direction
+    accDescr: Inbound adapters and outbound adapters each depend on the application layer, and the application layer depends on the domain.
+    classDef default fill:#CA9161,stroke:#000000,color:#000000,stroke-width:2px
+    Inbound["Inbound adapters"] -- depend on --> App["Application"]
+    Outbound["Outbound adapters"] -- depend on --> App
+    App -- depends on --> Domain["Domain"]
 ```
 
 Arrows show the direction of dependency, not of data. Both kinds of adapter point at the application layer; the

@@ -34,10 +34,10 @@ a core. An empty placeholder zone promises structure nobody asked for.
 
 ## One Direction
 
-```text
-shell  --imports-->  core    allowed
-core   --imports-->  shell   forbidden
-```
+| Import direction   | Status    |
+| ------------------ | --------- |
+| shell imports core | allowed   |
+| core imports shell | forbidden |
 
 The core imports only other core modules and effect-free libraries. It never imports an interface framework, a server
 framework, a filesystem or network module, a database or HTTP client, or ambient platform globals, not even for a type.

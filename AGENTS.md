@@ -70,7 +70,7 @@ linting, which would break the digest another repository checks.
 
 ```bash
 npm install          # once
-npm run check:complete
+npm run check:complete   # the pull-request surface over your change
 npm run format       # rewrite what the format gate would reject
 ```
 
@@ -93,5 +93,6 @@ before extracting and the executable's reported identity before running, and ref
 new version, never an edit to what a published tag resolved to.
 
 Delivery worktrees live only at `{repository location}/worktrees/<task>`; sibling `*-worktrees/` directories are
-forbidden. Delivery is worktree to pull request to merge, then cleanup. The hosted workflow runs on every push and pull
-request as defence in depth, not the primary control, because a local hook can be skipped and a hosted check cannot.
+forbidden. Delivery is worktree to pull request to merge, then cleanup. Hooks hold only staged-file formatting at
+commit, the commit-message lint, and the leak scan at push; the pull-request workflow runs every other check and ends in
+the required `quality-gate` check.

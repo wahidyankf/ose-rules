@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/wahidyankf/rhino/v0.16.7/schemas/repo-config/v2.schema.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/wahidyankf/rhino/v0.19.0/schemas/repo-config/v2.schema.json
 # Portable catalog policy. Product implementation belongs to Rhino; each adopter owns its selected policy values.
 
 schema: rhino/repo-config/v2
@@ -584,6 +584,15 @@ policies:
     internal-link:
       exclude-sources:
         - "specs/fixtures/**"
+    mermaid:
+      authoring-rule: rendered
+      node-label-graphemes: 32
+      edge-label-graphemes: 24
+      fill-colors: ["#0173B2", "#DE8F05", "#029E73", "#CA9161"]
+      edge-colors: ["#0173B2", "#000000"]
+      text-colors: ["#000000", "#FFFFFF"]
+      require-default-class: true
+      exclude: ["**/.git/**", "**/node_modules/**", "**/local-tmp/**", "**/worktrees/**"]
   governance:
     word-budget:
       count: whitespace-separated
@@ -661,157 +670,205 @@ policies:
 
 gates:
   composition:
-    pull-request:
-      relation: at-least
+    pull-request: { relation: at-least }
+  # The C6 placement: each local surface holds only the work its allowed list
+  # names (W07), and every other check runs at the pull-request surface.
+  wiring:
+    hooks:
+      directory: .husky
+    ci:
+      directory: .github/workflows
+    local-surfaces:
+      pre-commit: [format-staged]
+      commit-msg: [commit-message]
+      pre-push: [public-safety-range]
   entries:
-    - id: public-safety
-      type: check
+    - id: format-staged
+      type: mutation
+      inputs:
+        staged: { kind: files }
+      mutation: { local: apply-index, ci: verify-clean }
       command:
         executable: bash
         args:
-          - literal: scripts/public-safety/check.sh
+          - { literal: scripts/format-staged.sh }
+          - { input: staged.paths, expand: repeat }
       run-on:
-        pre-commit: {}
-        pull-request: {}
-        main: {}
-    - id: public-safety-message
+        pre-commit:
+          bind:
+            staged: { source: git-index }
+        pull-request:
+          bind:
+            staged: { source: explicit-range, range: explicit }
+    - id: commit-message
       type: check
       inputs:
-        message:
-          kind: commit-message
+        message: { kind: commit-message }
       command:
         executable: bash
         args:
-          - literal: scripts/public-safety/check.sh
+          - { literal: scripts/check-commit-message.sh }
         environment:
-          PUBLIC_SAFETY_MESSAGE:
-            input: message.text
+          RHINO_GATE_MESSAGE: { input: message.text }
       run-on:
         commit-msg:
           bind:
-            message:
-              source: hook-message-file
+            message: { source: hook-message-file }
         pull-request:
           bind:
-            message:
-              source: explicit-range
-              range: explicit
+            message: { source: explicit-range, range: explicit }
     - id: public-safety-range
       type: check
       inputs:
-        range:
-          kind: commit-range
+        range: { kind: commit-range }
       command:
         executable: bash
         args:
-          - literal: scripts/public-safety/check.sh
+          - { literal: scripts/public-safety/check.sh }
         environment:
-          PUBLIC_SAFETY_BASE:
-            input: range.base
-          PUBLIC_SAFETY_HEAD:
-            input: range.head
+          PUBLIC_SAFETY_BASE: { input: range.base }
+          PUBLIC_SAFETY_HEAD: { input: range.head }
       run-on:
         pre-push:
           bind:
-            range:
-              source: push-updates
-              fallback: refs/remotes/origin/main
+            range: { source: push-updates, fallback: refs/remotes/origin/main }
         pull-request:
           bind:
-            range:
-              source: explicit-range
-              range: explicit
+            range: { source: explicit-range, range: explicit }
+    - id: commit-history
+      type: check
+      inputs:
+        range: { kind: commit-range }
+      command:
+        executable: bash
+        args:
+          - { literal: scripts/check-commit-range.sh }
+          - { input: range.base, expand: single }
+          - { input: range.head, expand: single }
+      run-on:
+        pull-request:
+          reason:
+            "Commitlint must receive each immutable commit separately, rather than one concatenated message stream."
+          bind:
+            range: { source: explicit-range, range: explicit }
+    - id: public-safety-tree
+      type: check
+      command:
+        executable: bash
+        args:
+          - { literal: scripts/public-safety/check.sh }
+      run-on:
+        pull-request:
+          reason: "C11: the tree scan runs at pull-request; pre-push screens the pushed range alone."
+    - id: public-safety-message
+      type: check
+      inputs:
+        message: { kind: commit-message }
+      command:
+        executable: bash
+        args:
+          - { literal: scripts/public-safety/check.sh }
+        environment:
+          PUBLIC_SAFETY_MESSAGE: { input: message.text }
+      run-on:
+        pull-request:
+          reason: "C11: the message scan runs at pull-request, and pre-push screens the pushed range."
+          bind:
+            message: { source: explicit-range, range: explicit }
     - id: public-safety-tests
       type: check
       command:
         executable: bash
         args:
-          - literal: scripts/public-safety/tests/run.sh
+          - { literal: scripts/public-safety/tests/run.sh }
       run-on:
         pull-request:
           reason: "The scanner regression suite needs the pull-request checkout; local hooks must remain bounded."
-        main: {}
     - id: markdown-format
       type: check
       command:
         executable: npx
         args:
-          - literal: --no-install
-          - literal: prettier
-          - literal: --check
-          - literal: .
+          - { literal: --no-install }
+          - { literal: prettier }
+          - { literal: --check }
+          - { literal: . }
       run-on:
-        pre-commit: {}
-        pull-request: {}
-        main: {}
+        pull-request:
+          reason: "C6: a check outside the local hooks' allowed lists runs at pull-request only."
     - id: markdown-lint
       type: check
       command:
         executable: npx
         args:
-          - literal: --no-install
-          - literal: markdownlint-cli2
+          - { literal: --no-install }
+          - { literal: markdownlint-cli2 }
       run-on:
-        pre-commit: {}
-        pull-request: {}
-        main: {}
+        pull-request:
+          reason: "C6: a check outside the local hooks' allowed lists runs at pull-request only."
     - id: artifact-metadata
       type: check
       command:
         executable: ./rhino
         args:
-          - literal: metadata
-          - literal: validate
+          - { literal: metadata }
+          - { literal: validate }
       run-on:
-        pre-commit: {}
-        pull-request: {}
-        main: {}
+        pull-request:
+          reason: "C6: a check outside the local hooks' allowed lists runs at pull-request only."
     - id: word-budget
       type: check
       command:
         executable: ./rhino
         args:
-          - literal: governance
-          - literal: word-budget
-          - literal: validate
+          - { literal: governance }
+          - { literal: word-budget }
+          - { literal: validate }
       run-on:
-        pre-commit: {}
-        pull-request: {}
-        main: {}
+        pull-request:
+          reason: "C6: a check outside the local hooks' allowed lists runs at pull-request only."
     - id: quality-gates
       type: check
       command:
         executable: ./rhino
         args:
-          - literal: governance
-          - literal: quality-gates
-          - literal: validate
+          - { literal: governance }
+          - { literal: quality-gates }
+          - { literal: validate }
       run-on:
-        pre-commit: {}
-        pull-request: {}
-        main: {}
+        pull-request:
+          reason: "C6: a check outside the local hooks' allowed lists runs at pull-request only."
     - id: internal-links
       type: check
       command:
         executable: ./rhino
         args:
-          - literal: md
-          - literal: internal-link
-          - literal: validate
+          - { literal: md }
+          - { literal: internal-link }
+          - { literal: validate }
       run-on:
-        pre-commit: {}
-        pull-request: {}
-        main: {}
+        pull-request:
+          reason: "C6: a check outside the local hooks' allowed lists runs at pull-request only."
+    - id: mermaid
+      type: check
+      command:
+        executable: ./rhino
+        args:
+          - { literal: md }
+          - { literal: mermaid }
+          - { literal: validate }
+      run-on:
+        pull-request:
+          reason: "C6: a check outside the local hooks' allowed lists runs at pull-request only."
     - id: remote-dispatch-refusal
       type: check
       command:
         executable: bash
         args:
-          - literal: scripts/check-remote-dispatch-refusal.sh
+          - { literal: scripts/check-remote-dispatch-refusal.sh }
       run-on:
-        pre-commit: {}
-        pull-request: {}
-        main: {}
+        pull-request:
+          reason: "C6: a check outside the local hooks' allowed lists runs at pull-request only."
     - id: harness-adapters
       type: check
       command:
@@ -820,8 +877,26 @@ gates:
           - literal: -c
           - literal:
               "./rhino harness adapters validate && bash .commandcode/hooks/agent-policy-selector.test.sh && bash
-              .commandcode/hooks/git-fixture-isolation.test.sh && exec bash .muse/hooks/run-policy-hook.test.sh"
+              .commandcode/hooks/git-fixture-isolation.test.sh && bash scripts/agent-hippo-guard.test.sh && exec bash
+              .muse/hooks/run-policy-hook.test.sh"
       run-on:
-        pre-commit: {}
-        pull-request: {}
-        main: {}
+        pull-request:
+          reason: "C6: a check outside the local hooks' allowed lists runs at pull-request only."
+    - id: hippo-consumer
+      type: check
+      command:
+        executable: bash
+        args:
+          - { literal: scripts/check-hippo-consumer.sh }
+      run-on:
+        pull-request:
+          reason: "C6: a check outside the local hooks' allowed lists runs at pull-request only."
+    - id: shell-lint
+      type: check
+      command:
+        executable: bash
+        args:
+          - { literal: scripts/check-shell-lint.sh }
+      run-on:
+        pull-request:
+          reason: "C16: the shell linter runs at pull-request only, on the pinned ShellCheck."

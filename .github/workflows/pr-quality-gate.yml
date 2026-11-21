@@ -1,0 +1,214 @@
+name: PR Quality Gate
+
+# The server-side mirror of the local gates. A pull request can be opened from a
+# checkout whose hooks never ran, so the guarantees the hooks give locally are
+# enforced again here, over the pull-request range.
+#
+# This workflow is the only pull-request workflow. Its gates come only from the
+# registry in `repo-config.yml`: each job names its entries with `--entry`, and
+# together the jobs cover every entry the registry declares for the pull-request
+# surface (C1, C8). No job copies a gate's command, so a hook and this workflow
+# cannot drift apart.
+#
+# The jobs run in parallel, one per kind of work, and the aggregate job named
+# `quality-gate` is the single required status check (C22). Merge protection
+# points at that aggregate, because a skipped job never reports and so cannot
+# be required on its own.
+#
+# Every action reference names a full commit SHA, with the release tag it was
+# resolved from in a trailing comment. A tag can be moved after review, and a
+# pinned SHA cannot (C4).
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pr-quality-gate-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  # The leak screens over the tree, the range, and the message text, plus the
+  # scanner's own regression suite (C11).
+  public-safety:
+    name: Public safety
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      # The head is checked out with its history, because the range screens read
+      # the explicit base and head from the commits themselves.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
+      # Node 24 is pinned to the resolved patch release, not the major line, so a
+      # runner's cached image cannot move the formatter or the test runner.
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "24.22.3"
+          cache: npm
+
+      # Installs from the lock file and skips lifecycle scripts, so the hook
+      # installer does not run on a CI runner.
+      - run: npm ci --ignore-scripts
+
+      - name: Run the public-safety gates
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -eu
+          export PATH="${GITHUB_WORKSPACE}/node_modules/.bin:${PATH}"
+          ./rhino gate run --surface pull-request \
+            --entry public-safety-tree --entry public-safety-range \
+            --entry public-safety-message --entry public-safety-tests \
+            --base "${BASE_SHA}" --head "${HEAD_SHA}"
+
+  # The commit-message lint runs at commit-msg locally. Here it runs again over
+  # the range, one commit at a time, so a message a hook never saw is still caught.
+  commit-messages:
+    name: Commit messages
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "24.22.3"
+          cache: npm
+
+      - run: npm ci --ignore-scripts
+
+      - name: Run the commit-message gates
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -eu
+          export PATH="${GITHUB_WORKSPACE}/node_modules/.bin:${PATH}"
+          ./rhino gate run --surface pull-request \
+            --entry commit-message --entry commit-history \
+            --base "${BASE_SHA}" --head "${HEAD_SHA}"
+
+  # The formatter replays here as verify-clean, so a file the local hook would
+  # have rewritten fails the job instead of being rewritten on a runner. The
+  # document checks run in this job, not before a push (C6).
+  document-checks:
+    name: Document checks
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "24.22.3"
+          cache: npm
+
+      - run: npm ci --ignore-scripts
+
+      - name: Run the document gates
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -eu
+          export PATH="${GITHUB_WORKSPACE}/node_modules/.bin:${PATH}"
+          ./rhino gate run --surface pull-request \
+            --entry format-staged --entry markdown-format --entry markdown-lint \
+            --entry artifact-metadata --entry word-budget --entry quality-gates \
+            --entry internal-links --entry mermaid \
+            --base "${BASE_SHA}" --head "${HEAD_SHA}"
+
+  # The repository checks: remote dispatch, harness adapters, the HIPPO consumer
+  # policy, and the shell linter. The linter needs a pinned ShellCheck, because
+  # the runner image ships a different one.
+  repository-checks:
+    name: Repository checks
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "24.22.3"
+          cache: npm
+
+      - run: npm ci --ignore-scripts
+
+      # Pinned to the version the repository lints with. The runner image ships an
+      # older ShellCheck, and a gate that fails on linter drift rather than on the
+      # code would train its readers to ignore it. Checksum-verified, because an
+      # unverified download in a gate is a supply chain this repository did not
+      # choose. The same pin and digest as the rhino repository's workflow.
+      - name: Install the pinned ShellCheck
+        env:
+          SHELLCHECK_VERSION: "0.11.0"
+          SHELLCHECK_LINUX_X86_64_SHA512: "25df28923d7d89cfdb9fa8aeef762a887f2bd4ebfbcd43ae71068c60e9458d66250b0f8d6fd66b4bc03723e6cdd47983c547e3ab4f3ea2cbc4bc4028842cc7b9"
+        run: |
+          set -eu
+          archive="${RUNNER_TEMP}/shellcheck.tar.xz"
+          curl --fail --location --silent --show-error \
+            "https://github.com/koalaman/shellcheck/releases/download/v${SHELLCHECK_VERSION}/shellcheck-v${SHELLCHECK_VERSION}.linux.x86_64.tar.xz" \
+            --output "${archive}"
+          printf '%s  %s\n' "${SHELLCHECK_LINUX_X86_64_SHA512}" "${archive}" | sha512sum --check --strict
+          tar --extract --xz --file "${archive}" --directory "${RUNNER_TEMP}" \
+            "shellcheck-v${SHELLCHECK_VERSION}/shellcheck"
+          # A dedicated directory, not RUNNER_TEMP itself: prepending the whole
+          # scratch directory to PATH would make every file dropped there by any
+          # step resolvable as a command.
+          mkdir -p "${RUNNER_TEMP}/pinned-bin"
+          install -m 0755 "${RUNNER_TEMP}/shellcheck-v${SHELLCHECK_VERSION}/shellcheck" \
+            "${RUNNER_TEMP}/pinned-bin/shellcheck"
+          printf '%s\n' "${RUNNER_TEMP}/pinned-bin" >> "${GITHUB_PATH}"
+
+      - name: Run the repository gates
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -eu
+          export PATH="${GITHUB_WORKSPACE}/node_modules/.bin:${PATH}"
+          ./rhino gate run --surface pull-request \
+            --entry remote-dispatch-refusal --entry harness-adapters \
+            --entry hippo-consumer --entry shell-lint \
+            --base "${BASE_SHA}" --head "${HEAD_SHA}"
+
+  # The single required status check. A job that was skipped or cancelled is not
+  # a pass, so only an explicit success from every job opens the merge button.
+  quality-gate:
+    needs: [public-safety, commit-messages, document-checks, repository-checks]
+    if: always()
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Check every gate
+        env:
+          # A cancelled or skipped dependency is not a pass: only an explicit
+          # success from every job may open the merge button.
+          RESULTS: ${{ join(needs.*.result, ' ') }}
+        run: |
+          set -eu
+          echo "Gate results: ${RESULTS}"
+          for result in ${RESULTS}; do
+            if [ "${result}" != "success" ]; then
+              echo "A quality gate job did not succeed." >&2
+              exit 1
+            fi
+          done
+          echo "All quality gates passed."
