@@ -84,5 +84,5 @@ in its SDK version file.
 
 ## Enforcement
 
-The compiler, analyzers, and formatter enforce the gates in the adopter's build, hooks, and pipeline; an architecture
+The compiler, analyzers, and formatter enforce the gates in the adopter's build and pull-request gate; an architecture
 test holds the module's layer rule. Review applies the language, asynchronous, and failure defaults.

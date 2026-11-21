@@ -10,7 +10,7 @@
     {
       "id": "skill/applying-ci-standards",
       "path": ".agents/skills/applying-ci-standards/SKILL.md",
-      "digest": "b15aa3bfafa43b7941b51f52843b22df1aa2512d935b2d1983fae58fc5437269"
+      "digest": "ccc26d80dab11b596f9406fe6ccad6a37e355744d72979dbcbb4bf373db0f5a8"
     },
     {
       "id": "skill/applying-content-quality",
@@ -300,12 +300,12 @@
     {
       "id": "skill/resolving-review-threads",
       "path": ".agents/skills/resolving-review-threads/SKILL.md",
-      "digest": "502f9759ac995c34d3214f7291fc510b7fef75e5ba6358d3e717f69695f076e8"
+      "digest": "23ac24989b23c0457363248ab4f292908569da240e4c61697d052871057436fe"
     },
     {
       "id": "skill/scaffolding-specifications",
       "path": ".agents/skills/scaffolding-specifications/SKILL.md",
-      "digest": "0a53afb59853d299e995207a9d17ae83f4ad91721411dfc9cb8b10e5eb88f8da"
+      "digest": "499b1f1c879820557ff31c97527e7f3a6fc14f97174db969a44a147f09015009"
     },
     {
       "id": "skill/synthesizing-review-findings",
@@ -380,12 +380,12 @@
     {
       "id": "agent/ci-checker",
       "path": "agents/ci-checker.md",
-      "digest": "e64f4f1040aa944f950fc14360163e8ca13c5fea293db8e0f1f2f2d6e2aa105c"
+      "digest": "4bbfb3171ed5b822a314571d95ec264e826ae5e2a25e05e1503176b40958cd7b"
     },
     {
       "id": "agent/ci-fixer",
       "path": "agents/ci-fixer.md",
-      "digest": "11c55c1dfd1bc6e196ed7283f7cfdf839a009a0ab5eb27a8a70a93db11ebdb38"
+      "digest": "1042d385b9d9395c92c02b85fd3de661a931a49d14fba20cb55b427dc9a7d811"
     },
     {
       "id": "agent/content-checker",

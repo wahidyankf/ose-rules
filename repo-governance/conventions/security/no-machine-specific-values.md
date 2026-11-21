@@ -68,7 +68,7 @@ that [Environment Variable Contract](environment-variable-contract.md) defines. 
 Review the staged change for every category in What Counts, including every loopback address outside the
 test-configuration allowance. Source, tests, fixtures, configuration, scripts, workflow definitions, generated files,
 and documentation are all in scope; ignored files are not, because they are never committed. This review is required; a
-pre-commit scan over staged additions is an enforcement point an adopter may add.
+scan over the change in the pull-request gate is an enforcement point an adopter may add.
 
 ## If One Lands
 

@@ -66,8 +66,8 @@ A change to a project asks whether its README is still true: a new command, a mo
 changed prerequisite. A needed update lands in the same change. A changed boundary beside an unchanged README is a
 review finding.
 
-An adopter enforces presence and, outside a single-project repository, the root link with its own project check in
-pre-commit or CI, adding the specification link wherever the project has a specification; whether the content is still
+An adopter enforces presence and, outside a single-project repository, the root link with its own project check in the
+pull-request gate, adding the specification link wherever the project has a specification; whether the content is still
 true stays a review question.
 
 ## Principles

@@ -62,11 +62,18 @@ boundary the unit layer excludes, so a test using one is integration, per
 [Test Boundaries and Gates](../testing/test-boundaries-and-gates.md). Example: pytest's `tmp_path` and
 `monkeypatch.setenv`.
 
-The unit run measures coverage with branches on. An untakeable partial branch needs a documented exemption, per
-[Exclusions and Exemptions](../testing/meaningful-coverage/001-exclusions-and-exemptions.md). Example: coverage.py with
+The unit run measures coverage with branches on. An untakeable partial branch is removed or restructured, never
+exempted, per [Exclusions](../testing/meaningful-coverage/001-exclusions-and-exemptions.md). Example: coverage.py with
 `branch = true` and `fail_under` ([branch coverage](https://coverage.readthedocs.io/en/latest/branch.html)). Any floor
 above the minimum is recorded under
 [Layers and Adapters](../testing/behaviour-driven-development/002-layers-and-adapters.md).
+
+## Hermetic Unit Tests
+
+The linter bans impure modules and calls in unit-test modules. Example: Ruff's `banned-api` rule (`TID251`, from
+flake8-tidy-imports) lists `os.environ`, `subprocess`, `socket`, `urllib.request`, `time.time`, and `random` under
+`lint.flake8-tidy-imports.banned-api`, and a negated `lint.per-file-ignores` pattern, `"!<unit-test glob>"`, ignores
+`TID251` everywhere else.
 
 ## Documentation
 
@@ -87,5 +94,5 @@ Record each choice in the repository adapter [Stack Packs](../../../conventions/
 
 ## Enforcement
 
-Pyright, the formatter, the linter, and the coverage floor run in the adopter's own hooks and pipeline; review applies
+Pyright, the formatter, the linter, and the coverage floor run in the adopter's own pull-request gate; review applies
 boundary validation, code shape, and failure handling.

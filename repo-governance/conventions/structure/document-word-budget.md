@@ -69,7 +69,7 @@ A file over its ceiling keeps failing until relocation fixes it; Progressive Dis
 only in a class-wide recalibration that records evidence the signal is broadly unactionable or that harness capacity or
 repository policy has changed, states its reasoning, and validates every file in the class.
 
-The adopter enforces the ceiling in its own gate, run in pre-commit or CI wherever its other checks run.
+The adopter enforces the ceiling in its own check, run in the pull-request gate.
 
 ## Principles
 

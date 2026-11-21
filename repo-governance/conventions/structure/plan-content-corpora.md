@@ -56,8 +56,8 @@ For a corpus not yet promoted, the custodian settles it before the first step of
 A plan under `done/` is never edited again, so a corpus still changing cannot archive with it; the transfer keeps one
 custodian at every moment.
 
-An adopter runs its own link check over live plans in pre-commit or CI, excluding archived plans as scan sources but not
-as link targets, so a link a missed hand-off left behind fails. It cannot see a missing custodian line, which a
+An adopter runs its own link check over live plans in the pull-request gate, excluding archived plans as scan sources
+but not as link targets, so a link a missed hand-off left behind fails. It cannot see a missing custodian line, which a
 structure check or review enforces.
 
 ## No Successor Authorized

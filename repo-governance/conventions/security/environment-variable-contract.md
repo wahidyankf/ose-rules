@@ -16,7 +16,7 @@ as [Agent Environment-File Access](agent-env-file-access.md) requires.
 
 The template and the code agree in both directions: a key the code reads but the template omits, or one the template
 declares but nothing reads, is drift and fails. Reads by every shared library the consumer uses count. An adopter
-enforces this in its own pre-commit or continuous-integration gate.
+enforces this in its own pull-request gate.
 
 A recorded, reviewed exemption list excuses only declared keys read by a platform or launcher, not the consumer; it
 never hides a read the validator misses, which is fixed at its read site.

@@ -64,7 +64,7 @@ fit hides exactly what the index exists to show.
 | generated directories   | They carry no hand-written index, because regeneration removes it; the source is indexed instead.                                                                                                                                    |
 | vendored or tool-bound  | A vendored copy is indexed from its parent so the copy stays identical. A directory where a tool registers every file as a command is indexed from its parent unless the tool ignores an index there.                                |
 
-An adopter enforces the findings with its own index check in pre-commit or CI, scoped to the trees it declares.
+An adopter enforces the findings with its own index check in the pull-request gate, scoped to the trees it declares.
 
 ## Principles
 

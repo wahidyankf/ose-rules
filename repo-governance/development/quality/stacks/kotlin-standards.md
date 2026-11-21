@@ -87,5 +87,5 @@ Record each choice once.
 
 ## Enforcement
 
-An adopter runs the compiler, format, lint, and coverage gates in its hooks and pipeline. Review applies boundary
+An adopter runs the compiler, format, lint, and coverage gates in its pull-request gate. Review applies boundary
 nullability, `!!` and `lateinit` claims, coroutine ownership, and coverage exclusions.

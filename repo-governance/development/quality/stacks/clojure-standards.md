@@ -88,5 +88,5 @@ Record each choice once.
 
 ## Enforcement
 
-Adopters run the format, lint, reflection, and test gates in their own hooks and pipeline; review applies boundary
+Adopters run the format, lint, reflection, and test gates in their own pull-request gate; review applies boundary
 validation, namespace and effect placement, laziness, and test isolation.

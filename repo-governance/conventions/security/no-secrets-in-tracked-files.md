@@ -35,10 +35,10 @@ directory, a platform's secret store, or a password manager. The committed templ
 and agent access to real files is governed by [Agent Environment-File Access](agent-env-file-access.md).
 
 An ignore rule reduces accidental tracking; it is not a security boundary, because a forced add walks straight past it.
-The staged-file guard that [Agent Environment-File Access](agent-env-file-access.md) defines refuses that add only for a
-file matching its recorded real-environment pattern. A file forced in from any other ignored location, such as a secrets
+The leak scan that [Agent Environment-File Access](agent-env-file-access.md) defines refuses that add only for a file
+matching its recorded real-environment pattern. A file forced in from any other ignored location, such as a secrets
 directory, is stopped by review: every repository reviews each staged change for secrets before it commits. A secret
-scan over staged changes is a further enforcement point an adopter may add for such files.
+scan in the pull-request gate is a further enforcement point an adopter may add for such files.
 
 ## Durable Text Counts
 

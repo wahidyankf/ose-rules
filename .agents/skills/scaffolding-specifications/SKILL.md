@@ -58,7 +58,7 @@ Modelling is not copying: every statement in the new corpus is about this owner.
 | service interface | the service is running and accepts requests | requests, responses, and status      |
 | command-line tool | the tool is installed                       | commands, output, exit status, files |
 
-A library gets no scenarios: it keeps plain tests, and only its architecture and contracts are specified.
+A library gets scenarios too, describing only behaviour its caller observes through its public API.
 
 A user-interface step that names a request, or a service step that names a button, crosses the boundary the corpus
 exists to keep.

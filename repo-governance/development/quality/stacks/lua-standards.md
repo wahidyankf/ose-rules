@@ -70,10 +70,16 @@ logic runs under unit tests outside the host. Host-only code is tested through t
 states its reason. Example: busted.
 
 Lua coverage counts lines, not branches, so no branch figure is claimed. Code the instrument cannot reach inside a host
-needs a documented exemption, per
-[Exclusions and Exemptions](../testing/meaningful-coverage/001-exclusions-and-exemptions.md). Example: LuaCov. Any floor
-above the minimum is recorded under
-[Layers and Adapters](../testing/behaviour-driven-development/002-layers-and-adapters.md).
+moves behind the injected host API until a unit test reaches it, never exempted, per
+[Exclusions](../testing/meaningful-coverage/001-exclusions-and-exemptions.md). Example: LuaCov. Any floor above the
+minimum is recorded under [Layers and Adapters](../testing/behaviour-driven-development/002-layers-and-adapters.md).
+
+## Hermetic Unit Tests
+
+Two mechanisms ban impure access in unit specs. The linter removes `io` and `os` for unit-spec paths, so each use is an
+undefined-global finding; example: a luacheck `files` override with `not_globals`. The unit-spec helper replaces
+`require` so loading a network or process module, such as `socket`, fails the spec, and replaces the host's process and
+file APIs, such as Neovim's `vim.fn.system` and `vim.uv`, with failing stubs.
 
 ## Documentation
 
@@ -88,5 +94,5 @@ Record the declared runtime, host library definitions, and linter in the reposit
 
 ## Enforcement
 
-The adopter's own hooks and pipeline run the language server, formatter, and linter gates. Review applies boundary
+The adopter's own pull-request gate runs the language server, formatter, and linter gates. Review applies boundary
 checks, the failure convention, and the runtime-version rule.

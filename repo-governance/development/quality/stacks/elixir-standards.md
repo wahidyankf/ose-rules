@@ -76,6 +76,13 @@ modules go under `:ignore_modules` with their reason, partitioned runs merge wit
 and any floor above the minimum is recorded under
 [Layers and Adapters](../testing/behaviour-driven-development/002-layers-and-adapters.md).
 
+## Hermetic Unit Tests
+
+A repository-owned Credo check bans impure calls in unit tests: a module using `Credo.Check`, loaded through `requires`
+in `.credo.exs` and scoped by its `files: %{included: [...]}` parameter to unit-test paths, flags calls to `File`,
+`System`, `Port`, `:os`, `:httpc`, `:gen_tcp`, `DateTime.utc_now`, and `:rand`. The check has its own tests, and
+integration tests keep their excluded tag.
+
 ## Documentation
 
 Each public module carries `@moduledoc` and each public function `@doc`, with examples as doctests so they stay true
@@ -86,5 +93,5 @@ makes it private. A behaviour change updates these with the code, per
 
 ## Enforcement
 
-An adopter runs the five gates in its own hooks and pipeline. Review applies the boundary specs, failure and process
+An adopter runs the five gates in its own pull-request gate. Review applies the boundary specs, failure and process
 rules, test isolation, and coverage exclusions.

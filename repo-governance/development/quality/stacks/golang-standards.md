@@ -73,6 +73,13 @@ Go coverage counts statements, so no branch figure is claimed. One instrumented 
 [Meaningful Coverage](../testing/meaningful-coverage.md); integration runs stay outside it. Any floor above the minimum
 is recorded under [Layers and Adapters](../testing/behaviour-driven-development/002-layers-and-adapters.md).
 
+## Hermetic Unit Tests
+
+golangci-lint bans impure calls in unit-test files: `forbidigo` patterns forbid clock, file, environment, process, and
+random identifiers such as `time.Now` and `os.ReadFile`, kept to `_test.go` files by a `linters.exclusions.rules` entry
+with `path-except`; a `depguard` rule with `files: ["$test"]` denies `net`, `os/exec`, and `database/sql`. Integration
+files carry a build tag the default lint run omits.
+
 ## Documentation
 
 Every exported name has a doc comment beginning with that name. An exported sentinel or error type joins the
@@ -92,4 +99,4 @@ Record each choice in the repository adapter [Stack Packs](../../../conventions/
 
 ## Enforcement
 
-The toolchain and recorded linters enforce the gates in the adopter's hooks and pipeline; review applies the rest.
+The toolchain and recorded linters enforce the gates in the adopter's pull-request gate; review applies the rest.

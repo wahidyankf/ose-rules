@@ -76,5 +76,5 @@ pinned major version, makes the reviewed version the installed one.
 
 ## Enforcement
 
-An adopter checks the exact-pin form after every manifest edit in its own hook or gate, and runs its ecosystem's
+An adopter checks the exact-pin form after every manifest edit in its own pull-request gate, and runs its ecosystem's
 vulnerability audit after every lockfile update.

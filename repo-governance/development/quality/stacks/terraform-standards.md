@@ -88,6 +88,6 @@ provider behaviour but cost spend, credentials, and failed-run cleanup.
 
 ## Enforcement
 
-Adopters enforce format, validate, lint, and plan-mode tests in hooks and pipeline, keeping apply-mode tests out of
-commit and push hooks. Applying a plan is a deployment, never a gate side effect. Review covers typing, version pins,
-state and secret handling, and plan review.
+Adopters enforce format, validate, lint, and plan-mode tests in the pull-request gate, keeping apply-mode tests out of
+every hook. Applying a plan is a deployment, never a gate side effect. Review covers typing, version pins, state and
+secret handling, and plan review.

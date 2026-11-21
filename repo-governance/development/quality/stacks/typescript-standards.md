@@ -82,6 +82,13 @@ unit test, never integration evidence. Coverage meets the floor in
 `no-non-null-assertion`, and `no-floating-promises`; Prettier formats, with `eslint-config-prettier` disabling
 overlapping rules; `tsc --noEmit` type-checks.
 
+## Hermetic Unit Tests
+
+A lint override whose files glob matches only unit-test files bans what reaches outside the process:
+`no-restricted-imports` for modules such as `node:fs`, `node:child_process`, `node:net`, and `node:http`, and
+`no-restricted-globals` for `fetch` and `process`, with `no-restricted-properties` for `Date.now` and `Math.random`.
+Biome's `noRestrictedImports` and `noRestrictedGlobals` serve the same purpose.
+
 ## Enforcement
 
 An adopter enforces the compiler options in its committed configuration and the typing rules in its lint gate. Review

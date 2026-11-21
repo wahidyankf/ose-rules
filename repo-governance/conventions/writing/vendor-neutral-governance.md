@@ -89,4 +89,4 @@ families, binding paths — and its marker form in its own copy of this conventi
 
 A reviewer checks new in-scope text against the vocabulary above. An adopter enforcing it mechanically scans every
 in-scope location for its term list, skipping the exception regions and citations it declares and failing on any other
-match; the exemption set, and whether the scan runs in a hook or a gate, are the adopter's.
+match; the exemption set is the adopter's, and the scan runs in the pull-request gate.

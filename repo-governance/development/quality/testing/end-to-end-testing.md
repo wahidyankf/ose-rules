@@ -57,14 +57,14 @@ End-to-end runs never execute at the `pre-commit` or `pre-push` surface that
 [Surfaces and Mutation](../../../conventions/structure/repository-configuration/003-surfaces-and-mutation.md) declares.
 A slow hook is the hook that gets bypassed, and a bypassed hook checks nothing.
 
-Run the journeys a change affects before reporting it complete, and run the complete suite in `ci` or a scheduled `ci`
-run. A scheduled failure is a real failure: fix it at its cause, as
-[Root Cause Orientation](../../../principles/root-cause-orientation.md) requires, rather than re-running or quarantining
-it.
+Run the journeys a change affects before reporting it complete. The complete suite runs in a `scheduled` or `main`
+workflow the repository declares, not per pull request, because it is the slowest suite and may depend on outside
+services; every repository with a remote and end-to-end tests has that workflow. A scheduled failure is a real failure:
+fix it at its cause, as [Root Cause Orientation](../../../principles/root-cause-orientation.md) requires, rather than
+re-running or quarantining it.
 
-A repository with no `ci` surface places tests by the option it records under
-[Automated Quality Gates](../checks/automated-quality-gates.md). That option admits only fast tests to a hook, so there
-end-to-end runs stay out of hooks and cover the journeys a change affects, before completion.
+A repository with no pull-request gate runs the suite in its local landing gate where its dependencies are local, per
+[Automated Quality Gates](../checks/automated-quality-gates.md).
 
 ## Clean Up Even After Failure
 

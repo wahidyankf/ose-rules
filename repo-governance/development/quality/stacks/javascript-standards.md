@@ -65,6 +65,12 @@ marks stable, measuring branches where it can, per [Meaningful Coverage](../test
 Vitest with V8 coverage ([coverage](https://vitest.dev/guide/coverage)). Any floor above the minimum is recorded under
 [Layers and Adapters](../testing/behaviour-driven-development/002-layers-and-adapters.md).
 
+## Hermetic Unit Tests
+
+Plain JavaScript unit-test files take the restricted-import mechanism of
+[TypeScript Standards](typescript-standards.md#hermetic-unit-tests): a lint override scoped to unit-test globs, with
+`no-restricted-imports` for file, process, and network modules and `no-restricted-globals` for `fetch` and `process`.
+
 ## Documentation
 
 An exported function's JSDoc is both its type and its reference documentation, so it states behaviour and thrown errors
@@ -86,5 +92,5 @@ choice records how an unmarked file is found.
 
 ## Enforcement
 
-The compiler, linter, and formatter enforce the gates in the adopter's hooks and pipeline. Review applies boundary
+The compiler, linter, and formatter enforce the gates in the adopter's pull-request gate. Review applies boundary
 validation and the promise and error rules no linter fully sees.

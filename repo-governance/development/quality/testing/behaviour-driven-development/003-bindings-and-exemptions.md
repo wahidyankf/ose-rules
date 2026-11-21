@@ -44,7 +44,7 @@ carries a written justification stating that reason and its alternative proof: t
 exemption can remove, or a binding at the other layer when that layer also covers the behaviour.
 
 Difficulty, runtime, speed, flakiness, cost, and unfinished work such as a TODO are never valid reasons. Each describes
-a problem to fix, not a boundary.
+a problem to fix, not a boundary. Nor is "not user-visible": such a scenario leaves the corpus instead.
 
 An exemption never applies to a `Feature`, a `Rule`, or a `Background`, never to the unit layer, and never removes all
 proof of a behaviour. The unit binding is mandatory for every scenario precisely because it is the alternative proof.
@@ -60,13 +60,17 @@ How exemptions are recorded is an adopter decision:
 | a comment and tag on the scenario | the reason sits beside the scenario it excuses | the corpus carries test-layer vocabulary            |
 | a reviewed inventory file         | the corpus stays a pure statement of behaviour | the inventory can drift from the scenarios it names |
 
-In the tag form, a comment directly above the tag carries the reason and the alternative proof:
+In the tag form, which an adopter of the
+[Test and Gate Contract](../../checks/test-and-gate-contract/005-behaviour-corpus.md) takes, a comment directly above
+the tag carries the reason and names the target whose run is the alternative proof:
 
 ```gherkin
-# Exemption(e2e): <why>; alternative-proof: <where>
+# Exemption(e2e): <reason>; alternative-proof: <target>
 @e2e-exempt
 Scenario: <scenario name>
 ```
 
-The integration layer uses `@integration-exempt` in the same way. The adopter enforces the exemption format and these
-limits in its own gate or CI.
+The integration layer uses `@integration-exempt` in the same way. No `@unit-exempt` tag exists. A tag without a valid
+comment fails, and so does a stale exemption: a binding at the exempted layer means the tag is no longer true, and the
+check fails with "stale exemption — remove the tag". The adopter enforces the format and these limits in its static
+behaviour-coverage check, in the pull-request gate.

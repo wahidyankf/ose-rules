@@ -78,6 +78,6 @@ property metadata, so an operator reads what a setting does without reading code
 
 ## Enforcement
 
-The Java gates enforce formatting, warnings, and coverage in the adopter's own build, hooks, and pipeline. A startup
+The Java gates enforce formatting, warnings, and coverage in the adopter's own build and pull-request gate. A startup
 test proves an invalid property value fails the context. Review applies configuration binding, validation placement, the
 persistence default, and slice selection.

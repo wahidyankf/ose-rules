@@ -63,4 +63,4 @@ Before the first step, a workflow is checked for:
 - every checkpoint option naming a step or an outcome, or returning to its own checkpoint.
 
 A run that starts on an unchecked workflow discovers its broken reference halfway through, with half its changes made.
-An adopter runs these checks in its own workflow validator, in pre-commit or CI, rather than at run time.
+An adopter runs these checks in its own workflow validator, in the pull-request gate, rather than at run time.

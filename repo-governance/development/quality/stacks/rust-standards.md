@@ -79,7 +79,7 @@ any higher floor is recorded under
 
 ## Enforcement
 
-Cargo, rustfmt, and Clippy enforce the gates in the adopter's own hooks and pipeline, where the advisory and licence
+Cargo, rustfmt, and Clippy enforce the gates in the adopter's own pull-request gate, where the advisory and licence
 checks of [Dependency Bump Policy](../../workflow/dependency-bump-policy.md) and
 [Dependency Selection](../code/dependency-selection.md) also run. Example: cargo-audit and cargo-deny. Review applies
 the stack rules, the `expect()` and no-panic rules, the code shapes, and the security rules.

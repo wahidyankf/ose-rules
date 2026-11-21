@@ -49,10 +49,11 @@ the configuration or code a repair changes is `swe-developer`'s, per
    - build the real target a placeholder stood in for, or remove the placeholder and record the omission with its
      reason;
    - make a static coverage target execute nothing, and compose it into the fast gate by name;
-   - move an integration or end-to-end suite out of a hook or change-triggered pipeline into the scheduled full run;
+   - move a test out of a hook into the pull-request gate, and an end-to-end suite out of a hook or the pull-request
+     gate into the main or scheduled workflow;
    - restore a scheduled pipeline run that executes static checks, integration, then every end-to-end journey, and fails
      closed;
-   - narrow a broad coverage exclusion to named boundary code that a higher layer exercises; and
+   - remove a coverage exclusion outside the named categories and report the code it exposes as work behind a port; and
    - add a missing example environment file, ignore file, or container image metadata.
 5. **Confirm each edit landed,** then run the narrowest validation that covers it. A repair that fails is recorded as
    failed, and the fixer continues with the next finding.

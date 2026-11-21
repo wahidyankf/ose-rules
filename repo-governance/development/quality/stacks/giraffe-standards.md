@@ -78,5 +78,5 @@ contract describe the same operations.
 
 ## Enforcement
 
-The F# and ASP.NET Core gates enforce in the adopter's own build, hooks, and pipeline. Review applies typed routes,
+The F# and ASP.NET Core gates enforce in the adopter's own build and pull-request gate. Review applies typed routes,
 strict binding, pipeline order, and the single result mapping.

@@ -57,7 +57,7 @@ it again as an escaped defect.
 When the calling workflow delegates a check to another gate, as
 [PR Review](../../../repo-governance/workflows/quality/pr-review.md) does with its delegated checks, do not rerun it
 before pushing. Mark the evidence it produced as pending and let that gate run on the new head. Without such delegation,
-the repository's usual pre-push checks still run.
+the repository's usual local checks still run.
 
 ## Related
 

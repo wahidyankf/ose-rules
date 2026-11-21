@@ -33,16 +33,18 @@ A misclassified test runs in the wrong gate and breaks the speed and isolation p
 
 ## Targets Follow the Project Role
 
-| Project role                 | Test targets it carries                                                                    |
-| ---------------------------- | ------------------------------------------------------------------------------------------ |
-| application or service       | unit; integration where it owns local resources; end-to-end here or in a dedicated project |
-| library                      | unit; integration where it touches real resources                                          |
-| executable tool              | unit; integration where it touches real resources; end-to-end through the built executable |
-| dedicated end-to-end project | end-to-end only, implementing the corpus of the owner it tests                             |
+| Project role                 | Test targets it carries                                                            |
+| ---------------------------- | ---------------------------------------------------------------------------------- |
+| application or service       | unit, integration, and end-to-end, the last here or in a dedicated project         |
+| library                      | unit, integration, and end-to-end through the published artefact a caller installs |
+| executable tool              | unit, integration, and end-to-end through the built executable                     |
+| dedicated end-to-end project | end-to-end only, implementing the corpus of the owner it tests                     |
 
-Omit a target the project cannot meaningfully run, and document the omission. Each project's README names its scenario
-corpus, adapters, and test targets, and states every omitted target or inapplicable layer with its reason, so an absence
-reads as a decision rather than a gap.
+Every scenario is bound at all three layers, because each proves a different boundary and a skipped layer leaves that
+boundary unproven. A layer is skipped only for one scenario, by an exemption whose reason is that no boundary exists at
+that layer, per [Bindings and Exemptions](003-bindings-and-exemptions.md); never for a whole project. Each project's
+README names its scenario corpus, adapters, and test targets, and states every exempt layer with its reason, so an
+absence reads as a decision rather than a gap.
 
 Never define a target that only prints a message or exits successfully without testing anything: a no-op target reports
 coverage that does not exist.

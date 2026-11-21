@@ -37,7 +37,7 @@ Example: Gradle's `distributionSha256Sum` and a toolchain block.
 - **Coverage:** verification runs inside the unit-test target, and the build fails below the floor in
   [Meaningful Coverage](../testing/meaningful-coverage.md), or below a higher floor the adopter records under
   [Layers and Adapters](../testing/behaviour-driven-development/002-layers-and-adapters.md). Exclusions follow
-  [Exclusions and Exemptions](../testing/meaningful-coverage/001-exclusions-and-exemptions.md).
+  [Exclusions](../testing/meaningful-coverage/001-exclusions-and-exemptions.md).
 - **Warnings:** compiler and lint findings fail at the [Lint Strictness](../checks/lint-strictness.md) threshold.
 
 Work proceeds test-first under [Test-Driven Development](../testing/test-driven-development.md); each contract
@@ -78,5 +78,5 @@ Test sleeps, retries, and loosened assertions fall under
 
 ## Enforcement
 
-Formatter, coverage, and compiler settings enforce the gates in the adopter's build, hooks, and pipeline; review applies
-the code shape and failure rules.
+Formatter, coverage, and compiler settings enforce the gates in the adopter's build and pull-request gate; review
+applies the code shape and failure rules.

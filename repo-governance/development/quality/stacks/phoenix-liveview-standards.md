@@ -78,5 +78,5 @@ documents the events it handles where the template alone leaves them unclear.
 
 ## Enforcement
 
-The Elixir gates enforce formatting, warnings, and route verification in the adopter's own build, hooks, and pipeline.
+The Elixir gates enforce formatting, warnings, and route verification in the adopter's own build and pull-request gate.
 Review applies context boundaries, per-entry-point authorization, the two-pass mount, and stream use.
