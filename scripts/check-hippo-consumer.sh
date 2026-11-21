@@ -48,7 +48,7 @@ jq -e '
   .scripts.format == "prettier --write ."
 ' "$repo_root/package.json" >/dev/null
 jq -e '
-  .scripts["check:complete"] | contains("./hippo run --class ephemeral --resource-tier heavy") and contains("gate run --surface main")
+  .scripts["check:complete"] | contains("./hippo run --class ephemeral --resource-tier heavy") and contains("scripts/check-complete.sh")
 ' "$repo_root/package.json" >/dev/null
 grep -Fq './rhino harness adapters generate' "$repo_root/AGENTS.md"
 grep -Fq './rhino harness adapters validate' "$repo_root/README.md"

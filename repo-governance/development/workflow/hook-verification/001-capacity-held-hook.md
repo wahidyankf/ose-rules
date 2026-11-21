@@ -57,8 +57,8 @@ every condition below holds, superseding the earlier HIPPO-congestion-only pre-a
 - The bypass cites receipt and screen evidence in the push and PR notes, and never carries into a later operation.
 - The branch does not merge until the hosted gate passes on the exact pushed head. A later push owes a fresh pass.
 
-Enforcement: gated — [`quality.yml`](../../../../.github/workflows/quality.yml) runs on every push and pull request,
-blocking the merge on a bypassed-hook failure; review verifies the cited evidence against the gate result.
+Enforcement: gated — [`pr-quality-gate.yml`](../../../../.github/workflows/pr-quality-gate.yml) runs on every pull
+request, blocking the merge on a bypassed-hook failure; review verifies the cited evidence against the gate result.
 
 ## What This Never Covers
 

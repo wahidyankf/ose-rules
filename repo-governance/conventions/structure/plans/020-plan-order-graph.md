@@ -54,6 +54,7 @@ flowchart LR
   accTitle: Plan order
   accDescr: Live plans and the dependencies between them.
   A["🔜 plan-a"] --> B["🏗️ plan-b"]
+  classDef default fill:#CA9161,stroke:#000000,color:#000000,stroke-width:2px
   classDef backlog fill:#0173B2,stroke:#000000,color:#FFFFFF,stroke-width:2px
   classDef inprogress fill:#029E73,stroke:#000000,color:#000000,stroke-width:2px
   class A backlog

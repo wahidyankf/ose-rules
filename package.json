@@ -12,9 +12,11 @@
     "prepare": "husky",
     "format": "prettier --write .",
     "check:hippo-consumer": "./hippo run --class ephemeral --resource-tier light --disk-path . -- ./scripts/check-hippo-consumer.sh",
-    "check:complete": "npm run check:hippo-consumer && ./hippo run --class ephemeral --resource-tier heavy --disk-path . -- ./rhino gate run --surface main"
+    "check:complete": "./hippo run --class ephemeral --resource-tier heavy --disk-path . -- ./scripts/check-complete.sh"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
     "husky": "^9.1.7",
     "markdownlint-cli2": "^0.23.2",
     "prettier": "^3.4.2"

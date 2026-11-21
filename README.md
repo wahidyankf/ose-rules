@@ -36,8 +36,8 @@ boundary, a build step, or a generated intermediate in between.
 | [`agents/`](agents/README.md)                   | canonical agent definitions                                       |
 | [`.agents/skills/`](.agents/skills/README.md)   | canonical skills, one directory per skill, each with a `SKILL.md` |
 
-Beside them, [`specs/`](specs/README.md) holds behaviour specifications and the shared plan-structure corpus, and
-`scripts/` holds the repository's own gates.
+Beside them, [`specs/`](specs/README.md) holds the shared fixture corpora, and `scripts/` holds the repository's own
+gates.
 
 Every file under those roots is authored and read directly. None of them is generated from another source, and none of
 them is nested inside a package, workspace, or app directory. A harness-specific adapter, where a harness needs one, is
@@ -55,6 +55,43 @@ documentation pass; repository generation and static validation have since passe
 FERRET records coding-agent harness activity. Capture is registered at the user level of the maintainer's harness
 configuration, not in this repository, so nothing here forwards hook payloads. Use `./ferret` to query the local record
 — `./ferret status --json`, whose `dataHome` names where it lives, and `./ferret usage --group-by tool --json`.
+
+## Gate Inventory
+
+`repo-config.yml` declares every gate once, and `./rhino gate run --surface <surface>` dispatches it. The hooks hold
+only the work that must run on the author's machine: `pre-commit` rewrites staged files, `commit-msg` lints the message,
+and `pre-push` scans the pushed range for leaks. The pull-request workflow replays those and runs every other check as
+four parallel jobs that the required `quality-gate` job aggregates. `npm run check:complete` runs the whole
+`pull-request` surface locally over your change.
+
+| Check                     | Surface                      | Scope         | Command                                                             |
+| ------------------------- | ---------------------------- | ------------- | ------------------------------------------------------------------- |
+| `format-staged`           | `pre-commit`, `pull-request` | changed files | `scripts/format-staged.sh` (rewrites locally, verifies clean in CI) |
+| `commit-message`          | `commit-msg`, `pull-request` | commit        | `scripts/check-commit-message.sh`                                   |
+| `commit-history`          | `pull-request`               | commit range  | `scripts/check-commit-range.sh <base> <head>`                       |
+| `public-safety-range`     | `pre-push`, `pull-request`   | commit range  | `scripts/public-safety/check.sh`                                    |
+| `public-safety-message`   | `pull-request`               | commit range  | `scripts/public-safety/check.sh`                                    |
+| `public-safety-tree`      | `pull-request`               | global        | `scripts/public-safety/check.sh`                                    |
+| `public-safety-tests`     | `pull-request`               | global        | `scripts/public-safety/tests/run.sh`                                |
+| `markdown-format`         | `pull-request`               | global        | `prettier --check .`                                                |
+| `markdown-lint`           | `pull-request`               | global        | `markdownlint-cli2`                                                 |
+| `artifact-metadata`       | `pull-request`               | global        | `./rhino metadata validate`                                         |
+| `word-budget`             | `pull-request`               | global        | `./rhino governance word-budget validate`                           |
+| `quality-gates`           | `pull-request`               | global        | `./rhino governance quality-gates validate`                         |
+| `internal-links`          | `pull-request`               | global        | `./rhino md internal-link validate`                                 |
+| `mermaid`                 | `pull-request`               | global        | `./rhino md mermaid validate`                                       |
+| `remote-dispatch-refusal` | `pull-request`               | global        | `scripts/check-remote-dispatch-refusal.sh`                          |
+| `harness-adapters`        | `pull-request`               | global        | `./rhino harness adapters validate` and the hook tests              |
+| `hippo-consumer`          | `pull-request`               | global        | `scripts/check-hippo-consumer.sh`                                   |
+| `shell-lint`              | `pull-request`               | global        | `scripts/check-shell-lint.sh` (ShellCheck at warning severity)      |
+
+Every check is global or runs over a commit range, because a deletion anywhere can break an unaffected document: link,
+index, registry, and harness-parity checks read the whole tree. The repository holds no runtime code, so it has no unit,
+integration, or end-to-end tests, no behaviour corpus, and no coverage floor, and no network denial applies. That
+exemption follows the maintainer's decision D19 on the standard for tests and gates: a Markdown catalog is exempt from
+behaviour-driven development, unit tests, and coverage, and still runs the document checks and the leak scan in its
+pull-request gate. Markdown line length (`MD013`) stays disabled by the catalog's own decision; Prettier wraps prose at
+120 columns instead.
 
 ## Adoption
 
