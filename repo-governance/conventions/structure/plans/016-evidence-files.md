@@ -62,7 +62,9 @@ width. A name carrying all of that lets a reviewer spot a coverage gap from the 
 
 A capture-based check covers every viewport class the change declares, in the normal state and in every error, empty, or
 loading state the check exercises. Where a product declares further variants — locales, themes, roles — its own
-verification rule sets that coverage; this module does not.
+verification rule sets that coverage; this module does not. A fix's capture set includes a before and an after capture
+at each affected viewport class, each cited by the checklist item the fix closes; a fix item without both cites is not
+evidenced.
 
 Every capture carries the text alternative its safety rule requires.
 

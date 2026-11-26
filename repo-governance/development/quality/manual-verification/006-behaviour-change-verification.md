@@ -53,7 +53,8 @@ For a browser-rendered interface, in a real browser at the exact served origin, 
 - every network request the page makes succeeds, or fails only as designed;
 - the visual result matches the intended design;
 - each supported locale renders correctly;
-- each declared viewport class renders correctly; and
+- each declared viewport class renders correctly;
+- every scrollable region reaches its newest content with its persistent controls visible; and
 - text that is present is also legible, checked by computed size or bounding box, because an element can exist in the
   document while clipped, hidden, or zero-sized.
 
