@@ -33,16 +33,26 @@ Where the platform lets a field request a suitable on-screen keyboard, such as n
 
 ## Targets Are Large Enough
 
-| Viewport                                  | Minimum target size |
-| ----------------------------------------- | ------------------- |
-| every viewport                            | 24 by 24 CSS pixels |
-| a mobile viewport, as the adopter defines | 44 by 44 CSS pixels |
+| Viewport                                                 | Minimum target size |
+| -------------------------------------------------------- | ------------------- |
+| every viewport                                           | 24 by 24 CSS pixels |
+| a mobile viewport, as the adopter defines                | 44 by 44 CSS pixels |
+| a coarse pointer, such as a touch screen, at every width | 44 by 44 CSS pixels |
 
-The first row is WCAG 2.2's Target Size (Minimum) criterion at Level AA. The second is stricter, because a fingertip is
-far less precise than a mouse pointer.
+The first row is WCAG 2.2's Target Size (Minimum) criterion at Level AA. The other two are stricter, because a fingertip
+is far less precise than a mouse pointer.
 
 The adopter records the viewport width below which the mobile size applies. Without that record the stricter size cannot
-be checked, and two reviewers apply it differently.
+be checked, and two reviewers apply it differently. A coarse pointer takes the 44 by 44 size at every width, so no
+recorded width lowers it.
 
 Enlarge a small control's hit area with padding rather than by growing its visible size. Measure the rendered size in
 the browser, not the size the design intended, before merging a compact component.
+
+## Shared Controls Carry the Minimum
+
+A small control that recurs, such as an icon button or a dismissible inline message, is one shared component, and it
+takes its size from the [design tokens](../design-tokens.md). A test sweep checks every control on a surface against
+that minimum, so a new control below it fails the suite instead of shipping unnoticed. The geometry test measures
+rendered boxes at the fixed viewports that
+[Layout Invariants](../../testing/end-to-end-testing/001-layout-invariants.md) requires.

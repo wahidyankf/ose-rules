@@ -20,6 +20,7 @@ Testing standards. They answer which test proves a behaviour, where it runs, and
   exemptions, compliance
 - [End-to-End Testing](end-to-end-testing.md) — public-boundary observation, per-case fixtures, gate placement, browser
   cleanup
+- [End-to-End Testing Modules](end-to-end-testing/README.md) — layout geometry invariants, and hooks and cleanup
 - [Git Fixture Isolation](git-fixture-isolation.md) — six layers keeping test git commands out of real repositories
 - [Meaningful Coverage](meaningful-coverage.md) — the 99% floor on unit coverage over the whole project, what stays
   outside it, and native verification where no instrument is reliable

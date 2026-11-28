@@ -46,6 +46,13 @@ uses a raw value, and never a palette step such as `blue-600`. A raw colour bypa
 survives theming but breaks as soon as the brand changes which step means primary. Referring by role is what lets a
 theme or a brand change without touching a component.
 
+## Shared Primitives Over Per-Feature Fixes
+
+A recurring interface element, such as a dismissible inline message, has one shared component, and every feature uses
+it. A feature never ships its own copy, because a defect fixed in one copy remains in the others. The minimum
+touch-target size is a structural token, and every control refers to that token rather than a literal size, as
+[Forms and Targets](accessibility/002-forms-and-targets.md) requires.
+
 ## Theme-Dependent Tokens Have Dark Counterparts
 
 Where an interface offers a dark theme, every token whose value can differ by theme, such as colours and shadows, is

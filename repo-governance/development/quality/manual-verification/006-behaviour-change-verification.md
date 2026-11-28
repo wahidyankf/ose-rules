@@ -54,9 +54,11 @@ For a browser-rendered interface, in a real browser at the exact served origin, 
 - the visual result matches the intended design;
 - each supported locale renders correctly;
 - each declared viewport class renders correctly;
-- every scrollable region reaches its newest content with its persistent controls visible; and
+- every scrollable region reaches its newest content with its persistent controls visible;
 - text that is present is also legible, checked by computed size or bounding box, because an element can exist in the
-  document while clipped, hidden, or zero-sized.
+  document while clipped, hidden, or zero-sized; and
+- [layout invariants](../testing/end-to-end-testing/001-layout-invariants.md) (touch targets, overflow, short-viewport
+  scroll budget) pass deterministic geometry tests; manual inspection alone does not.
 
 Captures kept as evidence carry text alternatives and follow
 [Evidence Safety and Accessibility](005-evidence-safety.md).
